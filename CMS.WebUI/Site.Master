@@ -1,0 +1,250 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="CMS.WebUI.SiteMaster" %>
+
+<%@ Register Src="~/Controls/btnContact.ascx" TagPrefix="uc1" TagName="btnContact" %>
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+
+
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+    <title>Tập đoàn Hoàn Cầu khu vực Khánh Hòa trao 292 suất quà Tết cho người dân khó khăn | TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ</title>
+
+    <meta property="og:image" content="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/images/news/6.jpg" />
+    <meta property="og:title" content="Tập đoàn Hoàn Cầu khu vực Khánh Hòa trao 292 suất quà Tết cho người dân khó khăn | TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" />
+    <meta property="og:url" content="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/su-kien.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ, Tập đoàn Hoàn Cầu khu vực Khánh Hòa trao 292 suất quà Tết cho người dân khó khăn" />
+    <meta property="og:image:alt" content="Tập đoàn Hoàn Cầu khu vực Khánh Hòa trao 292 suất quà Tết cho người dân khó khăn | TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:image" content="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/images/news/6.jpg" />
+    <meta name="twitter:title" content="Tập đoàn Hoàn Cầu khu vực Khánh Hòa trao 292 suất quà Tết cho người dân khó khăn | TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" />
+    <meta name="twitter:card" content="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/images/news/6.jpg" />
+    <meta name="twitter:description" content="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ, Tập đoàn Hoàn Cầu khu vực Khánh Hòa trao 292 suất quà Tết cho người dân khó khăn" />
+
+    <meta name="dc.created" content="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" />
+    <meta name="dc.publisher" content="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" />
+    <meta name="dc.rights.copyright" content="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" />
+    <meta name="dc.creator.name" content="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" />
+
+    <meta name="geo.position" />
+    <meta name="geo.placename" />
+    <meta name="geo.country" />
+    <meta name="geo.region" />
+
+    <meta name="robots" content="noindex, follow" />
+    <meta name="revisit-after" content="3 days" />
+    <meta name="rating" content="general" />
+    <link rel="alternate" href="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/" hreflang="vi, en" />
+    <link href="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/" rel="canonical" />
+    <meta name="copyright" content="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" />
+    <meta name="author" content="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" />
+
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="pragma" content="no-cache" />
+
+    <link rel="shortcut icon" type="image/ico" href="/Assets/images/brand/favicon.ico" />
+    <link rel="icon" type="image/ico" href="/Assets/images/brand/favicon.ico" />
+
+    <link rel="image_src" type="image/jpg" href="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/images/news/6.jpg" />
+    <meta name="title" content="Tập đoàn Hoàn Cầu khu vực Khánh Hòa trao 292 suất quà Tết cho người dân khó khăn | TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" />
+    <meta name="description" content="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ, Tập đoàn Hoàn Cầu khu vực Khánh Hòa trao 292 suất quà Tết cho người dân khó khăn" />
+    <meta name="keywords" content="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ, Tập đoàn Hoàn Cầu khu vực Khánh Hòa trao 292 suất quà Tết cho người dân khó khăn" />
+
+    <!-- CSS-->
+    <link rel="stylesheet" type="text/css" href="Assets/css/lib.css?v=f81a959662efae2fc3cc158351e6d90c" />
+    <link rel="stylesheet" type="text/css" href="Assets/css/fonts.css?v=f81a959662efae2fc3cc158351e6d90c" />
+     <asp:ContentPlaceHolder ID="ContentHead" runat="server">
+     </asp:ContentPlaceHolder>
+
+
+
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+            <div id="fb-root"></div>
+
+        <!-- header-->
+        <div class="wrapHeader">
+            <div class="wrapHeaderBottom">
+                <div class="container-xxl containerHeaderBottom">
+                    <div class="clearfix contentHeaderBottom">
+                        <div class="wrapBtnCtrMenuHeader">
+                            <div class="btnCtrMenu">
+                                <svg class="iconOpen" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512">
+                                    <path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path>
+                                </svg>
+
+                                <svg class="iconClose" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 320 512">
+                                    <path fill="currentColor" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <h1 class="wrapLogoHeaderBottom">TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ<a class="linkLogoHeaderBottom" href="index.html" title="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ"><img class="imgLogoHeaderBottom" src="/Assets/images/brand/logo-hoan-cau.svg" alt="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" /></a>
+                        </h1>
+                        <div class="headerTopLeft">
+                            <ul class="clearfix listMenuHeaderTop">
+                                <li class="listItemHeaderTop"><a class="listLinkHeaderTop" target="_self" href="tel:0961273355" title="096 127 3355"><span class="titleItem">Hotline:</span><span class="textItem">096 127 3355</span></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="wrapCloseMenuHeaderMobile"></div>
+
+                        <div class="showMenuMain">
+
+
+                            <div class="headerTopRight">
+                                <div class="wrapMenuMainHeaderBottom menuSearchAndLanguage">
+                                    <ul class="clearfix listMenuMainHeaderBottom">
+                                        <li class="listItemMenuMainHeaderBottom menuSubHeaderBottom menuLanguageHeaderBottom"><a class="listLinkMenuMainHeaderBottom" href="javascript:void(0)" title="Tiếng Việt">
+                                            <img class="imgLanguageHeaderBottom" src="/Assets/images/language/vi.jpg" alt="Tiếng Việt"></a>
+                                            <div class="btnDropdowMenuSubHeaderBottom">
+                                                <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 256 512">
+                                                    <path fill="currentColor" d="M119.5 326.9L3.5 209.1c-4.7-4.7-4.7-12.3 0-17l7.1-7.1c4.7-4.7 12.3-4.7 17 0L128 287.3l100.4-102.2c4.7-4.7 12.3-4.7 17 0l7.1 7.1c4.7 4.7 4.7 12.3 0 17L136.5 327c-4.7 4.6-12.3 4.6-17-.1z"></path>
+                                                </svg>
+                                            </div>
+                                            <div class="wrapMenuMainHeaderBottom">
+                                                <ul class="listMenuMainHeaderBottom">
+                                                    <li class="listItemMenuMainHeaderBottom"><a class="listLinkMenuMainHeaderBottom" href="javascript:void(0)" title="English">
+                                                        <img src="/Assets/images/language/en.jpg" alt="English" /></a></li>
+                                                    <li class="listItemMenuMainHeaderBottom"><a class="listLinkMenuMainHeaderBottom" href="javascript:void(0)" title="Việt Nam">
+                                                        <img src="/Assets/images/language/vi.jpg" alt="Việt Nam" /></a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+
+                            <div class="wrapMenuMainHeaderBottom">
+                                <ul class="listMenuMainHeaderBottom">
+                                    <asp:Literal ID="ltrMenuWebTren" runat="server"></asp:Literal>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end header-->
+
+
+
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+
+
+        </asp:ContentPlaceHolder>
+
+        <!-- footer-->
+        <div class="footer">
+            <div class="bgItem" style="background-image: url(/Assets/images/banner/footer-hoan-cau.png)">
+                <div class="contentMain wrapContent2 bgColor4">
+                    <div class="container-xxl containerItem">
+                        <div class="contentItem">
+                            <div class="row rowList">
+                                <div class="col-sm-2 colItem">
+                                    <div class="contentCol">
+                                        <div class="wrapLogo">
+                                            <img src="/Assets/images/brand/logo-hoan-cau.svg" alt="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-10 col-xl colItem">
+                                    <div class="contentCol">
+                                        <div class="titleFooter">Liên hệ</div>
+                                        <div class="wrapInfo">
+                                            <li class="listItemHeaderTop"><a class="listLinkHeaderTop" target="_blank" href="https://www.google.com/maps/place/66+Th%C3%A1i+Nguy%C3%AAn,+Ph%C6%B0%E1%BB%9Bc+T%C3%A2n,+Nha+Trang,+Kh%C3%A1nh+H%C3%B2a+650000,+Vi%E1%BB%87t+Nam/@12.2485165,109.1824798,17z/data=!3m1!4b1!4m5!3m4!1s0x31705d7fa1f282d9:0x481d3e6afcecb8f0!8m2!3d12.2485113!4d109.1850547" title="Số 66 Thái Nguyên, Phường Phương Sài, Thành Phố Nha Trang, Tỉnh Khánh Hòa">
+                                                <svg fill='currentColor' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'>
+                                                    <path d='M272 192C272 236.2 236.2 272 192 272C147.8 272 112 236.2 112 192C112 147.8 147.8 112 192 112C236.2 112 272 147.8 272 192zM192 160C174.3 160 160 174.3 160 192C160 209.7 174.3 224 192 224C209.7 224 224 209.7 224 192C224 174.3 209.7 160 192 160zM384 192C384 279.4 267 435 215.7 499.2C203.4 514.5 180.6 514.5 168.3 499.2C116.1 435 0 279.4 0 192C0 85.96 85.96 0 192 0C298 0 384 85.96 384 192H384zM192 48C112.5 48 48 112.5 48 192C48 204.4 52.49 223.6 63.3 249.2C73.78 274 88.66 301.4 105.8 329.1C134.2 375.3 167.2 419.1 192 451.7C216.8 419.1 249.8 375.3 278.2 329.1C295.3 301.4 310.2 274 320.7 249.2C331.5 223.6 336 204.4 336 192C336 112.5 271.5 48 192 48V48z' />
+                                                </svg>
+                                                Số 66 Thái Nguyên, Phường Phương Sài, Thành Phố Nha Trang, Tỉnh Khánh Hòa</a></li>
+                                            <li class="listItemHeaderTop"><a class="listLinkHeaderTop" target="_self" href="mailto:info@hoancaugroupkh.com" title="info@hoancaugroupkh.com">
+                                                <svg fill='currentColor' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+                                                    <path d='M0 128C0 92.65 28.65 64 64 64H448C483.3 64 512 92.65 512 128V384C512 419.3 483.3 448 448 448H64C28.65 448 0 419.3 0 384V128zM48 128V150.1L220.5 291.7C241.1 308.7 270.9 308.7 291.5 291.7L464 150.1V127.1C464 119.2 456.8 111.1 448 111.1H64C55.16 111.1 48 119.2 48 127.1L48 128zM48 212.2V384C48 392.8 55.16 400 64 400H448C456.8 400 464 392.8 464 384V212.2L322 328.8C283.6 360.3 228.4 360.3 189.1 328.8L48 212.2z' />
+                                                </svg>
+                                                info@hoancaugroupkh.com</a></li>
+                                            <li class="listItemHeaderTop"><a class="listLinkHeaderTop" target="_self" href="tel:0961273355" title="096 127 3355">
+                                                <svg fill='currentColor' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+                                                    <path d='M480.3 320.3L382.1 278.2c-21.41-9.281-46.64-3.109-61.2 14.95l-27.44 33.5c-44.78-25.75-82.29-63.25-108-107.1l33.55-27.48c17.91-14.62 24.09-39.7 15.02-61.05L191.7 31.53c-10.16-23.2-35.34-35.86-59.87-30.19l-91.25 21.06C16.7 27.86 0 48.83 0 73.39c0 241.9 196.7 438.6 438.6 438.6c24.56 0 45.53-16.69 50.1-40.53l21.06-91.34C516.4 355.5 503.6 330.3 480.3 320.3zM463.9 369.3l-21.09 91.41c-.4687 1.1-2.109 3.281-4.219 3.281c-215.4 0-390.6-175.2-390.6-390.6c0-2.094 1.297-3.734 3.344-4.203l91.34-21.08c.3125-.0781 .6406-.1094 .9531-.1094c1.734 0 3.359 1.047 4.047 2.609l42.14 98.33c.75 1.766 .25 3.828-1.25 5.062L139.8 193.1c-8.625 7.062-11.25 19.14-6.344 29.14c33.01 67.23 88.26 122.5 155.5 155.5c9.1 4.906 22.09 2.281 29.16-6.344l40.01-48.87c1.109-1.406 3.187-1.938 4.922-1.125l98.26 42.09C463.2 365.2 464.3 367.3 463.9 369.3z' />
+                                                </svg>
+                                                096 127 3355</a></li>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <asp:Literal ID="ltrMenuWebDuoi" runat="server"></asp:Literal>
+
+                                <div class="col-sm-4 col-xl colItem">
+                                    <div class="contentCol">
+                                        <div class="titleFooter">Facebook</div>
+                                        <div class="wrapFacebook">
+                                            <div class="fb-page" data-href="https://www.facebook.com/hoancaukhanhhoagroup" data-tabs="" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                                                <blockquote cite="https://www.facebook.com/hoancaukhanhhoagroup" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/hoancaukhanhhoagroup">Tập đoàn Hoàn Cầu - Khu vực Khánh Hòa</a></blockquote>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- copyright-->
+            <div class="wrapCopyright">
+                <div class="container-xxl containerItem">
+                    <div class="contentItem">
+                        <div class="copyright">
+                            <p>© 2023 Tập đoàn Hoàn Cầu - Khu vực Khánh Hòa</p>
+                        </div>
+
+                        <div class="developer">
+                            <p>Thiết kế và phát triển bởi <a href="https://www.sweetsoft.vn/" title="thiết kế web Nha Trang,thiet ke web nha trang,thiết kế web Khánh Hòa,công ty,phần mềm,tin học">SweetSoft JSC</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end copyright-->
+        </div>
+        <!-- end footer-->
+        <uc1:btnContact runat="server" id="btnContact" />
+
+
+    </form>
+    <script src="/Assets/js/lib.js?v=f81a959662efae2fc3cc158351e6d90c"></script>
+   <asp:ContentPlaceHolder ID="contentEnd" runat="server">
+
+     </asp:ContentPlaceHolder>
+
+</body>
+</html>

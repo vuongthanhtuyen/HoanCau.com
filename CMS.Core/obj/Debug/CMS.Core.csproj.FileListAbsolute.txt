@@ -1,0 +1,10 @@
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.Core\obj\Debug\CMS.Core.csproj.AssemblyReference.cache
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.Core\obj\Debug\CMS.Core.csproj.CoreCompileInputs.cache
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.Core\bin\Debug\CMS.Core.dll
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.Core\bin\Debug\CMS.Core.pdb
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.Core\bin\Debug\CMS.DataAsscess.dll
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.Core\bin\Debug\SubSonic.dll
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.Core\bin\Debug\CMS.DataAsscess.pdb
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.Core\obj\Debug\CMS.Core.csproj.Up2Date
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.Core\obj\Debug\CMS.Core.dll
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.Core\obj\Debug\CMS.Core.pdb
