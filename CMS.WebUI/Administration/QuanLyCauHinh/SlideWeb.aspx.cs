@@ -21,6 +21,8 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
             {
                 BindDataByQuyen();
                 AdminNotificationUserControl.Visible = false;
+                if (!IsAlive()) Response.Redirect("/Administration/Login.aspx");
+
             }
         }
 

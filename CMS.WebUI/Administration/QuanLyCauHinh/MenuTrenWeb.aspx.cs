@@ -1,10 +1,12 @@
 ﻿using CMS.Core.Manager;
 using CMS.DataAsscess;
 using CMS.WebUI.Administration.Common;
+using Newtonsoft.Json;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Security.Policy;
 using System.Web;
@@ -21,49 +23,204 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
         {
             if (!IsPostBack)
             {
-                BindDataByQuyen();
+                BindDataTree();
                 BindMenuCha();
+                GetModal();
+                if (!IsAlive()) Response.Redirect("~/Administration/Login.aspx", false);
+
             }
         }
-        private void BindDataByQuyen()
+
+
+        private void GetModal()
         {
-            btnOpenModal.Visible = CheckPermission(MenuMa, Them);
-            if (CheckPermission(MenuMa, Xem))
+            string modal = Request.QueryString["modal"];
+
+            if (modal == "openModal")
             {
-                BindGrid();
+                ScriptManager.RegisterStartupScript(this, GetType(), "OpenModal", "openModal();", true);
+                return;
+            }
+            string stidMenu = Request.QueryString["idMenu"];
+            if (int.TryParse(stidMenu, out int id))
+            {
+                hdnRowId.Value = id.ToString();
 
-                foreach (GridViewRow row in GridViewTable.Rows)
+                if (modal == "openEdit")
                 {
-                    if (row.RowType == DataControlRowType.DataRow)
-                    {
-                        // Tìm LinkButton trong hàng
-                        LinkButton btnEdit = (LinkButton)row.FindControl("ChinhSuaChiTiet");
-                        LinkButton btnDelete = (LinkButton)row.FindControl("Xoa");
+                  
+                    var menu = MenuWebTrenBLL.GetById(id);
 
-                        if (btnEdit != null)
-                        {
-                            btnEdit.Visible = CheckPermission(MenuMa, Sua);
-                            btnDelete.Visible = CheckPermission(MenuMa, Xoa);
-                        }
+
+
+                    if (listMenuDto.Any(x => x.MenuChaId == id))
+                    {
+                        lblEditDrop.Visible = false;
+                        ddlEditMenuCha.Visible = false;
                     }
+                    else
+                    {
+                        ddlEditMenuCha.Visible = true;
+                        lblEditDrop.Visible = true;
+                    }
+                    txtEditTen.Text = menu.Ten;
+                    txtEditUrl.Text = menu.Slug;
+                    txtEditStt.Text = string.IsNullOrEmpty(menu.Stt.ToString()) ? "0" : menu.Stt.ToString();
+                    ddlEditMenuCha.SelectedValue = string.IsNullOrEmpty(menu.MenuChaId.ToString()) ? "0" : menu.MenuChaId.ToString();
+                    txtEditNgayTao.Text = ((DateTime)menu.NgayTao).ToString("yyyy-MM-dd");
+                    chkEditTrangThai.Checked = menu.HienThi ?? false;
+                    UpdatePanelEdit.Update();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "openEdit", "openEdit();", true);
+
+                    //UpdatePanelThemBaiViet.Update();
+                    return;
+                }
+                if (modal == "openDelete")
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "openDelete", "openDelete();", true);
+                    return;
+                }
+                else
+                {
+                    ShowNotification("Danh mục này không tồn tại", false);
+                }
+
+            }
+
+        }
+
+        private bool IsAddMenu
+        {
+            get
+            {
+                try
+                {
+                    return true;
+                }
+                catch
+                {
+                    return false;
                 }
             }
         }
+
+        private bool IsEditMenu
+        {
+            get
+            {
+                try
+                {
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
+
+
+        private void BindDataTree()
+        {
+            try
+            {
+                List<ItemTreeView> lstTree = new List<ItemTreeView>();
+
+
+
+                int totalRow = 0;
+                listMenuDto = MenuWebTrenBLL.GetPaging(50, 1, Request.QueryString["search"], null, null, out totalRow);
+
+                List<MenuWebDto> lst = listMenuDto;
+                lst = lst.Where(x => x.Id != 4).ToList();
+
+                if (lst != null && lst.Count > 0)
+                {
+                    Func<int, List<ItemTreeView>> func = null;
+                    func = (parentId) =>
+                    {
+                        List<ItemTreeView> lstTreeChild = new List<ItemTreeView>();
+                        List<MenuWebDto> lstChild = lst.Where(t => t.MenuChaId == parentId).ToList();
+                        if (lstChild != null && lstChild.Count > 0)
+                        {
+                            foreach (var item in lstChild)
+                            {
+                                if (item != null)
+                                {
+                                    ItemTreeView itemTree = new ItemTreeView();
+                                    itemTree.MenuId = item.Id;
+                                    itemTree.text = string.Format("{0} {1} ({2})", item.Ten, GetStatusText(BasicStatusHelper.Active), null);
+                                    //itemTree.text = string.Format("{0} {1} ({2})", item.Ten, "Active", true);
+                                    itemTree.icon = "fa fa-link";
+                                    itemTree.state = new ItemState { opened = true };
+                                    if (true || true)
+                                        itemTree.a_attr = new { href = string.Format("/Administration/QuanLyCauHinh/MenuTrenWeb.aspx?modal=openEdit&idMenu={0}", item.Id) };
+                                    else
+                                        itemTree.a_attr = null;
+                                    itemTree.children = func(item.Id);
+                                    lstTreeChild.Add(itemTree);
+                                }
+                            }
+                        }
+
+                        return lstTreeChild;
+                    };
+                    lstTree = func(0);
+                }
+                //if (IsEditMenu)
+                //{
+                //    ItemTreeView addChild = new ItemTreeView();
+                //    addChild.MenuId = 0;
+                //    addChild.text = "Thêm mới";
+                //    addChild.icon = "fa fa-plus";
+                //    addChild.state = new ItemState { opened = true };
+                //    if (IsEditMenu)
+                //        addChild.a_attr = new { href = "/Administration/QuanLyCauHinh/MenuTrenWeb?modal=openModal" };
+                //    else
+                //        addChild.a_attr = null;
+                //    addChild.children = null;
+                //    lstTree.Add(addChild);
+                //}
+                hdfRightsTreeViewData.Value = JsonConvert.SerializeObject(new { MenuId = 0, text = "Danh sách Menu trên", children = lstTree, icon = "fa fa-list-ul", state = new { opened = true } });
+                UpdatePanelMainTable.Update();
+                SearchUserControl.SetSearcKey();
+
+            }
+            catch
+            {
+
+            }
+        }
+
+
+        private class ItemTreeView
+        {
+            public int MenuId { get; set; }
+            public string text { get; set; }
+            public ItemState state { get; set; }
+            public string icon { get; set; }
+            public object a_attr { get; set; }
+            public List<ItemTreeView> children { get; set; }
+        }
+        private class ItemState
+        {
+            public bool opened { get; set; }
+        }
+
+
+
         private void BindGrid(int pageIndex = 1, int pageSize = 10, int menuCha = 0)
         {
-            pageIndex = PagingAdminWeb.GetPageIndex();
+            //pageIndex = PagingAdminWeb.GetPageIndex();
             
-            int totalRow = 0;
-            if (menuCha != 0)
-                listMenuDto = MenuWebTrenBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], null, menuCha, out totalRow);
-            else
-                listMenuDto = MenuWebTrenBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], null, null, out totalRow);
-            SearchUserControl.SetSearcKey();
-            ViewState["LastIndex"] = (pageIndex - 1) * pageSize;
-            PagingAdminWeb.GetPaging(totalRow, pageIndex);
-            GridViewTable.DataSource = listMenuDto;
-            GridViewTable.DataBind();
-            UpdatePanelMainTable.Update();
+            //int totalRow = 0;
+            //    listMenuDto = MenuWebTrenBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], null, null, out totalRow);
+            //ViewState["LastIndex"] = (pageIndex - 1) * pageSize;
+            //PagingAdminWeb.GetPaging(totalRow, pageIndex);
+            //GridViewTable.DataSource = listMenuDto;
+            //GridViewTable.DataBind();
+            //UpdatePanelMainTable.Update();
 
             //BindListDanhMucCha();
         }
@@ -174,7 +331,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                     menu.Ten = txtTen.Text;
                     menu.Slug = txtUrl.Text;
                     //danhMuc.Slug = txtMa.Text;
-                    menu.MenuChaId = int.Parse(ddlAddMenuCha.SelectedValue) == 0 ? (int?)null : int.Parse(ddlAddMenuCha.SelectedValue);
+                    menu.MenuChaId = int.Parse(ddlAddMenuCha.SelectedValue);
                     //danhMuc.MoTa = txtMota.Text;
                     menu.Stt = int.Parse(txtStt.Text);
                     menu.NgayTao = DateTime.Now;
@@ -184,7 +341,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                     if (menu != null)
                     {
                         lblAddErrorMessage.Text = "";
-                        BindDataByQuyen();
+                        BindDataTree();
                         ShowNotification("Thêm menu thành công");
                         ddlAddMenuCha.SelectedIndex = 0;
                         drAddbaiviet.SelectedIndex = 0;
@@ -196,6 +353,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                         txtUrl.Text = string.Empty;
                         txtStt.Text = "1";
                         UpdatePanelAdd.Update();
+                        Response.Redirect(Request.Url.AbsolutePath);
 
                     }
                     else
@@ -213,53 +371,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
             }
         }
 
-        protected void GridViewTable_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            try
-            {
-                int menuId = Convert.ToInt32(e.CommandArgument);
-                var menu = MenuWebTrenBLL.GetById(menuId);
-                if (menu != null)
-                {
-                    hdnRowId.Value = menuId.ToString();
-                    if (e.CommandName == "ChinhSuaChiTiet")
-                    {
-
-                        if(listMenuDto.Any(x => x.MenuChaId == menuId))
-                        {
-                            lblEditDrop.Visible = false;
-                            ddlEditMenuCha.Visible=false; 
-                        }
-                        else
-                        {
-                            ddlEditMenuCha.Visible = true;
-                            lblEditDrop.Visible = true;
-                        }
-                        txtEditTen.Text = menu.Ten;
-                        txtEditUrl.Text = menu.Slug;
-                        txtEditStt.Text = string.IsNullOrEmpty(menu.Stt.ToString()) ? "0" : menu.Stt.ToString();
-                        ddlEditMenuCha.SelectedValue = string.IsNullOrEmpty(menu.MenuChaId.ToString()) ? "0" : menu.MenuChaId.ToString();
-                        txtEditNgayTao.Text = ((DateTime)menu.NgayTao).ToString("yyyy-MM-dd");
-                        chkEditTrangThai.Checked = menu.HienThi ?? false;
-                        UpdatePanelEdit.Update();
-                        ScriptManager.RegisterStartupScript(this, GetType(), "openEdit", "openEdit();", true);
-                    }
-                    else if (e.CommandName == "Xoa")
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "openDelete", "openDelete();", true);
-                    }
-                }
-                else
-                {
-                    ShowNotification("menu này không tồn tại", false);
-                }
-            }
-            catch (Exception ex)
-            {
-                ShowNotification(ex.Message, false);
-            }
-
-        }
+      
 
 
         protected void btnDelete_Click(object sender, EventArgs e)
@@ -284,9 +396,12 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                     }
 
                     MenuWebTrenBLL.Delete(id);
-                    BindDataByQuyen();
-                    ShowNotification("Đã xóa menu");
-                    ScriptManager.RegisterStartupScript(this, GetType(), "closeDelete", "closeDelete();", true);
+                    Response.Redirect(Request.Url.AbsolutePath);
+
+
+                    //BindDataTree();
+                    //ShowNotification("Đã xóa menu");
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "closeDelete", "closeDelete();", true);
 
                 }
             }
@@ -313,12 +428,13 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                 menu.Ten = txtEditTen.Text;
                 menu.Slug = txtEditUrl.Text;
                 menu.Stt = int.Parse(txtEditStt.Text); // Chuyển đổi sang số nguyên
-                menu.MenuChaId = ddlEditMenuCha.SelectedValue != "0" ? (int?)int.Parse(ddlEditMenuCha.SelectedValue) : null;
+                menu.MenuChaId = int.Parse(ddlAddMenuCha.SelectedValue);
                 menu.HienThi = chkEditTrangThai.Checked;
                 menu = MenuWebTrenBLL.Update(menu);
-                BindDataByQuyen();
-                ScriptManager.RegisterStartupScript(this, GetType(), "closeEdit", "closeEdit();", true);
-                ShowNotification("Cập nhật thành công", true);
+                //BindDataTree();
+                //ScriptManager.RegisterStartupScript(this, GetType(), "closeEdit", "closeEdit();", true);
+                //ShowNotification("Cập nhật thành công", true);
+                Response.Redirect(Request.Url.AbsolutePath);
             }
             catch (Exception ex)
             {

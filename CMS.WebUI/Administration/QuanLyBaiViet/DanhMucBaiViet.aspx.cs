@@ -24,6 +24,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                 BindDataByQuyen();
                 GetModal();
                 IsAlive();
+                if(!IsAlive()) Response.Redirect("~/Administration/Login.aspx", false);
             }
         }
 

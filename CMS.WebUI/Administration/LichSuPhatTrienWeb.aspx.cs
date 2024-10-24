@@ -21,6 +21,8 @@ namespace CMS.WebUI.Administration
             if (!IsPostBack)
             {
                 BindDataByQuyen();
+                if (!IsAlive()) Response.Redirect("/Administration/Login.aspx");
+
             }
         }
         private void BindDataByQuyen()

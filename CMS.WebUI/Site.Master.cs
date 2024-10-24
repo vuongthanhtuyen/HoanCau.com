@@ -21,7 +21,7 @@ namespace CMS.WebUI
         {
             List<MenuWebTren> menu = MenuPulishBLL.GetAllMenuWebTren();
             string menuTren = "";
-            List<MenuWebTren> menuParent = menu.Where(m => m.MenuChaId == null).ToList();
+            List<MenuWebTren> menuParent = menu.Where(m => m.MenuChaId == 0).ToList();
             foreach (var m in menuParent)
             {
                 List<MenuWebTren> menuChild = menu.Where(mn => mn.MenuChaId == m.Id).ToList();

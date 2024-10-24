@@ -22,6 +22,8 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
             {
                 BindDataByQuyen();
                 BindMenuCha();
+                if (!IsAlive()) Response.Redirect("~/Administration/Login.aspx", false);
+
             }
         }
         private void BindDataByQuyen()

@@ -22,6 +22,8 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
             {
                 BindDataByQuyen();
                 AdminNotificationUserControl.Visible = false;
+                if (!IsAlive()) Response.Redirect("/Administration/Login.aspx");
+
             }
         }
         private void BindDataByQuyen()
