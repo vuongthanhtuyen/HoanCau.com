@@ -16,6 +16,18 @@ namespace SweetCMS.DataAccess{
     public partial class SPs{
         
         /// <summary>
+        /// Creates an object wrapper for the GetAllQuyenOfUser Procedure
+        /// </summary>
+        public static StoredProcedure GetAllQuyenOfUser(int? UserId)
+        {
+            SubSonic.StoredProcedure sp = new SubSonic.StoredProcedure("GetAllQuyenOfUser", DataService.GetInstance("DataAcessProvider"), "dbo");
+        	
+            sp.Command.AddParameter("@UserId", UserId, DbType.Int32, 0, 10);
+        	
+            return sp;
+        }
+        
+        /// <summary>
         /// Creates an object wrapper for the StoreBaiVietTimKiemPhanTrang Procedure
         /// </summary>
         public static StoredProcedure StoreBaiVietTimKiemPhanTrang(int? PageSize, int? PageIndex, string Key, bool? ASC, int? DanhMucChaId, int? totalrow)
@@ -113,6 +125,28 @@ namespace SweetCMS.DataAccess{
             sp.Command.AddParameter("@Key", Key, DbType.String, null, null);
         	
             sp.Command.AddParameter("@ASC", ASC, DbType.Boolean, null, null);
+        	
+            sp.Command.AddOutputParameter("@total_row", DbType.Int32, 0, 10);
+            
+            return sp;
+        }
+        
+        /// <summary>
+        /// Creates an object wrapper for the StoreMenuWebDuoiTimKiemPhanTrang Procedure
+        /// </summary>
+        public static StoredProcedure StoreMenuWebDuoiTimKiemPhanTrang(int? PageSize, int? PageIndex, string Key, bool? ASC, int? DanhMucChaId, int? totalrow)
+        {
+            SubSonic.StoredProcedure sp = new SubSonic.StoredProcedure("StoreMenuWebDuoiTimKiemPhanTrang", DataService.GetInstance("DataAcessProvider"), "dbo");
+        	
+            sp.Command.AddParameter("@PageSize", PageSize, DbType.Int32, 0, 10);
+        	
+            sp.Command.AddParameter("@PageIndex", PageIndex, DbType.Int32, 0, 10);
+        	
+            sp.Command.AddParameter("@Key", Key, DbType.String, null, null);
+        	
+            sp.Command.AddParameter("@ASC", ASC, DbType.Boolean, null, null);
+        	
+            sp.Command.AddParameter("@DanhMucChaId", DanhMucChaId, DbType.Int32, 0, 10);
         	
             sp.Command.AddOutputParameter("@total_row", DbType.Int32, 0, 10);
             

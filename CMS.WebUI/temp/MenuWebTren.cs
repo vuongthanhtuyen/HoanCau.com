@@ -159,11 +159,10 @@ namespace SweetCMS.DataAccess
 				colvarMenuChaId.AutoIncrement = false;
 				colvarMenuChaId.IsNullable = true;
 				colvarMenuChaId.IsPrimaryKey = false;
-				colvarMenuChaId.IsForeignKey = true;
+				colvarMenuChaId.IsForeignKey = false;
 				colvarMenuChaId.IsReadOnly = false;
 				colvarMenuChaId.DefaultSetting = @"";
-				
-					colvarMenuChaId.ForeignKeyTableName = "MenuWebTren";
+				colvarMenuChaId.ForeignKeyTableName = "";
 				schema.Columns.Add(colvarMenuChaId);
 				
 				TableSchema.TableColumn colvarSlug = new TableSchema.TableColumn(schema);
@@ -310,53 +309,9 @@ namespace SweetCMS.DataAccess
 		#endregion
 		
 		
-		#region PrimaryKey Methods		
-		
-        protected override void SetPrimaryKey(object oValue)
-        {
-            base.SetPrimaryKey(oValue);
-            
-            SetPKValues();
-        }
-        
-		
-		private SweetCMS.DataAccess.MenuWebTrenCollection colChildMenuWebTrenRecords;
-		public SweetCMS.DataAccess.MenuWebTrenCollection ChildMenuWebTrenRecords()
-		{
-			if(colChildMenuWebTrenRecords == null)
-			{
-				colChildMenuWebTrenRecords = new SweetCMS.DataAccess.MenuWebTrenCollection().Where(MenuWebTren.Columns.MenuChaId, Id).Load();
-				colChildMenuWebTrenRecords.ListChanged += new ListChangedEventHandler(colChildMenuWebTrenRecords_ListChanged);
-			}
-			return colChildMenuWebTrenRecords;
-		}
-				
-		void colChildMenuWebTrenRecords_ListChanged(object sender, ListChangedEventArgs e)
-		{
-            if (e.ListChangedType == ListChangedType.ItemAdded)
-            {
-		        // Set foreign key value
-		        colChildMenuWebTrenRecords[e.NewIndex].MenuChaId = Id;
-            }
-		}
-		#endregion
-		
 			
 		
-		#region ForeignKey Properties
-		
-		/// <summary>
-		/// Returns a MenuWebTren ActiveRecord object related to this MenuWebTren
-		/// 
-		/// </summary>
-		public SweetCMS.DataAccess.MenuWebTren ParentMenuWebTren
-		{
-			get { return SweetCMS.DataAccess.MenuWebTren.FetchByID(this.MenuChaId); }
-			set { SetColumnValue("MenuChaId", value.Id); }
-		}
-		
-		
-		#endregion
+		//no foreign key tables defined (0)
 		
 		
 		
@@ -505,32 +460,10 @@ namespace SweetCMS.DataAccess
 		
 		#region Update PK Collections
 		
-        public void SetPKValues()
-        {
-                if (colChildMenuWebTrenRecords != null)
-                {
-                    foreach (SweetCMS.DataAccess.MenuWebTren item in colChildMenuWebTrenRecords)
-                    {
-                        if (item.MenuChaId == null ||item.MenuChaId != Id)
-                        {
-                            item.MenuChaId = Id;
-                        }
-                    }
-               }
-		}
         #endregion
     
         #region Deep Save
 		
-        public void DeepSave()
-        {
-            Save();
-            
-                if (colChildMenuWebTrenRecords != null)
-                {
-                    colChildMenuWebTrenRecords.SaveAll();
-               }
-		}
         #endregion
 	}
 }

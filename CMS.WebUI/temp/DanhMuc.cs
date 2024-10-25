@@ -159,11 +159,10 @@ namespace SweetCMS.DataAccess
 				colvarDanhMucChaId.AutoIncrement = false;
 				colvarDanhMucChaId.IsNullable = true;
 				colvarDanhMucChaId.IsPrimaryKey = false;
-				colvarDanhMucChaId.IsForeignKey = true;
+				colvarDanhMucChaId.IsForeignKey = false;
 				colvarDanhMucChaId.IsReadOnly = false;
 				colvarDanhMucChaId.DefaultSetting = @"";
-				
-					colvarDanhMucChaId.ForeignKeyTableName = "DanhMuc";
+				colvarDanhMucChaId.ForeignKeyTableName = "";
 				schema.Columns.Add(colvarDanhMucChaId);
 				
 				TableSchema.TableColumn colvarSlug = new TableSchema.TableColumn(schema);
@@ -255,25 +254,6 @@ namespace SweetCMS.DataAccess
         }
         
 		
-		private SweetCMS.DataAccess.DanhMucCollection colChildDanhMucRecords;
-		public SweetCMS.DataAccess.DanhMucCollection ChildDanhMucRecords()
-		{
-			if(colChildDanhMucRecords == null)
-			{
-				colChildDanhMucRecords = new SweetCMS.DataAccess.DanhMucCollection().Where(DanhMuc.Columns.DanhMucChaId, Id).Load();
-				colChildDanhMucRecords.ListChanged += new ListChangedEventHandler(colChildDanhMucRecords_ListChanged);
-			}
-			return colChildDanhMucRecords;
-		}
-				
-		void colChildDanhMucRecords_ListChanged(object sender, ListChangedEventArgs e)
-		{
-            if (e.ListChangedType == ListChangedType.ItemAdded)
-            {
-		        // Set foreign key value
-		        colChildDanhMucRecords[e.NewIndex].DanhMucChaId = Id;
-            }
-		}
 		private SweetCMS.DataAccess.NhomBaiVietCollection colNhomBaiVietRecords;
 		public SweetCMS.DataAccess.NhomBaiVietCollection NhomBaiVietRecords()
 		{
@@ -297,20 +277,7 @@ namespace SweetCMS.DataAccess
 		
 			
 		
-		#region ForeignKey Properties
-		
-		/// <summary>
-		/// Returns a DanhMuc ActiveRecord object related to this DanhMuc
-		/// 
-		/// </summary>
-		public SweetCMS.DataAccess.DanhMuc ParentDanhMuc
-		{
-			get { return SweetCMS.DataAccess.DanhMuc.FetchByID(this.DanhMucChaId); }
-			set { SetColumnValue("DanhMucChaId", value.Id); }
-		}
-		
-		
-		#endregion
+		//no foreign key tables defined (0)
 		
 		
 		
@@ -425,17 +392,6 @@ namespace SweetCMS.DataAccess
 		
         public void SetPKValues()
         {
-                if (colChildDanhMucRecords != null)
-                {
-                    foreach (SweetCMS.DataAccess.DanhMuc item in colChildDanhMucRecords)
-                    {
-                        if (item.DanhMucChaId == null ||item.DanhMucChaId != Id)
-                        {
-                            item.DanhMucChaId = Id;
-                        }
-                    }
-               }
-		
                 if (colNhomBaiVietRecords != null)
                 {
                     foreach (SweetCMS.DataAccess.NhomBaiViet item in colNhomBaiVietRecords)
@@ -455,11 +411,6 @@ namespace SweetCMS.DataAccess
         {
             Save();
             
-                if (colChildDanhMucRecords != null)
-                {
-                    colChildDanhMucRecords.SaveAll();
-               }
-		
                 if (colNhomBaiVietRecords != null)
                 {
                     colNhomBaiVietRecords.SaveAll();

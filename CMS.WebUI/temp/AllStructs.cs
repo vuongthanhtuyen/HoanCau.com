@@ -24,6 +24,8 @@ namespace SweetCMS.DataAccess
         
 		public static readonly string DoiTac = @"DoiTac";
         
+		public static readonly string FriendlyUrl = @"FriendlyUrl";
+        
 		public static readonly string LichSuPhatTrien = @"LichSuPhatTrien";
         
 		public static readonly string LienHe = @"LienHe";
@@ -68,6 +70,11 @@ namespace SweetCMS.DataAccess
 		public static TableSchema.Table DoiTac
 		{
             get { return DataService.GetSchema("DoiTac", "DataAcessProvider"); }
+		}
+        
+		public static TableSchema.Table FriendlyUrl
+		{
+            get { return DataService.GetSchema("FriendlyUrl", "DataAcessProvider"); }
 		}
         
 		public static TableSchema.Table LichSuPhatTrien

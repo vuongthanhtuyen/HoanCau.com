@@ -39,9 +39,14 @@ namespace CMS.WebUI.Administration.Common
         }
         public bool CheckPermission(string menuParent, string Quyen)
         {
-        
 
-             return menuPermisstions.Any(x => x.MenuMa == menuParent && x.PermissionMa == Quyen);
+            if (menuPermisstions == null || menuPermisstions.Count() <= 0)
+            {
+                menuPermisstions = (List<MenuPermisstion>)Session["MenuPermission"];
+                if (menuPermisstions == null)
+                    return false;
+            }
+            return menuPermisstions.Any(x => x.MenuMa == menuParent && x.PermissionMa == Quyen);
 
         }
 

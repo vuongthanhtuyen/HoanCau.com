@@ -47,6 +47,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Manager\BaiVietBLL.cs" />
     <Compile Include="Manager\DoiTacBLL.cs" />
+    <Compile Include="Manager\FriendlyUrlBLL.cs" />
     <Compile Include="Manager\LichSuPhatTrienBLL.cs" />
     <Compile Include="Manager\LienHeBLL.cs" />
     <Compile Include="Manager\LoginBLL.cs" />

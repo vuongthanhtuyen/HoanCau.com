@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Administration/MasterPage/AdminPage.Master" CodeBehind="MenuDuoiWeb.aspx.cs" Inherits="CMS.WebUI.Administration.QuanLyCauHinh.MenuDuoiWeb" %>
+﻿<%@ Page Language="C#" ValidateRequest="false" AutoEventWireup="true" MasterPageFile="~/Administration/MasterPage/AdminPage.Master" CodeBehind="MenuDuoiWeb.aspx.cs" Inherits="CMS.WebUI.Administration.QuanLyCauHinh.MenuDuoiWeb" %>
 
 
 <%@ Register Src="~/Administration/AdminUserControl/AdminNotification.ascx" TagPrefix="uc1" TagName="AdminNotification" %>
@@ -11,7 +11,9 @@
     <uc1:SearchUserControl runat="server" ID="SearchUserControl" />
 </asp:Content>
 
-
+<asp:Content ID="test" ContentPlaceHolderID="head" runat="server">
+    <link href="../Assets/plugins/style.min.css" rel="stylesheet" />
+</asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <asp:ScriptManager ID="ScriptManger1" runat="Server" />
@@ -29,43 +31,22 @@
 
         <br />
 
-        <asp:UpdatePanel ID="UpdatePanelMainTable" UpdateMode="Conditional" runat="server">
-            <ContentTemplate>
-                <asp:GridView ID="GridViewTable" runat="server" AutoGenerateColumns="false"
-                    CssClass="table table-striped table-bordered" CellPadding="10" CellSpacing="2"
-                    GridLines="None" OnRowCommand="GridViewTable_RowCommand">
-                    <Columns>
-                        <asp:BoundField DataField="MenuChaTen" HeaderText="Tên menu cha" />
-                        <asp:BoundField DataField="Stt" HeaderText="STT hiển thị" />
+        <div class="box">
+            <div class="box-body">
+                <div class="row">
 
-
-                        <asp:BoundField DataField="Ten" HeaderText="Tên" />
-                        <asp:BoundField DataField="Slug" HeaderText="Url thân thiện" />
-                        <asp:TemplateField HeaderText="Hiển thị">
-                            <ItemTemplate>
-                                <asp:CheckBox ID="HienThi" runat="server"
-                                    Checked='<%# Eval("HienThi") %>' Enabled="False" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-
-                        <asp:TemplateField HeaderText="Hành Động" HeaderStyle-Width="240px">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="ChinhSuaChiTiet" runat="server" CssClass="btn btn-primary btn-xs btn-flat"
-                                    CommandArgument='<%# Eval("Id") %>' CommandName="ChinhSuaChiTiet" ToolTip="Cập nhật">
-                       <span class="fa fa-eye"></span> Cập nhật
-                                </asp:LinkButton>
-
-                                <asp:LinkButton ID="Xoa" runat="server" CssClass="btn btn-danger btn-xs btn-flat"
-                                    CommandArgument='<%# Eval("Id") %>' ToolTip="Xóa" CommandName="Xoa">
-                       <span class="fa fa-trash"></span> Xóa
-                                </asp:LinkButton>
-                            </ItemTemplate>
-
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
-            </ContentTemplate>
-        </asp:UpdatePanel>
+                    <div class="col-md-12 form-group">
+                        <asp:UpdatePanel ID="UpdatePanelMainTable" UpdateMode="Conditional" runat="server">
+                            <ContentTemplate>
+                                <div class="rightsTreeView"></div>
+                                <input runat="server" type="hidden" id="hdfRightsTreeViewData" data-selector="hdfRightsTreeViewData" value="" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
 
     </main>
 
@@ -156,9 +137,7 @@
                                             </asp:DropDownList>
                                         </div>
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
 
@@ -180,7 +159,7 @@
             <asp:UpdatePanel ID="UpdatePanelEdit" UpdateMode="Conditional" runat="server">
                 <ContentTemplate>
                     <span class="close d-flex justify-content-end" onclick="closeEdit()">&times;</span>
-                    <h4>Chỉnh Cập nhật vai trò </h4>
+                    <h4>Chỉnh Cập nhật menu </h4>
                     <asp:Label ID="Label1" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
                     <div class="justify-content-center align-items-center main-edit-modal">
 
@@ -274,6 +253,7 @@
 
                     </div>
                     <div class="d-flex justify-content-end">
+                       <a class="btn btn-danger btn-xs btn-flat" onclick="openDelete()" style="min-width: 50px;"><span class="fa fa-trash"></span>Xóa</a>
                         <asp:Button ID="Button1" runat="server" Text="Cập nhật" class="btn btn-primary mx-1 btn-user btn-modal" OnClick="btnEdit_Click" Style="min-width: 50px;" />
                         <asp:Button ID="Button2" runat="server" Text="Hủy" class="btn btn-secondary mx-1 btn-user btn-modal" OnClientClick="closeEdit(); return false;" Style="min-width: 50px;" />
                     </div>
@@ -286,7 +266,7 @@
     <div id="confirmDeleteModal" class="modal">
         <div class="modal-content">
             <span class="close d-flex justify-content-end" onclick="closeDelete(); return false;">&times;</span>
-            <h5>Bạn có chắc chắn muốn xóa người dùng này?</h5>
+            <h5>Bạn có chắc chắn muốn xóa menu này?</h5>
             <asp:Label ID="Label2" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
             <div class="d-flex justify-content-end">
                 <asp:Button ID="Button3" runat="server" Text="Xóa" class="btn btn-primary mx-1 btn-user btn-modal" OnClick="btnDelete_Click" />
@@ -391,4 +371,56 @@
 
     </script>
 
+</asp:Content>
+<asp:Content ID ="contentScrit" ContentPlaceHolderID="ContentScript" runat="server">
+        <script src="/Administration/Assets/plugins/jstree.min.js"></script>
+
+        <script>
+            $(function () {
+                if ($(".rightsTreeView").length) {
+                    var jsonData = JSON.parse($('[data-selector="hdfRightsTreeViewData"]').val());
+                    renderTreeView(jsonData);
+                }
+                $('[data-selector="hdfRightsTreeViewData"]').on('change', function () {
+                    var updateJsonData = JSON.parse((this).val());
+                    renderTreeView(updateJsonData);
+                });
+            });
+
+            function renderTreeView(jsonData) {
+                $(".rightsTreeView").jstree({
+                    "plugins": [
+                        "changed",
+                        "search"
+                    ],
+                    'search': {
+                        'case_insensitive': true,
+                        'show_only_matches': true
+                    },
+                    'core': {
+                        'data': jsonData
+                    }
+                }).on('changed.jstree', function (e, data) {
+                    var _href = '';
+                    try {
+                        _href = data.node.a_attr.href;
+                    }
+                    catch (e) {
+                        _href = '';
+                    }
+                    if (_href != undefined && _href != '')
+                        window.location.href = _href;
+                }).on('search.jstree', function (nodes, str, res) {
+                    if (str.nodes.length === 0) {
+                        $('.rightsTreeView').jstree(true).hide_all();
+                    }
+                });
+
+                $('#txtKeysearch').keyup(function () {
+                    $('.rightsTreeView').jstree(true).show_all();
+                    $('.rightsTreeView').jstree('search', $(this).val());
+                });
+            }
+
+        </script>
 </asp:Content>

@@ -66,7 +66,7 @@ namespace CMS.WebUI
         {
             List<MenuWebDuoi> menu = MenuPulishBLL.GetAllMenuWebDuoi();
             string menuDuoi = "";
-            List<MenuWebDuoi> menuParent = menu.Where(m => m.MenuChaId == null).ToList();
+            List<MenuWebDuoi> menuParent = menu.Where(m => m.MenuChaId == 0).ToList();
             foreach (var m in menuParent)
             {
                 List<MenuWebDuoi> menuChild = menu.Where(mn => mn.MenuChaId == m.Id).ToList();

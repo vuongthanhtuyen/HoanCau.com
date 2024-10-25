@@ -209,23 +209,6 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
         }
 
 
-
-        private void BindGrid(int pageIndex = 1, int pageSize = 10, int menuCha = 0)
-        {
-            //pageIndex = PagingAdminWeb.GetPageIndex();
-            
-            //int totalRow = 0;
-            //    listMenuDto = MenuWebTrenBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], null, null, out totalRow);
-            //ViewState["LastIndex"] = (pageIndex - 1) * pageSize;
-            //PagingAdminWeb.GetPaging(totalRow, pageIndex);
-            //GridViewTable.DataSource = listMenuDto;
-            //GridViewTable.DataBind();
-            //UpdatePanelMainTable.Update();
-
-            //BindListDanhMucCha();
-        }
-
-
         private void BindMenuCha()
         {
             List<MenuWebTren> listMenu = MenuWebTrenBLL.GetListParentMenu();
@@ -330,9 +313,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                 {
                     menu.Ten = txtTen.Text;
                     menu.Slug = txtUrl.Text;
-                    //danhMuc.Slug = txtMa.Text;
                     menu.MenuChaId = int.Parse(ddlAddMenuCha.SelectedValue);
-                    //danhMuc.MoTa = txtMota.Text;
                     menu.Stt = int.Parse(txtStt.Text);
                     menu.NgayTao = DateTime.Now;
                     menu.HienThi = true;
@@ -424,16 +405,13 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                 int menuId = int.Parse(hdnRowId.Value);
                 hdnRowId.Value = "";
                 MenuWebTren menu = MenuWebTrenBLL.GetById(menuId);
-                menu.Id = menuId; // ID của menu cần cập nhật
                 menu.Ten = txtEditTen.Text;
                 menu.Slug = txtEditUrl.Text;
-                menu.Stt = int.Parse(txtEditStt.Text); // Chuyển đổi sang số nguyên
+                menu.Stt = int.Parse(txtEditStt.Text);
                 menu.MenuChaId = int.Parse(ddlAddMenuCha.SelectedValue);
                 menu.HienThi = chkEditTrangThai.Checked;
                 menu = MenuWebTrenBLL.Update(menu);
-                //BindDataTree();
-                //ScriptManager.RegisterStartupScript(this, GetType(), "closeEdit", "closeEdit();", true);
-                //ShowNotification("Cập nhật thành công", true);
+                
                 Response.Redirect(Request.Url.AbsolutePath);
             }
             catch (Exception ex)

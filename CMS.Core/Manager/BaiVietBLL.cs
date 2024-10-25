@@ -85,9 +85,10 @@ namespace CMS.Core.Manager
                     List<NhomBaiViet> select = new Select().From(NhomBaiViet.Schema).ExecuteTypedList<NhomBaiViet>();
                     foreach (var category in categories)
                     {
+                        var itemToDelete = select.FirstOrDefault(x => x.DanhmucId == category.Id && x.BaiVietId == postId);
+
                         if (category.IsHaveDanhMuc == 1)
                         {
-                            var itemToDelete = select.FirstOrDefault(x => x.DanhmucId == category.Id && x.BaiVietId == postId);
 
                             if (itemToDelete==null)
                             {
@@ -98,12 +99,10 @@ namespace CMS.Core.Manager
                         }
                         else
                         {
-                            var itemToDelete = select.FirstOrDefault(x => x.DanhmucId == category.Id && x.BaiVietId == postId);
-
                             if (itemToDelete != null)
                             {
                                 // Gọi hàm xóa từ controller và truyền phần tử cần xóa
-                                new NhomBaiVietController().Delete(itemToDelete);
+                                new NhomBaiVietController().Delete(itemToDelete.Id);
                             }
 
                         }
