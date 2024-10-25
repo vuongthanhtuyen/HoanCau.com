@@ -133,7 +133,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                 listMenuDto = MenuWebTrenBLL.GetPaging(50, 1, Request.QueryString["search"], null, null, out totalRow);
 
                 List<MenuWebDto> lst = listMenuDto;
-                lst = lst.Where(x => x.Id != 4).ToList();
+                //lst = lst.Where(x => x.Id != 4).ToList();
 
                 if (lst != null && lst.Count > 0)
                 {
@@ -150,7 +150,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                                 {
                                     ItemTreeView itemTree = new ItemTreeView();
                                     itemTree.MenuId = item.Id;
-                                    itemTree.text = string.Format("{0} {1} ({2})", item.Ten, GetStatusText(BasicStatusHelper.Active), null);
+                                    itemTree.text = string.Format("{0} {1}", item.Ten, GetStatusText(BasicStatusHelper.Active));
                                     //itemTree.text = string.Format("{0} {1} ({2})", item.Ten, "Active", true);
                                     itemTree.icon = "fa fa-link";
                                     itemTree.state = new ItemState { opened = true };
@@ -229,33 +229,32 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
         {
             #region Thêm dữ liệu cho Droplist của trang Add menu
             List<BaiViet> listBaiViet = MenuWebTrenBLL.GetListBaiViet();
-            List<ListItem> listAdd = listBaiViet.Select(x => new ListItem(x.TieuDe, "baivietpublish?id="+ x.Id.ToString())).ToList();
+            List<ListItem> listAdd = listBaiViet.Select(x => new ListItem(x.TieuDe, x.Slug)).ToList();
             drAddbaiviet.Items.Clear();
             drAddbaiviet.Items.Add(new ListItem("Không", "0"));
             drAddbaiviet.Items.AddRange(listAdd.ToArray());
 
 
             List<DanhMuc> listDanhMuc = MenuWebTrenBLL.GetListDanhMuc();
-            List<ListItem> listItemDM = listDanhMuc.Select(x => new ListItem(x.Ten, "DanhMucPublish?id=" + x.Id.ToString())).ToList();
+            List<ListItem> listItemDM = listDanhMuc.Select(x => new ListItem(x.Ten, x.Slug)).ToList();
             drAddDanhSach.Items.Clear();
             drAddDanhSach.Items.Add(new ListItem("Không", "0"));
             drAddDanhSach.Items.AddRange(listItemDM.ToArray());
 
 
             List<BaiViet> listDuAnTieuBieu = MenuWebTrenBLL.GetListDuAnTieuBieu();
-            List<ListItem> listItemDATB = listDuAnTieuBieu.Select(x => new ListItem(x.TieuDe, "DuAnTieuBieuPublish?id=" + x.Id.ToString())).ToList();
+            List<ListItem> listItemDATB = listDuAnTieuBieu.Select(x => new ListItem(x.TieuDe, x.Slug)).ToList();
             drAddDuAnTieuBieu.Items.Clear();
             drAddDuAnTieuBieu.Items.Add(new ListItem("Không", "0"));
             drAddDuAnTieuBieu.Items.AddRange(listItemDATB.ToArray());
 
             List<ListItem> listItemTrangTinh = new List<ListItem>()
             {
-                new ListItem("Trang chủ","Default.aspx"),
-                new ListItem("Đối tác","DoiTacPublish.aspx"),
-                new ListItem("Ds dự án tiêu biểu","DanhSachDuAnTieuBieuPublish.aspx"),
-                new ListItem("Sơ đồ tổ chức","BaiVietBigPublish.aspx"),
-                new ListItem("Lịch sử phát triển","LichSuPhatTrienPublish.aspx"),
-                new ListItem("Liên hệ","LienHePublish.aspx"),
+                new ListItem("Trang chủ","home"),
+                new ListItem("Đối tác","doi-tac"),
+                new ListItem("Ds dự án tiêu biểu","danh-dach-du-an-tieu-bieu"),
+                new ListItem("Lịch sử phát triển","lich-su-phat-trien"),
+                new ListItem("Liên hệ","lien-he"),
             };
             drAddTrangTinh.Items.Clear();
             drAddTrangTinh.Items.Add(new ListItem("Không", "0"));
@@ -408,7 +407,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                 menu.Ten = txtEditTen.Text;
                 menu.Slug = txtEditUrl.Text;
                 menu.Stt = int.Parse(txtEditStt.Text);
-                menu.MenuChaId = int.Parse(ddlAddMenuCha.SelectedValue);
+                menu.MenuChaId = int.Parse(ddlEditMenuCha.SelectedValue);
                 menu.HienThi = chkEditTrangThai.Checked;
                 menu = MenuWebTrenBLL.Update(menu);
                 

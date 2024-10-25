@@ -80,43 +80,19 @@ namespace SweetCMS.DataAccess
 	    /// Inserts a record, can be used with the Object Data Source
 	    /// </summary>
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
-	    public void Insert(string SlugUrl,int? PostId,int? PostType,string Status)
-	    {
-		    FriendlyUrl item = new FriendlyUrl();
-		    
-            item.SlugUrl = SlugUrl;
-            
-            item.PostId = PostId;
-            
-            item.PostType = PostType;
-            
-            item.Status = Status;
-            
-	    
-		    item.Save(UserName);
-	    }
-    	
-	    /// <summary>
-	    /// Updates a record, can be used with the Object Data Source
-	    /// </summary>
+        public FriendlyUrl Insert(FriendlyUrl friendlyUrl)
+        {
+            friendlyUrl.Save(UserName);
+            return friendlyUrl;
+        }
+        /// <summary>
+        /// Updates a record, can be used with the Object Data Source
+        /// </summary>
         [DataObjectMethod(DataObjectMethodType.Update, true)]
-	    public void Update(int Id,string SlugUrl,int? PostId,int? PostType,string Status)
+	    public FriendlyUrl Update(FriendlyUrl friendlyUrl)
 	    {
-		    FriendlyUrl item = new FriendlyUrl();
-	        item.MarkOld();
-	        item.IsLoaded = true;
-		    
-			item.Id = Id;
-				
-			item.SlugUrl = SlugUrl;
-				
-			item.PostId = PostId;
-				
-			item.PostType = PostType;
-				
-			item.Status = Status;
-				
-	        item.Save(UserName);
+            friendlyUrl.Save(UserName);
+            return friendlyUrl;
 	    }
     }
 }

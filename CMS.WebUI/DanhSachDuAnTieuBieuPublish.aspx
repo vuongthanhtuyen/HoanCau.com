@@ -25,20 +25,13 @@
             <div class="contentItem">
                 <div class="wrapList">
                     <div class="row rowList row2">
-
                         <uc1:DanhSachDuAnTieuBieu runat="server" id="DanhSachDuAnTieuBieu" />
-
                     </div>
                 </div>
                 <uc1:PagePublish runat="server" ID="PagePublish" />
-
             </div>
         </div>
     </div>
-
-
-
-
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="contentEnd" runat="server">
 

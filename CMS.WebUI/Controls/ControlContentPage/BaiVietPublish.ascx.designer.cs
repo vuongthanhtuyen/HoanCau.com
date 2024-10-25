@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CMS.WebUI
+namespace CMS.WebUI.Controls.ControlContentPage
 {
 
 
-    public partial class DanhMucPublish
+    public partial class BaiVietPublish
     {
 
         /// <summary>
@@ -24,12 +24,30 @@ namespace CMS.WebUI
         protected global::CMS.WebUI.Controls.SlideTop SlideTop;
 
         /// <summary>
-        /// DanhSachBaiViet control.
+        /// ltlPostView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CMS.WebUI.Controls.DanhSachBaiViet DanhSachBaiViet;
+        protected global::System.Web.UI.WebControls.Literal ltlPostView;
+
+        /// <summary>
+        /// DanhSachBaiVietLienQuan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CMS.WebUI.Controls.DanhSachBaiViet DanhSachBaiVietLienQuan;
+
+        /// <summary>
+        /// DanhSachBaiVietCoTheBanSeThich control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CMS.WebUI.Controls.DanhSachBaiViet DanhSachBaiVietCoTheBanSeThich;
     }
 }

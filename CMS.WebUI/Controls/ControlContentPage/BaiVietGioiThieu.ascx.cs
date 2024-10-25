@@ -4,29 +4,27 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.DynamicData;
-using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using static CMS.WebUI.Common.ExtendWeb;
 
-namespace CMS.WebUI
+namespace CMS.WebUI.Controls.ControlContentPage
 {
-    public partial class BaiVietBigPublish : System.Web.UI.Page
+    public partial class BaiVietGioiThieu : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Binding();
         }
-        private void Binding()
+        public void Binding(string slugPost)
         {
-            string idPostString = Request.QueryString["id"];
-            int idPost = 1023;
-            if (idPostString != null) { 
-            idPost = int.Parse(idPostString);
-            } 
+            //string idPostString = Request.QueryString["id"];
+            //int idPost = 1023;
+            //if (idPostString != null)
+            //{
+            //    idPost = int.Parse(idPostString);
+            //}
             BaiViet baiViet = new BaiViet();
-            baiViet = BaiVietPublishBLL.GetById(idPost);
+            baiViet = BaiVietPublishBLL.GetByMa(slugPost);
             baiViet.ViewCount += 1;
             baiViet = BaiVietPublishBLL.Update(baiViet);
             Page.Title = baiViet.TieuDe;
@@ -66,6 +64,7 @@ namespace CMS.WebUI
                                 <div class=""wrapText showTextDetail"">
                                    {baiViet.NoiDungChinh}
                                 </div>
+                             </div>
                          
                 ");
 
@@ -74,7 +73,7 @@ namespace CMS.WebUI
 
 
             DanhMuc danhMuc = new DanhMuc();
-            danhMuc = BaiVietPublishBLL.GetDanhMucByIdBaiViet(idPost);
+            danhMuc = BaiVietPublishBLL.GetDanhMucByIdBaiViet(baiViet.Id);
             int danhMucId = 0;
             List<Breadcrumb> list = new List<Breadcrumb>();
             if (danhMuc != null)
@@ -82,7 +81,7 @@ namespace CMS.WebUI
                 Breadcrumb breadcrumb = new Breadcrumb()
                 {
                     Title = danhMuc.Ten,
-                    Url = "DanhMucPublish?id=" + danhMuc.Id
+                    Url = danhMuc.Slug
                 };
                 danhMucId = danhMuc.Id;
                 list.Add(breadcrumb);

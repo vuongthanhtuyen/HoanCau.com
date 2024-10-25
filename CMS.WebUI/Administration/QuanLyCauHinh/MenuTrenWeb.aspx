@@ -326,25 +326,27 @@
         $(document).on('change', '#<%= drAddbaiviet.ClientID %>', function () {
             var selectedValue = $(this).val();  // Lấy giá trị của DropDownList
             $('#<%= txtUrl.ClientID %>').val(selectedValue);
-            $('#<%= txtTen.ClientID %>').val($(this).find("option:selected").text());
-        });
+            if (!$('#<%= txtTen.ClientID %>').val()) 
+                $('#<%= txtTen.ClientID %>').val($(this).find("option:selected").text());
+       });
         $(document).on('change', '#<%= drAddDanhSach.ClientID %>', function () {
             var selectedValue = $(this).val();  // Lấy giá trị của DropDownList
             $('#<%= txtUrl.ClientID %>').val(selectedValue);
-            $('#<%= txtTen.ClientID %>').val($(this).find("option:selected").text());
+            if (!$('#<%= txtTen.ClientID %>').val()) 
+                $('#<%= txtTen.ClientID %>').val($(this).find("option:selected").text());
         });
         $(document).on('change', '#<%= drAddTrangTinh.ClientID %>', function () {
             var selectedValue = $(this).val();  // Lấy giá trị của DropDownList
             $('#<%= txtUrl.ClientID %>').val(selectedValue);
-            $('#<%= txtTen.ClientID %>').val($(this).find("option:selected").text());
+            if (!$('#<%= txtTen.ClientID %>').val()) 
+                $('#<%= txtTen.ClientID %>').val($(this).find("option:selected").text());
         });
         $(document).on('change', '#<%= drAddDuAnTieuBieu.ClientID %>', function () {
             var selectedValue = $(this).val();  // Lấy giá trị của DropDownList
             $('#<%= txtUrl.ClientID %>').val(selectedValue);
-            $('#<%= txtTen.ClientID %>').val($(this).find("option:selected").text());
+            if (!$('#<%= txtTen.ClientID %>').val()) 
+                $('#<%= txtTen.ClientID %>').val($(this).find("option:selected").text());
         });
-
-
 
     </script>
     <script type="text/javascript">
@@ -352,23 +354,27 @@
         $(document).on('change', '#<%= drEditBaiviet.ClientID %>', function () {
             var selectedValue = $(this).val();  // Lấy giá trị của DropDownList
             $('#<%= txtEditUrl.ClientID %>').val(selectedValue);
-            $('#<%= txtEditTen.ClientID %>').val($(this).find("option:selected").text());
+            if (!$('#<%= txtEditTen.ClientID %>').val()) 
+                $('#<%= txtEditTen.ClientID %>').val($(this).find("option:selected").text());
         });
 
         $(document).on('change', '#<%= drEditDanhSach.ClientID %>', function () {
             var selectedValue = $(this).val();
             $('#<%= txtEditUrl.ClientID %>').val(selectedValue);
-            $('#<%= txtEditTen.ClientID %>').val($(this).find("option:selected").text());
+            if (!$('#<%= txtEditTen.ClientID %>').val()) 
+                $('#<%= txtEditTen.ClientID %>').val($(this).find("option:selected").text());
         });
         $(document).on('change', '#<%= drEditTrangTinh.ClientID %>', function () {
             var selectedValue = $(this).val();
             $('#<%= txtEditUrl.ClientID %>').val(selectedValue);
-            $('#<%= txtEditTen.ClientID %>').val($(this).find("option:selected").text());
+            if (!$('#<%= txtEditTen.ClientID %>').val()) 
+                $('#<%= txtEditTen.ClientID %>').val($(this).find("option:selected").text());
         });
         $(document).on('change', '#<%= drEditDuAnTieuBieu.ClientID %>', function () {
             var selectedValue = $(this).val();
             $('#<%= txtEditUrl.ClientID %>').val(selectedValue);
-            $('#<%= txtEditTen.ClientID %>').val($(this).find("option:selected").text());
+            if (!$('#<%= txtEditTen.ClientID %>').val())    
+                $('#<%= txtEditTen.ClientID %>').val($(this).find("option:selected").text());
         });
     </script>
 

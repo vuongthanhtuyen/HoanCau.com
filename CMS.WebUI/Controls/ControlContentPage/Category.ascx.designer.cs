@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CMS.WebUI
+namespace CMS.WebUI.Controls.ControlContentPage
 {
 
 
-    public partial class BaiVietBigPublish
+    public partial class Category
     {
 
         /// <summary>
@@ -24,12 +24,12 @@ namespace CMS.WebUI
         protected global::CMS.WebUI.Controls.SlideTop SlideTop;
 
         /// <summary>
-        /// ltlPostView control.
+        /// DanhSachBaiViet control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltlPostView;
+        protected global::CMS.WebUI.Controls.DanhSachBaiViet DanhSachBaiViet;
     }
 }

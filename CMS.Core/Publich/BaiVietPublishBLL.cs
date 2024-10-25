@@ -15,6 +15,10 @@ namespace CMS.Core.Publich
         {
             return new BaiVietController().FetchByID(id).SingleOrDefault();
         }
+        public static BaiViet GetByMa(string slugUrl) {
+            return new Select().From(BaiViet.Schema).Where(BaiViet.SlugColumn)
+                .IsEqualTo(slugUrl).ExecuteSingle<BaiViet>();
+        }
         public static DanhMuc GetDanhMucByIdBaiViet(int id)
         {
             string sql = string.Format($@"select top(1) * from DanhMuc as dm

@@ -19,5 +19,10 @@ namespace CMS.Core.Publich
         {
             return new Select().From(NhomHinhAnh.Schema).Where(NhomHinhAnh.BaiVietIdColumn).IsEqualTo(id).ExecuteTypedList<NhomHinhAnh>();
         }
+        public static BaiViet GetByMa(string slugUrl)
+        {
+            return new Select().From(BaiViet.Schema).Where(BaiViet.SlugColumn)
+                .IsEqualTo(slugUrl).ExecuteSingle<BaiViet>();
+        }
     }
 }

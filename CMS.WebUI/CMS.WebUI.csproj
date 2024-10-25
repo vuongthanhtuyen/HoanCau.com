@@ -1845,15 +1845,18 @@
     <Content Include="Assets\validation-engine\js\languages\jquery.validationEngine-zh_CN.js" />
     <Content Include="Assets\validation-engine\js\languages\jquery.validationEngine-zh_HK.js" />
     <Content Include="Assets\validation-engine\js\languages\jquery.validationEngine-zh_TW.js" />
+    <Content Include="ContentPage.aspx" />
     <Content Include="Controls\btnContact.ascx" />
+    <Content Include="Controls\ControlContentPage\BaiVietGioiThieu.ascx" />
+    <Content Include="Controls\ControlContentPage\BaiVietPublish.ascx" />
+    <Content Include="Controls\ControlContentPage\Category.ascx" />
+    <Content Include="Controls\ControlContentPage\DuAnTieuBieu.ascx" />
     <Content Include="Controls\DanhSachBaiViet.ascx" />
     <Content Include="Controls\DanhSachDuAnTieuBieu.ascx" />
     <Content Include="Controls\PagePublish.ascx" />
     <Content Include="Controls\SlideTop.ascx" />
-    <Content Include="DanhMucPublish.aspx" />
     <Content Include="DanhSachDuAnTieuBieuPublish.aspx" />
     <Content Include="DoiTacPublish.aspx" />
-    <Content Include="DuAnTieuBieuPublish.aspx" />
     <Content Include="Administration\Login.aspx" />
     <Content Include="Administration\NguoiDungWeb.aspx" />
     <Content Include="Administration\PhanQuyenWeb.aspx" />
@@ -1992,7 +1995,6 @@
     <Content Include="Assets\js\lib.js" />
     <Content Include="Assets\js\project-detail.js" />
     <Content Include="Assets\js\videos-detail.js" />
-    <Content Include="BaiVietPublish.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -2256,7 +2258,6 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
-    <Content Include="BaiVietBigPublish.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -2354,12 +2355,47 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Common\ExtendWeb.cs" />
+    <Compile Include="ContentPage.aspx.cs">
+      <DependentUpon>ContentPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentPage.aspx.designer.cs">
+      <DependentUpon>ContentPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\btnContact.ascx.cs">
       <DependentUpon>btnContact.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controls\btnContact.ascx.designer.cs">
       <DependentUpon>btnContact.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ControlContentPage\BaiVietGioiThieu.ascx.cs">
+      <DependentUpon>BaiVietGioiThieu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ControlContentPage\BaiVietGioiThieu.ascx.designer.cs">
+      <DependentUpon>BaiVietGioiThieu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ControlContentPage\BaiVietPublish.ascx.cs">
+      <DependentUpon>BaiVietPublish.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ControlContentPage\BaiVietPublish.ascx.designer.cs">
+      <DependentUpon>BaiVietPublish.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ControlContentPage\Category.ascx.cs">
+      <DependentUpon>Category.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ControlContentPage\Category.ascx.designer.cs">
+      <DependentUpon>Category.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ControlContentPage\DuAnTieuBieu.ascx.cs">
+      <DependentUpon>DuAnTieuBieu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ControlContentPage\DuAnTieuBieu.ascx.designer.cs">
+      <DependentUpon>DuAnTieuBieu.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\DanhSachBaiViet.ascx.cs">
       <DependentUpon>DanhSachBaiViet.ascx</DependentUpon>
@@ -2389,13 +2425,6 @@
     <Compile Include="Controls\SlideTop.ascx.designer.cs">
       <DependentUpon>SlideTop.ascx</DependentUpon>
     </Compile>
-    <Compile Include="DanhMucPublish.aspx.cs">
-      <DependentUpon>DanhMucPublish.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DanhMucPublish.aspx.designer.cs">
-      <DependentUpon>DanhMucPublish.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DanhSachDuAnTieuBieuPublish.aspx.cs">
       <DependentUpon>DanhSachDuAnTieuBieuPublish.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2409,13 +2438,6 @@
     </Compile>
     <Compile Include="DoiTacPublish.aspx.designer.cs">
       <DependentUpon>DoiTacPublish.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DuAnTieuBieuPublish.aspx.cs">
-      <DependentUpon>DuAnTieuBieuPublish.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DuAnTieuBieuPublish.aspx.designer.cs">
-      <DependentUpon>DuAnTieuBieuPublish.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administration\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -2503,13 +2525,6 @@
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="BaiVietPublish.aspx.cs">
-      <DependentUpon>BaiVietPublish.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BaiVietPublish.aspx.designer.cs">
-      <DependentUpon>BaiVietPublish.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2548,13 +2563,6 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
-    </Compile>
-    <Compile Include="BaiVietBigPublish.aspx.cs">
-      <DependentUpon>BaiVietBigPublish.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BaiVietBigPublish.aspx.designer.cs">
-      <DependentUpon>BaiVietBigPublish.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

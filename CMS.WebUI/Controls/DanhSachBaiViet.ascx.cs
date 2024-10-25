@@ -24,7 +24,7 @@ namespace CMS.WebUI.Controls
                         <div class=""contentCol wow zoomIn"" data-wow-duration=""1s"" data-wow-delay=""0.4s"">
                             <div class=""contentImg"">
                                 <div class=""wrapImg"">
-                                    <a class=""wrapImgResize img16And9"" href=""{url}{post.Id}"" title=""{post.TieuDe}"">
+                                    <a class=""wrapImgResize img16And9"" href=""{post.Slug}"" title=""{post.TieuDe}"">
                                         <img src=""/Administration/UploadImage/{post.ThumbnailUrl}"" alt=""{post.TieuDe}"" /></a>
                                 </div>
 
@@ -37,7 +37,7 @@ namespace CMS.WebUI.Controls
                             </div>
 
                             <div class=""wrapText"">
-                                <h4 class=""titleMain""><a class=""title5 linkTitle"" href=""{url}{post.Id}"" title=""{post.TieuDe}"">{post.TieuDe}</a></h4>
+                                <h4 class=""titleMain""><a class=""title5 linkTitle"" href=""{post.Slug}"" title=""{post.TieuDe}"">{post.TieuDe}</a></h4>
                                 <div class=""wrapInfo clearfix"">
                                     <p class=""author"">
                                         <svg xmlns=""http://www.w3.org/2000/svg"" viewBox=""0 0 512 512"">

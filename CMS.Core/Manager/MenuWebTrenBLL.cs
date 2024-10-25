@@ -30,7 +30,7 @@ namespace CMS.Core.Manager
         {
             List<MenuWebTren> listMenu = new Select()
                                           .From(MenuWebTren.Schema)
-                                          .Where(MenuWebTren.MenuChaIdColumn).IsNull()
+                                          .Where(MenuWebTren.MenuChaIdColumn).IsEqualTo(0)
                                           .ExecuteTypedList<MenuWebTren>();
 
             return listMenu;
@@ -60,7 +60,7 @@ namespace CMS.Core.Manager
         public static List<BaiViet> GetListBaiViet()
         {
 
-            string sql = string.Format(@" select b.Id, b.TieuDe from BaiViet as b 
+            string sql = string.Format(@" select b.TieuDe, b.Slug from BaiViet as b 
                 left join NhomBaiViet as n on b.Id = n.BaiVietId
 	                and n.DanhmucId <> 4 ");
             return new InlineQuery().ExecuteTypedList<BaiViet>(sql);
@@ -68,12 +68,12 @@ namespace CMS.Core.Manager
         }
         public static List<BaiViet> GetListDuAnTieuBieu()
         {
-            return new Select(BaiViet.IdColumn,BaiViet.TieuDeColumn).From(BaiViet.Schema).InnerJoin(NhomBaiViet.BaiVietIdColumn, BaiViet.IdColumn)
+            return new Select(BaiViet.TieuDeColumn, BaiViet.SlugColumn).From(BaiViet.Schema).InnerJoin(NhomBaiViet.BaiVietIdColumn, BaiViet.IdColumn)
                 .Where(NhomBaiViet.DanhmucIdColumn).IsEqualTo(4).ExecuteTypedList<BaiViet>();
         }
         public static List<DanhMuc> GetListDanhMuc()
         {
-            return new Select(DanhMuc.IdColumn, DanhMuc.TenColumn).From(DanhMuc.Schema).Where(DanhMuc.IdColumn).IsNotEqualTo(4).ExecuteTypedList<DanhMuc>();
+            return new Select(DanhMuc.TenColumn,DanhMuc.SlugColumn).From(DanhMuc.Schema).Where(DanhMuc.IdColumn).IsNotEqualTo(4).ExecuteTypedList<DanhMuc>();
             //string sql = string.Format(@"select * from DanhMuc where DanhMuc.Id <> 4 ");
             //return new InlineQuery().ExecuteTypedList<DanhMuc>(sql);
         }

@@ -28,5 +28,10 @@ namespace CMS.Core.Publich
         {
             return new DanhMucController().FetchByID(id).SingleOrDefault();
         }
+        public static DanhMuc GetByMa(string slug)
+        {
+            return new Select().From(DanhMuc.Schema).Where(DanhMuc.SlugColumn)
+                .IsEqualTo(slug).ExecuteSingle<DanhMuc>();
+        }
     }
 }

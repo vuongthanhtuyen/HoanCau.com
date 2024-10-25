@@ -1,5 +1,4 @@
 ﻿using CMS.Core.Publich;
-using CMS.WebUI.Controls;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -9,29 +8,33 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using static CMS.WebUI.Common.ExtendWeb;
 
-namespace CMS.WebUI
+namespace CMS.WebUI.Controls.ControlContentPage
 {
-    public partial class BaiVietPublish : System.Web.UI.Page
+    public partial class BaiVietPublish : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Binding();
+            //Binding();
         }
 
-        private void Binding()
+        public void Binding(string slugPost)
         {
-            int idPost = int.Parse(Request.QueryString["id"]);
+            //int idPost = int.Parse(Request.QueryString["id"]);
+            //string slugPost = Request.QueryString["slugPost"];
             BaiViet baiViet = new BaiViet();
-            baiViet = BaiVietPublishBLL.GetById(idPost);
-            baiViet.ViewCount += 1;
-            baiViet = BaiVietPublishBLL.Insert(baiViet);
-
-            string thm = "";
-            if (baiViet.ThumbnailUrl != null)
+            //baiViet = BaiVietPublishBLL.GetById(idPost);
+            baiViet = BaiVietPublishBLL.GetByMa(slugPost);
+            if (baiViet != null)
             {
-                thm = string.Format($@" <img src=""Administration/UploadImage/{baiViet.ThumbnailUrl}"" alt=""{baiViet.TieuDe}"">");
-            }
-            var postView = string.Format($@"
+                baiViet.ViewCount += 1;
+                baiViet = BaiVietPublishBLL.Insert(baiViet);
+
+                string thm = "";
+                if (baiViet.ThumbnailUrl != null)
+                {
+                    thm = string.Format($@" <img src=""Administration/UploadImage/{baiViet.ThumbnailUrl}"" alt=""{baiViet.TieuDe}"">");
+                }
+                var postView = string.Format($@"
                             <div class=""wrapImg"">  {thm}  </div>
                                 <div class=""contentText"">
                                     <p class=""titleNewsMain"">{baiViet.TieuDe}</p>
@@ -75,38 +78,42 @@ namespace CMS.WebUI
 
                 ");
 
-            ltlPostView.Text = postView;
-            Page.Title = baiViet.TieuDe;
-            DanhMuc danhMuc = new DanhMuc();
-            danhMuc = BaiVietPublishBLL.GetDanhMucByIdBaiViet(idPost);
-            int danhMucId = 0;
-            List<Breadcrumb> list = new List<Breadcrumb>();
-            if(danhMuc != null)
-            {
-                Breadcrumb breadcrumb = new Breadcrumb()
+                ltlPostView.Text = postView;
+                Page.Title = baiViet.TieuDe;
+                DanhMuc danhMuc = new DanhMuc();
+                danhMuc = BaiVietPublishBLL.GetDanhMucByIdBaiViet(baiViet.Id);
+                int danhMucId = 0;
+                List<Breadcrumb> list = new List<Breadcrumb>();
+                if (danhMuc != null)
                 {
-                    Title = danhMuc.Ten,
-                    Url = "DanhMucPublish?id=" + danhMuc.Id
-                };
-                danhMucId = danhMuc.Id;
-                list.Add(breadcrumb);
+                    Breadcrumb breadcrumb = new Breadcrumb()
+                    {
+                        Title = danhMuc.Ten,
+                        Url = "DanhMucPublish?id=" + danhMuc.Id
+                    };
+                    danhMucId = danhMuc.Id;
+                    list.Add(breadcrumb);
+                }
+                else
+                {
+                    Breadcrumb breadcrumb = new Breadcrumb()
+                    {
+                        Title = "Tất cả bài viết",
+                        Url = "DanhMucPublish"
+                    };
+                    list.Add(breadcrumb);
+                }
+
+                SlideTop.ShowBreadcrumb(baiViet.TieuDe, null, list);
+                DanhSachBaiVietLienQuan.GetAllPost(BaiVietPublishBLL.GetBaiVietLienQuan(danhMucId));
+                DanhSachBaiVietCoTheBanSeThich.GetAllPost(BaiVietPublishBLL.GetBaiVietBanCoTheThich(danhMucId));
+
             }
             else
             {
-                Breadcrumb breadcrumb = new Breadcrumb()
-                {
-                    Title = "Tất cả bài viết",
-                    Url = "DanhMucPublish"
-                };
-                list.Add(breadcrumb);
+
+                Response.Write("không lấy được url: " + slugPost);
             }
-            
-            SlideTop.ShowBreadcrumb(baiViet.TieuDe, null, list);
-            DanhSachBaiVietLienQuan.GetAllPost(BaiVietPublishBLL.GetBaiVietLienQuan(danhMucId));
-            DanhSachBaiVietCoTheBanSeThich.GetAllPost(BaiVietPublishBLL.GetBaiVietBanCoTheThich(danhMucId));
-
-
         }
-
     }
 }

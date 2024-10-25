@@ -32,6 +32,7 @@ namespace CMS.Core.Manager
 
             new Delete().From(NhomHinhAnh.Schema)
                 .Where(NhomHinhAnh.BaiVietIdColumn).IsEqualTo(baiVietId).Execute();
+            FriendlyUrlBLL.DeleteByPostId(baiVietId);
 
             return new BaiVietController().Delete(baiVietId);
         }
@@ -42,17 +43,26 @@ namespace CMS.Core.Manager
 
         public static BaiViet Insert(BaiViet baiViet)
         {
-            return new BaiVietController().Insert(baiViet);
-        }
-        public static BaiViet InsertDuAnTieuBieu(BaiViet baiViet)
-        {
-            baiViet = new BaiVietController().Insert(baiViet);
 
-            new NhomBaiVietController().Insert(4, baiViet.Id);
+
+            baiViet = new BaiVietController().Insert(baiViet);
+            FriendlyUrlBLL.Insert(new FriendlyUrl()
+            {
+                PostId = baiViet.Id,
+                PostType = FriendlyUrlBLL.FriendlyURLTypeHelper.Article,
+                SlugUrl = baiViet.Slug
+            });
             return baiViet;
         }
+      
         public static BaiViet Update(BaiViet baiViet)
         {
+            var friendUrl = FriendlyUrlBLL.GetByPostId(baiViet.Id);
+            if (friendUrl.SlugUrl != baiViet.Slug)
+            {
+                friendUrl.SlugUrl = baiViet.Slug;
+                FriendlyUrlBLL.Update(friendUrl);
+            }
             return new BaiVietController().Update(baiViet);
         }
 
@@ -90,10 +100,10 @@ namespace CMS.Core.Manager
                         if (category.IsHaveDanhMuc == 1)
                         {
 
-                            if (itemToDelete==null)
+                            if (itemToDelete == null)
                             {
 
-                                new NhomBaiVietController().Insert( category.Id,postId );
+                                new NhomBaiVietController().Insert(category.Id, postId);
                             }
 
                         }
@@ -125,7 +135,19 @@ namespace CMS.Core.Manager
 
 
         #region Dự án tiêu biểu
+        public static BaiViet InsertDuAnTieuBieu(BaiViet baiViet)
+        {
+            baiViet = new BaiVietController().Insert(baiViet);
 
+            new NhomBaiVietController().Insert(4, baiViet.Id);
+            FriendlyUrlBLL.Insert(new FriendlyUrl()
+            {
+                PostId = baiViet.Id,
+                PostType = FriendlyUrlBLL.FriendlyURLTypeHelper.Project,
+                SlugUrl = baiViet.Slug
+            });
+            return baiViet;
+        }
         public static List<NhomHinhAnh> GetHinhAnhByIdDuAnTieuBieu(int id)
         {
             var select = new Select().From(NhomHinhAnh.Schema).Where(NhomHinhAnh.BaiVietIdColumn)
@@ -134,6 +156,10 @@ namespace CMS.Core.Manager
         }
         public static NhomHinhAnh InsertHinhAnhDuAnTieuBieu(string stringUrl, int baiVietId)
         {
+
+
+
+
             return new NhomHinhAnhController().Insert(stringUrl, baiVietId);
         }
         public static bool DeleteHinhAnhDuAnTieuBieu(int nhomBaiVietId)

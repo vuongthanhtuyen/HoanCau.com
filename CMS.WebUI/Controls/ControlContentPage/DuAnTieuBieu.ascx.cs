@@ -3,33 +3,27 @@ using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Policy;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace CMS.WebUI
+namespace CMS.WebUI.Controls.ControlContentPage
 {
-    public partial class DuAnTieuBieuPublish : System.Web.UI.Page
+    public partial class DuAnTieuBieu : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                Binding();
-                
-            }
-        }
 
-        private void Binding()
+        }
+        public void Binding(string slugString)
         {
-            int duAnTieuBieuId = int.Parse(Request.QueryString["id"]);
             string slide1 = "";
             string slide2 = "";
             string duAnView = "";
-            List<NhomHinhAnh> nhomHinhAnh = DuAnTieuBieuPublishBLL.GetNhomHinhAnh(duAnTieuBieuId);
-            var baiVietDuAn = DuAnTieuBieuPublishBLL.GetById(duAnTieuBieuId);
+            var baiVietDuAn = DuAnTieuBieuPublishBLL.GetByMa(slugString);
+            List<NhomHinhAnh> nhomHinhAnh = DuAnTieuBieuPublishBLL.GetNhomHinhAnh(baiVietDuAn.Id);
+
             baiVietDuAn.ViewCount += 1;
             baiVietDuAn = BaiVietPublishBLL.Update(baiVietDuAn);
 
@@ -112,10 +106,6 @@ namespace CMS.WebUI
                             </div>
                         </div>
                     </div>
-
-
-
-
                 </div>
             </div>
             ");
@@ -130,7 +120,7 @@ namespace CMS.WebUI
                 }
             });
             ltlPostView.Text = duAnView;
-            GetCoTheBanSeThichDuAnTieuBieu(duAnTieuBieuId);
+            GetCoTheBanSeThichDuAnTieuBieu(baiVietDuAn.Id);
             Page.Title = baiVietDuAn.TieuDe;
         }
 
@@ -140,13 +130,13 @@ namespace CMS.WebUI
             var postList = DanhMucPublishBLL.GetPaging(null, null, null, null, 4, out totalRow);
             postList = postList.Where(x => x.Id != duAnTieuBieuId).ToList();
             string show = "";
-            foreach(var post in postList)
+            foreach (var post in postList)
             {
                 show += string.Format($@"<div class=""itemSlide"">
                     <div class=""contentItem wow zoomIn"" data-wow-duration=""1s"" data-wow-delay=""0.4s"">
-                        <div class=""wrapImg""><a class=""wrapImgResize img16And9"" href=""DuAnTieuBieuPublish?id={post.Id}"" title=""{post.TieuDe}""><img src=""/Administration/UploadImage/{post.ThumbnailUrl}"" alt=""{post.TieuDe}"" /></a></div>
+                        <div class=""wrapImg""><a class=""wrapImgResize img16And9"" href=""{post.Slug}"" title=""{post.TieuDe}""><img src=""/Administration/UploadImage/{post.ThumbnailUrl}"" alt=""{post.TieuDe}"" /></a></div>
                         <div class=""wrapTextItem"">
-                            <h3 class=""wrapTitle""><a class=""linkTitle"" href=""DuAnTieuBieuPublish?id={post.Id}"" title=""{post.TieuDe}"">{post.TieuDe}</a></h3>
+                            <h3 class=""wrapTitle""><a class=""linkTitle"" href=""{post.Slug}"" title=""{post.TieuDe}"">{post.TieuDe}</a></h3>
                             <div class=""wrapDes"">{Regex.Replace(post.MoTaNgan, "<.*?>", string.Empty)}</div>
                         </div>
                     </div>
