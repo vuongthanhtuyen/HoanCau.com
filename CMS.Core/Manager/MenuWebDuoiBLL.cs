@@ -29,7 +29,7 @@ namespace CMS.Core.Manager
         {
             List<MenuWebDuoi> listMenu = new Select()
                                           .From(MenuWebDuoi.Schema)
-                                          .Where(MenuWebDuoi.MenuChaIdColumn).IsNull()
+                                          .Where(MenuWebDuoi.MenuChaIdColumn).IsEqualTo(0)
                                           .ExecuteTypedList<MenuWebDuoi>();
 
             return listMenu;

@@ -38,6 +38,8 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
 
             if (modal == "openModal")
             {
+                string MenuIdParent = Request.QueryString["MenuIdParent"];
+                ddlAddMenuCha.SelectedValue = MenuIdParent ?? "0";
                 ScriptManager.RegisterStartupScript(this, GetType(), "OpenModal", "openModal();", true);
                 return;
             }
@@ -48,7 +50,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
 
                 if (modal == "openEdit")
                 {
-                  
+
                     var menu = MenuWebTrenBLL.GetById(id);
 
 
@@ -162,7 +164,33 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                                     lstTreeChild.Add(itemTree);
                                 }
                             }
+                            ItemTreeView addChild = new ItemTreeView();
+                            addChild.MenuId = parentId;
+                            addChild.text = "Thêm mới";
+                            addChild.icon = "fa fa-plus";
+                            addChild.state = new ItemState { opened = true };
+                            if (IsEditMenu)
+                                addChild.a_attr = new { href = "/Administration/QuanLyCauHinh/MenuTrenWeb?modal=openModal&MenuIdParent=" + parentId };
+                            else
+                                addChild.a_attr = null;
+                            addChild.children = null;
+                            lstTreeChild.Add(addChild);
                         }
+                        else if (lst.Where(x => x.MenuChaId == 0 && parentId == x.Id).Count() > 0)
+                        {
+                            ItemTreeView addChild = new ItemTreeView();
+                            addChild.MenuId = parentId;
+                            addChild.text = "Thêm mới";
+                            addChild.icon = "fa fa-plus";
+                            addChild.state = new ItemState { opened = true };
+                            if (IsEditMenu)
+                                addChild.a_attr = new { href = "/Administration/QuanLyCauHinh/MenuTrenWeb?modal=openModal&MenuIdParent=" + parentId };
+                            else
+                                addChild.a_attr = null;
+                            addChild.children = null;
+                            lstTreeChild.Add(addChild);
+                        }
+
 
                         return lstTreeChild;
                     };
@@ -224,7 +252,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
 
             BindAddUrl();
         }
-        
+
         private void BindAddUrl()
         {
             #region Thêm dữ liệu cho Droplist của trang Add menu
@@ -351,7 +379,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
             }
         }
 
-      
+
 
 
         protected void btnDelete_Click(object sender, EventArgs e)
@@ -410,7 +438,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                 menu.MenuChaId = int.Parse(ddlEditMenuCha.SelectedValue);
                 menu.HienThi = chkEditTrangThai.Checked;
                 menu = MenuWebTrenBLL.Update(menu);
-                
+
                 Response.Redirect(Request.Url.AbsolutePath);
             }
             catch (Exception ex)
@@ -418,7 +446,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                 ShowNotification("Cập nhật thất bại! \n " + ex.Message, false);
             }
         }
-  
+
         private void ShowNotification(string message, bool isSuccess = true)
         {
             AdminNotificationUserControl.LoadMessage(message, isSuccess);

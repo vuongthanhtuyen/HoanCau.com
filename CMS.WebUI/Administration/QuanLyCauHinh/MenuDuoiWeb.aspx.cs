@@ -37,6 +37,9 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
 
             if (modal == "openModal")
             {
+                string MenuIdParent = Request.QueryString["MenuIdParent"];
+                ddlAddMenuCha.SelectedValue = MenuIdParent ?? "0";
+
                 ScriptManager.RegisterStartupScript(this, GetType(), "OpenModal", "openModal();", true);
                 return;
             }
@@ -161,6 +164,31 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                                     lstTreeChild.Add(itemTree);
                                 }
                             }
+                            ItemTreeView addChild = new ItemTreeView();
+                            addChild.MenuId = parentId;
+                            addChild.text = "Thêm mới";
+                            addChild.icon = "fa fa-plus";
+                            addChild.state = new ItemState { opened = true };
+                            if (IsEditMenu)
+                                addChild.a_attr = new { href = "/Administration/QuanLyCauHinh/MenuDuoiWeb?modal=openModal&MenuIdParent=" + parentId };
+                            else
+                                addChild.a_attr = null;
+                            addChild.children = null;
+                            lstTreeChild.Add(addChild);
+                        }
+                        else if (lst.Where(x => x.MenuChaId == 0 && parentId == x.Id).Count() > 0)
+                        {
+                            ItemTreeView addChild = new ItemTreeView();
+                            addChild.MenuId = parentId;
+                            addChild.text = "Thêm mới";
+                            addChild.icon = "fa fa-plus";
+                            addChild.state = new ItemState { opened = true };
+                            if (IsEditMenu)
+                                addChild.a_attr = new { href = "/Administration/QuanLyCauHinh/MenuDuoiWeb?modal=openModal&MenuIdParent=" + parentId };
+                            else
+                                addChild.a_attr = null;
+                            addChild.children = null;
+                            lstTreeChild.Add(addChild);
                         }
 
                         return lstTreeChild;
