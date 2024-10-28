@@ -148,7 +148,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                                 {
                                     ItemTreeView itemTree = new ItemTreeView();
                                     itemTree.MenuId = item.Id;
-                                    itemTree.text = string.Format("{0} {1} ({2})", item.Ten, GetStatusText(BasicStatusHelper.Active), null);
+                                    itemTree.text = string.Format("{0} {1} {2}", item.Ten, GetStatusText(BasicStatusHelper.Active), "<a class=\"btn btn-danger p-0\" style=\" font-size:14px;\"  href=\"/Administration/QuanLyBaiViet/DanhMucBaiViet.aspx?modal=openDelete&idCategory=" + item.Id + "\", item.Id\" ><span class=\"fa fa-trash\"></span> Xóa</a>");
                                     //itemTree.text = string.Format("{0} {1} ({2})", item.Ten, "Active", true);
                                     itemTree.icon = "fa fa-link";
                                     itemTree.state = new ItemState { opened = true };

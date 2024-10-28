@@ -314,6 +314,16 @@
             });
         }
 
+        setTimeout(function () {
+            document.querySelectorAll("a.btn-danger").forEach(function (deleteButton) {
+                deleteButton.addEventListener("click", function (event) {
+                    event.stopPropagation();
+                    //event.preventDefault();
+                    openDelete();
+                });
+            });
+        }, 500); 
+
     </script>
 
 </asp:Content>

@@ -284,67 +284,69 @@
             <asp:HiddenField ID="hdnRowId" runat="server" />
         </ContentTemplate>
     </asp:UpdatePanel>
-     <script>
-         function openModal() {
-             document.getElementById("myModal").style.display = "block";
-             return false;
-         }
-         function closeModal() {
-             document.getElementById("myModal").style.display = "none";
+    <script>
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+            return false;
+        }
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
 
-         }
+        }
 
-         function openDelete() {
-             document.getElementById("confirmDeleteModal").style.display = "block";
+        function openDelete(event) {
 
-             return false;
-         }
+            document.getElementById("confirmDeleteModal").style.display = "block";
 
-         function closeDelete() {
-             document.getElementById("confirmDeleteModal").style.display = "none";
+            return false;
+        }
 
-         }
+        function closeDelete() {
+            document.getElementById("confirmDeleteModal").style.display = "none";
 
-         function openEdit() {
-             document.getElementById("myEditModal").style.display = "block";
-             return false;
-         }
+        }
 
-         function closeEdit() {
-             document.getElementById("myEditModal").style.display = "none";
+        function openEdit() {
+            document.getElementById("myEditModal").style.display = "block";
+            return false;
+        }
 
-         }
+        function closeEdit() {
+            document.getElementById("myEditModal").style.display = "none";
 
-     </script>
+        }
+
+    </script>
+
 
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentScript" runat="server">
     <script src="/Administration/Assets/plugins/jstree.min.js"></script>
-   
+
     <script type="text/javascript">
 
         $(document).on('change', '#<%= drAddbaiviet.ClientID %>', function () {
             var selectedValue = $(this).val();  // Lấy giá trị của DropDownList
             $('#<%= txtUrl.ClientID %>').val(selectedValue);
-            if (!$('#<%= txtTen.ClientID %>').val()) 
+            if (!$('#<%= txtTen.ClientID %>').val())
                 $('#<%= txtTen.ClientID %>').val($(this).find("option:selected").text());
-       });
+        });
         $(document).on('change', '#<%= drAddDanhSach.ClientID %>', function () {
             var selectedValue = $(this).val();  // Lấy giá trị của DropDownList
             $('#<%= txtUrl.ClientID %>').val(selectedValue);
-            if (!$('#<%= txtTen.ClientID %>').val()) 
+            if (!$('#<%= txtTen.ClientID %>').val())
                 $('#<%= txtTen.ClientID %>').val($(this).find("option:selected").text());
         });
         $(document).on('change', '#<%= drAddTrangTinh.ClientID %>', function () {
             var selectedValue = $(this).val();  // Lấy giá trị của DropDownList
             $('#<%= txtUrl.ClientID %>').val(selectedValue);
-            if (!$('#<%= txtTen.ClientID %>').val()) 
+            if (!$('#<%= txtTen.ClientID %>').val())
                 $('#<%= txtTen.ClientID %>').val($(this).find("option:selected").text());
         });
         $(document).on('change', '#<%= drAddDuAnTieuBieu.ClientID %>', function () {
             var selectedValue = $(this).val();  // Lấy giá trị của DropDownList
             $('#<%= txtUrl.ClientID %>').val(selectedValue);
-            if (!$('#<%= txtTen.ClientID %>').val()) 
+            if (!$('#<%= txtTen.ClientID %>').val())
                 $('#<%= txtTen.ClientID %>').val($(this).find("option:selected").text());
         });
 
@@ -354,26 +356,26 @@
         $(document).on('change', '#<%= drEditBaiviet.ClientID %>', function () {
             var selectedValue = $(this).val();  // Lấy giá trị của DropDownList
             $('#<%= txtEditUrl.ClientID %>').val(selectedValue);
-            if (!$('#<%= txtEditTen.ClientID %>').val()) 
+            if (!$('#<%= txtEditTen.ClientID %>').val())
                 $('#<%= txtEditTen.ClientID %>').val($(this).find("option:selected").text());
         });
 
         $(document).on('change', '#<%= drEditDanhSach.ClientID %>', function () {
             var selectedValue = $(this).val();
             $('#<%= txtEditUrl.ClientID %>').val(selectedValue);
-            if (!$('#<%= txtEditTen.ClientID %>').val()) 
+            if (!$('#<%= txtEditTen.ClientID %>').val())
                 $('#<%= txtEditTen.ClientID %>').val($(this).find("option:selected").text());
         });
         $(document).on('change', '#<%= drEditTrangTinh.ClientID %>', function () {
             var selectedValue = $(this).val();
             $('#<%= txtEditUrl.ClientID %>').val(selectedValue);
-            if (!$('#<%= txtEditTen.ClientID %>').val()) 
+            if (!$('#<%= txtEditTen.ClientID %>').val())
                 $('#<%= txtEditTen.ClientID %>').val($(this).find("option:selected").text());
         });
         $(document).on('change', '#<%= drEditDuAnTieuBieu.ClientID %>', function () {
             var selectedValue = $(this).val();
             $('#<%= txtEditUrl.ClientID %>').val(selectedValue);
-            if (!$('#<%= txtEditTen.ClientID %>').val())    
+            if (!$('#<%= txtEditTen.ClientID %>').val())
                 $('#<%= txtEditTen.ClientID %>').val($(this).find("option:selected").text());
         });
     </script>
@@ -421,11 +423,44 @@
                 }
             });
 
+            
+
             $('#txtKeysearch').keyup(function () {
                 $('.rightsTreeView').jstree(true).show_all();
                 $('.rightsTreeView').jstree('search', $(this).val());
             });
         }
 
+        //// Lấy tất cả các thẻ <a> có class jstree-anchor
+        //var anchors = document.querySelectorAll("a.jstree-anchor");
+
+        //// Duyệt qua từng thẻ <a>
+        //anchors.forEach(function (anchor) {
+        //    // Lấy thẻ <a> con bên trong
+        //    var childLink = anchor.querySelector("a");
+
+        //    // Nếu tìm thấy thẻ <a> con
+        //    if (childLink) {
+        //        // Chuyển thẻ <a> con ra ngoài sau thẻ cha
+        //        anchor.insertAdjacentHTML('afterend', childLink.outerHTML);
+        //        // Xóa thẻ <a> con ra khỏi thẻ cha
+        //        childLink.remove();
+        //    }
+        //});
+        setTimeout(function () {
+            document.querySelectorAll("a.btn-danger").forEach(function (deleteButton) {
+                deleteButton.addEventListener("click", function (event) {
+                    event.stopPropagation();
+                    //event.preventDefault();
+                    openDelete();
+                });
+            });
+        }, 500); 
+
+
     </script>
+
+
+
+
 </asp:Content>
