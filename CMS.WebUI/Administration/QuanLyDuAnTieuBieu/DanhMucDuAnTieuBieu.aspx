@@ -117,7 +117,7 @@
                 <ContentTemplate>
                     <span class="close d-flex justify-content-end" onclick="closeEdit()">&times;</span>
                     <h4>Chỉnh Cập nhật vai trò </h4>
-                    <asp:Label ID="Label1" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
+                    <asp:Label ID="lblEditErrorMessage" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
                     <div class="justify-content-center align-items-center main-edit-modal">
 
                         <div class="form-group row">

@@ -87,11 +87,12 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
                 else
 
                 {
-                    if (DanhMucBaiVietBLL.IsExistsSlug(txtMa.Text) != null)
+                    if (FriendlyUrlBLL.GetByMa(txtMa.Text) != null)
                     {
-                        lblAddErrorMessage.Text = "Mã này đã tồn tại, nhập mã khác";
+                        lblAddErrorMessage.Text = "Url thân thiện đãn tồn tại, nhập url khác";
                         UpdatePanelAdd.Update();
                         ScriptManager.RegisterStartupScript(this, GetType(), "OpenModal", "openModal();", true);
+                        return;
                     }
                     if (!VaiTroManagerBll.AllowAdd(CurrentUserId, MenuMa))
                     {
@@ -194,14 +195,28 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
         {
             try
             {
+                
                 if (!VaiTroManagerBll.AllowEdit(CurrentUserId, MenuMa))
                 {
                     ShowNotification("Bạn không có quyền truy cập chức năng này", false);
                     return;
                 }
+
                 int danhMucId = int.Parse(hdnRowId.Value);
                 hdnRowId.Value = "";
                 DanhMuc danhMuc = DanhMucBaiVietBLL.GetById(danhMucId);
+                if (danhMuc.Slug != txtEditMa.Text) {
+                    var friendlyUrl = FriendlyUrlBLL.GetByMa(txtEditMa.Text);
+                    if (friendlyUrl != null) {
+                        lblEditErrorMessage.Text = "Url này đã tồn tại, vui lòng nhập một url khác";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "openEdit", "openEdit();", true);
+                        return;
+                    }
+
+                }
+
+
+
                 danhMuc.Ten = txtEditTen.Text;
                 danhMuc.Slug = txtEditMa.Text;
                 danhMuc.MoTa = txtEditMota.Text;

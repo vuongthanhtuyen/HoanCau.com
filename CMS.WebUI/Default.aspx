@@ -71,7 +71,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="contentEnd" runat="server">
 
-    <script src="/Assets/js/home.js?v=f81a959662efae2fc3cc158351e6d90c"></script>
-
+    <script src="Assets/js/home.js?v=f81a959662efae2fc3cc158351e6d90c"></script>
 
 </asp:Content>

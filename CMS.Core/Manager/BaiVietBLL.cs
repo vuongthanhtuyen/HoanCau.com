@@ -43,8 +43,6 @@ namespace CMS.Core.Manager
 
         public static BaiViet Insert(BaiViet baiViet)
         {
-
-
             baiViet = new BaiVietController().Insert(baiViet);
             FriendlyUrlBLL.Insert(new FriendlyUrl()
             {
@@ -66,13 +64,7 @@ namespace CMS.Core.Manager
             return new BaiVietController().Update(baiViet);
         }
 
-        public static BaiViet IsSlugExists(string baiVietSlug)
-        {
-            var select = new Select().From(BaiViet.Schema)
-                .Where(BaiViet.SlugColumn).IsEqualTo(baiVietSlug)
-                .ExecuteSingle<BaiViet>();
-            return select;
-        }
+
 
         public static List<DanhMucBaiVietDto> GetAllDanhMucBaiVietById(int postId)
         {

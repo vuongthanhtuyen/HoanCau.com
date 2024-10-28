@@ -78,8 +78,8 @@
                                 <asp:TextBox ID="txtTen" runat="server" CssClass="form-control form-control-user" placeholder="Tên danh mục"></asp:TextBox>
                             </div>
                             <div class="col-md-6">
-                                <label for="txtMa">Mã</label>
-                                <asp:TextBox ID="txtMa" runat="server" CssClass="form-control form-control-user" placeholder="Mã"></asp:TextBox>
+                                <label for="txtMa">Url thân thiện</label>
+                                <asp:TextBox ID="txtMa" runat="server" CssClass="form-control form-control-user" placeholder="Nhập url thân thiện"></asp:TextBox>
                             </div>
                         </div>
                         <div class="form-group">
@@ -106,7 +106,7 @@
                 <ContentTemplate>
                     <span class="close d-flex justify-content-end" onclick="closeEdit()">&times;</span>
                     <h4>Chỉnh Cập nhật vai trò </h4>
-                    <asp:Label ID="Label1" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
+                    <asp:Label ID="lblEditErrorMessage" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
                     <div class="justify-content-center align-items-center main-edit-modal" style="max-height: 500px; overflow-y: auto; overflow-x: hidden;">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
@@ -132,8 +132,8 @@
                                             <asp:TextBox ID="txtEditTen" runat="server" CssClass="form-control form-control-user" placeholder="Tên danh mục"></asp:TextBox>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="txtEditMa">Mã</label>
-                                            <asp:TextBox ID="txtEditMa" runat="server" CssClass="form-control form-control-user" placeholder="Mã"></asp:TextBox>
+                                            <label for="txtEditMa">Url thân thiện</label>
+                                            <asp:TextBox ID="txtEditMa" runat="server" CssClass="form-control form-control-user" placeholder="Nhập url thân thiện"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group">

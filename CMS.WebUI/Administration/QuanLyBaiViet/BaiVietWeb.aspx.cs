@@ -2,6 +2,7 @@
 using CMS.DataAsscess;
 using CMS.WebUI.Administration.AdminUserControl;
 using CMS.WebUI.Administration.Common;
+using Microsoft.Ajax.Utilities;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -141,6 +142,12 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     ScriptManager.RegisterStartupScript(this, GetType(), "OpenModal", "openModal();", true);
                     return;
                 }
+                if (FriendlyUrlBLL.GetByMa(txtSlug.Text)!=null) {
+                    lblAddErrorMessage.Text = "Url thân thiện này đã tồn tại, vui lòng nhập tên khác";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "OpenModal", "openModal();", true);
+                    return;
+
+                }
                 if (!VaiTroManagerBll.AllowAdd(CurrentUserId, MenuMa))
                 {
                     ShowNotification("Bạn không có quyền truy cập chức năng này", false);
@@ -269,10 +276,25 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                 else
                 {
                     int baiVietId = int.Parse(hdnRowId.Value); // Lấy ID người dùng đã chỉnh sửa
-                    hdnRowId.Value = "";
-                    lblEditMessager.Text = "";
                     // Lấy thông tin người dùng từ cơ sở dữ liệu
                     BaiViet baiViet = BaiVietBLL.GetById(baiVietId);
+                    if (baiViet.Slug != txtEditSlug.Text) { 
+                        var friendlyUrl = FriendlyUrlBLL.GetByMa(txtEditSlug.Text);
+                        if (friendlyUrl != null) {
+
+                            lblEditMessager.Text = "Url thân thiện này đã tồn tại, vui lòng nhập url khác!";
+                            ScriptManager.RegisterStartupScript(this, GetType(), "openEdit", "openEdit();", true);
+
+                            return;
+                        }
+                    }
+                    hdnRowId.Value = "";
+                    lblEditMessager.Text = "";
+
+                    
+
+
+
                     baiViet.TieuDe = txtEditTieuDe.Text;
                     baiViet.NoiDungChinh = txtEditNoiDungChinh.GetContent(); // Giả sử phương thức GetContent() trả về nội dung
                     baiViet.Slug = txtEditSlug.Text;

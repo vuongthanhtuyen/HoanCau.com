@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,7 +40,12 @@ namespace CMS.Core.Manager
         }
         public static DanhMuc Insert(DanhMuc danhMuc)
         {
-            return new DanhMucController().Insert(danhMuc);
+
+            danhMuc = new DanhMucController().Insert(danhMuc);
+
+            FriendlyUrlBLL.Insert(new FriendlyUrl() 
+            { PostId = danhMuc.Id, PostType = FriendlyUrlBLL.FriendlyURLTypeHelper.Category });
+            return danhMuc;
         }
         public static List<DanhMuc> GetAllNoPaging(string keySearch = null)
         {
@@ -54,6 +60,15 @@ namespace CMS.Core.Manager
         }
         public static DanhMuc Update(DanhMuc danhMuc)
         {
+
+            var friendlyUrl = FriendlyUrlBLL.GetById(danhMuc.Id);
+            if(danhMuc.Slug != friendlyUrl.SlugUrl)
+            {
+                friendlyUrl.SlugUrl = danhMuc.Slug;
+                FriendlyUrlBLL.Update(friendlyUrl);
+            }
+
+
             return new DanhMucController().Update(danhMuc);
         }
         public static List<DanhMuc> GetAllByParentId(int id)
@@ -66,6 +81,9 @@ namespace CMS.Core.Manager
             new Delete().From(NhomBaiViet.Schema)
                 .Where(NhomBaiViet.DanhmucIdColumn)
                 .IsEqualTo(id).Execute();
+
+            FriendlyUrlBLL.DeleteByPostId(id);
+
             return new DanhMucController().Delete(id);
         }
 
@@ -73,14 +91,6 @@ namespace CMS.Core.Manager
         {
             Select select = new Select();
             select.From(DanhMuc.Schema).Where(DanhMuc.SlugColumn).IsEqualTo(slug);
-            return select.ExecuteSingle<DanhMuc>();
-
-        }
-        public static DanhMuc IsExistsSlugOtherID(string danhMucSlug, int danhMucId)
-        {
-            Select select = new Select();
-            select.From(DanhMuc.Schema).Where(DanhMuc.SlugColumn).IsEqualTo(danhMucSlug)
-            .And(DanhMuc.IdColumn).IsNotEqualTo(danhMucId);
             return select.ExecuteSingle<DanhMuc>();
 
         }

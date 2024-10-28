@@ -239,9 +239,9 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                 }
                 else
                 {
-                    if (DanhMucBaiVietBLL.IsExistsSlug(txtMa.Text) != null)
+                    if (FriendlyUrlBLL.GetByMa(txtMa.Text) != null)
                     {
-                        lblAddErrorMessage.Text = "Mã này đã tồn tại, nhập mã khác";
+                        lblAddErrorMessage.Text = "Url thân thiện đã tồn tại, vui lòng nhập mã khác";
                         UpdatePanelAdd.Update();
                         return;
                     }
@@ -341,14 +341,29 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     return;
                 }
                 int danhMucId = int.Parse(hdnRowId.Value);
-                hdnRowId.Value = "";
+                
                 DanhMuc danhMuc = DanhMucBaiVietBLL.GetById(danhMucId);
+
+
+                if (danhMuc.Slug != txtEditMa.Text)
+                {
+                    var friendlyUrl = FriendlyUrlBLL.GetByMa(txtEditMa.Text);
+                    if (friendlyUrl != null)
+                    {
+
+                        lblEditErrorMessage.Text = "Url thân thiện này đã tồn tại, vui lòng nhập url khác!";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "openEdit", "openEdit();", true);
+
+                        return;
+                    }
+                }
+
                 danhMuc.Ten = txtEditTen.Text;
                 danhMuc.Slug = txtEditMa.Text;
                 danhMuc.MoTa = txtEditMota.Text;
                 danhMuc.DanhMucChaId = int.Parse(ddlEditDanhMuc.SelectedValue);
                 danhMuc = DanhMucBaiVietBLL.Update(danhMuc);
-
+                hdnRowId.Value = "";
                 #endregion
 
 
@@ -373,20 +388,13 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                         });
                     }
 
-                    if (!VaiTroManagerBll.AllowEdit(CurrentUserId, MenuMa))
-                    {
-                        ShowNotification("Bạn không có quyền truy cập chức năng này", false);
-                        ScriptManager.RegisterStartupScript(this, GetType(), "closeEdit", "closeEdit();", true);
-
-                        return;
-                    }
-
+                  
                     ShowNotification(DanhMucBaiVietBLL.UpdateDanhMucBaiViet(listBaiVietInDanhMuc, baivietinDanhMucCurrent, danhMucId));
                     baivietinDanhMucCurrent = listBaiVietInDanhMuc;
                 }
                 catch (Exception ex)
                 {
-                    ShowNotification("Cập nhật quyền cho vai trò thất bại! \n " + ex.Message, false);
+                    ShowNotification("Cập nhật danh mục thất bại,\n lỗi:   " + ex.Message, false);
                 }
                 #endregion
 

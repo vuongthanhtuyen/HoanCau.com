@@ -15,12 +15,8 @@ namespace CMS.Core.Manager
         {
             public const int Category = 0;
             public const int Article = 1;
-            //public const int ProjectList = 2;
             public const int Project = 2;
-            //public const int PartnersList = 4;
             public const int Info = 3;
-
-            //public const int Project = 2;
         }
         public static List<FriendlyUrl> GetAll()
         {
@@ -60,5 +56,25 @@ namespace CMS.Core.Manager
             return new Select().From(FriendlyUrl.Schema).Where(FriendlyUrl.PostIdColumn)
                 .IsEqualTo(postID).ExecuteSingle<FriendlyUrl>();
         }
+
+
+
+        //public static DanhMuc IsExistsSlugOtherID(string danhMucSlug, int danhMucId)
+        //{
+        //    Select select = new Select();
+        //    select.From(DanhMuc.Schema).Where(DanhMuc.SlugColumn).IsEqualTo(danhMucSlug)
+        //    .And(DanhMuc.IdColumn).IsNotEqualTo(danhMucId);
+        //    return select.ExecuteSingle<DanhMuc>();
+
+        //}
+
+
+        //public static FriendlyUrl IsSlugExists(string baiVietSlug)
+        //{
+        //    var select = new Select().From(FriendlyUrl.Schema)
+        //        .Where(FriendlyUrl.SlugUrlColumn).IsEqualTo(baiVietSlug)
+        //        .ExecuteSingle<FriendlyUrl>();
+        //    return select;
+        //}
     }
 }

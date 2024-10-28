@@ -90,11 +90,18 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
                     ScriptManager.RegisterStartupScript(this, GetType(), "OpenModal", "openModal();", true);
                     return;
                 }
+                if (FriendlyUrlBLL.GetByMa(txtSlug.Text) != null)
+                {
+                    lblAddErrorMessage.Text = "Slug đã tồn tại trong cơ sở dữ liệu";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "OpenModal", "OpenModal();", true);
+                    return;
+                }
                 if (!VaiTroManagerBll.AllowAdd(CurrentUserId, MenuMa))
                 {
                     ShowNotification("Bạn không có quyền truy cập chức năng này", false);
                     return;
                 }
+
                 else
                 {
                     baiViet.TieuDe = txtTieuDe.Text;
@@ -167,14 +174,14 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
                     ShowNotification("Bạn không có quyền truy cập chức năng này", false);
                     return;
                 }
-                
+
                 int baiVietId = int.Parse(hdnRowId.Value); // Lấy ID người dùng đã chỉnh sửa
-                
+
                 // Lấy thông tin người dùng từ cơ sở dữ liệu
                 BaiViet baiViet = BaiVietBLL.GetById(baiVietId);
-                if(baiViet.Slug != txtEditSlug.Text)
+                if (baiViet.Slug != txtEditSlug.Text)
                 {
-                    if (BaiVietBLL.IsSlugExists(txtEditSlug.Text) != null)
+                    if (FriendlyUrlBLL.GetByMa(txtEditSlug.Text) != null)
                     {
                         lblErrorEditMessage.Text = "Slug đã tồn tại trong cơ sở dữ liệu";
                         ScriptManager.RegisterStartupScript(this, GetType(), "openEdit", "openEdit();", true);
