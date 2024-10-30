@@ -13,5 +13,23 @@ namespace CMS.WebUI
 
     public partial class test
     {
+
+        /// <summary>
+        /// txtSummary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtSummary;
+
+        /// <summary>
+        /// txtDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        //protected global::CKEditor.NET.CKEditorControl txtDescription;
     }
 }

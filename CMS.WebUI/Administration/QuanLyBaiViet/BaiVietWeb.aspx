@@ -16,7 +16,6 @@
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
     <%--    <link href="Assets/css/Modal.css" rel="stylesheet" />--%>
     <link href="../Assets/css/Modal.css" rel="stylesheet" />
-
 </asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager ID="ScriptManger1" runat="Server" />

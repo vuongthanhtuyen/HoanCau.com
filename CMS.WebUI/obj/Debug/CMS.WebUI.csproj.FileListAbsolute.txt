@@ -75,3 +75,5 @@ D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.WebUI\bin\Microsoft.CodeDom.Providers.Dot
 D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.WebUI\obj\Debug\CMS.WebUI.csproj.Up2Date
 D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.WebUI\obj\Debug\CMS.WebUI.dll
 D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.WebUI\obj\Debug\CMS.WebUI.pdb
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.WebUI\bin\ImageResizer.dll
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.WebUI\bin\ImageResizer.xml

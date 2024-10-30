@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,7 +45,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationCache\AppCache.cs" />
+    <Compile Include="ApplicationCache\AppContext.cs" />
+    <Compile Include="ApplicationCache\CacheEntry.cs" />
+    <Compile Include="ApplicationCache\CacheLockbox.cs" />
+    <Compile Include="ApplicationCache\TCache.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Helper\ApplicationContext.cs" />
+    <Compile Include="Helper\FileHelper.cs" />
+    <Compile Include="Helper\LanguageHelper.cs" />
+    <Compile Include="Helper\PathValidation.cs" />
+    <Compile Include="Helper\SecurityHelper.cs" />
     <Compile Include="Manager\BaiVietBLL.cs" />
     <Compile Include="Manager\DoiTacBLL.cs" />
     <Compile Include="Manager\FriendlyUrlBLL.cs" />

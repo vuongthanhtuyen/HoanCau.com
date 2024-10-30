@@ -1,6 +1,7 @@
 ﻿using CMS.Core.Manager;
 using CMS.DataAsscess;
 using SubSonic;
+using SweetCMS.Core.Helper;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -19,11 +20,23 @@ namespace CMS.WebUI.Administration.MasterPage
             if (!IsPostBack)
             {
                 ShowMenu();
+                ddlContentLanguage.SelectedValue = ApplicationContext.Current.ContentCurrentLanguageId.ToString();
             }
             if ((List<MenuPermisstion>)Session["MenuPermission"] == null)
             {
                 Response.Redirect("~/Administration/Login.aspx", false);
             }
+        }
+        protected void ddlContentLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ApplicationContext.Current.ContentCurrentLanguageId = int.Parse(ddlContentLanguage.SelectedValue);
+
+            //HttpCookie testCookie = new HttpCookie("VuongThanhTuyen", "2");
+            //testCookie.Expires = DateTime.UtcNow.AddDays(1);
+            //HttpContext.Current.Response.Cookies.Set(testCookie);
+            
+
+            Response.Redirect(ApplicationContext.Current.CurrentUri.AbsoluteUri, false);
         }
 
         private void ShowMenu()

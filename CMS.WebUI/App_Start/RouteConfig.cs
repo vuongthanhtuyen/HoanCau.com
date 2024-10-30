@@ -17,7 +17,8 @@ namespace CMS.WebUI
             //List<SweetCMS.DataAccess.FriendlyUrl> friendlyUrls = FriendlyUrlBLL.GetAll();
             
             var settings = new FriendlyUrlSettings();
-            settings.AutoRedirectMode = RedirectMode.Permanent;
+            //settings.AutoRedirectMode = RedirectMode.Permanent;
+            settings.AutoRedirectMode = RedirectMode.Off;
             routes.EnableFriendlyUrls(settings);
             //routes.MapPageRoute("Trang chu", "", "~/Default.aspx");
             //routes.MapPageRoute("Danh Muc Du An Tieu Bieu", "danh-sach-du-an-tieu-bieu", "~/DanhSachDuAnTieuBieuPublish.aspx");
