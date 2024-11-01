@@ -2,11 +2,13 @@
 using CMS.Core.Publich;
 using CMS.DataAsscess;
 using CMS.WebUI.Administration.AdminUserControl;
+using SubSonic.Sugar;
 using SweetCMS.Core.Helper;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
@@ -46,9 +48,45 @@ namespace CMS.WebUI
           
 
         }
-        protected void btnAdd_Click(object sender, EventArgs e)
+        protected void btnSend_Click(object sender, EventArgs e)
         {
-           
+            // xóa ảnh trong dường dẫn nếu không được sử dụng
+
+                string folderPath = @"/Administration/UploadImage/"; // Replace with your folder path
+            folderPath = Server.MapPath(folderPath);
+                // Check if folder exists
+                if (Directory.Exists(folderPath))
+                {
+                    // Get all files in the folder
+                    string[] files = Directory.GetFiles(folderPath);
+
+                    lblmessage.Text = files.Count().ToString();
+                    //foreach (string filePath in files)
+                    //{
+                    //    // Get just the file name
+                    //    string fileName = Path.GetFileName(filePath);
+
+                    //    // Perform a check or action based on the file name
+                    //    if (fileName.StartsWith("example")) // Example condition
+                    //    {
+                    //        Console.WriteLine($"Processing {fileName}...");
+                    //        // Add your processing code here
+                    //    }
+                    //    else
+                    //    {
+                    //        Console.WriteLine($"{fileName} does not match the criteria.");
+                    //    }
+                    //}
+                }
+                else
+                {
+                lblmessage.Text = "Folder does not exist.";
+                }
+            
+
+
+            //lblmessage.Text = "Đường dẫn ảnh: " + Helpers.ConvertToSavePath(txtImage.Value.Trim(), true);
+
         }
 
 

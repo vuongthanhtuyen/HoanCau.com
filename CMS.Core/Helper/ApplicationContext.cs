@@ -351,7 +351,10 @@ namespace SweetCMS.Core.Helper
         {
             WriteLanguageIdToCookie(CurrentLanguageId);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         ///// <summary>
         ///// Return current language id (1: english, 2:vietnamese)
         ///// </summary>

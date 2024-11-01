@@ -77,3 +77,11 @@ D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.WebUI\obj\Debug\CMS.WebUI.dll
 D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.WebUI\obj\Debug\CMS.WebUI.pdb
 D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.WebUI\bin\ImageResizer.dll
 D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.WebUI\bin\ImageResizer.xml
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.WebUI\bin\CKEditor.NET.dll
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.WebUI\bin\CKFinder.dll
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.WebUI\bin\ImageResizer.Plugins.AnimatedGifs.dll
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.WebUI\bin\ImageResizer.Plugins.PrettyGifs.dll
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.WebUI\bin\ImageResizer.Plugins.SimpleFilters.dll
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.WebUI\bin\ImageResizer.Plugins.Watermark.dll
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.WebUI\bin\ImageResizer.Plugins.WebP.dll
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.WebUI\bin\ImageResizer.Plugins.WhitespaceTrimmer.dll

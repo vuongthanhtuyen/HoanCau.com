@@ -373,15 +373,15 @@ namespace SweetCMS.Core.Helper
 
             if (IsRunningSSL())
             {
-                if (!String.IsNullOrEmpty(SettingManager.GetSettingValue("Common.SharedSSL")))
-                {
-                    result = SettingManager.GetSettingValue("Common.SharedSSL");
-                }
-                else
-                {
-                    result = result.Replace("http:/", "https:/");
-                    result = result.Replace("www.www", "www");
-                }
+                //if (!String.IsNullOrEmpty(SettingManager.GetSettingValue("Common.SharedSSL")))
+                //{
+                //    result = SettingManager.GetSettingValue("Common.SharedSSL");
+                //}
+                //else
+                //{
+                //    result = result.Replace("http:/", "https:/");
+                //    result = result.Replace("www.www", "www");
+                //}
             }
 
             if (!result.EndsWith("/"))

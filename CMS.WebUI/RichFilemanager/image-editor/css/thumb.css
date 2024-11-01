@@ -1,0 +1,189 @@
+
+/* wrapper for component */
+#componentWrapper {
+    height: 52px;
+    width: 100%;
+    max-width: 712px;
+    overflow: hidden;
+    position: relative;
+    margin: auto;
+}
+
+    #componentWrapper .thumbContainer {
+        top: 0px;
+        left: 0px;
+        height: 52px;
+        max-width: 622px;
+        margin-left: 45px;
+        margin-right: 45px;
+        overflow: hidden;
+    }
+
+    #componentWrapper .thumbInnerContainer {
+        position: relative;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        display: none;
+    }
+
+    #componentWrapper .thumb_hidden {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        filter: alpha(opacity=0);
+        -moz-opacity: 0;
+        -khtml-opacity: 0;
+        opacity: 0;
+    }
+
+    #componentWrapper .thumbHolder {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        width: 62px;
+        height: 52px;
+        margin-right: 5px;
+        padding: 0px;
+        float: left;
+        overflow: hidden;
+    }
+
+.thumbHolder p {
+    font-size: 70px;
+    color: white;
+}
+
+#componentWrapper .thumbHolder a {
+    border: 1px dashed #004;
+    display: block;
+    height: 100%;
+}
+
+    #componentWrapper .thumbHolder a .helper {
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+
+    #componentWrapper .thumbHolder a img {
+        max-width: 100%;
+        vertical-align: middle;
+        max-height: 100%;
+    }
+
+#componentWrapper .innerThumbHolder {
+    position: absolute;
+    width: 220px;
+    height: 170px;
+    overflow: hidden;
+}
+
+    #componentWrapper .innerThumbHolder a img {
+        position: absolute;
+        display: block;
+        top: 10px;
+        left: 20px;
+        width: 180px;
+        height: 120px;
+    }
+
+#componentWrapper .thumbHolder a.active {
+    border: 1px solid #0D7615;
+}
+
+#componentWrapper .thumbBackward {
+    position: absolute;
+    width: 40px;
+    height: 52px;
+    left: 0px;
+    top: 0px;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+}
+
+    #componentWrapper .thumbBackward img {
+        position: absolute;
+        display: block;
+        width: 21px;
+        height: 31px;
+        top: 50%;
+        left: 50%;
+        margin-left: -12px;
+        margin-top: -15px;
+    }
+
+#componentWrapper .thumbForward {
+    position: absolute;
+    width: 40px;
+    height: 52px;
+    top: 0px;
+    right: 0px;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+}
+
+    #componentWrapper .thumbForward img {
+        position: absolute;
+        display: block;
+        width: 21px;
+        height: 31px;
+        top: 50%;
+        left: 50%;
+        margin-left: -8px;
+        margin-top: -15px;
+    }
+
+/* title */
+#componentWrapper .title {
+    position: absolute;
+    left: 22px;
+    top: 134px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+#componentWrapper .info {
+    position: absolute;
+    left: 22px;
+    bottom: 4px;
+    font-size: 11px;
+    color: #777;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* public functions */
+#publicFunctions {
+    padding: 10px 25px 20px 20px;
+    background: #444;
+    left: 200px;
+    top: 200px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #fff;
+    list-style: circle;
+}
+
+    #publicFunctions li a {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        color: #fff;
+    }
+
+        #publicFunctions li a:hover, #publicFunctions li .current {
+            text-decoration: underline;
+        }

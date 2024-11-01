@@ -47,5 +47,7 @@ namespace CMS.Core.Manager
                 .Where(TrinhChieuAnh.IdColumn).IsEqualTo(id).ExecuteSingle<TrinhChieuAnh>();
         }
 
+
+        //public static List<string> GetAllFileNameUrlImage
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" ValidateRequest="false" AutoEventWireup="true" MasterPageFile="~/Administration/MasterPage/AdminPage.Master" CodeBehind="BaiVietWeb.aspx.cs" Inherits="CMS.WebUI.Administration.QuanLyBaiViet.BaiVietWeb" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Administration/MasterPage/AdminPage.Master" CodeBehind="BaiVietWeb.aspx.cs" Inherits="CMS.WebUI.Administration.QuanLyBaiViet.BaiVietWeb" %>
 
 <%@ Register Src="~/Administration/AdminUserControl/AdminNotification.ascx" TagPrefix="uc1" TagName="AdminNotification" %>
 <%@ Register Src="~/Administration/AdminUserControl/PagingAdmin.ascx" TagPrefix="uc1" TagName="PagingAdmin" %>
@@ -6,7 +6,7 @@
 <%@ Register Src="~/Administration/AdminUserControl/SummernoteEditor.ascx" TagPrefix="uc1" TagName="SummernoteEditor" %>
 <%@ Register Src="~/Administration/AdminUserControl/ImportImageEdit.ascx" TagPrefix="uc1" TagName="ImportImageEdit" %>
 <%@ Register Src="~/Administration/AdminUserControl/SearchUserControl.ascx" TagPrefix="uc1" TagName="SearchUserControl" %>
-
+<%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 
 
 <asp:Content ID="ctSearch" ContentPlaceHolderID="ctSearch" runat="server">
@@ -113,7 +113,12 @@
                     </div>
                     <div class="form-group">
                         <label for="txtNoiDungChinh">Nội dung chính</label>
-                        <uc1:SummernoteEditor runat="server" ID="SummernoteEditor" />
+
+
+                            <CKEditor:CKEditorControl ID="txtNoiDungChinh" Width="100%" CssClass="ck-editor"
+                                Toolbar="Full" BodyId="StaticPageContent" Language="en-US" AutoParagraph="false"
+                                BasePath="/Administration/Style/plugins/ckeditor/" runat="server" Height="300">
+                            </CKEditor:CKEditorControl>
                     </div>
 
                 </div>
@@ -136,7 +141,7 @@
         </div>
     </div>
 
-    <%-- Edit User Modal --%>
+    <%-- Edit Bài viết Modal --%>
     <div id="myEditModal" class="modal">
         <div class="modal-content-post">
 

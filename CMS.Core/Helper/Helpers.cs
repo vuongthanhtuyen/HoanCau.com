@@ -16,8 +16,8 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Net;
-using ImageResizer;
 using System.Threading;
+using ImageResizer;
 
 namespace SweetCMS.Core.Helper
 {
@@ -98,100 +98,100 @@ namespace SweetCMS.Core.Helper
             //}
             //else
             //{
-                ServicePointManager.Expect100Continue = true;
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+            //        ServicePointManager.Expect100Continue = true;
+            //        ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
-                SmtpClient smtpClient = new SmtpClient();
-                MailMessage message = new MailMessage();
-                MailAddress fromAddress = new MailAddress(SettingManager.GetSettingValue(SettingNames.SmtpSenderEmail), emailSender);
+            //        SmtpClient smtpClient = new SmtpClient();
+            //        MailMessage message = new MailMessage();
+            //        MailAddress fromAddress = new MailAddress(SettingManager.GetSettingValue(SettingNames.SmtpSenderEmail), emailSender);
 
-                NetworkCredential credential = new NetworkCredential(
-                              SettingManager.GetSettingValue(SettingNames.SmtpSenderAccount),
-                              SettingManager.GetSettingValue(SettingNames.SmtpSenderPassword)
-                              );
-                smtpClient.UseDefaultCredentials = false;
-                smtpClient.EnableSsl = SettingManager.GetSettingValueBoolean(SettingNames.SmtpUsingSSL);
-                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtpClient.Credentials = credential;
-                smtpClient.Host = SettingManager.GetSettingValue(SettingNames.SmtpMailServerAddress);
-                smtpClient.Port = SettingManager.GetSettingValueIntAdmin(SettingNames.SmtpPort, 25);
+            //        NetworkCredential credential = new NetworkCredential(
+            //                      SettingManager.GetSettingValue(SettingNames.SmtpSenderAccount),
+            //                      SettingManager.GetSettingValue(SettingNames.SmtpSenderPassword)
+            //                      );
+            //        smtpClient.UseDefaultCredentials = false;
+            //        smtpClient.EnableSsl = SettingManager.GetSettingValueBoolean(SettingNames.SmtpUsingSSL);
+            //        smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+            //        smtpClient.Credentials = credential;
+            //        smtpClient.Host = SettingManager.GetSettingValue(SettingNames.SmtpMailServerAddress);
+            //        smtpClient.Port = SettingManager.GetSettingValueIntAdmin(SettingNames.SmtpPort, 25);
 
-                message.From = fromAddress;
-                message.To.Add(emailToAddress);
-                message.ReplyToList.Add(new MailAddress(emailFromAddress, emailSender));
+            //        message.From = fromAddress;
+            //        message.To.Add(emailToAddress);
+            //        message.ReplyToList.Add(new MailAddress(emailFromAddress, emailSender));
 
-                if (listUserBCC != null && listUserBCC.Count > 0)
-                {
-                    foreach (KeyValuePair<string, string> keyValuePairString in listUserBCC)
-                    {
-                        try
-                        {
-                            message.Bcc.Add(new MailAddress(keyValuePairString.Key, keyValuePairString.Value));
-                        }
-                        catch (Exception ex)
-                        {
+            //        if (listUserBCC != null && listUserBCC.Count > 0)
+            //        {
+            //            foreach (KeyValuePair<string, string> keyValuePairString in listUserBCC)
+            //            {
+            //                try
+            //                {
+            //                    message.Bcc.Add(new MailAddress(keyValuePairString.Key, keyValuePairString.Value));
+            //                }
+            //                catch (Exception ex)
+            //                {
 
-                        }
-                    }
-                }
+            //                }
+            //            }
+            //        }
 
-                message.Subject = subject;
-                message.IsBodyHtml = true;
-                StringBuilder sbContent = new StringBuilder();
-                try
-                {
-                    sbContent.Append(bodyMessage);
-                    sbContent.Append("<br/>");
-                    sbContent.Append(SettingManager.GetSettingValue(SettingNames.EmailSignature));
-                }
-                catch
-                {
-                    sbContent.Append(bodyMessage);
-                }
-                message.Body = sbContent.ToString();
+            //        message.Subject = subject;
+            //        message.IsBodyHtml = true;
+            //        StringBuilder sbContent = new StringBuilder();
+            //        try
+            //        {
+            //            sbContent.Append(bodyMessage);
+            //            sbContent.Append("<br/>");
+            //            sbContent.Append(SettingManager.GetSettingValue(SettingNames.EmailSignature));
+            //        }
+            //        catch
+            //        {
+            //            sbContent.Append(bodyMessage);
+            //        }
+            //        message.Body = sbContent.ToString();
 
-                AlternateView htmlView = AlternateView.CreateAlternateViewFromString(message.Body, new System.Net.Mime.ContentType(System.Net.Mime.MediaTypeNames.Text.Html));
+            //        AlternateView htmlView = AlternateView.CreateAlternateViewFromString(message.Body, new System.Net.Mime.ContentType(System.Net.Mime.MediaTypeNames.Text.Html));
 
-                htmlView.TransferEncoding = System.Net.Mime.TransferEncoding.SevenBit;
-                message.AlternateViews.Add(htmlView);
+            //        htmlView.TransferEncoding = System.Net.Mime.TransferEncoding.SevenBit;
+            //        message.AlternateViews.Add(htmlView);
 
-                // Send SMTP mail
-                smtpClient.Send(message);
+            //        // Send SMTP mail
+            //        smtpClient.Send(message);
+            //    //}
             //}
-        }
 
-        public static void SendSmtpMailTest(string emailSender, string emailFromAddress,
-            string emailToAddress, string subject, string bodyMessage,
-            bool isBodyHtml, Dictionary<string, string> listUserBCC)
-        {
-            MimeKit.MimeMessage email = new MimeKit.MimeMessage();
+            //public static void SendSmtpMailTest(string emailSender, string emailFromAddress,
+            //    string emailToAddress, string subject, string bodyMessage,
+            //    bool isBodyHtml, Dictionary<string, string> listUserBCC)
+            //{
+            //    MimeKit.MimeMessage email = new MimeKit.MimeMessage();
 
-            email.From.Add(new MimeKit.MailboxAddress("Adamas hotel CMS", "noreply@adamashotel.vn"));
-            email.To.Add(new MimeKit.MailboxAddress("Customer", emailToAddress));
+            //    email.From.Add(new MimeKit.MailboxAddress("Adamas hotel CMS", "noreply@adamashotel.vn"));
+            //    email.To.Add(new MimeKit.MailboxAddress("Customer", emailToAddress));
 
-            if (listUserBCC != null && listUserBCC.Count > 0)
-            {
-                foreach (KeyValuePair<string, string> keyValuePairString in listUserBCC)
-                {
-                    email.Bcc.Add(new MimeKit.MailboxAddress(keyValuePairString.Key, keyValuePairString.Value));
-                }
-            }
+            //    if (listUserBCC != null && listUserBCC.Count > 0)
+            //    {
+            //        foreach (KeyValuePair<string, string> keyValuePairString in listUserBCC)
+            //        {
+            //            email.Bcc.Add(new MimeKit.MailboxAddress(keyValuePairString.Key, keyValuePairString.Value));
+            //        }
+            //    }
 
-            email.Subject = subject;
-            email.Body = new MimeKit.TextPart(isBodyHtml ? "html" : "plain")
-            {
-                Text = bodyMessage
-            };
-            using (var smtp = new MailKit.Net.Smtp.SmtpClient())
-            {
-                smtp.Connect("pro54.emailserver.vn",465, true);
+            //    email.Subject = subject;
+            //    email.Body = new MimeKit.TextPart(isBodyHtml ? "html" : "plain")
+            //    {
+            //        Text = bodyMessage
+            //    };
+            //    using (var smtp = new MailKit.Net.Smtp.SmtpClient())
+            //    {
+            //        smtp.Connect("pro54.emailserver.vn",465, true);
 
-                //Note: only needed if the SMTP server requires authentication
-                smtp.Authenticate("noreply@adamashotel.vn", "AdamasHotel@2024");
+            //        //Note: only needed if the SMTP server requires authentication
+            //        smtp.Authenticate("noreply@adamashotel.vn", "AdamasHotel@2024");
 
-                smtp.Send(email);
-                smtp.Disconnect(true);
-            }
+            //        smtp.Send(email);
+            //        smtp.Disconnect(true);
+            //    }
         }
         #endregion
 
@@ -640,7 +640,8 @@ namespace SweetCMS.Core.Helper
                     string hostPath = string.Empty;
                     hostPath = HostPath;
                     string ip = string.Empty;
-                    Dictionary<string, Dictionary<string, string>> dicServer = SettingManager.DicServer;
+                    //Dictionary<string, Dictionary<string, string>> dicServer = SettingManager.DicServer;
+                    Dictionary<string, Dictionary<string, string>> dicServer = null;
                     if (dicServer != null && dicServer.Count > 0)
                     {
                         foreach (KeyValuePair<string, Dictionary<string, string>> keyValuePairString in dicServer)
@@ -727,20 +728,21 @@ namespace SweetCMS.Core.Helper
         {
             string ip = SweetCMS.Core.Helper.Helpers.GetServerIP();
 
-            Dictionary<string, Dictionary<string, string>> dicServer = SweetCMS.Core.Manager.SettingManager.DicServer;
+            //Dictionary<string, Dictionary<string, string>> dicServer = SweetCMS.Core.Manager.SettingManager.DicServer;
+            Dictionary<string, Dictionary<string, string>> dicServer = null;
 
             string ss = ma.Groups[1].Value.Trim();
 
-            if (string.IsNullOrEmpty(dicServer["sv1"]["PrivateIP"]) == true
-                && string.IsNullOrEmpty(dicServer["sv1"]["PublicIP"]) == true)
-            {
+            //if (string.IsNullOrEmpty(dicServer["sv1"]["PrivateIP"]) == true
+            //    && string.IsNullOrEmpty(dicServer["sv1"]["PublicIP"]) == true)
+            //{
                 if (ss.StartsWith("\""))
                     return "\"/uploads";
                 else if (ss.StartsWith("'"))
                     return "'/uploads";
                 else
                     return "/uploads";
-            }
+            //}
 
             bool isbreak = false;
             bool isSetmanual = false;
@@ -899,7 +901,8 @@ namespace SweetCMS.Core.Helper
         {
             if (string.IsNullOrEmpty(content) == false)
             {
-                Dictionary<string, Dictionary<string, string>> dicServer = SettingManager.DicServer;
+                //Dictionary<string, Dictionary<string, string>> dicServer = SettingManager.DicServer;
+                Dictionary<string, Dictionary<string, string>> dicServer = null;
                 if (dicServer != null && dicServer.Count > 0)
                 {
                     Regex re = new Regex("(sv|sv\\d+\\/)uploads\\/", RegexOptions.Singleline | RegexOptions.IgnoreCase);

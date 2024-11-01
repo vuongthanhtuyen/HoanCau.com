@@ -105,13 +105,13 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
         protected global::System.Web.UI.WebControls.TextBox txtMoTaNgan;
 
         /// <summary>
-        /// SummernoteEditor control.
+        /// txtNoiDungChinh control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CMS.WebUI.Administration.AdminUserControl.SummernoteEditor SummernoteEditor;
+        protected global::CKEditor.NET.CKEditorControl txtNoiDungChinh;
 
         /// <summary>
         /// ImportImage control.

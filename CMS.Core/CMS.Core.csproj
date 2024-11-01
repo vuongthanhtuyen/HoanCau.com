@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ImageResizer, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageResizer.4.2.8\lib\net45\ImageResizer.dll</HintPath>
+    </Reference>
     <Reference Include="SubSonic">
       <HintPath>..\Library\SubSonic.dll</HintPath>
     </Reference>
@@ -52,10 +55,16 @@
     <Compile Include="ApplicationCache\TCache.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Helper\ApplicationContext.cs" />
+    <Compile Include="Helper\CMSImageType.cs" />
+    <Compile Include="Helper\CommonHelper.cs" />
     <Compile Include="Helper\FileHelper.cs" />
+    <Compile Include="Helper\Helpers.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
+    <Compile Include="Helper\MIMEAssistant.cs" />
     <Compile Include="Helper\PathValidation.cs" />
+    <Compile Include="Helper\RenderAttribute.cs" />
     <Compile Include="Helper\SecurityHelper.cs" />
+    <Compile Include="Helper\VnUnicodeHelper.cs" />
     <Compile Include="Manager\BaiVietBLL.cs" />
     <Compile Include="Manager\DoiTacBLL.cs" />
     <Compile Include="Manager\FriendlyUrlBLL.cs" />
@@ -67,6 +76,7 @@
     <Compile Include="Manager\MenuWebTrenBLL.cs" />
     <Compile Include="Manager\NguoiDungManagerBLL.cs" />
     <Compile Include="Manager\DanhMucBaiVietBLL.cs" />
+    <Compile Include="Manager\SettingManager.cs" />
     <Compile Include="Manager\SlideBLL.cs" />
     <Compile Include="Manager\VaiTroManagerBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,6 +93,8 @@
       <Name>CMS.DataAsscess</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

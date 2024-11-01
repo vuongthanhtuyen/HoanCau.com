@@ -19,7 +19,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
         public override string MenuMa { get; set; } = "Danh-sach-bai-viet";
         //private const int idCurrentUser = 31;
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {   
             if (!IsPostBack)
             {
                 BindDataByQuyen();
@@ -90,7 +90,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     else if (e.CommandName == "ChinhSuaChiTiet")
                     {
                         txtEditTieuDe.Text = baiViet.TieuDe;
-                        txtEditNoiDungChinh.SetContent(baiViet.NoiDungChinh);
+                        txtEditNoiDungChinh.SetContent(Server.HtmlDecode(baiViet.NoiDungChinh));
                         txtEditSlug.Text = baiViet.Slug;
                         txtEditThumbnailUrl.SetFileImage(baiViet.ThumbnailUrl);
                         chkEditTrangThai.Checked = baiViet.TrangThai ?? false;
@@ -123,7 +123,9 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
 
                 BaiViet baiViet = new BaiViet();
                 lblAddErrorMessage.Text = "";
-                string noiDungChinh = SummernoteEditor.GetContent();
+                string noiDungChinh = txtNoiDungChinh.Text;
+                //string noiDungChinhs = Server.HtmlEncode(txtNoiDungChinh.Text);
+                //lblAddErrorMessage.Text = "KHông endcode" + noiDungChinh + "\n Có endcode" + Server.HtmlDecode(noiDungChinhs);
                 if (string.IsNullOrEmpty(txtTieuDe.Text.Trim()) || txtTieuDe.Text.Trim().Length <= 3)
                 {
                     lblAddErrorMessage.Text += "Tiêu đề không được để trống<br />";
@@ -182,7 +184,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                         txtTieuDe.Text = string.Empty;
                         txtSlug.Text = string.Empty;
                         txtMoTaNgan.Text = string.Empty;
-                        SummernoteEditor.GetEmpty();
+                        //SummernoteEditor.GetEmpty();
                     }
                     else
                     {
@@ -298,7 +300,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
 
 
                     baiViet.TieuDe = txtEditTieuDe.Text;
-                    baiViet.NoiDungChinh = txtEditNoiDungChinh.GetContent(); // Giả sử phương thức GetContent() trả về nội dung
+                    baiViet.NoiDungChinh = Server.HtmlEncode(txtEditNoiDungChinh.GetContent()) ; // Giả sử phương thức GetContent() trả về nội dung
                     baiViet.Slug = txtEditSlug.Text;
                     baiViet.ThumbnailUrl = txtEditThumbnailUrl.GetStringFileUrl();
                     baiViet.TrangThai = chkEditTrangThai.Checked;

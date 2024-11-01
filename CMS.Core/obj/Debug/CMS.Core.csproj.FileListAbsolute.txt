@@ -8,3 +8,5 @@ D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.Core\bin\Debug\CMS.DataAsscess.pdb
 D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.Core\obj\Debug\CMS.Core.csproj.Up2Date
 D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.Core\obj\Debug\CMS.Core.dll
 D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.Core\obj\Debug\CMS.Core.pdb
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.Core\bin\Debug\ImageResizer.dll
+D:\SweetSoft\Exsercise\CMS_HoanCau\CMS.Core\bin\Debug\ImageResizer.xml
