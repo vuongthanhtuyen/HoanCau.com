@@ -80,7 +80,7 @@ namespace SweetCMS.DataAccess
 	    /// Inserts a record, can be used with the Object Data Source
 	    /// </summary>
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
-	    public void Insert(string TieuDe,string Slug,string MoTaNgan,string NoiDungChinh,int? TacGiaId,int? ViewCount,string ThumbnailUrl,DateTime? NgayTao,DateTime? ChinhSuaGanNhat,bool? TrangThai)
+	    public void Insert(string TieuDe,string Slug,string MoTaNgan,string NoiDungChinh,int? TacGiaId,int? ViewCount,string ThumbnailUrl,DateTime? NgayTao,DateTime? ChinhSuaGanNhat,bool? TrangThai,int? LangID)
 	    {
 		    BaiViet item = new BaiViet();
 		    
@@ -104,6 +104,8 @@ namespace SweetCMS.DataAccess
             
             item.TrangThai = TrangThai;
             
+            item.LangID = LangID;
+            
 	    
 		    item.Save(UserName);
 	    }
@@ -112,7 +114,7 @@ namespace SweetCMS.DataAccess
 	    /// Updates a record, can be used with the Object Data Source
 	    /// </summary>
         [DataObjectMethod(DataObjectMethodType.Update, true)]
-	    public void Update(int Id,string TieuDe,string Slug,string MoTaNgan,string NoiDungChinh,int? TacGiaId,int? ViewCount,string ThumbnailUrl,DateTime? NgayTao,DateTime? ChinhSuaGanNhat,bool? TrangThai)
+	    public void Update(int Id,string TieuDe,string Slug,string MoTaNgan,string NoiDungChinh,int? TacGiaId,int? ViewCount,string ThumbnailUrl,DateTime? NgayTao,DateTime? ChinhSuaGanNhat,bool? TrangThai,int? LangID)
 	    {
 		    BaiViet item = new BaiViet();
 	        item.MarkOld();
@@ -139,6 +141,8 @@ namespace SweetCMS.DataAccess
 			item.ChinhSuaGanNhat = ChinhSuaGanNhat;
 				
 			item.TrangThai = TrangThai;
+				
+			item.LangID = LangID;
 				
 	        item.Save(UserName);
 	    }

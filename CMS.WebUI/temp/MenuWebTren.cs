@@ -232,6 +232,20 @@ namespace SweetCMS.DataAccess
 				colvarNgayTao.ForeignKeyTableName = "";
 				schema.Columns.Add(colvarNgayTao);
 				
+				TableSchema.TableColumn colvarLangID = new TableSchema.TableColumn(schema);
+				colvarLangID.ColumnName = "LangID";
+				colvarLangID.DataType = DbType.Int32;
+				colvarLangID.MaxLength = 0;
+				colvarLangID.AutoIncrement = false;
+				colvarLangID.IsNullable = true;
+				colvarLangID.IsPrimaryKey = false;
+				colvarLangID.IsForeignKey = false;
+				colvarLangID.IsReadOnly = false;
+				
+						colvarLangID.DefaultSetting = @"((1))";
+				colvarLangID.ForeignKeyTableName = "";
+				schema.Columns.Add(colvarLangID);
+				
 				BaseSchema = schema;
 				//add this schema to the provider
 				//so we can query it later
@@ -305,6 +319,14 @@ namespace SweetCMS.DataAccess
 			get { return GetColumnValue<DateTime?>(Columns.NgayTao); }
 			set { SetColumnValue(Columns.NgayTao, value); }
 		}
+		  
+		[XmlAttribute("LangID")]
+		[Bindable(true)]
+		public int? LangID 
+		{
+			get { return GetColumnValue<int?>(Columns.LangID); }
+			set { SetColumnValue(Columns.LangID, value); }
+		}
 		
 		#endregion
 		
@@ -325,7 +347,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Inserts a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Insert(string varTen,int? varMenuChaId,string varSlug,string varMoTa,bool? varHienThi,int? varStt,DateTime? varNgayTao)
+		public static void Insert(string varTen,int? varMenuChaId,string varSlug,string varMoTa,bool? varHienThi,int? varStt,DateTime? varNgayTao,int? varLangID)
 		{
 			MenuWebTren item = new MenuWebTren();
 			
@@ -343,6 +365,8 @@ namespace SweetCMS.DataAccess
 			
 			item.NgayTao = varNgayTao;
 			
+			item.LangID = varLangID;
+			
 		
 			if (System.Web.HttpContext.Current != null)
 				item.Save(System.Web.HttpContext.Current.User.Identity.Name);
@@ -353,7 +377,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Updates a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Update(int varId,string varTen,int? varMenuChaId,string varSlug,string varMoTa,bool? varHienThi,int? varStt,DateTime? varNgayTao)
+		public static void Update(int varId,string varTen,int? varMenuChaId,string varSlug,string varMoTa,bool? varHienThi,int? varStt,DateTime? varNgayTao,int? varLangID)
 		{
 			MenuWebTren item = new MenuWebTren();
 			
@@ -372,6 +396,8 @@ namespace SweetCMS.DataAccess
 				item.Stt = varStt;
 			
 				item.NgayTao = varNgayTao;
+			
+				item.LangID = varLangID;
 			
 			item.IsNew = false;
 			if (System.Web.HttpContext.Current != null)
@@ -442,6 +468,13 @@ namespace SweetCMS.DataAccess
         
         
         
+        public static TableSchema.TableColumn LangIDColumn
+        {
+            get { return Schema.Columns[8]; }
+        }
+        
+        
+        
         #endregion
 		#region Columns Struct
 		public struct Columns
@@ -454,6 +487,7 @@ namespace SweetCMS.DataAccess
 			 public static string HienThi = @"HienThi";
 			 public static string Stt = @"Stt";
 			 public static string NgayTao = @"NgayTao";
+			 public static string LangID = @"LangID";
 						
 		}
 		#endregion

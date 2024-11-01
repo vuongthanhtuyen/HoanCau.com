@@ -41,6 +41,12 @@ namespace CMS.Core.Manager
         {
             return new FriendlyUrlController().FetchByID(friendlyUrlID).SingleOrDefault();
         }
+        public static FriendlyUrl GetByPostIdAndTypeId(int postId, int catId)
+        {
+            return new Select().From(FriendlyUrl.Schema)
+                .Where(FriendlyUrl.PostIdColumn).IsEqualTo(postId)
+                .And(FriendlyUrl.PostTypeColumn).IsEqualTo(catId).ExecuteSingle<FriendlyUrl>();
+        }
         public static bool DeleteByMa(string slugString)
         {
             return new Delete().From(FriendlyUrl.Schema).Where(FriendlyUrl.SlugUrlColumn)

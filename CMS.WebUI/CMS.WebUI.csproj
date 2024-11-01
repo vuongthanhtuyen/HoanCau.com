@@ -2427,6 +2427,7 @@
     <Content Include="Administration\LienHeWeb.aspx" />
     <Content Include="Administration\Logout.aspx" />
     <Content Include="Administration\UploadImage\ion_Login.png" />
+    <Content Include="AjaxHandler.aspx" />
     <Content Include="Assets\validation-engine\css\screenshot.png" />
     <Content Include="Assets\validation-engine\css\style.css" />
     <Content Include="Assets\validation-engine\css\validationEngine.jquery.css" />
@@ -2983,6 +2984,13 @@
     </Compile>
     <Compile Include="Administration\Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxHandler.aspx.cs">
+      <DependentUpon>AjaxHandler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxHandler.aspx.designer.cs">
+      <DependentUpon>AjaxHandler.aspx</DependentUpon>
     </Compile>
     <Compile Include="Common\BaseAdminPage.cs">
       <SubType>ASPXCodeBehind</SubType>

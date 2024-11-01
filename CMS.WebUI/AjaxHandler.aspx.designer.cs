@@ -11,7 +11,7 @@ namespace CMS.WebUI
 {
 
 
-    public partial class test
+    public partial class AjaxHandler
     {
     }
 }

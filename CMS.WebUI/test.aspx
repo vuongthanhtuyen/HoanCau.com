@@ -21,7 +21,7 @@
 
         </script>--%>
 
-     <div class="form-group">
+<%--     <div class="form-group">
      <label class="control-label">Mô tả ngắn</label>
      <textarea id="txtSummary" runat="server" placeholder="Mô tả ngắn" class="form-control" rows="4"></textarea>
      <label class="small">Nội dung mô tả ngắn không quá 1000 ký tự</label>
@@ -39,10 +39,10 @@
 
     <button id="btnrequest" type="button">Request Data</button>
 
+--%>
 
 
-
-    <div class="wrapContent4 bgColor2 pageNewsDetail">
+   <%-- <div class="wrapContent4 bgColor2 pageNewsDetail">
         <div class="container-xxl containerItem">
             <div class="contentItem">
                 <div class="row rowItem">
@@ -60,32 +60,31 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--%>
 
 
         <script>
-            $(document).ready(function () {
-                $('#btnrequest').click(function () {
-                var content = CKEDITOR.instances['<%= txtDescription.ClientID %>'].getData();
-                //console.log(content);
-                $.ajax({
-                    url: 'test.aspx/BindInDecription',
-                    data: JSON.stringify({ txtDecription: content }),
-                    method: 'post',
-                    contentType: 'application/json; charset=utf-8',
-                    dataType: 'json',
-                    success: function (response) {
-                        //var post = JSON.parse(response.d); // đây là ép chuổi về json
-                        var post = response.d; // còn đây là một chuỗi không cần ép nữa!!
+            //$(document).ready(function () {
+            //    $('#btnrequest').click(function () {
+        //        //console.log(content);
+        //        $.ajax({
+        //            url: 'test.aspx/BindInDecription',
+        //            data: JSON.stringify({ txtDecription: content }),
+        //            method: 'post',
+        //            contentType: 'application/json; charset=utf-8',
+        //            dataType: 'json',
+        //            success: function (response) {
+        //                //var post = JSON.parse(response.d); // đây là ép chuổi về json
+        //                var post = response.d; // còn đây là một chuỗi không cần ép nữa!!
                         
-                        $('#mainContentHere').html(post);
-                    },
-                    error: function (error) {
-                        console.error("Error:", error);
-                    }
-                })
-            })
-        });
+        //                $('#mainContentHere').html(post);
+        //            },
+        //            error: function (error) {
+        //                console.error("Error:", error);
+        //            }
+        //        })
+        //    })
+        //});
 
 
 
@@ -191,6 +190,63 @@
         //    xhttp.send(JSON.stringify({ firstname: "Henry", lastname: "Ford" }));
         //}
     </script>
+
+
+    <h1 id="content">Hello, World!</h1>
+<%--    <button id="btnVietnamese" type="button">Tiếng Việt</button>
+    <button id="btnEnglish" type="button">English</button>--%>
+
+    <script>
+        //$(document).ready(function () {
+        //    var baseUrl = window.location.origin;
+
+        //        // Xây dựng đường dẫn cho yêu cầu AJAX
+        //        var ajaxUrl = baseUrl + '/test.aspx/GetLangID';
+
+        //    $('#btnVietnamese').click(function () {
+        //        $.ajax({
+        //            url: ajaxUrl,
+        //            data: JSON.stringify({ langId: "1" }),
+        //            method: 'post',
+        //            contentType: 'application/json; charset=utf-8',
+        //            dataType: 'json',
+        //            success: function (response) {
+        //                //var post = JSON.parse(response.d); // đây là ép chuổi về json
+        //                var post = response.d; // còn đây là một chuỗi không cần ép nữa!!
+        //                history.pushState(null, '', '/vi/test');
+        //                $('#content').text(post);
+        //            },
+        //            error: function (error) {
+        //                console.error("Error:", error);
+        //            }
+        //        });
+                
+        //    });
+
+        //    $('#btnEnglish').click(function () {
+
+        //        $.ajax({
+        //            url: ajaxUrl,
+        //            data: JSON.stringify({ langId: "2" }),
+        //            method: 'post',
+        //            contentType: 'application/json; charset=utf-8',
+        //            dataType: 'json',
+        //            success: function (response) {
+        //                //var post = JSON.parse(response.d); // đây là ép chuổi về json
+        //                var post = response.d; // còn đây là một chuỗi không cần ép nữa!!
+        //                history.pushState(null, '', '/en/test');
+        //                $('#content').text(post);
+        //            },
+        //            error: function (error) {
+        //                console.error("Error:", error);
+        //            }
+        //        });
+        //    });
+        //});
+    </script>
+
+
+
 
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="contentEnd" ID="content3">

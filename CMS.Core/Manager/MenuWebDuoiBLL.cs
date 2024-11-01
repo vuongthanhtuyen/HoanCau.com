@@ -25,6 +25,12 @@ namespace CMS.Core.Manager
             }
             return sp.ExecuteTypedList<MenuWebDto>();
         }
+        public static List<MenuWebDuoi> GetAllByLangId(int langID)
+        {
+            return new Select().From(MenuWebDuoi.Schema)
+                .Where(MenuWebDuoi.LangIDColumn).IsEqualTo(langID)
+                .ExecuteTypedList<MenuWebDuoi>();
+        }
         public static List<MenuWebDuoi> GetListParentMenu()
         {
             List<MenuWebDuoi> listMenu = new Select()
@@ -56,23 +62,28 @@ namespace CMS.Core.Manager
             return new Select().From(MenuWebDuoi.Schema)
                 .Where(MenuWebDuoi.IdColumn).IsEqualTo(id).ExecuteSingle<MenuWebDuoi>();
         }
-        public static List<BaiViet> GetListBaiViet()
+        public static List<BaiViet> GetListBaiViet(int langID)
         {
 
-            string sql = string.Format(@" select b.Id, b.TieuDe from BaiViet as b 
+            string sql = string.Format(@" select b.TieuDe, b.Slug from BaiViet as b 
                 left join NhomBaiViet as n on b.Id = n.BaiVietId
-	                and n.DanhmucId <> 4 ");
+	                and n.DanhmucId <> 4 where b.LangID =  " + langID);
             return new InlineQuery().ExecuteTypedList<BaiViet>(sql);
 
         }
-        public static List<BaiViet> GetListDuAnTieuBieu()
+        public static List<BaiViet> GetListDuAnTieuBieu(int langID)
         {
-            return new Select(BaiViet.IdColumn, BaiViet.TieuDeColumn).From(BaiViet.Schema).InnerJoin(NhomBaiViet.BaiVietIdColumn, BaiViet.IdColumn)
-                .Where(NhomBaiViet.DanhmucIdColumn).IsEqualTo(4).ExecuteTypedList<BaiViet>();
+            return new Select(BaiViet.TieuDeColumn, BaiViet.SlugColumn).From(BaiViet.Schema).InnerJoin(NhomBaiViet.BaiVietIdColumn, BaiViet.IdColumn)
+                .Where(NhomBaiViet.DanhmucIdColumn).IsEqualTo(4)
+                .And(BaiViet.LangIDColumn).IsEqualTo(langID)
+                .ExecuteTypedList<BaiViet>();
         }
-        public static List<DanhMuc> GetListDanhMuc()
+        public static List<DanhMuc> GetListDanhMuc(int langID)
         {
-            return new Select(DanhMuc.IdColumn, DanhMuc.TenColumn).From(DanhMuc.Schema).Where(DanhMuc.IdColumn).IsNotEqualTo(4).ExecuteTypedList<DanhMuc>();
+            return new Select(DanhMuc.TenColumn, DanhMuc.SlugColumn).From(DanhMuc.Schema)
+                .Where(DanhMuc.IdColumn).IsNotEqualTo(4)
+                .And(DanhMuc.LangIDColumn).IsEqualTo(langID)
+                .ExecuteTypedList<DanhMuc>();
             //string sql = string.Format(@"select * from DanhMuc where DanhMuc.Id <> 4 ");
             //return new InlineQuery().ExecuteTypedList<DanhMuc>(sql);
         }

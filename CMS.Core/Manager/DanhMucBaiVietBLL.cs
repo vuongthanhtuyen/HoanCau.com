@@ -3,8 +3,10 @@ using SubSonic;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +15,7 @@ namespace CMS.Core.Manager
 {
     public class DanhMucBaiVietBLL
     {
+      
         public static List<DanhMucDto> GetPaging(int? PageSize, int? PageIndex, string Key, bool? ASC, int? DanhMucChaId, out int rowsCount)
         {
             rowsCount = 0;
@@ -26,11 +29,20 @@ namespace CMS.Core.Manager
             }
             return sp.ExecuteTypedList<DanhMucDto>();
         }
-        public static List<DanhMuc> GetNameAndId()
-        {
-            string sql = string.Format(@"select Id, Ten from DanhMuc");
-            return new InlineQuery().ExecuteTypedList<DanhMuc>(sql);
+        //public static List<DanhMuc> GetDanhMucByLangIdAndDanhMucType(int langId, int CatType)
+        //{
+            
 
+        //        //select* from DanhMuc as d
+        //        //inner join FriendlyUrl as f on d.Id = f.PostId
+        //        //where PostType = 0 and langID = 2
+
+        //}
+
+        public static List<DanhMuc> GetNameAndId(int langId)
+        {
+             return new Select(DanhMuc.IdColumn, DanhMuc.TenColumn)
+                .From(DanhMuc.Schema).Where(DanhMuc.LangIDColumn).IsEqualTo(langId).ExecuteTypedList<DanhMuc>();
         }
 
         public static DanhMuc GetById(int id)
@@ -43,25 +55,29 @@ namespace CMS.Core.Manager
 
             danhMuc = new DanhMucController().Insert(danhMuc);
 
-            FriendlyUrlBLL.Insert(new FriendlyUrl() 
-            { PostId = danhMuc.Id, PostType = FriendlyUrlBLL.FriendlyURLTypeHelper.Category });
+            FriendlyUrlBLL.Insert(new FriendlyUrl()
+            {
+                PostId = danhMuc.Id,
+                PostType = FriendlyUrlBLL.FriendlyURLTypeHelper.Category,
+                SlugUrl = danhMuc.Slug
+            });
             return danhMuc;
         }
-        public static List<DanhMuc> GetAllNoPaging(string keySearch = null)
+        public static List<DanhMuc> GetAllNoPaging(int langId, int CatType, string keySearch = null)
         {
-
-
             if(keySearch != null)
             {
-                string sql = string.Format("select * from DanhMuc where Ten like N'%{0}%' or Slug like '%{0}%'", keySearch)
+                string sql = string.Format("select* from DanhMuc as d inner join FriendlyUrl as f on d.Id = f.PostId where PostType = {1} and langID = {2} and Ten like N'%{0}%' or Slug like '%{0}%'", keySearch, CatType, langId)
 ;               return new InlineQuery().ExecuteTypedList<DanhMuc>(sql);
             }
-            return new Select().From(DanhMuc.Schema).ExecuteTypedList<DanhMuc>();
+            return new Select().From(DanhMuc.Schema).InnerJoin(FriendlyUrl.PostIdColumn, DanhMuc.IdColumn)
+                .Where(DanhMuc.LangIDColumn).IsEqualTo(langId).And(FriendlyUrl.PostTypeColumn).IsEqualTo(CatType)
+                .ExecuteTypedList<DanhMuc>();
         }
         public static DanhMuc Update(DanhMuc danhMuc)
         {
 
-            var friendlyUrl = FriendlyUrlBLL.GetById(danhMuc.Id);
+            var friendlyUrl = FriendlyUrlBLL.GetByPostIdAndTypeId(danhMuc.Id, FriendlyUrlBLL.FriendlyURLTypeHelper.Category);
             if(danhMuc.Slug != friendlyUrl.SlugUrl)
             {
                 friendlyUrl.SlugUrl = danhMuc.Slug;
@@ -94,7 +110,7 @@ namespace CMS.Core.Manager
             return select.ExecuteSingle<DanhMuc>();
 
         }
-        public static List<BaiVietInDanhMucDto> GetBaiVietInDanhMuc(int danhMucId)
+        public static List<BaiVietInDanhMucDto> GetBaiVietInDanhMuc(int danhMucId, int langId)
         {
             string sql = string.Format($@"select b.Id as BaiVietId, b.TieuDe, n.DanhmucId as DanhMucId,
                 case 
@@ -102,7 +118,7 @@ namespace CMS.Core.Manager
 	                else 1
 	                end as DaChon
                 from BaiViet as b 
-                left join NhomBaiViet as n on b.Id = n.BaiVietId and n.DanhmucId = {danhMucId}");
+                left join NhomBaiViet as n on b.Id = n.BaiVietId and n.DanhmucId = {danhMucId} where b.LangID = {langId}");
             return new InlineQuery().ExecuteTypedList<BaiVietInDanhMucDto>(sql);
 
         }

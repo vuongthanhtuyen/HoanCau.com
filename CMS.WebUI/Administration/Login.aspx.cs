@@ -42,7 +42,16 @@ namespace CMS.WebUI.Administration
                         // Lưu Quyền của User vào session
                         List<MenuPermisstion> listMenuPermission = LoginBLL.GetListMenuPermisstionByUser(login.Id);
                         Session["MenuPermission"] = listMenuPermission;
+                        string requestURL = Request.QueryString["url"];
+                        if (requestURL != null) { 
+                            Response.Redirect(requestURL, false);
+
+                        }
+                        else
+                        {
                         Response.Redirect("~/Administration/Default.aspx", false);
+
+                        }
                         return;
                     }
                     else

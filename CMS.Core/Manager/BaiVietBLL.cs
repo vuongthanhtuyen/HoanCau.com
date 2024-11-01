@@ -12,10 +12,10 @@ namespace CMS.Core.Manager
 {
     public class BaiVietBLL
     {
-        public static List<BaiVietDto> GetPaging(int? PageSize, int? PageIndex, string Key, bool? ASC, int? DanhMucChaId, out int rowsCount)
+        public static List<BaiVietDto> GetPaging(int? PageSize, int? PageIndex, string Key, bool? ASC, int? DanhMucChaId, int langID, out int rowsCount)
         {
             rowsCount = 0;
-            StoredProcedure sp = SPs.StoreBaiVietTimKiemPhanTrang(PageSize, PageIndex, Key, ASC, DanhMucChaId, out rowsCount);
+            StoredProcedure sp = SPs.StoreBaiVietTimKiemPhanTrang(PageSize, PageIndex, Key, ASC, DanhMucChaId, langID, out rowsCount);
             DataSet ds = sp.GetDataSet();
             if (ds != null && ds.Tables.Count > 0)
             {
@@ -55,7 +55,7 @@ namespace CMS.Core.Manager
       
         public static BaiViet Update(BaiViet baiViet)
         {
-            var friendUrl = FriendlyUrlBLL.GetByPostId(baiViet.Id);
+            var friendUrl = FriendlyUrlBLL.GetByPostIdAndTypeId(baiViet.Id, FriendlyUrlBLL.FriendlyURLTypeHelper.Article);
             if (friendUrl.SlugUrl != baiViet.Slug)
             {
                 friendUrl.SlugUrl = baiViet.Slug;
@@ -66,7 +66,7 @@ namespace CMS.Core.Manager
 
 
 
-        public static List<DanhMucBaiVietDto> GetAllDanhMucBaiVietById(int postId)
+        public static List<DanhMucBaiVietDto> GetAllDanhMucBaiVietById(int postId, int langId)
         {
             string sql = string.Format(@"Select c.Id, c.Ten, c.Slug,
                 case
@@ -74,7 +74,7 @@ namespace CMS.Core.Manager
 	                else 0
                 end as IsHaveDanhMuc
                 from DanhMuc as c
-                left join NhomBaiViet as cd on cd.DanhMucId = c.Id AND cd.BaiVietId = {0}", postId);
+                left join NhomBaiViet as cd on cd.DanhMucId = c.Id AND cd.BaiVietId = {0} where c.LangID = {1}", postId,langId);
             return new InlineQuery().ExecuteTypedList<DanhMucBaiVietDto>(sql);
         }
 

@@ -2,6 +2,7 @@
 using CMS.Core.Publich;
 using CMS.DataAsscess;
 using CMS.WebUI.Controls;
+using SweetCMS.Core.Helper;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace CMS.WebUI
             int totalRow = 0;
             int pageIndex = PagePublish.GetPageIndex();
 
-            postList = DanhMucPublishBLL.GetPaging(2, pageIndex, null, null, 4, out totalRow);
+            postList = DanhMucPublishBLL.GetPaging(2, pageIndex, null, null, 4, ApplicationContext.Current.ContentCurrentLanguageId, out totalRow);
 
             //pageIndex = PagingAdminWeb.GetPageIndex();
             //ViewState["LastIndex"] = (pageIndex - 1) * pageSize;

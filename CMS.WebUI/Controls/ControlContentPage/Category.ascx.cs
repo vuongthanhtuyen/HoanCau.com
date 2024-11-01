@@ -1,5 +1,6 @@
 ﻿using CMS.Core.Publich;
 using CMS.DataAsscess;
+using SweetCMS.Core.Helper;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -34,7 +35,7 @@ namespace CMS.WebUI.Controls.ControlContentPage
 
                 danhMuc = DanhMucPublishBLL.GetByMa(slugCate);
 
-                postList = DanhMucPublishBLL.GetPaging(10, 1, null, null, danhMuc.Id, out totalRow);
+                postList = DanhMucPublishBLL.GetPaging(10, 1, null, null, danhMuc.Id,ApplicationContext.Current.CurrentLanguageId, out totalRow);
                 SlideTop.ShowBreadcrumb(danhMuc.Ten);
                 Page.Title = danhMuc.Ten.ToString();
 

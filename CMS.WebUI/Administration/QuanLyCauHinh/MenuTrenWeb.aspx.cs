@@ -2,6 +2,7 @@
 using CMS.DataAsscess;
 using CMS.WebUI.Administration.Common;
 using Newtonsoft.Json;
+using SweetCMS.Core.Helper;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
     public partial class MenuTrenWeb : AdminPermistion
     {
         public override string MenuMa { get; set; } = "Menu-hien-thi-tren";
-        private List<MenuWebDto> listMenuDto = new List<MenuWebDto>();
+        private List<MenuWebTren> listMenuDto = new List<MenuWebTren>();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -50,11 +51,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
 
                 if (modal == "openEdit")
                 {
-
                     var menu = MenuWebTrenBLL.GetById(id);
-
-
-
                     if (listMenuDto.Any(x => x.MenuChaId == id))
                     {
                         lblEditDrop.Visible = false;
@@ -128,22 +125,16 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
             try
             {
                 List<ItemTreeView> lstTree = new List<ItemTreeView>();
-
-
-
                 int totalRow = 0;
-                listMenuDto = MenuWebTrenBLL.GetPaging(50, 1, Request.QueryString["search"], null, null, out totalRow);
-
-                List<MenuWebDto> lst = listMenuDto;
-                //lst = lst.Where(x => x.Id != 4).ToList();
-
+                listMenuDto = MenuWebTrenBLL.GetAllByLangId(ApplicationContext.Current.ContentCurrentLanguageId);
+                List<MenuWebTren> lst = listMenuDto;
                 if (lst != null && lst.Count > 0)
                 {
                     Func<int, List<ItemTreeView>> func = null;
                     func = (parentId) =>
                     {
                         List<ItemTreeView> lstTreeChild = new List<ItemTreeView>();
-                        List<MenuWebDto> lstChild = lst.Where(t => t.MenuChaId == parentId).ToList();
+                        List<MenuWebTren> lstChild = lst.Where(t => t.MenuChaId == parentId).ToList();
                         if (lstChild != null && lstChild.Count > 0)
                         {
                             foreach (var item in lstChild)
@@ -152,7 +143,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                                 {
                                     ItemTreeView itemTree = new ItemTreeView();
                                     itemTree.MenuId = item.Id;
-                                    itemTree.text = string.Format("{0} {1} {2}", item.Ten, GetStatusText(BasicStatusHelper.Active), "<a class=\"btn btn-danger p-0\" style=\" font-size:14px;\"  href=\"/Administration/QuanLyCauHinh/MenuTrenWeb.aspx?modal=openDelete&idMenu="+item.Id+ "\", item.Id\" ><span class=\"fa fa-trash\"></span> Xóa</a>");
+                                    itemTree.text = string.Format("{0} {1} {2}", item.Ten, GetStatusText(BasicStatusHelper.Active), "<a class=\"btn btn-danger p-0\" style=\" font-size:14px;\"  href=\"/Administration/QuanLyCauHinh/MenuTrenWeb.aspx?modal=openDelete&idMenu=" + item.Id + "\", item.Id\" ><span class=\"fa fa-trash\"></span> Xóa</a>");
                                     //itemTree.text = string.Format("{0} {1} ({2})", item.Ten, "Active", true);
                                     itemTree.icon = "fa fa-link";
                                     itemTree.state = new ItemState { opened = true };
@@ -239,7 +230,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
 
         private void BindMenuCha()
         {
-            List<MenuWebTren> listMenu = MenuWebTrenBLL.GetListParentMenu();
+            List<MenuWebTren> listMenu = MenuWebTrenBLL.GetListParentMenu(ApplicationContext.Current.ContentCurrentLanguageId);
             List<ListItem> list = listMenu.Select(x => new ListItem(x.Ten, x.Id.ToString())).ToList();
 
             ddlAddMenuCha.Items.Clear();
@@ -256,34 +247,50 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
         private void BindAddUrl()
         {
             #region Thêm dữ liệu cho Droplist của trang Add menu
-            List<BaiViet> listBaiViet = MenuWebTrenBLL.GetListBaiViet();
+            List<BaiViet> listBaiViet = MenuWebTrenBLL.GetListBaiViet(ApplicationContext.Current.ContentCurrentLanguageId);
             List<ListItem> listAdd = listBaiViet.Select(x => new ListItem(x.TieuDe, x.Slug)).ToList();
             drAddbaiviet.Items.Clear();
             drAddbaiviet.Items.Add(new ListItem("Không", "0"));
             drAddbaiviet.Items.AddRange(listAdd.ToArray());
 
 
-            List<DanhMuc> listDanhMuc = MenuWebTrenBLL.GetListDanhMuc();
+            List<DanhMuc> listDanhMuc = MenuWebTrenBLL.GetListDanhMuc(ApplicationContext.Current.ContentCurrentLanguageId);
             List<ListItem> listItemDM = listDanhMuc.Select(x => new ListItem(x.Ten, x.Slug)).ToList();
             drAddDanhSach.Items.Clear();
             drAddDanhSach.Items.Add(new ListItem("Không", "0"));
             drAddDanhSach.Items.AddRange(listItemDM.ToArray());
 
 
-            List<BaiViet> listDuAnTieuBieu = MenuWebTrenBLL.GetListDuAnTieuBieu();
+            List<BaiViet> listDuAnTieuBieu = MenuWebTrenBLL.GetListDuAnTieuBieu(ApplicationContext.Current.ContentCurrentLanguageId);
             List<ListItem> listItemDATB = listDuAnTieuBieu.Select(x => new ListItem(x.TieuDe, x.Slug)).ToList();
             drAddDuAnTieuBieu.Items.Clear();
             drAddDuAnTieuBieu.Items.Add(new ListItem("Không", "0"));
             drAddDuAnTieuBieu.Items.AddRange(listItemDATB.ToArray());
+            List<ListItem> listItemTrangTinh = new List<ListItem>();
 
-            List<ListItem> listItemTrangTinh = new List<ListItem>()
+            if (ApplicationContext.Current.ContentCurrentLanguageId == 1)
             {
-                new ListItem("Trang chủ","home"),
-                new ListItem("Đối tác","doi-tac"),
-                new ListItem("Ds dự án tiêu biểu","danh-dach-du-an-tieu-bieu"),
-                new ListItem("Lịch sử phát triển","lich-su-phat-trien"),
-                new ListItem("Liên hệ","lien-he"),
-            };
+                listItemTrangTinh = new List<ListItem>
+                    {
+                        new ListItem("Trang chủ","home"),
+                        new ListItem("Đối tác","doi-tac"),
+                        new ListItem("Ds dự án tiêu biểu","danh-dach-du-an-tieu-bieu"),
+                        new ListItem("Lịch sử phát triển","lich-su-phat-trien"),
+                        new ListItem("Liên hệ","lien-he"),
+                    };
+            }
+            else
+            {
+                listItemTrangTinh = new List<ListItem>
+                    {
+                        new ListItem("Trang chủ","home-en"),
+                        new ListItem("Đối tác","parner"),
+                        new ListItem("Ds dự án tiêu biểu","featured-project"),
+                        new ListItem("Lịch sử phát triển","history-of-development"),
+                        new ListItem("Liên hệ","history-of-development"),
+                    };
+            }
+
             drAddTrangTinh.Items.Clear();
             drAddTrangTinh.Items.Add(new ListItem("Không", "0"));
             drAddTrangTinh.Items.AddRange(listItemTrangTinh.ToArray());
@@ -344,6 +351,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                     menu.Stt = int.Parse(txtStt.Text);
                     menu.NgayTao = DateTime.Now;
                     menu.HienThi = true;
+                    menu.LangID = ApplicationContext.Current.ContentCurrentLanguageId;
                     menu = MenuWebTrenBLL.Insert(menu);
                     ScriptManager.RegisterStartupScript(this, GetType(), "CloseModal", "closeModal();", true);
                     if (menu != null)

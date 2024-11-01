@@ -105,15 +105,15 @@
             <asp:UpdatePanel ID="UpdatePanelEdit" UpdateMode="Conditional" runat="server">
                 <ContentTemplate>
                     <span class="close d-flex justify-content-end" onclick="closeEdit()">&times;</span>
-                    <h4>Chỉnh Cập nhật vai trò </h4>
+                    <h4> Cập nhật danh mục </h4>
                     <asp:Label ID="lblEditErrorMessage" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
                     <div class="justify-content-center align-items-center main-edit-modal" style="max-height: 500px; overflow-y: auto; overflow-x: hidden;">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="baiViet-tab" data-toggle="tab" data-target="#baiViet" type="button" role="tab" aria-controls="baiViet" aria-selected="true">Bài viết</button>
+                                <button class="nav-link active" id="baiViet-tab" data-toggle="tab" data-target="#baiViet" type="button" role="tab" aria-controls="baiViet" aria-selected="true">Danh Mục</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="danhMuc-tab" data-toggle="tab" data-target="#danhMuc" type="button" role="tab" aria-controls="danhMuc" aria-selected="false">Danh Mục</button>
+                                <button class="nav-link" id="danhMuc-tab" data-toggle="tab" data-target="#danhMuc" type="button" role="tab" aria-controls="danhMuc" aria-selected="false">Bài viết</button>
                             </li>
                         </ul>
                         <div class="tab-content tab-select-url" id="myTabContent">

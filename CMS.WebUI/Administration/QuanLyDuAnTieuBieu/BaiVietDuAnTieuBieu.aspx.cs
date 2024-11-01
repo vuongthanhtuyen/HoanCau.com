@@ -2,6 +2,7 @@
 using CMS.DataAsscess;
 using CMS.WebUI.Administration.AdminUserControl;
 using CMS.WebUI.Administration.Common;
+using SweetCMS.Core.Helper;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -56,7 +57,7 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
             pageIndex = PagingAdminWeb.GetPageIndex();
             List<BaiVietDto> postList = new List<BaiVietDto>();
             int totalRow = 0;
-            postList = BaiVietBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], null, 4, out totalRow);
+            postList = BaiVietBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], null, 4, ApplicationContext.Current.ContentCurrentLanguageId, out totalRow);
             SearchUserControl.SetSearcKey();
             ViewState["LastIndex"] = (pageIndex - 1) * pageSize;
             PagingAdminWeb.GetPaging(totalRow, pageIndex);
@@ -263,7 +264,7 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
                     hdnRowId.Value = baiVietId.ToString();
                     if (e.CommandName == "ChinhSuaDanhMuc")
                     {
-                        var danhMuclist = BaiVietBLL.GetAllDanhMucBaiVietById(baiVietId);
+                        var danhMuclist = BaiVietBLL.GetAllDanhMucBaiVietById(baiVietId, ApplicationContext.Current.CurrentLanguageId);
                         GridViewDanhMuc.DataSource = danhMuclist;
                         GridViewDanhMuc.DataBind();
                         // Đăng ký đoạn mã JavaScript

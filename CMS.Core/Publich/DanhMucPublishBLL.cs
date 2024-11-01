@@ -12,10 +12,10 @@ namespace CMS.Core.Publich
 {
     public class DanhMucPublishBLL
     {
-        public static List<BaiVietDto> GetPaging(int? PageSize, int? PageIndex, string Key, bool? ASC, int? DanhMucChaId, out int rowsCount)
+        public static List<BaiVietDto> GetPaging(int? PageSize, int? PageIndex, string Key, bool? ASC, int? DanhMucChaId, int langID, out int rowsCount)
         {
             rowsCount = 0;
-            StoredProcedure sp = SPs.StoreBaiVietTimKiemPhanTrang(PageSize, PageIndex, Key, ASC, DanhMucChaId, out rowsCount);
+            StoredProcedure sp = SPs.StoreBaiVietTimKiemPhanTrang(PageSize, PageIndex, Key, ASC, DanhMucChaId,langID, out rowsCount);
             DataSet ds = sp.GetDataSet();
             if (ds != null && ds.Tables.Count > 0)
             {

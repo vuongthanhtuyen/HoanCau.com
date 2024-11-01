@@ -1,4 +1,5 @@
 ﻿using CMS.Core.Publich;
+using SweetCMS.Core.Helper;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -127,7 +128,7 @@ namespace CMS.WebUI.Controls.ControlContentPage
         private void GetCoTheBanSeThichDuAnTieuBieu(int duAnTieuBieuId)
         {
             int totalRow = 0;
-            var postList = DanhMucPublishBLL.GetPaging(null, null, null, null, 4, out totalRow);
+            var postList = DanhMucPublishBLL.GetPaging(null, null, null, null, 4, ApplicationContext.Current.ContentCurrentLanguageId, out totalRow);
             postList = postList.Where(x => x.Id != duAnTieuBieuId).ToList();
             string show = "";
             foreach (var post in postList)

@@ -80,7 +80,7 @@ namespace SweetCMS.DataAccess
 	    /// Inserts a record, can be used with the Object Data Source
 	    /// </summary>
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
-	    public void Insert(string Ten,int? DanhMucChaId,string Slug,string MoTa)
+	    public void Insert(string Ten,int? DanhMucChaId,string Slug,string MoTa,int? LangID)
 	    {
 		    DanhMuc item = new DanhMuc();
 		    
@@ -92,6 +92,8 @@ namespace SweetCMS.DataAccess
             
             item.MoTa = MoTa;
             
+            item.LangID = LangID;
+            
 	    
 		    item.Save(UserName);
 	    }
@@ -100,7 +102,7 @@ namespace SweetCMS.DataAccess
 	    /// Updates a record, can be used with the Object Data Source
 	    /// </summary>
         [DataObjectMethod(DataObjectMethodType.Update, true)]
-	    public void Update(int Id,string Ten,int? DanhMucChaId,string Slug,string MoTa)
+	    public void Update(int Id,string Ten,int? DanhMucChaId,string Slug,string MoTa,int? LangID)
 	    {
 		    DanhMuc item = new DanhMuc();
 	        item.MarkOld();
@@ -115,6 +117,8 @@ namespace SweetCMS.DataAccess
 			item.Slug = Slug;
 				
 			item.MoTa = MoTa;
+				
+			item.LangID = LangID;
 				
 	        item.Save(UserName);
 	    }

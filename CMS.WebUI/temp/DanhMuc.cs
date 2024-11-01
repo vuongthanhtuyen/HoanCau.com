@@ -191,6 +191,20 @@ namespace SweetCMS.DataAccess
 				colvarMoTa.ForeignKeyTableName = "";
 				schema.Columns.Add(colvarMoTa);
 				
+				TableSchema.TableColumn colvarLangID = new TableSchema.TableColumn(schema);
+				colvarLangID.ColumnName = "langID";
+				colvarLangID.DataType = DbType.Int32;
+				colvarLangID.MaxLength = 0;
+				colvarLangID.AutoIncrement = false;
+				colvarLangID.IsNullable = true;
+				colvarLangID.IsPrimaryKey = false;
+				colvarLangID.IsForeignKey = false;
+				colvarLangID.IsReadOnly = false;
+				
+						colvarLangID.DefaultSetting = @"((1))";
+				colvarLangID.ForeignKeyTableName = "";
+				schema.Columns.Add(colvarLangID);
+				
 				BaseSchema = schema;
 				//add this schema to the provider
 				//so we can query it later
@@ -239,6 +253,14 @@ namespace SweetCMS.DataAccess
 		{
 			get { return GetColumnValue<string>(Columns.MoTa); }
 			set { SetColumnValue(Columns.MoTa, value); }
+		}
+		  
+		[XmlAttribute("LangID")]
+		[Bindable(true)]
+		public int? LangID 
+		{
+			get { return GetColumnValue<int?>(Columns.LangID); }
+			set { SetColumnValue(Columns.LangID, value); }
 		}
 		
 		#endregion
@@ -291,7 +313,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Inserts a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Insert(string varTen,int? varDanhMucChaId,string varSlug,string varMoTa)
+		public static void Insert(string varTen,int? varDanhMucChaId,string varSlug,string varMoTa,int? varLangID)
 		{
 			DanhMuc item = new DanhMuc();
 			
@@ -303,6 +325,8 @@ namespace SweetCMS.DataAccess
 			
 			item.MoTa = varMoTa;
 			
+			item.LangID = varLangID;
+			
 		
 			if (System.Web.HttpContext.Current != null)
 				item.Save(System.Web.HttpContext.Current.User.Identity.Name);
@@ -313,7 +337,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Updates a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Update(int varId,string varTen,int? varDanhMucChaId,string varSlug,string varMoTa)
+		public static void Update(int varId,string varTen,int? varDanhMucChaId,string varSlug,string varMoTa,int? varLangID)
 		{
 			DanhMuc item = new DanhMuc();
 			
@@ -326,6 +350,8 @@ namespace SweetCMS.DataAccess
 				item.Slug = varSlug;
 			
 				item.MoTa = varMoTa;
+			
+				item.LangID = varLangID;
 			
 			item.IsNew = false;
 			if (System.Web.HttpContext.Current != null)
@@ -375,6 +401,13 @@ namespace SweetCMS.DataAccess
         
         
         
+        public static TableSchema.TableColumn LangIDColumn
+        {
+            get { return Schema.Columns[5]; }
+        }
+        
+        
+        
         #endregion
 		#region Columns Struct
 		public struct Columns
@@ -384,6 +417,7 @@ namespace SweetCMS.DataAccess
 			 public static string DanhMucChaId = @"DanhMucChaId";
 			 public static string Slug = @"Slug";
 			 public static string MoTa = @"MoTa";
+			 public static string LangID = @"langID";
 						
 		}
 		#endregion

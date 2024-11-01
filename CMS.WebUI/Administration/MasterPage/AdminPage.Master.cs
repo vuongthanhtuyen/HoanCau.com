@@ -24,7 +24,13 @@ namespace CMS.WebUI.Administration.MasterPage
             }
             if ((List<MenuPermisstion>)Session["MenuPermission"] == null)
             {
-                Response.Redirect("~/Administration/Login.aspx", false);
+                string requestURL = Request.Url.AbsoluteUri;
+                if (requestURL.Contains("Logout"))
+                {
+                    Response.Redirect("~/Administration/Login.aspx", false);
+                    return;
+                }
+                Response.Redirect("~/Administration/Login.aspx?url="+ requestURL, false);
             }
         }
         protected void ddlContentLanguage_SelectedIndexChanged(object sender, EventArgs e)

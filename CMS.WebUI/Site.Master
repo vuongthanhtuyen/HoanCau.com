@@ -123,8 +123,8 @@
                             <div class="headerTopRight">
                                 <div class="wrapMenuMainHeaderBottom menuSearchAndLanguage">
                                     <ul class="clearfix listMenuMainHeaderBottom">
-                                        <li class="listItemMenuMainHeaderBottom menuSubHeaderBottom menuLanguageHeaderBottom"><a class="listLinkMenuMainHeaderBottom" href="javascript:void(0)" title="Tiếng Việt">
-                                            <img class="imgLanguageHeaderBottom" src="/Assets/images/language/vi.jpg" alt="Tiếng Việt"></a>
+                                        <li class="listItemMenuMainHeaderBottom menuSubHeaderBottom menuLanguageHeaderBottom"><a  class="listLinkMenuMainHeaderBottom" href="javascript:void(0)" title="Tiếng Việt">
+                                            <img class="imgLanguageHeaderBottom" runat="server" id="logoLangId" src="/Assets/images/language/vi.jpg" alt="Tiếng Việt"></a>
                                             <div class="btnDropdowMenuSubHeaderBottom">
                                                 <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 256 512">
                                                     <path fill="currentColor" d="M119.5 326.9L3.5 209.1c-4.7-4.7-4.7-12.3 0-17l7.1-7.1c4.7-4.7 12.3-4.7 17 0L128 287.3l100.4-102.2c4.7-4.7 12.3-4.7 17 0l7.1 7.1c4.7 4.7 4.7 12.3 0 17L136.5 327c-4.7 4.6-12.3 4.6-17-.1z"></path>
@@ -132,9 +132,9 @@
                                             </div>
                                             <div class="wrapMenuMainHeaderBottom">
                                                 <ul class="listMenuMainHeaderBottom">
-                                                    <li class="listItemMenuMainHeaderBottom"><a class="listLinkMenuMainHeaderBottom" href="javascript:void(0)" title="English">
+                                                    <li class="listItemMenuMainHeaderBottom"><a class="listLinkMenuMainHeaderBottom" id="btnEnglish" title="English">
                                                         <img src="/Assets/images/language/en.jpg" alt="English" /></a></li>
-                                                    <li class="listItemMenuMainHeaderBottom"><a class="listLinkMenuMainHeaderBottom" href="javascript:void(0)" title="Việt Nam">
+                                                    <li class="listItemMenuMainHeaderBottom"><a class="listLinkMenuMainHeaderBottom" id="btnVietnamese" title="Việt Nam">
                                                         <img src="/Assets/images/language/vi.jpg" alt="Việt Nam" /></a></li>
                                                 </ul>
                                             </div>
@@ -146,7 +146,7 @@
 
 
                             <div class="wrapMenuMainHeaderBottom">
-                                <ul class="listMenuMainHeaderBottom">
+                                <ul id="ltrMenuWebTrenul" class="listMenuMainHeaderBottom">
                                     <asp:Literal ID="ltrMenuWebTren" runat="server"></asp:Literal>
                                     
                                 </ul>
@@ -237,10 +237,76 @@
             <!-- end copyright-->
         </div>
         <!-- end footer-->
-        <uc1:btnContact runat="server" id="btnContact" />
+            <!-- btn contact-->
+    <div class="wrapBtnCall"> <a class="linkItem" href="Lien-he" title="Liên hệ" >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 7.1 5.8 12 12 12 2.4 0 4.9-.7 7.1-2.4L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64zm16 352c0 8.8-7.2 16-16 16H288l-12.8 9.6L208 428v-60H64c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16h384c8.8 0 16 7.2 16 16v288z" />
+            </svg><asp:Label runat="server" ID="lblLienHeMaster"></asp:Label></a></div>
+    <!-- end btn contact-->
 
 
     </form>
+
+
+
+
+    <script>
+    $(document).ready(function () {
+        var baseUrl = window.location.origin;
+
+            // Xây dựng đường dẫn cho yêu cầu AJAX
+        var ajaxUrl = baseUrl + '/AjaxHandler.aspx/ChangLangueId';
+
+        $('#btnVietnamese').click(function () {
+            $('#<%=logoLangId.ClientID%>').attr('src', '/Assets/images/language/vi.jpg');
+            $('#<%=lblLienHeMaster.ClientID%>').text("LIÊN HỆ");
+            $.ajax({
+                url: ajaxUrl,
+                data: JSON.stringify({ langId: "1" }),
+                method: 'post',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (response) {
+                    //var post = JSON.parse(response.d); // đây là ép chuổi về json
+                    var post = response.d; // còn đây là một chuỗi không cần ép nữa!!
+                    //history.pushState(null, '', window.location.pathname.replace(/^\/en/, ''));
+                    $('#ltrMenuWebTrenul').html(post);
+                    console.log(post);
+                },
+                error: function (error) {
+                    console.error("Error:", error);
+                }
+                 
+            });
+            
+        });
+
+        $('#btnEnglish').click(function () {
+            $('#<%=logoLangId.ClientID%>').attr('src', '/Assets/images/language/en.jpg');
+            $('#<%=lblLienHeMaster.ClientID%>').text("CONTACT");
+            $.ajax({
+                url: ajaxUrl,
+                data: JSON.stringify({ langId: "2" }),
+                method: 'post',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (response) {
+                    //var post = JSON.parse(response.d); // đây là ép chuổi về json
+                    var post = response.d; // còn đây là một chuỗi không cần ép nữa!!
+                    //history.pushState(null, '', '/en');
+                    $('#ltrMenuWebTrenul').html(post);
+                    console.log(post);
+                },
+                error: function (error) {
+                    console.error("Error:", error);
+                }
+            });
+        });
+
+
+
+    });
+    </script>
     <script src="/Assets/js/lib.js?v=f81a959662efae2fc3cc158351e6d90c"></script>
    <asp:ContentPlaceHolder ID="contentEnd" runat="server">
 

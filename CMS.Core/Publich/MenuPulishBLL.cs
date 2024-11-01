@@ -12,9 +12,9 @@ namespace CMS.Core.Publich
     public class MenuPulishBLL
     {
 
-        public static List<MenuWebTren> GetAllMenuWebTren()
+        public static List<MenuWebTren> GetAllMenuWebTren(int langID)
         {
-            string sql = string.Format(@" select * from menuWebTren  order by MenuChaId , Stt ");
+            string sql = string.Format(@" select * from menuWebTren where LangID = {0}  order by MenuChaId , Stt ",langID);
             return new InlineQuery().ExecuteTypedList<MenuWebTren>(sql);
          }
     

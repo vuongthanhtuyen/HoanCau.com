@@ -3,6 +3,7 @@ using CMS.DataAsscess;
 using CMS.WebUI.Administration.AdminUserControl;
 using CMS.WebUI.Administration.Common;
 using Microsoft.Ajax.Utilities;
+using SweetCMS.Core.Helper;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -59,7 +60,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
             pageIndex = PagingAdminWeb.GetPageIndex();
             List<BaiVietDto> postList = new List<BaiVietDto>();
             int totalRow = 0;
-            postList = BaiVietBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], null, null, out totalRow);
+            postList = BaiVietBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], null, null, ApplicationContext.Current.ContentCurrentLanguageId, out totalRow);
 
             SearchUserControl.SetSearcKey();
 
@@ -79,7 +80,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     hdnRowId.Value = baiVietId.ToString();
                     if (e.CommandName == "ChinhSuaDanhMuc")
                     {
-                        var danhMuclist = BaiVietBLL.GetAllDanhMucBaiVietById(baiVietId);
+                        var danhMuclist = BaiVietBLL.GetAllDanhMucBaiVietById(baiVietId, ApplicationContext.Current.ContentCurrentLanguageId);
                         GridViewDanhMuc.DataSource = danhMuclist;
                         GridViewDanhMuc.DataBind();
                         // Đăng ký đoạn mã JavaScript
@@ -166,6 +167,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     baiViet.TrangThai = true;
                     baiViet.ViewCount = 1;
                     baiViet.ChinhSuaGanNhat = DateTime.Now;
+                    baiViet.LangID = ApplicationContext.Current.ContentCurrentLanguageId;
 
                     baiViet = BaiVietBLL.Insert(baiViet);
                     ScriptManager.RegisterStartupScript(this, GetType(), "CloseModal", "closeModal();", true);

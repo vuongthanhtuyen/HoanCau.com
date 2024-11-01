@@ -1,6 +1,7 @@
 ﻿using CMS.Core.Manager;
 using CMS.DataAsscess;
 using CMS.WebUI.Administration.Common;
+using SweetCMS.Core.Helper;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -135,7 +136,7 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
                     hdnRowId.Value = danhMucId.ToString();
                     if (e.CommandName == "ChinhSuaChiTiet")
                     {
-                        List<DanhMuc> listDanhMuc = DanhMucBaiVietBLL.GetNameAndId();
+                        List<DanhMuc> listDanhMuc = DanhMucBaiVietBLL.GetNameAndId(ApplicationContext.Current.CurrentLanguageId);
                         txtEditTen.Text = danhMuc.Ten;
                         txtEditMa.Text = danhMuc.Slug;
                         txtEditMota.Text = danhMuc.MoTa;

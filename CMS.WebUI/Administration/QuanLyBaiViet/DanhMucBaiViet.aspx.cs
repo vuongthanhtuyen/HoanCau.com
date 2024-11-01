@@ -6,7 +6,7 @@ using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using SweetCMS.Core.Helper;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using static CMS.WebUI.Common.BaseAdminPage;
@@ -45,7 +45,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                 if (modal == "openEdit")
                 {
                     var danhMuc = DanhMucBaiVietBLL.GetById(id);
-                    List<DanhMuc> listDanhMuc = DanhMucBaiVietBLL.GetNameAndId();
+                    List<DanhMuc> listDanhMuc = DanhMucBaiVietBLL.GetNameAndId(ApplicationContext.Current.ContentCurrentLanguageId);
                     List<ListItem> list = listDanhMuc.Where(x => x.Id != danhMuc.Id).Select(x => new ListItem(x.Ten, x.Id.ToString())).ToList();
                     ddlEditDanhMuc.Items.Clear();
                     ddlEditDanhMuc.Items.Add(new ListItem("Không có danh mục", "0"));
@@ -56,7 +56,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     txtEditMota.Text = danhMuc.MoTa;
                     ddlEditDanhMuc.SelectedIndex = danhMuc.DanhMucChaId ?? 0;
                     UpdatePanelEdit.Update();
-                    baivietinDanhMucCurrent = DanhMucBaiVietBLL.GetBaiVietInDanhMuc(id);
+                    baivietinDanhMucCurrent = DanhMucBaiVietBLL.GetBaiVietInDanhMuc(id,ApplicationContext.Current.ContentCurrentLanguageId);
                     GridBaiVietInDanhMuc.DataSource = baivietinDanhMucCurrent;
                     GridBaiVietInDanhMuc.DataBind();
                     //UpdatePanelThemBaiViet.Update();
@@ -130,8 +130,8 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
             try
             {
                 List<ItemTreeView> lstTree = new List<ItemTreeView>();
-                List<DanhMuc> lst = DanhMucBaiVietBLL.GetAllNoPaging(Request.QueryString["search"]);
-                lst = lst.Where(x => x.Id != 4).ToList();
+                List<DanhMuc> lst = DanhMucBaiVietBLL.GetAllNoPaging(ApplicationContext.Current.ContentCurrentLanguageId, FriendlyUrlBLL.FriendlyURLTypeHelper.Category, Request.QueryString["search"]);
+                //lst = lst.Where(x => x.Id != 4).ToList();
 
                 if (lst != null && lst.Count > 0)
                 {
@@ -208,7 +208,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
         private void BindListDanhMucCha()
         {
 
-            List<DanhMuc> listDanhMuc = DanhMucBaiVietBLL.GetNameAndId();
+            List<DanhMuc> listDanhMuc = DanhMucBaiVietBLL.GetNameAndId(ApplicationContext.Current.ContentCurrentLanguageId);
             List<ListItem> list = listDanhMuc.Select(x => new ListItem(x.Ten, x.Id.ToString())).ToList();
             ddlDanhMuc.Items.Clear();
             ddlDanhMuc.Items.Add(new ListItem("Không có danh mục", "0"));
@@ -259,7 +259,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                         danhMuc.Slug = txtMa.Text;
                         danhMuc.DanhMucChaId = int.Parse(ddlDanhMuc.SelectedValue);
                         danhMuc.MoTa = txtMota.Text;
-
+                        danhMuc.LangID = ApplicationContext.Current.ContentCurrentLanguageId;
                         danhMuc = DanhMucBaiVietBLL.Insert(danhMuc);
                         Response.Redirect(Request.Url.AbsolutePath);
                         //ScriptManager.RegisterStartupScript(this, GetType(), "CloseModal", "closeModal();", true);
@@ -377,9 +377,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                         // Lấy giá trị từ các ô trong GridView, ví dụ:
                         int lblBaiVietId = int.Parse(((Label)row.FindControl("lblBaiVietId")).Text);
                         //int? lblDanhMucId = ((Label)row.FindControl("lblDanhMucId")).Text == null ? (int?)null : int.Parse(((Label)row.FindControl("lblBaiVietId")).Text);
-
                         bool daChon = ((CheckBox)row.FindControl("DaChon")).Checked;
-
                         listBaiVietInDanhMuc.Add(new BaiVietInDanhMucDto
                         {
                             BaiVietId = lblBaiVietId,
@@ -387,8 +385,6 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                             DaChon = daChon ? 1 : 0
                         });
                     }
-
-                  
                     ShowNotification(DanhMucBaiVietBLL.UpdateDanhMucBaiViet(listBaiVietInDanhMuc, baivietinDanhMucCurrent, danhMucId));
                     baivietinDanhMucCurrent = listBaiVietInDanhMuc;
                 }

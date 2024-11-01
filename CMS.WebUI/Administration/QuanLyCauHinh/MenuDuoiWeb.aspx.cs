@@ -2,6 +2,7 @@
 using CMS.DataAsscess;
 using CMS.WebUI.Administration.Common;
 using Newtonsoft.Json;
+using SweetCMS.Core.Helper;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
     public partial class MenuDuoiWeb : AdminPermistion
     {
         public override string MenuMa { get; set; } = "Menu-hien-thi-duoi";
-        private static List<MenuWebDto> listMenuDto = new List<MenuWebDto>();
+        private static List<MenuWebDuoi> listMenuDto = new List<MenuWebDuoi>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -34,7 +35,6 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
         private void GetModal()
         {
             string modal = Request.QueryString["modal"];
-
             if (modal == "openModal")
             {
                 string MenuIdParent = Request.QueryString["MenuIdParent"];
@@ -47,14 +47,9 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
             if (int.TryParse(stidMenu, out int id))
             {
                 hdnRowId.Value = id.ToString();
-
                 if (modal == "openEdit")
                 {
-
                     var menu = MenuWebDuoiBLL.GetById(id);
-
-
-
                     if (listMenuDto.Any(x => x.MenuChaId == id))
                     {
                         lblEditDrop.Visible = false;
@@ -128,22 +123,15 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
             try
             {
                 List<ItemTreeView> lstTree = new List<ItemTreeView>();
-
-
-
-                int totalRow = 0;
-                listMenuDto = MenuWebDuoiBLL.GetPaging(50, 1, Request.QueryString["search"], null, null, out totalRow);
-
-                List<MenuWebDto> lst = listMenuDto;
-                lst = lst.Where(x => x.Id != 4).ToList();
-
+                listMenuDto = MenuWebDuoiBLL.GetAllByLangId(ApplicationContext.Current.ContentCurrentLanguageId);
+                List<MenuWebDuoi> lst = listMenuDto;
                 if (lst != null && lst.Count > 0)
                 {
                     Func<int, List<ItemTreeView>> func = null;
                     func = (parentId) =>
                     {
                         List<ItemTreeView> lstTreeChild = new List<ItemTreeView>();
-                        List<MenuWebDto> lstChild = lst.Where(t => t.MenuChaId == parentId).ToList();
+                        List<MenuWebDuoi> lstChild = lst.Where(t => t.MenuChaId == parentId).ToList();
                         if (lstChild != null && lstChild.Count > 0)
                         {
                             foreach (var item in lstChild)
@@ -220,7 +208,6 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
             }
         }
 
-
         private class ItemTreeView
         {
             public int MenuId { get; set; }
@@ -235,27 +222,19 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
             public bool opened { get; set; }
         }
 
-
-
-
-
-       
         private void BindGrid(int pageIndex = 1, int pageSize = 10, int menuCha = 0)
         {
-            pageIndex = PagingAdminWeb.GetPageIndex();
-            int totalRow = 0;
-            if (menuCha != 0)
-                listMenuDto = MenuWebDuoiBLL.GetPaging(pageSize, pageIndex, null, null, menuCha, out totalRow);
-            else
-                listMenuDto = MenuWebDuoiBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], null, null, out totalRow);
-            SearchUserControl.SetSearcKey();
+            //pageIndex = PagingAdminWeb.GetPageIndex();
+            //int totalRow = 0;
+            //if (menuCha != 0)
+            //    listMenuDto = MenuWebDuoiBLL.GetPaging(pageSize, pageIndex, null, null, menuCha, out totalRow);
+            //else
+            //    listMenuDto = MenuWebDuoiBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], null, null, out totalRow);
+            //SearchUserControl.SetSearcKey();
 
-            ViewState["LastIndex"] = (pageIndex - 1) * pageSize;
-            PagingAdminWeb.GetPaging(totalRow, pageIndex);
-
-
-
-            UpdatePanelMainTable.Update();
+            //ViewState["LastIndex"] = (pageIndex - 1) * pageSize;
+            //PagingAdminWeb.GetPaging(totalRow, pageIndex);
+            //UpdatePanelMainTable.Update();
 
             //BindListDanhMucCha();
         }
@@ -280,35 +259,49 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
         private void BindAddUrl()
         {
             #region Thêm dữ liệu cho Droplist của trang Add menu
-            List<BaiViet> listBaiViet = MenuWebDuoiBLL.GetListBaiViet();
-            List<ListItem> listAdd = listBaiViet.Select(x => new ListItem(x.TieuDe, "baivietpublish?id=" + x.Id.ToString())).ToList();
+            List<BaiViet> listBaiViet = MenuWebDuoiBLL.GetListBaiViet(ApplicationContext.Current.ContentCurrentLanguageId);
+            List<ListItem> listAdd = listBaiViet.Select(x => new ListItem(x.TieuDe, x.Slug)).ToList();
             drAddbaiviet.Items.Clear();
             drAddbaiviet.Items.Add(new ListItem("Không", "0"));
             drAddbaiviet.Items.AddRange(listAdd.ToArray());
 
 
-            List<DanhMuc> listDanhMuc = MenuWebDuoiBLL.GetListDanhMuc();
-            List<ListItem> listItemDM = listDanhMuc.Select(x => new ListItem(x.Ten, "DanhMucPublish?id=" + x.Id.ToString())).ToList();
+            List<DanhMuc> listDanhMuc = MenuWebDuoiBLL.GetListDanhMuc(ApplicationContext.Current.ContentCurrentLanguageId);
+            List<ListItem> listItemDM = listDanhMuc.Select(x => new ListItem(x.Ten, x.Slug)).ToList();
             drAddDanhSach.Items.Clear();
             drAddDanhSach.Items.Add(new ListItem("Không", "0"));
             drAddDanhSach.Items.AddRange(listItemDM.ToArray());
 
 
-            List<BaiViet> listDuAnTieuBieu = MenuWebDuoiBLL.GetListDuAnTieuBieu();
-            List<ListItem> listItemDATB = listDuAnTieuBieu.Select(x => new ListItem(x.TieuDe, "DuAnTieuBieuPublish?id=" + x.Id.ToString())).ToList();
+            List<BaiViet> listDuAnTieuBieu = MenuWebDuoiBLL.GetListDuAnTieuBieu(ApplicationContext.Current.ContentCurrentLanguageId);
+            List<ListItem> listItemDATB = listDuAnTieuBieu.Select(x => new ListItem(x.TieuDe, x.Slug)).ToList();
             drAddDuAnTieuBieu.Items.Clear();
             drAddDuAnTieuBieu.Items.Add(new ListItem("Không", "0"));
             drAddDuAnTieuBieu.Items.AddRange(listItemDATB.ToArray());
+            List<ListItem> listItemTrangTinh = new List<ListItem>();
 
-            List<ListItem> listItemTrangTinh = new List<ListItem>()
+            if (ApplicationContext.Current.ContentCurrentLanguageId == 1)
             {
-                new ListItem("Trang chủ","Default.aspx"),
-                new ListItem("Đối tác","DoiTacPublish.aspx"),
-                new ListItem("Ds dự án tiêu biểu","DanhSachDuAnTieuBieuPublish.aspx"),
-                new ListItem("Sơ đồ tổ chức","SoDoToChucPubLish.aspx"),
-                new ListItem("Lịch sử phát triển","LichSuPhatTrienPublish.aspx"),
-                new ListItem("Liên hệ","LienHePublish.aspx"),
-            };
+                listItemTrangTinh = new List<ListItem>
+                    {
+                        new ListItem("Trang chủ","home"),
+                        new ListItem("Đối tác","doi-tac"),
+                        new ListItem("Ds dự án tiêu biểu","danh-dach-du-an-tieu-bieu"),
+                        new ListItem("Lịch sử phát triển","lich-su-phat-trien"),
+                        new ListItem("Liên hệ","lien-he"),
+                    };
+            }
+            else
+            {
+                listItemTrangTinh = new List<ListItem>
+                    {
+                        new ListItem("Trang chủ","en/"+"home"),
+                        new ListItem("Đối tác","en/"+"doi-tac"),
+                        new ListItem("Ds dự án tiêu biểu","en/"+"danh-dach-du-an-tieu-bieu"),
+                        new ListItem("Lịch sử phát triển","en/"+"lich-su-phat-trien"),
+                        new ListItem("Liên hệ","en/"+"lien-he"),
+                    };
+            }
             drAddTrangTinh.Items.Clear();
             drAddTrangTinh.Items.Add(new ListItem("Không", "0"));
             drAddTrangTinh.Items.AddRange(listItemTrangTinh.ToArray());
@@ -372,6 +365,8 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                     menu.Stt = int.Parse(txtStt.Text);
                     menu.NgayTao = DateTime.Now;
                     menu.HienThi = true;
+                    menu.LangID = ApplicationContext.Current.ContentCurrentLanguageId;
+
                     menu = MenuWebDuoiBLL.Insert(menu);
 
                     ScriptManager.RegisterStartupScript(this, GetType(), "CloseModal", "closeModal();", true);

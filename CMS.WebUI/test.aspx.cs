@@ -2,6 +2,7 @@
 using CMS.Core.Publich;
 using CMS.DataAsscess;
 using CMS.WebUI.Administration.AdminUserControl;
+using SweetCMS.Core.Helper;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,9 @@ namespace CMS.WebUI
             //string firstname = Request.QueryString["firstname"];
             //string lastname = Request.QueryString["lastname"];
             //Response.Write();
-           //BindGrid();
+            //BindGrid();
+           
+
         }
 
 
@@ -70,20 +73,35 @@ namespace CMS.WebUI
             return jsonResult;
 
         }
-
         [WebMethod]
-        public static string GetPosts(string pageIndex)
+        public static string GetLangID(string langId)
         {
-           
-            List<BaiVietDto> postList = new List<BaiVietDto>();
-            int totalRow = 0;
-
-
-            postList = BaiVietBLL.GetPaging(null, int.Parse(pageIndex), null, null, null, out totalRow);
+            ApplicationContext.Current.CurrentLanguageId = int.Parse(langId);
+            string content = string.Empty;
+            if (langId == "1")
+            {
+                content = "Xin chào, thế giới!"; // Nội dung tiếng Việt
+            }
+            else if (langId == "2")
+            {
+                content = "Hello, World!"; // Nội dung tiếng Anh
+            }
             JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer() ;
-            string jsonRessult = javaScriptSerializer.Serialize( postList);
-            return jsonRessult;
+            string jsonResult = javaScriptSerializer.Serialize(content) ;
+            return jsonResult;
+
         }
+
+        //[WebMethod]
+        //public static string GetPosts(string pageIndex)
+        //{
+        //    //List<BaiVietDto> postList = new List<BaiVietDto>();
+        //    //int totalRow = 0;
+        //    //postList = BaiVietBLL.GetPaging(null, int.Parse(pageIndex), null, null, null, out totalRow);
+        //    //JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer() ;
+        //    //string jsonRessult = javaScriptSerializer.Serialize( postList);
+        //    //return jsonRessult;
+        //}
 
     }
 }
