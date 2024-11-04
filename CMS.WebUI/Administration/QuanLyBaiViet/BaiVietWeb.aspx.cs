@@ -90,7 +90,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     else if (e.CommandName == "ChinhSuaChiTiet")
                     {
                         txtEditTieuDe.Text = baiViet.TieuDe;
-                        txtEditNoiDungChinh.SetContent(Server.HtmlDecode(baiViet.NoiDungChinh));
+                        CKEditorControl1.Text = (Server.HtmlDecode(baiViet.NoiDungChinh));
                         txtEditSlug.Text = baiViet.Slug;
                         txtEditThumbnailUrl.SetFileImage(baiViet.ThumbnailUrl);
                         chkEditTrangThai.Checked = baiViet.TrangThai ?? false;
@@ -107,7 +107,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                 }
                 else
                 {
-                    ShowNotification("Người dùng này không tồn tại", false);
+                    ShowNotification("Bài viết không tồn tại", false);
                 }
             }
             catch (Exception ex)
@@ -123,7 +123,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
 
                 BaiViet baiViet = new BaiViet();
                 lblAddErrorMessage.Text = "";
-                string noiDungChinh = txtNoiDungChinh.Text;
+                string noiDungChinh = Server.HtmlEncode(txtNoiDungChinh.Text);
                 //string noiDungChinhs = Server.HtmlEncode(txtNoiDungChinh.Text);
                 //lblAddErrorMessage.Text = "KHông endcode" + noiDungChinh + "\n Có endcode" + Server.HtmlDecode(noiDungChinhs);
                 if (string.IsNullOrEmpty(txtTieuDe.Text.Trim()) || txtTieuDe.Text.Trim().Length <= 3)
@@ -151,7 +151,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     return;
 
                 }
-                if (!VaiTroManagerBll.AllowAdd(CurrentUserId, MenuMa))
+                if (!VaiTroManagerBll.AllowAdd(ApplicationContext.Current.CurrentUserID, MenuMa))
                 {
                     ShowNotification("Bạn không có quyền truy cập chức năng này", false);
                     return;
@@ -218,7 +218,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     {
                         ShowNotification("Lỗi không tìm thấy bài viết", false);
                     }
-                    if (!VaiTroManagerBll.AllowDelete(CurrentUserId, MenuMa))
+                    if (!VaiTroManagerBll.AllowDelete(ApplicationContext.Current.CurrentUserID, MenuMa))
                     {
                         ShowNotification("Bạn không có quyền truy cập chức năng này", false);
                         return;
@@ -251,12 +251,13 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
         {
             try
             {
+                string noidungchinh = Server.HtmlEncode(CKEditorControl1.Text);
                 lblEditMessager.Text = "";
                 if (string.IsNullOrEmpty(txtEditTieuDe.Text.Trim()) || txtEditTieuDe.Text.Trim().Length <= 3)
                 {
                     lblEditMessager.Text += "Tiêu đề không được để trống<br />";
                 }
-                if (string.IsNullOrEmpty(txtEditNoiDungChinh.GetContent().Trim()) || txtEditNoiDungChinh.GetContent().Length<= 3)
+                if (string.IsNullOrEmpty(noidungchinh.Trim()) || noidungchinh.Length<= 3)
                 {
                     lblEditMessager.Text += "Nội dung chính không hợp lệ <br /> ";
                 }
@@ -272,7 +273,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
 
                     return;
                 }
-                if (!VaiTroManagerBll.AllowEdit(CurrentUserId, MenuMa))
+                if (!VaiTroManagerBll.AllowEdit(ApplicationContext.Current.CurrentUserID, MenuMa))
                 {
                     ShowNotification("Bạn không có quyền truy cập chức năng này", false);
                     return;
@@ -300,7 +301,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
 
 
                     baiViet.TieuDe = txtEditTieuDe.Text;
-                    baiViet.NoiDungChinh = Server.HtmlEncode(txtEditNoiDungChinh.GetContent()) ; // Giả sử phương thức GetContent() trả về nội dung
+                    baiViet.NoiDungChinh = noidungchinh; // Giả sử phương thức GetContent() trả về nội dung
                     baiViet.Slug = txtEditSlug.Text;
                     baiViet.ThumbnailUrl = txtEditThumbnailUrl.GetStringFileUrl();
                     baiViet.TrangThai = chkEditTrangThai.Checked;
@@ -326,7 +327,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
             {
                 int danhMucId = int.Parse(hdnRowId.Value);
                 hdnRowId.Value = "";
-                if (!VaiTroManagerBll.AllowEdit(CurrentUserId, MenuMa))
+                if (!VaiTroManagerBll.AllowEdit(ApplicationContext.Current.CurrentUserID, MenuMa))
                 {
                     ShowNotification("Bạn không có quyền truy cập chức năng này", false);
                     return;

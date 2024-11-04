@@ -17,7 +17,7 @@ namespace CMS.WebUI.Administration.Common
         public virtual string MenuMa { get; set; }
         public static List<MenuPermisstion> menuPermisstions = new List<MenuPermisstion>();
         public static List<MenuPermisstion> menuChilds = new List<MenuPermisstion>();
-        public static int CurrentUserId { get; set; }
+        //public static int CurrentUserId { get; set; }
 
         public bool IsAlive()
         {
@@ -28,12 +28,12 @@ namespace CMS.WebUI.Administration.Common
                 if (menuPermisstions == null)
                     return false;
             }
-            if (CurrentUserId == 0)
-            {
-                CurrentUserId = int.Parse(Session["UserId"].ToString());
+            //if (Application == 0)
+            //{
+            //    CurrentUserId = int.Parse(Session["UserId"].ToString());
 
-                if (CurrentUserId == 0) return false;
-            }
+            //    if (CurrentUserId == 0) return false;
+            //}
 
             return true;
         }

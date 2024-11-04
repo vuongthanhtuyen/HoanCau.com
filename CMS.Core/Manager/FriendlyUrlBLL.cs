@@ -3,6 +3,7 @@ using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,6 +27,18 @@ namespace CMS.Core.Manager
         {
             return new Select().From(FriendlyUrl.Schema).Where(FriendlyUrl.SlugUrlColumn)
                 .IsEqualTo(slugString).ExecuteSingle<FriendlyUrl>();
+        }
+        public static bool CheckExists(string slugString, int postID)
+        {
+            string sql = string.Empty;
+            if (postID > 0)
+            {
+                sql = $"select COUNT(*) from FriendlyUrl where SlugUrl = '{slugString}' and PostId != {postID} ";
+            }
+            else
+                sql = $"select COUNT(*) from FriendlyUrl where SlugUrl = '{slugString}'";
+
+            return new InlineQuery().ExecuteScalar<int>(sql) > 0;
         }
 
         public static FriendlyUrl Insert(FriendlyUrl friendlyUrl)

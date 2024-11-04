@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Administration/MasterPage/AdminPage.Master" CodeBehind="BaiVietWeb.aspx.cs" Inherits="CMS.WebUI.Administration.QuanLyBaiViet.BaiVietWeb" %>
 
+<%@ Import Namespace="SweetCMS.Core.Helper" %>
 <%@ Register Src="~/Administration/AdminUserControl/AdminNotification.ascx" TagPrefix="uc1" TagName="AdminNotification" %>
 <%@ Register Src="~/Administration/AdminUserControl/PagingAdmin.ascx" TagPrefix="uc1" TagName="PagingAdmin" %>
 <%@ Register Src="~/Administration/AdminUserControl/ImportImage.ascx" TagPrefix="uc1" TagName="ImportImage" %>
@@ -16,6 +17,9 @@
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
     <%--    <link href="Assets/css/Modal.css" rel="stylesheet" />--%>
     <link href="../Assets/css/Modal.css" rel="stylesheet" />
+        <link href="/Administration/Style/plugins/lightbox-evolution-1.8/theme/default/jquery.lightbox.css" rel="stylesheet" />
+    <link href="/Administration/Style/dist/css/imgareaselect-default.css" rel="stylesheet" />
+
 </asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager ID="ScriptManger1" runat="Server" />
@@ -115,18 +119,34 @@
                         <label for="txtNoiDungChinh">Nội dung chính</label>
 
 
-                            <CKEditor:CKEditorControl ID="txtNoiDungChinh" Width="100%" CssClass="ck-editor"
-                                Toolbar="Full" BodyId="StaticPageContent" Language="en-US" AutoParagraph="false"
-                                BasePath="/Administration/Style/plugins/ckeditor/" runat="server" Height="300">
-                            </CKEditor:CKEditorControl>
+                        <CKEditor:CKEditorControl ID="txtNoiDungChinh" Width="100%" CssClass="ck-editor"
+                            Toolbar="Full" BodyId="StaticPageContent" Language="en-US" AutoParagraph="false"
+                            BasePath="/Administration/Style/plugins/ckeditor/" runat="server" Height="300">
+                        </CKEditor:CKEditorControl>
                     </div>
 
                 </div>
                 <div class="col-md-3">
                     <div class="form-group row">
-                        <label for="txtThumbnailUrl">URL ảnh đại diện (Thumbnail)</label>
-                        <uc1:ImportImage runat="server" ID="ImportImage" />
+                        <label class="control-label">Hình minh họa</label>
+                        <label style="margin-left: 5px;" class="small">(Click vào hình ảnh để thay đổi hình minh họa)</label>
+                        <div class="row text-center">
+                            <div class="img-thumbnail">
+                                <img data-selector="imgThumb" id="imgThumb" runat="server" onclick="OpenSelectImage();"  src="/Administration/UploadImage/00000biet-thu-quoc-anh.png"
+                                    style="cursor: pointer; max-width: 200px" class="imgthumb img-responsive" />
+                            </div>
+                            <input style="display: none;" data-selector="txtImage" type="text" id="txtImage" runat="server" class="form-control" />
+                            <div id="divRemoveThumb" runat="server" visible="false">
+                                <a onclick="RemoveThumbnail();" title="Xóa hình mình họa" class="btn btn-default btn-flat btn-sm">Xóa hình minh họa</a>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
+
+
+                    <label for="txtThumbnailUrl">URL ảnh đại diện (Thumbnail)</label>
+                    <uc1:ImportImage runat="server" ID="ImportImage" />
+
 
                 </div>
             </div>
@@ -146,7 +166,7 @@
         <div class="modal-content-post">
 
             <span class="close d-flex justify-content-end" onclick="closeEdit()">&times;</span>
-            <h4>Chỉnh Cập nhật bài viết </h4>
+            <h4>Cập nhật bài viết </h4>
             <asp:Label ID="lblEditMessager" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
             <div class="row justify-content-center main-edit-modal">
                 <!-- Form group for Post Title and Slug -->
@@ -169,7 +189,10 @@
                     </div>
                     <div class="form-group">
                         <label for="txtEditNoiDungChinh">Nội dung chính</label>
-                        <uc1:SummernoteEditor runat="server" ID="txtEditNoiDungChinh" />
+                        <CKEditor:CKEditorControl ID="CKEditorControl1" Width="100%" CssClass="ck-editor"
+                            Toolbar="Full" BodyId="StaticPageContent" Language="en-US" AutoParagraph="false"
+                            BasePath="/Administration/Style/plugins/ckeditor/" runat="server" Height="300">
+                        </CKEditor:CKEditorControl>
                     </div>
 
                     <!-- Form group for Post Status and View Count -->
@@ -317,6 +340,121 @@
 
         }
     </script>
+     <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js?v=f81a959662efae2fc3cc158351e6d90c#property=646b0f87d8c6d2001a06c301&product=inline-share-buttons&source=platform" async="async"></script>
+ 
+ 
 
+</asp:Content>
+<asp:Content runat="server" ID="scriptEnd" ContentPlaceHolderID="ContentScript">
+    <script src="/Administration/Style/plugins/lightbox-evolution-1.8/js/jquery.lightbox.1.8.min.js"></script>
+<script src="/Administration/Style/plugins/jQueryUI/jquery-ui.min.js"></script>
+<script src="/Administration/Style/dist/js/jquery.imgareaselect.pack.js"></script>
+<script>
+    var uploadThumbnailKey = "<%=SecurityHelper.Encrypt("/Uploads/Article/")%>";
+    var uploadThumbnailKeyAlbum = "<%=SecurityHelper.Encrypt("/Uploads/Article/Picture/")%>";
 
+    var OpenSelectImage = function () {
+        var txtid = $('[data-selector="txtImage"]').attr('id');
+        var ws = getWindowSize();
+        $.lightbox('/RichFilemanager/default.aspx?field_name=' + txtid
+            + '&key=' + uploadThumbnailKey
+            + '&selectFun=setImageUrl',
+            {
+                iframe: true,
+                width: ws.width - 60,
+                height: ws.height - 40,
+            });
+    };
+    var getWindowSize = function () {
+        var w = 0; var h = 0;
+        //IE
+        if (!window.innerWidth) {
+            if (!(document.documentElement.clientWidth === 0)) {
+                //strict mode
+                w = document.documentElement.clientWidth;
+                h = document.documentElement.clientHeight;
+            } else {
+                //quirks mode
+                w = document.body.clientWidth; h = document.body.clientHeight;
+            }
+        } else {
+            //w3c
+            w = window.innerWidth; h = window.innerHeight;
+        }
+        return {
+            width: w, height: h
+        };
+    };
+    var setImageUrl = function (txtid, url) {
+        document.getElementById(txtid).value = url;
+        $('[data-selector="imgThumb"]').attr('src', url);
+        //call next function
+    };
+
+    /*--Image album--*/
+    var OpenSelectImageAlbum = function () {
+        var txtid = $('[data-selector="txtImageUrl"]').attr('id');
+        var ws = getWindowSize();
+        $.lightbox('/RichFilemanager/default.aspx?field_name=' + txtid
+            + '&key=' + uploadThumbnailKeyAlbum
+            + '&selectFun=setImageAlbumUrl',
+            {
+                iframe: true,
+                width: ws.width - 60,
+                height: ws.height - 40,
+            });
+    };
+    var setImageAlbumUrl = function (txtid, url) {
+        document.getElementById(txtid).value = url;
+        $('[data-selector="imgImageUrl"]').attr('src', url);
+        //call next function
+    };
+    function CloseAddImageAlbumPopup() {
+        $('#image-detail').modal('hide');
+        $('#image-detail-multiple').modal('hide');
+    };
+    function MakeNewImage() {
+        $('[data-selector="txtImageId"]').val('');
+        $('[data-selector="btnDiscard"]')[0].click();
+    };
+    function MakeExistedImage(imageId) {
+        $('[data-selector="txtImageId"]').val(imageId);
+        $('[data-selector="btnDiscard"]')[0].click();
+    };
+    function RemoveExistedImage(imageId, event) {
+        event.stopPropagation();
+        $('[data-selector="txtImageId"]').val(imageId);
+        $('[data-selector="btnRemoveImageAlbum"]')[0].click();
+    };
+    function saveImagesToAlbum() {
+        try {
+            var arr = [];
+            $('.files .preview a').each(function () {
+                arr.push($(this).attr("href"));
+            });
+            $('[data-selector="hdfJsonImage"]').val(JSON.stringify(arr));
+            $('[data-selector="lbtConfirmAlbum"]')[0].click();
+        }
+        catch (e) {
+            return false;
+        }
+    }
+    function MakeNewImageMultiple() {
+        $('[data-selector="hdfMappingId"]').val('');
+        $('.files').empty();
+    };
+    function SortAbleImageAlbum() {
+        $("#content-image > div:not(.binded-sortable)").sortable({
+            items: ".item:not(.upload)",
+            update: function (event, ui) {
+                var newOrder = [];
+                $("#content-image .item:not(.upload)").each(function (i, t) {
+                    newOrder.push($(t).attr('data-ar'));
+                })
+                $('[data-selector="txtImageAlbumDisplayOrder"]').val(newOrder.join('|'));
+            }
+        });
+        $("#content-image > div:not(.binded-sortable)").addClass('binded-sortable');
+    };
+</script>
 </asp:Content>

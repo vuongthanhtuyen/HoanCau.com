@@ -13,6 +13,13 @@ namespace CMS.Core.Manager
 {
     public class VaiTroManagerBll
     {
+        public class VaitroHandler
+        {
+            public const int Them = 1;
+            public const int Sua = 2;
+            public const int Xoa = 3;
+            public const int Xem = 4;
+        }
 
         public static List<VaiTro> GetPaging(int? PageSize, int? PageIndex, string Key, bool? ASC, out int rowsCount)
         {
@@ -188,7 +195,7 @@ namespace CMS.Core.Manager
                 .InnerJoin(MenuAdmin.IdColumn, VaiTroDanhMucLoaiQuyenChiTiet.MenuIdColumn)
                 .Where(NguoiDung.IdColumn).IsEqualTo(userId)
                 .And(MenuAdmin.MaColumn).IsEqualTo(menuMa)
-                .And(VaiTroDanhMucLoaiQuyenChiTiet.LoaiQuyenIdColumn).IsEqualTo(1)
+                .And(VaiTroDanhMucLoaiQuyenChiTiet.LoaiQuyenIdColumn).IsEqualTo(VaitroHandler.Them)
                 .GetRecordCount() > 0;
         }
         public static bool AllowEdit(int userId , string menuMa)
@@ -199,7 +206,7 @@ namespace CMS.Core.Manager
                 .InnerJoin(MenuAdmin.IdColumn, VaiTroDanhMucLoaiQuyenChiTiet.MenuIdColumn)
                 .Where(NguoiDung.IdColumn).IsEqualTo(userId)
                 .And(MenuAdmin.MaColumn).IsEqualTo(menuMa)
-                .And(VaiTroDanhMucLoaiQuyenChiTiet.LoaiQuyenIdColumn).IsEqualTo(2)
+                .And(VaiTroDanhMucLoaiQuyenChiTiet.LoaiQuyenIdColumn).IsEqualTo(VaitroHandler.Sua)
                 .GetRecordCount() > 0;
         }
         public static bool AllowDelete (int userId , string menuMa)
@@ -210,7 +217,19 @@ namespace CMS.Core.Manager
                 .InnerJoin(MenuAdmin.IdColumn, VaiTroDanhMucLoaiQuyenChiTiet.MenuIdColumn)
                 .Where(NguoiDung.IdColumn).IsEqualTo(userId)
                 .And(MenuAdmin.MaColumn).IsEqualTo(menuMa)
-                .And(VaiTroDanhMucLoaiQuyenChiTiet.LoaiQuyenIdColumn).IsEqualTo(3)
+                .And(VaiTroDanhMucLoaiQuyenChiTiet.LoaiQuyenIdColumn).IsEqualTo(VaitroHandler.Xoa)
+                .GetRecordCount() > 0;
+            return a;
+        }
+        public static bool AllowView (int userId , string menuMa)
+        {
+            bool a = new Select().From(NguoiDung.Schema)
+                .InnerJoin(NguoiDungVaiTroChitiet.NguoiDungIdColumn, NguoiDung.IdColumn)
+                .InnerJoin(VaiTroDanhMucLoaiQuyenChiTiet.VaiTroIdColumn, NguoiDungVaiTroChitiet.VaiTroIdColumn)
+                .InnerJoin(MenuAdmin.IdColumn, VaiTroDanhMucLoaiQuyenChiTiet.MenuIdColumn)
+                .Where(NguoiDung.IdColumn).IsEqualTo(userId)
+                .And(MenuAdmin.MaColumn).IsEqualTo(menuMa)
+                .And(VaiTroDanhMucLoaiQuyenChiTiet.LoaiQuyenIdColumn).IsEqualTo(VaitroHandler.Xem)
                 .GetRecordCount() > 0;
             return a;
         }

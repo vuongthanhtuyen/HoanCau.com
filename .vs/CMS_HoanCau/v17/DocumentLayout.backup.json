@@ -3,60 +3,24 @@
   "WorkspaceRootPath": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B2F095AD-4A60-4F80-9562-7608D66B3EBA}|CMS.Core\\CMS.Core.csproj|d:\\sweetsoft\\exsercise\\cms_hoancau\\cms.core\\manager\\slidebll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2F095AD-4A60-4F80-9562-7608D66B3EBA}|CMS.Core\\CMS.Core.csproj|solutionrelative:cms.core\\manager\\slidebll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|d:\\sweetsoft\\exsercise\\cms_hoancau\\cms.webui\\administration\\quanlybaiviet\\baivietweb.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\administration\\quanlybaiviet\\baivietweb.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|d:\\sweetsoft\\exsercise\\cms_hoancau\\cms.webui\\administration\\quanlybaiviet\\baivietweb.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\administration\\quanlybaiviet\\baivietweb.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|d:\\sweetsoft\\exsercise\\cms_hoancau\\cms.webui\\test.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\test.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|d:\\sweetsoft\\exsercise\\cms_hoancau\\cms.webui\\test.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\test.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.webui\\administration\\masterpage\\adminpage.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\administration\\masterpage\\adminpage.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|d:\\sweetsoft\\exsercise\\cms_hoancau\\cms.webui\\test.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\test.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B2F095AD-4A60-4F80-9562-7608D66B3EBA}|CMS.Core\\CMS.Core.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.core\\helper\\helpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2F095AD-4A60-4F80-9562-7608D66B3EBA}|CMS.Core\\CMS.Core.csproj|solutionrelative:cms.core\\helper\\helpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B2F095AD-4A60-4F80-9562-7608D66B3EBA}|CMS.Core\\CMS.Core.csproj|d:\\sweetsoft\\exsercise\\cms_hoancau\\cms.core\\helper\\securityhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2F095AD-4A60-4F80-9562-7608D66B3EBA}|CMS.Core\\CMS.Core.csproj|solutionrelative:cms.core\\helper\\securityhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B2F095AD-4A60-4F80-9562-7608D66B3EBA}|CMS.Core\\CMS.Core.csproj|d:\\sweetsoft\\exsercise\\cms_hoancau\\cms.core\\helper\\commonhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2F095AD-4A60-4F80-9562-7608D66B3EBA}|CMS.Core\\CMS.Core.csproj|solutionrelative:cms.core\\helper\\commonhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B2F095AD-4A60-4F80-9562-7608D66B3EBA}|CMS.Core\\CMS.Core.csproj|d:\\sweetsoft\\exsercise\\cms_hoancau\\cms.core\\manager\\settingmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2F095AD-4A60-4F80-9562-7608D66B3EBA}|CMS.Core\\CMS.Core.csproj|solutionrelative:cms.core\\manager\\settingmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|d:\\sweetsoft\\exsercise\\cms_hoancau\\cms.webui\\richfilemanager\\default.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\richfilemanager\\default.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.webui\\richfilemanager\\connectors\\aspx\\filemanager.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\richfilemanager\\connectors\\aspx\\filemanager.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.webui\\richfilemanager\\image-editor\\imageeditor.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\richfilemanager\\image-editor\\imageeditor.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.webui\\richfilemanager\\connectors\\aspx\\filemanager.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\richfilemanager\\connectors\\aspx\\filemanager.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B2F095AD-4A60-4F80-9562-7608D66B3EBA}|CMS.Core\\CMS.Core.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.core\\helper\\applicationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2F095AD-4A60-4F80-9562-7608D66B3EBA}|CMS.Core\\CMS.Core.csproj|solutionrelative:cms.core\\helper\\applicationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B2F095AD-4A60-4F80-9562-7608D66B3EBA}|CMS.Core\\CMS.Core.csproj|d:\\sweetsoft\\exsercise\\cms_hoancau\\cms.core\\manager\\baivietbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2F095AD-4A60-4F80-9562-7608D66B3EBA}|CMS.Core\\CMS.Core.csproj|solutionrelative:cms.core\\manager\\baivietbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -78,183 +42,67 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "test.aspx",
+              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\test.aspx",
+              "RelativeDocumentMoniker": "CMS.WebUI\\test.aspx",
+              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\test.aspx",
+              "RelativeToolTip": "CMS.WebUI\\test.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-11-04T01:59:27.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BaiVietWeb.aspx",
+              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Administration\\QuanLyBaiViet\\BaiVietWeb.aspx",
+              "RelativeDocumentMoniker": "CMS.WebUI\\Administration\\QuanLyBaiViet\\BaiVietWeb.aspx",
+              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Administration\\QuanLyBaiViet\\BaiVietWeb.aspx*",
+              "RelativeToolTip": "CMS.WebUI\\Administration\\QuanLyBaiViet\\BaiVietWeb.aspx*",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-11-04T01:52:01.947Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BaiVietBLL.cs",
+              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.Core\\Manager\\BaiVietBLL.cs",
+              "RelativeDocumentMoniker": "CMS.Core\\Manager\\BaiVietBLL.cs",
+              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.Core\\Manager\\BaiVietBLL.cs",
+              "RelativeToolTip": "CMS.Core\\Manager\\BaiVietBLL.cs",
+              "ViewState": "AgIAAEQAAAAAAAAAAAA9wEoAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T01:42:17.118Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "test.aspx.cs",
+              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\test.aspx.cs",
+              "RelativeDocumentMoniker": "CMS.WebUI\\test.aspx.cs",
+              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\test.aspx.cs",
+              "RelativeToolTip": "CMS.WebUI\\test.aspx.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAYwDQAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T01:12:08.257Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "BaiVietWeb.aspx.cs",
               "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Administration\\QuanLyBaiViet\\BaiVietWeb.aspx.cs",
               "RelativeDocumentMoniker": "CMS.WebUI\\Administration\\QuanLyBaiViet\\BaiVietWeb.aspx.cs",
               "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Administration\\QuanLyBaiViet\\BaiVietWeb.aspx.cs",
               "RelativeToolTip": "CMS.WebUI\\Administration\\QuanLyBaiViet\\BaiVietWeb.aspx.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAOoAAAAAAAAAAAAQwPkAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T07:17:43.437Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SlideBLL.cs",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.Core\\Manager\\SlideBLL.cs",
-              "RelativeDocumentMoniker": "CMS.Core\\Manager\\SlideBLL.cs",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.Core\\Manager\\SlideBLL.cs*",
-              "RelativeToolTip": "CMS.Core\\Manager\\SlideBLL.cs*",
-              "ViewState": "AgIAACUAAAAAAAAAAAAkwDUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T07:49:39.534Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "test.aspx.cs",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\test.aspx.cs",
-              "RelativeDocumentMoniker": "CMS.WebUI\\test.aspx.cs",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\test.aspx.cs",
-              "RelativeToolTip": "CMS.WebUI\\test.aspx.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAuwD8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T07:11:44.367Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "test.aspx",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\test.aspx",
-              "RelativeDocumentMoniker": "CMS.WebUI\\test.aspx",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\test.aspx*",
-              "RelativeToolTip": "CMS.WebUI\\test.aspx*",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-11-01T06:29:00.208Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CommonHelper.cs",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.Core\\Helper\\CommonHelper.cs",
-              "RelativeDocumentMoniker": "CMS.Core\\Helper\\CommonHelper.cs",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.Core\\Helper\\CommonHelper.cs",
-              "RelativeToolTip": "CMS.Core\\Helper\\CommonHelper.cs",
-              "ViewState": "AgIAAGkBAAAAAAAAAIAwwIABAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T06:22:50.863Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Default.aspx.cs",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\RichFilemanager\\Default.aspx.cs",
-              "RelativeDocumentMoniker": "CMS.WebUI\\RichFilemanager\\Default.aspx.cs",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\RichFilemanager\\Default.aspx.cs",
-              "RelativeToolTip": "CMS.WebUI\\RichFilemanager\\Default.aspx.cs",
-              "ViewState": "AgIAAJYAAAAAAAAAAAAYwBsBAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T06:10:54.054Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Helpers.cs",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.Core\\Helper\\Helpers.cs",
-              "RelativeDocumentMoniker": "CMS.Core\\Helper\\Helpers.cs",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.Core\\Helper\\Helpers.cs",
-              "RelativeToolTip": "CMS.Core\\Helper\\Helpers.cs",
-              "ViewState": "AgIAANMCAAAAAAAAAAAtwOgCAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T04:36:38.92Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SettingManager.cs",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.Core\\Manager\\SettingManager.cs",
-              "RelativeDocumentMoniker": "CMS.Core\\Manager\\SettingManager.cs",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.Core\\Manager\\SettingManager.cs",
-              "RelativeToolTip": "CMS.Core\\Manager\\SettingManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBsBAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T04:34:51.051Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "ImageEditor.aspx.cs",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\RichFilemanager\\image-editor\\ImageEditor.aspx.cs",
-              "RelativeDocumentMoniker": "CMS.WebUI\\RichFilemanager\\image-editor\\ImageEditor.aspx.cs",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\RichFilemanager\\image-editor\\ImageEditor.aspx.cs",
-              "RelativeToolTip": "CMS.WebUI\\RichFilemanager\\image-editor\\ImageEditor.aspx.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAowDkAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T04:31:27.374Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "filemanager.aspx.cs",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\RichFilemanager\\connectors\\aspx\\filemanager.aspx.cs",
-              "RelativeDocumentMoniker": "CMS.WebUI\\RichFilemanager\\connectors\\aspx\\filemanager.aspx.cs",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\RichFilemanager\\connectors\\aspx\\filemanager.aspx.cs",
-              "RelativeToolTip": "CMS.WebUI\\RichFilemanager\\connectors\\aspx\\filemanager.aspx.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAAwDsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T04:03:42.256Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AdminPage.Master.cs",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Administration\\MasterPage\\AdminPage.Master.cs",
-              "RelativeDocumentMoniker": "CMS.WebUI\\Administration\\MasterPage\\AdminPage.Master.cs",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Administration\\MasterPage\\AdminPage.Master.cs",
-              "RelativeToolTip": "CMS.WebUI\\Administration\\MasterPage\\AdminPage.Master.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACAAAABGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T02:51:25.609Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "SecurityHelper.cs",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.Core\\Helper\\SecurityHelper.cs",
-              "RelativeDocumentMoniker": "CMS.Core\\Helper\\SecurityHelper.cs",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.Core\\Helper\\SecurityHelper.cs",
-              "RelativeToolTip": "CMS.Core\\Helper\\SecurityHelper.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwAwAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T06:34:18.99Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "filemanager.aspx",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\RichFilemanager\\connectors\\aspx\\filemanager.aspx",
-              "RelativeDocumentMoniker": "CMS.WebUI\\RichFilemanager\\connectors\\aspx\\filemanager.aspx",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\RichFilemanager\\connectors\\aspx\\filemanager.aspx",
-              "RelativeToolTip": "CMS.WebUI\\RichFilemanager\\connectors\\aspx\\filemanager.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-11-01T04:03:39.509Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "ApplicationContext.cs",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.Core\\Helper\\ApplicationContext.cs",
-              "RelativeDocumentMoniker": "CMS.Core\\Helper\\ApplicationContext.cs",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.Core\\Helper\\ApplicationContext.cs",
-              "RelativeToolTip": "CMS.Core\\Helper\\ApplicationContext.cs",
-              "ViewState": "AgIAAKACAAAAAAAAAAAiwMICAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T02:51:25.62Z",
+              "WhenOpened": "2024-11-04T01:09:44.225Z",
               "EditorCaption": ""
             }
           ]

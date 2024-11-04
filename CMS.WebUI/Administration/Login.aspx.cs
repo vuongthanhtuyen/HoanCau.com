@@ -1,6 +1,7 @@
 ﻿using CMS.Core.Manager;
 using CMS.DataAsscess;
 using CMS.WebUI.Administration.Common;
+using SweetCMS.Core.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace CMS.WebUI.Administration
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["IdUser"] = 0;
+            ApplicationContext.Current.CurrentUserID = 0;
             Session["MenuPermission"] = null;
         }
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -37,8 +38,9 @@ namespace CMS.WebUI.Administration
                     if (login != null)
                     {
                         // Lưu user Id vào session
-                        Session["UserId"] = login.Id;
-                        CurrentUserId= login.Id;
+                        //Session["UserId"] = login.Id;
+                        ApplicationContext.Current.CurrentUserID = login.Id;
+
                         // Lưu Quyền của User vào session
                         List<MenuPermisstion> listMenuPermission = LoginBLL.GetListMenuPermisstionByUser(login.Id);
                         Session["MenuPermission"] = listMenuPermission;

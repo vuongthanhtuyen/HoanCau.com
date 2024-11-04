@@ -114,6 +114,33 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
         protected global::CKEditor.NET.CKEditorControl txtNoiDungChinh;
 
         /// <summary>
+        /// imgThumb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgThumb;
+
+        /// <summary>
+        /// txtImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtImage;
+
+        /// <summary>
+        /// divRemoveThumb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRemoveThumb;
+
+        /// <summary>
         /// ImportImage control.
         /// </summary>
         /// <remarks>
@@ -177,13 +204,13 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
         protected global::System.Web.UI.WebControls.TextBox txtEditMoTaNgan;
 
         /// <summary>
-        /// txtEditNoiDungChinh control.
+        /// CKEditorControl1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CMS.WebUI.Administration.AdminUserControl.SummernoteEditor txtEditNoiDungChinh;
+        protected global::CKEditor.NET.CKEditorControl CKEditorControl1;
 
         /// <summary>
         /// chkEditTrangThai control.

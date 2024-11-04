@@ -716,6 +716,39 @@ namespace SweetCMS.Core.Helper
         //    }
         //}
 
+        /// <summary>
+        /// Test user id by VuongTTuyen
+        /// </summary>
+        public int CurrentUserID
+        {
+            get
+            {
+                object id = Session["IdUser"];
+                int tempId = 0;
+                if (id != null)
+                    int.TryParse(id.ToString(), out tempId);
+
+                //// if (!this.IsWebRequest || this.Context.User == null || this.Context.User.Identity.Name == string.Empty)
+                //if (tempId == 0)
+                //{
+                //    TblAdminUser user = User;
+                //    if (user == null)
+                //        return Guid.Empty;
+                //    else
+                //    {
+                //        Session[SessionPrefix + "CurrentUserID"] = user.UserID;
+                //        return user.UserID;
+                //    }
+                //}
+
+                return tempId;
+            }
+            set
+            {
+                Session["IdUser"] = value;
+            }
+        }
+
         //public bool IsLogin
         //{
         //    get

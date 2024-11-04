@@ -47,7 +47,7 @@ namespace CMS.WebUI.Administration.MasterPage
 
         private void ShowMenu()
         {
-            if (Session["UserId"] == null)
+            if (ApplicationContext.Current.CurrentUserID <1)
             {
                 Response.Redirect("~/Administration/Login.aspx", false);
             }
@@ -59,7 +59,7 @@ namespace CMS.WebUI.Administration.MasterPage
             {
                 try
                 {
-                    int userId = int.Parse(Session["UserId"].ToString());
+                    int userId = ApplicationContext.Current.CurrentUserID;
                     
                     string currentUrl = Request.Url.AbsolutePath + ".aspx";
                     var list = LoginBLL.MenuCheckByUser(userId);

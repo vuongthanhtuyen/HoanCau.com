@@ -10,6 +10,7 @@ using SweetCMS.Core.Helper;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using static CMS.WebUI.Common.BaseAdminPage;
+using System.Web.DynamicData;
 
 namespace CMS.WebUI.Administration.QuanLyBaiViet
 {
@@ -22,74 +23,58 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
             if (!IsPostBack)
             {
                 BindDataByQuyen();
-                GetModal();
+
                 IsAlive();
-                if(!IsAlive()) Response.Redirect("~/Administration/Login.aspx", false);
+                if (!IsAlive()) Response.Redirect("~/Administration/Login.aspx", false);
             }
         }
 
         private void GetModal()
         {
-            string modal = Request.QueryString["modal"];
-
-            if (modal == "openModal")
+            string CatId = Request.QueryString["CatId"];
+            if (CatId == "0")
             {
+                HiddenIDDanhMuc.Value = "0";
+                UpdatePanelEdit.Update();
                 ScriptManager.RegisterStartupScript(this, GetType(), "OpenModal", "openModal();", true);
                 return;
             }
-            string stIdCategory = Request.QueryString["idCategory"];
-            if (int.TryParse(stIdCategory, out int id))
+            if (int.TryParse(CatId, out int id))
             {
-                hdnRowId.Value = id.ToString();
-
-                if (modal == "openEdit")
-                {
-                    var danhMuc = DanhMucBaiVietBLL.GetById(id);
-                    List<DanhMuc> listDanhMuc = DanhMucBaiVietBLL.GetNameAndId(ApplicationContext.Current.ContentCurrentLanguageId);
-                    List<ListItem> list = listDanhMuc.Where(x => x.Id != danhMuc.Id).Select(x => new ListItem(x.Ten, x.Id.ToString())).ToList();
-                    ddlEditDanhMuc.Items.Clear();
-                    ddlEditDanhMuc.Items.Add(new ListItem("Không có danh mục", "0"));
-                    ddlEditDanhMuc.Items.AddRange(list.ToArray());
-
-                    txtEditTen.Text = danhMuc.Ten;
-                    txtEditMa.Text = danhMuc.Slug;
-                    txtEditMota.Text = danhMuc.MoTa;
-                    ddlEditDanhMuc.SelectedIndex = danhMuc.DanhMucChaId ?? 0;
-                    UpdatePanelEdit.Update();
-                    baivietinDanhMucCurrent = DanhMucBaiVietBLL.GetBaiVietInDanhMuc(id,ApplicationContext.Current.ContentCurrentLanguageId);
-                    GridBaiVietInDanhMuc.DataSource = baivietinDanhMucCurrent;
-                    GridBaiVietInDanhMuc.DataBind();
-                    //UpdatePanelThemBaiViet.Update();
-                    ScriptManager.RegisterStartupScript(this, GetType(), "openEdit", "openEdit();", true);
-                    return;
-                }
-                if (modal == "openDelete")
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "openDelete", "openDelete();", true);
-                    return;
-                }
-                else
-                {
-                    ShowNotification("Danh mục này không tồn tại", false);
-                }
-
+                HiddenIDDanhMuc.Value = id.ToString();
+                tabBaiViet.Visible = true;
+                btnXoa.Visible = true;
+                lblTitle.InnerText = "Cập nhật danh mục";
+                var danhMuc = DanhMucBaiVietBLL.GetById(id);
+                txtEditTen.Text = danhMuc.Ten;
+                txtEditMa.Text = danhMuc.Slug;
+                txtEditMota.Text = danhMuc.MoTa;
+                ddlEditDanhMuc.SelectedIndex = danhMuc.DanhMucChaId ?? 0;
+                UpdatePanelEdit.Update();
+                BindBaiVietInDanhMuc(id);
+                //UpdatePanelThemBaiViet.Update();
+                ScriptManager.RegisterStartupScript(this, GetType(), "OpenModal", "openModal();", true);
+                return;
             }
-
+            //else
+            //{
+            //    ShowNotification("Danh mục này không tồn tại", false);
+            //}
         }
         private void BindDataByQuyen()
         {
-
-            BindGrid();
-        }
-        private void BindGrid(int pageIndex = 1, int pageSize = 10)
-        {
             BindDataTree();
-            SearchUserControl.SetSearcKey();
             BindListDanhMucCha();
-
+            SearchUserControl.SetSearcKey();
+            GetModal();
         }
 
-
+        private void BindBaiVietInDanhMuc(int id)
+        {
+            baivietinDanhMucCurrent = DanhMucBaiVietBLL.GetBaiVietInDanhMuc(id, ApplicationContext.Current.ContentCurrentLanguageId);
+            GridBaiVietInDanhMuc.DataSource = baivietinDanhMucCurrent;
+            GridBaiVietInDanhMuc.DataBind();
+        }
 
 
 
@@ -99,7 +84,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
             {
                 try
                 {
-                    return true;
+                    return VaiTroManagerBll.AllowAdd(ApplicationContext.Current.CurrentUserID, MenuMa);
                 }
                 catch
                 {
@@ -114,7 +99,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
             {
                 try
                 {
-                    return true;
+                    return VaiTroManagerBll.AllowEdit(ApplicationContext.Current.CurrentUserID, MenuMa);
                 }
                 catch
                 {
@@ -122,7 +107,6 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                 }
             }
         }
-
 
 
         private void BindDataTree()
@@ -148,12 +132,12 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                                 {
                                     ItemTreeView itemTree = new ItemTreeView();
                                     itemTree.MenuId = item.Id;
-                                    itemTree.text = string.Format("{0} {1} {2}", item.Ten, GetStatusText(BasicStatusHelper.Active), "<a class=\"btn btn-danger p-0\" style=\" font-size:14px;\"  href=\"/Administration/QuanLyBaiViet/DanhMucBaiViet.aspx?modal=openDelete&idCategory=" + item.Id + "\", item.Id\" ><span class=\"fa fa-trash\"></span> Xóa</a>");
+                                    itemTree.text = string.Format("{0} {1} {2}", item.Ten, GetStatusText(BasicStatusHelper.Active), null);
                                     //itemTree.text = string.Format("{0} {1} ({2})", item.Ten, "Active", true);
                                     itemTree.icon = "fa fa-link";
                                     itemTree.state = new ItemState { opened = true };
-                                    if (true || true)
-                                        itemTree.a_attr = new { href = string.Format("/Administration/QuanLyBaiViet/DanhMucBaiViet.aspx?modal=openEdit&idCategory={0}", item.Id) };
+                                    if (IsEditMenu)
+                                        itemTree.a_attr = new { href = string.Format("/Administration/QuanLyBaiViet/DanhMucBaiViet.aspx?CatId={0}", item.Id) };
                                     else
                                         itemTree.a_attr = null;
                                     itemTree.children = func(item.Id);
@@ -166,20 +150,20 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     };
                     lstTree = func(0);
                 }
-                //if (IsEditMenu)
-                //{
-                //    ItemTreeView addChild = new ItemTreeView();
-                //    addChild.MenuId = 0;
-                //    addChild.text = "Thêm mới";
-                //    addChild.icon = "fa fa-plus";
-                //    addChild.state = new ItemState { opened = true };
-                //    if (IsEditMenu)
-                //        addChild.a_attr = new { href = "/Administration/QuanLyBaiViet/DanhMucBaiViet?modal=openModal" };
-                //    else
-                //        addChild.a_attr = null;
-                //    addChild.children = null;
-                //    lstTree.Add(addChild);
-                //}
+                if (IsAddMenu)
+                {
+                    ItemTreeView addChild = new ItemTreeView();
+                    addChild.MenuId = 0;
+                    addChild.text = "Thêm mới";
+                    addChild.icon = "fa fa-plus";
+                    addChild.state = new ItemState { opened = true };
+                    if (IsAddMenu)
+                        addChild.a_attr = new { href = "/Administration/QuanLyBaiViet/DanhMucBaiViet?CatId=0" };
+                    else
+                        addChild.a_attr = null;
+                    addChild.children = null;
+                    lstTree.Add(addChild);
+                }
                 hdfRightsTreeViewData.Value = JsonConvert.SerializeObject(new { MenuId = 0, text = "Danh sách danh mục", children = lstTree, icon = "fa fa-list-ul", state = new { opened = true } });
                 UpdatePanelMainTable.Update();
             }
@@ -210,77 +194,134 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
 
             List<DanhMuc> listDanhMuc = DanhMucBaiVietBLL.GetNameAndId(ApplicationContext.Current.ContentCurrentLanguageId);
             List<ListItem> list = listDanhMuc.Select(x => new ListItem(x.Ten, x.Id.ToString())).ToList();
-            ddlDanhMuc.Items.Clear();
-            ddlDanhMuc.Items.Add(new ListItem("Không có danh mục", "0"));
-            ddlDanhMuc.Items.AddRange(list.ToArray());
+            ddlEditDanhMuc.Items.Clear();
+            ddlEditDanhMuc.Items.Add(new ListItem("Không có danh mục", "0"));
+            ddlEditDanhMuc.Items.AddRange(list.ToArray());
         }
-        protected void btnAdd_Click(object sender, EventArgs e)
+        protected void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
+                string catIdstring = HiddenIDDanhMuc.Value;
+                int catId = 0;
+                int.TryParse(catIdstring, out catId);
+                
+
                 DanhMuc danhMuc = new DanhMuc();
-                lblAddErrorMessage.Text = "";
-                if (string.IsNullOrEmpty(txtTen.Text.Trim()) || txtTen.Text.Trim().Length <= 3)
+                #region check valid 
+                if (string.IsNullOrEmpty(txtEditTen.Text.Trim()) || txtEditTen.Text.Trim().Length < 3)
                 {
-                    lblAddErrorMessage.Text += "Tên danh mục không được trống hoặc bé hơn 3 ký tự<br />";
+                    AddErrorPrompt(txtEditTen.ClientID, "Không được bỏ trống trường này");
                 }
 
-                if (string.IsNullOrEmpty(txtMa.Text.Trim()) || txtMa.Text.Trim().Length <= 3 ||
-                    txtMa.Text.Contains(" "))
+                if (string.IsNullOrEmpty(txtEditMa.Text.Trim()) || txtEditMa.Text.Trim().Length < 3 ||
+                    txtEditMa.Text.Contains(" "))
                 {
-                    lblAddErrorMessage.Text += "Mã không hợp lệ";
+                    AddErrorPrompt(txtEditMa.ClientID, "Không được bỏ trống trường này");
+                }
+                if (FriendlyUrlBLL.CheckExists(txtEditMa.Text.Trim(), catId))
+                {
+                    AddErrorPrompt(txtEditMa.ClientID, "Url này đã được sử dụng trong hệ thống");
+                    txtEditMa.Focus();
+                }
+                if (!IsValid)
+                {
+                    ShowErrorPrompt();
+                    return;
+                }
+                #endregion
+                if (!VaiTroManagerBll.AllowAdd(ApplicationContext.Current.CurrentUserID, MenuMa))
+                {
+                    ShowNotification("Bạn không có quyền truy cập chức năng này", false);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "closeModal", "closeModal();", true);
+                    return;
                 }
 
-                if (lblAddErrorMessage.Text.Length > 0)
+                bool isAdd = true;
+                if (catId > 0)
                 {
-                    UpdatePanelAdd.Update();
-                    ScriptManager.RegisterStartupScript(this, GetType(), "OpenModal", "openModal();", true);
+                    danhMuc = DanhMucBaiVietBLL.GetById(catId);
+
+                    if (danhMuc == null)
+                    {
+                        ShowNotification("Danh mục không tồn tại", false);
+                        return;
+                    }
+                    isAdd = false;
+                }
+
+                danhMuc.Ten = txtEditTen.Text;
+                danhMuc.Slug = txtEditMa.Text;
+                danhMuc.DanhMucChaId = int.Parse(ddlEditDanhMuc.SelectedValue);
+                danhMuc.MoTa = txtEditMota.Text;
+                if (isAdd)
+                {
+                    danhMuc.LangID = ApplicationContext.Current.ContentCurrentLanguageId;
+                    danhMuc = DanhMucBaiVietBLL.Insert(danhMuc);
+                    //ShowNotification("Thêm mới thành công", false);
 
                 }
                 else
                 {
-                    if (FriendlyUrlBLL.GetByMa(txtMa.Text) != null)
+                    danhMuc = DanhMucBaiVietBLL.Update(danhMuc);
+                    try
                     {
-                        lblAddErrorMessage.Text = "Url thân thiện đã tồn tại, vui lòng nhập mã khác";
-                        UpdatePanelAdd.Update();
-                        return;
+                        List<BaiVietInDanhMucDto> listBaiVietInDanhMuc = new List<BaiVietInDanhMucDto>();
+                        foreach (GridViewRow row in GridBaiVietInDanhMuc.Rows)
+                        {
+                            // Lấy giá trị từ các ô trong GridView, ví dụ:
+                            int lblBaiVietId = int.Parse(((Label)row.FindControl("lblBaiVietId")).Text);
+                            //int? lblDanhMucId = ((Label)row.FindControl("lblDanhMucId")).Text == null ? (int?)null : int.Parse(((Label)row.FindControl("lblBaiVietId")).Text);
+                            bool daChon = ((CheckBox)row.FindControl("DaChon")).Checked;
+                            listBaiVietInDanhMuc.Add(new BaiVietInDanhMucDto
+                            {
+                                BaiVietId = lblBaiVietId,
+                                //DanhMucId = lblDanhMucId,
+                                DaChon = daChon ? 1 : 0
+                            });
+                        }
+                        DanhMucBaiVietBLL.UpdateDanhMucBaiViet(listBaiVietInDanhMuc, baivietinDanhMucCurrent, danhMuc.Id);
+                        baivietinDanhMucCurrent = listBaiVietInDanhMuc;
                     }
-                    if (!VaiTroManagerBll.AllowAdd(CurrentUserId, MenuMa))
+                    catch (Exception ex)
                     {
-                        ShowNotification("Bạn không có quyền truy cập chức năng này", false);
-                        ScriptManager.RegisterStartupScript(this, GetType(), "closeModal", "closeModal();", true);
-
+                        ShowNotification("Cập nhật danh mục thất bại,\n lỗi:   " + ex.Message, false);
                     }
-                    else
-                    {
-
-
-                        danhMuc.Ten = txtTen.Text;
-                        danhMuc.Slug = txtMa.Text;
-                        danhMuc.DanhMucChaId = int.Parse(ddlDanhMuc.SelectedValue);
-                        danhMuc.MoTa = txtMota.Text;
-                        danhMuc.LangID = ApplicationContext.Current.ContentCurrentLanguageId;
-                        danhMuc = DanhMucBaiVietBLL.Insert(danhMuc);
-                        Response.Redirect(Request.Url.AbsolutePath);
-                        //ScriptManager.RegisterStartupScript(this, GetType(), "CloseModal", "closeModal();", true);
-                        //if (danhMuc != null)
-                        //{
-                        //    lblAddErrorMessage.Text = "";
-                        //    ShowNotification("Thêm danh mục thành công");
-                        //    txtTen.Text = string.Empty;
-                        //    txtMa.Text = string.Empty;
-                        //    txtMota.Text = string.Empty;
-                        //    ddlDanhMuc.SelectedIndex = 0;
-                        //    UpdatePanelAdd.Update();
-                        //}
-                        //else
-                        //{
-                        //    ShowNotification("Thêm danh mục thất bại", false);
-                        //}
-                    }
-
                 }
+
+                #region Update panel
+                lblTitle.InnerText = "Cập nhật danh mục";
+                tabBaiViet.Visible = true;
+                btnXoa.Visible = VaiTroManagerBll.AllowDelete(ApplicationContext.Current.CurrentUserID, MenuMa);
+                BindBaiVietInDanhMuc(danhMuc.Id);
+                // Đoạn mã trong code-behind
+                string script = $@"
+                     window.params = window.params || new URLSearchParams(window.location.search);
+                    params.set('CatId', '{danhMuc.Id}');" +
+                    @" history.pushState(null, '', `${window.location.pathname}?${window.params.toString()}`);
+
+
+                    $(function () {
+                        if ($("".rightsTreeView"").length) {
+                            var jsonData = JSON.parse($('[data-selector=""hdfRightsTreeViewData""]').val());
+                            renderTreeView(jsonData);
+                        }
+                        $('[data-selector=""hdfRightsTreeViewData""]').on('change', function () {
+                            var updateJsonData = JSON.parse((this).val());
+                            renderTreeView(updateJsonData);
+                        });
+                    });
+                    ";
+
+                // Đảm bảo JavaScript chạy bên trong UpdatePanel
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "UpdateUrl", script, true);
+                HiddenIDDanhMuc.Value = danhMuc.Id.ToString();
+                BindDataTree();
+
+                UpdatePanelEdit.Update();
+                #endregion
             }
+
             catch (Exception ex)
             {
                 ShowNotification("Thêm danh mục thất bại! \n Lỗi: " + ex.Message, false);
@@ -293,8 +334,15 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
         {
             try
             {
-                int id = int.Parse(hdnRowId.Value);
-                if (!string.IsNullOrEmpty(id.ToString()))
+                string catIdstring = HiddenIDDanhMuc.Value;
+                int id = 0;
+                int.TryParse(catIdstring, out id);
+                if (id <= 0)
+                {
+                    id = int.Parse(HiddenIDDanhMuc.Value);
+                }
+
+                if (!string.IsNullOrEmpty(id.ToString()) && id > 0)
                 {
                     var danhMuc = DanhMucBaiVietBLL.GetById(id);
 
@@ -305,7 +353,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
 
                         return;
                     }
-                    if (!VaiTroManagerBll.AllowDelete(CurrentUserId, MenuMa))
+                    if (!VaiTroManagerBll.AllowDelete(ApplicationContext.Current.CurrentUserID, MenuMa))
                     {
                         ShowNotification("Bạn không có quyền truy cập chức năng này", false);
                         ScriptManager.RegisterStartupScript(this, GetType(), "closeDelete", "closeDelete();", true);
@@ -321,6 +369,13 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     //ScriptManager.RegisterStartupScript(this, GetType(), "closeDelete", "closeDelete();", true);
 
                 }
+                else
+                {
+                    ShowNotification("Lỗi không tìm thấy danh mục", false);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "closeDelete", "closeDelete();", true);
+
+                    return;
+                }
             }
             catch (Exception ex)
             {
@@ -328,86 +383,6 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
             }
 
         }
-
-        protected void btnEdit_Click(object sender, EventArgs e)
-        {
-            try
-            {
-
-                #region Cập nhật danh mục
-                if (!VaiTroManagerBll.AllowEdit(CurrentUserId, MenuMa))
-                {
-                    ShowNotification("Bạn không có quyền truy cập chức năng này", false);
-                    return;
-                }
-                int danhMucId = int.Parse(hdnRowId.Value);
-                
-                DanhMuc danhMuc = DanhMucBaiVietBLL.GetById(danhMucId);
-
-
-                if (danhMuc.Slug != txtEditMa.Text)
-                {
-                    var friendlyUrl = FriendlyUrlBLL.GetByMa(txtEditMa.Text);
-                    if (friendlyUrl != null)
-                    {
-
-                        lblEditErrorMessage.Text = "Url thân thiện này đã tồn tại, vui lòng nhập url khác!";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "openEdit", "openEdit();", true);
-
-                        return;
-                    }
-                }
-
-                danhMuc.Ten = txtEditTen.Text;
-                danhMuc.Slug = txtEditMa.Text;
-                danhMuc.MoTa = txtEditMota.Text;
-                danhMuc.DanhMucChaId = int.Parse(ddlEditDanhMuc.SelectedValue);
-                danhMuc = DanhMucBaiVietBLL.Update(danhMuc);
-                hdnRowId.Value = "";
-                #endregion
-
-
-                #region Cập nhật thêm bài viết cho danh mục
-
-                try
-                {
-                    List<BaiVietInDanhMucDto> listBaiVietInDanhMuc = new List<BaiVietInDanhMucDto>();
-                    foreach (GridViewRow row in GridBaiVietInDanhMuc.Rows)
-                    {
-                        // Lấy giá trị từ các ô trong GridView, ví dụ:
-                        int lblBaiVietId = int.Parse(((Label)row.FindControl("lblBaiVietId")).Text);
-                        //int? lblDanhMucId = ((Label)row.FindControl("lblDanhMucId")).Text == null ? (int?)null : int.Parse(((Label)row.FindControl("lblBaiVietId")).Text);
-                        bool daChon = ((CheckBox)row.FindControl("DaChon")).Checked;
-                        listBaiVietInDanhMuc.Add(new BaiVietInDanhMucDto
-                        {
-                            BaiVietId = lblBaiVietId,
-                            //DanhMucId = lblDanhMucId,
-                            DaChon = daChon ? 1 : 0
-                        });
-                    }
-                    ShowNotification(DanhMucBaiVietBLL.UpdateDanhMucBaiViet(listBaiVietInDanhMuc, baivietinDanhMucCurrent, danhMucId));
-                    baivietinDanhMucCurrent = listBaiVietInDanhMuc;
-                }
-                catch (Exception ex)
-                {
-                    ShowNotification("Cập nhật danh mục thất bại,\n lỗi:   " + ex.Message, false);
-                }
-                #endregion
-
-                Response.Redirect(Request.Url.AbsolutePath);
-
-                //BindDataByQuyen();
-                //ScriptManager.RegisterStartupScript(this, GetType(), "closeEdit", "closeEdit();", true);
-
-                //ShowNotification("Cập nhật thành công", true);
-            }
-            catch (Exception ex)
-            {
-                ShowNotification("Cập nhật thất bại! \n " + ex.Message, false);
-            }
-        }
-
-
         private void ShowNotification(string message, bool isSuccess = true)
         {
             AdminNotificationUserControl.LoadMessage(message, isSuccess);

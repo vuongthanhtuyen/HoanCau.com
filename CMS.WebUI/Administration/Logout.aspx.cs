@@ -1,5 +1,6 @@
 ﻿using CMS.DataAsscess;
 using CMS.WebUI.Administration.Common;
+using SweetCMS.Core.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace CMS.WebUI.Administration
             Session["MenuPermission"] = null;
             Response.Redirect("~/Administration/Login.aspx", false);
             menuPermisstions.Clear();
-            CurrentUserId = 0;
+            ApplicationContext.Current.CurrentUserID = 0;
         }
     }
 }

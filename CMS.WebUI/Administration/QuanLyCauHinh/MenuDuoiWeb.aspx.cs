@@ -79,7 +79,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                 }
                 else
                 {
-                    ShowNotification("Danh mục này không tồn tại", false);
+                    ShowNotification("Menu không tồn tại", false);
                 }
 
             }
@@ -197,7 +197,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                 //    addChild.children = null;
                 //    lstTree.Add(addChild);
                 //}
-                hdfRightsTreeViewData.Value = JsonConvert.SerializeObject(new { MenuId = 0, text = "Danh sách Menu trên", children = lstTree, icon = "fa fa-list-ul", state = new { opened = true } });
+                hdfRightsTreeViewData.Value = JsonConvert.SerializeObject(new { MenuId = 0, text = "Danh sách Menu dưới", children = lstTree, icon = "fa fa-list-ul", state = new { opened = true } });
                 UpdatePanelMainTable.Update();
                 SearchUserControl.SetSearcKey();
 
@@ -352,7 +352,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                     UpdatePanelAdd.Update();
                     return;
                 }
-                if (!VaiTroManagerBll.AllowAdd(CurrentUserId, MenuMa))
+                if (!VaiTroManagerBll.AllowAdd(ApplicationContext.Current.CurrentUserID, MenuMa))
                 {
                     ShowNotification("Bạn không có quyền truy cập chức năng này", false);
                     return;
@@ -420,7 +420,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                         ShowNotification("Lỗi không tìm thấy menu", false);
                         return;
                     }
-                    if (!VaiTroManagerBll.AllowDelete(CurrentUserId, MenuMa))
+                    if (!VaiTroManagerBll.AllowDelete(ApplicationContext.Current.CurrentUserID, MenuMa))
                     {
                         ShowNotification("Bạn không có quyền truy cập chức năng này", false);
                         return;
@@ -444,7 +444,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
         {
             try
             {
-                if (!VaiTroManagerBll.AllowEdit(CurrentUserId, MenuMa))
+                if (!VaiTroManagerBll.AllowEdit(ApplicationContext.Current.CurrentUserID, MenuMa))
                 {
                     ShowNotification("Bạn không có quyền truy cập chức năng này", false);
                     return;

@@ -32,9 +32,9 @@ namespace CMS.Core.Manager
         {
             return new LichSuPhatTrienController().Update(lichSuPhatTrien);
         }
-        public static LichSuPhatTrienCollection GetAll()
+        public static List<LichSuPhatTrien> GetAll()
         {
-            return new LichSuPhatTrienController().FetchAll();
+            return new LichSuPhatTrienController().FetchAll().ToList();
         }
         public static bool Delete(int id)
         {

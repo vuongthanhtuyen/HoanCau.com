@@ -1,6 +1,7 @@
 ﻿using CMS.Core.Manager;
 using CMS.DataAsscess;
 using CMS.WebUI.Administration.Common;
+using SweetCMS.Core.Helper;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -78,7 +79,7 @@ namespace CMS.WebUI.Administration
                 }
                 else
                 {
-                    if (!VaiTroManagerBll.AllowAdd(CurrentUserId, MenuMa))
+                    if (!VaiTroManagerBll.AllowAdd(ApplicationContext.Current.CurrentUserID, MenuMa))
                     {
                         ShowNotification("Bạn không có quyền truy cập chức năng này", false);
                         return;
@@ -107,7 +108,7 @@ namespace CMS.WebUI.Administration
         {
             try
             {
-                if (!VaiTroManagerBll.AllowEdit(CurrentUserId, MenuMa))
+                if (!VaiTroManagerBll.AllowEdit(ApplicationContext.Current.CurrentUserID, MenuMa))
                 {
                     ShowNotification("Bạn không có quyền truy cập chức năng này", false);
                     return;
@@ -135,7 +136,7 @@ namespace CMS.WebUI.Administration
         {
             try
             {
-                if (!VaiTroManagerBll.AllowDelete(CurrentUserId, MenuMa))
+                if (!VaiTroManagerBll.AllowDelete(ApplicationContext.Current.CurrentUserID, MenuMa))
                 {
                     ShowNotification("Bạn không có quyền truy cập chức năng này", false);
                     return;

@@ -2,6 +2,7 @@
 using CMS.DataAsscess;
 using CMS.WebUI.Administration.AdminUserControl;
 using CMS.WebUI.Administration.Common;
+using SweetCMS.Core.Helper;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -60,8 +61,8 @@ namespace CMS.WebUI.Administration
             List<NguoiDungDto> postList = new List<NguoiDungDto>();
             int totalRow = 0;
             postList = NguoiDungManagerBLL.GetNguoiDungPaging(pageSize, pageIndex, Request.QueryString["search"], null, out totalRow);
-            int idUser = int.Parse(Session["UserId"].ToString());
-            if (idUser != 31)
+            
+            if (ApplicationContext.Current.CurrentUserID != 31)
             {
                 postList = postList.Where(x => x.Id != 31).ToList();
             }
@@ -157,7 +158,7 @@ namespace CMS.WebUI.Administration
                 }
                 else
                 {
-                    if (!VaiTroManagerBll.AllowAdd(CurrentUserId, MenuMa))
+                    if (!VaiTroManagerBll.AllowAdd(ApplicationContext.Current.CurrentUserID, MenuMa))
                     {
                         ShowNotification("Bạn không có quyền truy cập chức năng này", false);
                         return;
@@ -242,7 +243,7 @@ namespace CMS.WebUI.Administration
                 }
                 else
                 {
-                    if (!VaiTroManagerBll.AllowEdit(CurrentUserId, MenuMa))
+                    if (!VaiTroManagerBll.AllowEdit(ApplicationContext.Current.CurrentUserID, MenuMa))
                     {
                         ShowNotification("Bạn không có quyền truy cập chức năng này", false);
                         return;
@@ -295,7 +296,7 @@ namespace CMS.WebUI.Administration
         {
             try
             {
-                if (!VaiTroManagerBll.AllowEdit(CurrentUserId, MenuMa))
+                if (!VaiTroManagerBll.AllowEdit(ApplicationContext.Current.CurrentUserID, MenuMa))
                 {
                     ShowNotification("Bạn không có quyền truy cập chức năng này", false);
                     return;
@@ -365,7 +366,7 @@ namespace CMS.WebUI.Administration
                         ShowNotification("Không thể xóa người dùng là Admin", false);
                         return;
                     }
-                    if (!VaiTroManagerBll.AllowDelete(CurrentUserId, MenuMa))
+                    if (!VaiTroManagerBll.AllowDelete(ApplicationContext.Current.CurrentUserID, MenuMa))
                     {
                         ShowNotification("Bạn không có quyền truy cập chức năng này", false);
                         return;

@@ -8,6 +8,8 @@
 
 <asp:Content ID="ctSearch" ContentPlaceHolderID="ctSearch" runat="server">
     <uc1:SearchUserControl runat="server" ID="SearchUserControl" />
+        <link href="/Assets/validation-engine/css/validationEngine.jquery.css" rel="stylesheet" type="text/css" />
+
 </asp:Content>
 
 
@@ -20,19 +22,6 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager ID="ScriptManger1" runat="Server" />
     <main style="min-height: 500px;">
-        <div>
-            <div class="col-xs-12 padding-none header-controls-right">
-                <span class="notifications"></span>
-                <button class="btn btn-primary btn-sm btn-flat padding-fa mr-4" id="btnOpenModal" type="button"
-                    onclick="openModal()" runat="server">
-                    <i class="fa fa-plus"></i>Thêm mới</button>
-
-                <asp:Label ID="lblResult" CssClass="text-info" runat="server" Text=""></asp:Label>
-            </div>
-        </div>
-        <br />
-
-
         <div class="box">
             <div class="box-body">
                 <div class="row">
@@ -56,63 +45,21 @@
 
     </main>
 
-    <%-- Modal add new --%>
+    <%-- Modal --%>
     <div id="myModal" class="modal">
-        <div class="modal-content">
-            <asp:UpdatePanel ID="UpdatePanelAdd" UpdateMode="Conditional" runat="server">
-                <ContentTemplate>
-                    <span class="close d-flex justify-content-end" onclick="closeModal()">&times;</span>
-                    <h4>Thêm mới một category </h4>
-                    <asp:Label ID="lblAddErrorMessage" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
-                    <div class="justify-content-center align-items-center main-edit-modal">
-                        <div class="form-group">
-                            <label for="ddlStatus">Danh Mục cha</label>
-                            <asp:DropDownList ID="ddlDanhMuc" runat="server" CssClass="form-control form-control-user">
-                                <asp:ListItem Value="1">Hoạt động</asp:ListItem>
-                                <asp:ListItem Value="0">Không hoạt động</asp:ListItem>
-                            </asp:DropDownList>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <label for="txtTen">Tên danh mục</label>
-                                <asp:TextBox ID="txtTen" runat="server" CssClass="form-control form-control-user" placeholder="Tên danh mục"></asp:TextBox>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="txtMa">Url thân thiện</label>
-                                <asp:TextBox ID="txtMa" runat="server" CssClass="form-control form-control-user" placeholder="Nhập url thân thiện"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="txtMota">Mô tả danh mục</label>
-                            <asp:TextBox ID="txtMota" runat="server" CssClass="form-control form-control-user" placeholder="Nội dung" Height="200px" TextMode="MultiLine"></asp:TextBox>
-                        </div>
-
-                        <div class="d-flex justify-content-end">
-                            <asp:Button ID="btnAdd" runat="server" Text="Thêm Mới" class="btn btn-primary btn-user mx-1"
-                                OnClick="btnAdd_Click" />
-                            <asp:Button ID="btnCancel" runat="server" Text="Hủy" class="btn btn-secondary btn-user mx-1"
-                                OnClientClick="closeModal(); return false;" />
-                        </div>
-                    </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-        </div>
-    </div>
-
-    <%-- Edit Modal --%>
-    <div id="myEditModal" class="modal">
         <div class="modal-content">
             <asp:UpdatePanel ID="UpdatePanelEdit" UpdateMode="Conditional" runat="server">
                 <ContentTemplate>
-                    <span class="close d-flex justify-content-end" onclick="closeEdit()">&times;</span>
-                    <h4> Cập nhật danh mục </h4>
-                    <asp:Label ID="lblEditErrorMessage" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
+                    <span class="close d-flex justify-content-end" onclick="closeModal()">&times;</span>
+                    <h4 runat="server" id="lblTitle">Thêm mới </h4>
+                    <asp:HiddenField ID="HiddenIDDanhMuc" runat="server" />
+                    <asp:Label ID="lblErrorMessage" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
                     <div class="justify-content-center align-items-center main-edit-modal" style="max-height: 500px; overflow-y: auto; overflow-x: hidden;">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="baiViet-tab" data-toggle="tab" data-target="#baiViet" type="button" role="tab" aria-controls="baiViet" aria-selected="true">Danh Mục</button>
                             </li>
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item" runat="server" id="tabBaiViet" visible="false" role="presentation">
                                 <button class="nav-link" id="danhMuc-tab" data-toggle="tab" data-target="#danhMuc" type="button" role="tab" aria-controls="danhMuc" aria-selected="false">Bài viết</button>
                             </li>
                         </ul>
@@ -129,16 +76,16 @@
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label for="txtEditTen">Tên danh mục</label>
-                                            <asp:TextBox ID="txtEditTen" runat="server" CssClass="form-control form-control-user" placeholder="Tên danh mục"></asp:TextBox>
+                                            <asp:TextBox ID="txtEditTen" runat="server" CssClass="validate[required] form-control form-control-user" placeholder="Tên danh mục"></asp:TextBox>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="txtEditMa">Url thân thiện</label>
-                                            <asp:TextBox ID="txtEditMa" runat="server" CssClass="form-control form-control-user" placeholder="Nhập url thân thiện"></asp:TextBox>
+                                            <asp:TextBox ID="txtEditMa" runat="server" CssClass="validate[required] form-control form-control-user" placeholder="Nhập url thân thiện"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="txtEditMota">Mô tả danh mục</label>
-                                        <asp:TextBox ID="txtEditMota" runat="server" CssClass="form-control form-control-user" placeholder="Nội dung" Height="200px" TextMode="MultiLine"></asp:TextBox>
+                                        <asp:TextBox ID="txtEditMota" runat="server" CssClass=" form-control form-control-user" placeholder="Nội dung" Height="200px" TextMode="MultiLine"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -146,14 +93,14 @@
                                 <div class="col-md-12 mt-3">
                                     <div class="form-group">
                                         <asp:GridView ID="GridBaiVietInDanhMuc" runat="server" AutoGenerateColumns="false"
-                                            CssClass="table table-striped"  CellPadding="10" CellSpacing="2"
-                                            GridLines="None" Width="100%" style="border: 1px solid #cccccc;">
-                                            <Columns >
-                                                 <asp:TemplateField HeaderText="STT">
-                                                     <ItemTemplate>
-                                                         <%# Container.DataItemIndex + 1 %>
-                                                     </ItemTemplate>
-                                                 </asp:TemplateField>
+                                            CssClass="table table-striped" CellPadding="10" CellSpacing="2"
+                                            GridLines="None" Width="100%" Style="border: 1px solid #cccccc;">
+                                            <Columns>
+                                                <asp:TemplateField HeaderText="STT">
+                                                    <ItemTemplate>
+                                                        <%# Container.DataItemIndex + 1 %>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                                 <asp:BoundField DataField="TieuDe" HeaderText="Tiêu đề" />
 
                                                 <asp:TemplateField HeaderText="Trạng thái">
@@ -188,16 +135,16 @@
                         </div>
                         <div class="d-flex justify-content-end">
 
-                            <a class="btn btn-danger btn-xs btn-flat" onclick="openDelete()" style="min-width: 50px;"><span class="fa fa-trash"></span>Xóa</a>
-                            <asp:Button ID="Button1" runat="server" Text="Cập nhật" class="btn btn-primary mx-1 btn-user btn-modal" OnClick="btnEdit_Click" Style="min-width: 50px;" />
-                            <asp:Button ID="Button2" runat="server" Text="Hủy" class="btn btn-secondary mx-1 btn-user btn-modal" OnClientClick="closeEdit(); return false;" Style="min-width: 50px;" />
+                            <a class="btn btn-danger btn-xs btn-flat" runat="server" visible="false" id="btnXoa" onclick="openDelete()" style="min-width: 50px;"><span class="fa fa-trash"></span>Xóa</a>
+                            <asp:Button ID="btnSave" runat="server" Text="Lưu" class="btn btn-primary mx-1 btn-user btn-modal" OnClick="btnSave_Click" Style="min-width: 50px;" />
+                            <asp:Button ID="btnCancal" runat="server" Text="Hủy" class="btn btn-secondary mx-1 btn-user btn-modal" OnClientClick="closeModal(); return false;" Style="min-width: 50px;" />
                         </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
     </div>
-</div>
-
+    </div>
+    
 
 
     <%-- Modal delete comfirm --%>
@@ -229,33 +176,18 @@
         }
         function closeModal() {
             document.getElementById("myModal").style.display = "none";
-            document.getElementById("<%= lblAddErrorMessage.ClientID %>").innerText = "";
+            history.pushState(null, '', window.location.pathname)
             return false;
         }
 
         function openDelete() {
             document.getElementById("confirmDeleteModal").style.display = "block";
-            document.getElementById("<%= lblResult.ClientID %>").innerText = "";
-
             return false;
         }
-
         function closeDelete() {
             document.getElementById("confirmDeleteModal").style.display = "none";
             return false;
         }
-
-        function openEdit() {
-            document.getElementById("<%= lblResult.ClientID %>").innerText = "";
-            document.getElementById("myEditModal").style.display = "block";
-            return false;
-        }
-
-        function closeEdit() {
-            document.getElementById("myEditModal").style.display = "none";
-
-        }
-       
     </script>
 
 
@@ -314,16 +246,22 @@
             });
         }
 
-        setTimeout(function () {
-            document.querySelectorAll("a.btn-danger").forEach(function (deleteButton) {
-                deleteButton.addEventListener("click", function (event) {
-                    event.stopPropagation();
-                    //event.preventDefault();
-                    openDelete();
-                });
-            });
-        }, 500); 
+       
 
     </script>
+    <script src="/Assets/validation-engine/js/languages/jquery.validationEngine-vi.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/Assets/validation-engine/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 
+    <script>
+
+        function CheckValid() {
+            var validated = $("#<%= UpdatePanelEdit.ClientID%>").validationEngine('validate', { promptPosition: "topLeft", scroll: false });
+            if (validated)
+                return validated;
+        };
+        function DisableContentChanged() {
+            window.onbeforeunload = null;
+        };
+
+    </script>
 </asp:Content>
