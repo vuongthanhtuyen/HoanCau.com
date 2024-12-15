@@ -6,25 +6,18 @@
 <%@ Register Src="~/Administration/AdminUserControl/SummernoteEditor.ascx" TagPrefix="uc1" TagName="SummernoteEditor" %>
 <%@ Register Src="~/Administration/AdminUserControl/DuAnTieuBieuUpLoad.ascx" TagPrefix="uc1" TagName="DuAnTieuBieuUpLoad" %>
 <%@ Register Src="~/Administration/AdminUserControl/ImportImageEdit.ascx" TagPrefix="uc1" TagName="ImportImageEdit" %>
-<%@ Register Src="~/Administration/AdminUserControl/SearchUserControl.ascx" TagPrefix="uc1" TagName="SearchUserControl" %>
-
-
-
-<asp:Content ID="ctSearch" ContentPlaceHolderID="ctSearch" runat="server">
-    <uc1:SearchUserControl runat="server" ID="SearchUserControl" />
-</asp:Content>
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <asp:ScriptManager ID="ScriptManger1" runat="Server" />
+     
     <main>
         <div>
             <div class="col-xs-12 padding-none header-controls-right">
                 <span class="notifications"></span>
                 <button class="btn btn-primary btn-sm btn-flat padding-fa mr-4 " id="btnOpenModal" type="button"
                     onclick="openModal()" runat="server">
-                    <i class="fa fa-plus"></i>Thêm mới</button>
+                    <i class="fa fa-plus"></i>Lưu</button>
                 <asp:Label ID="lblResult" CssClass="text-info" runat="server" Text=""></asp:Label>
             </div>
         </div>
@@ -82,7 +75,7 @@
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close d-flex justify-content-end" onclick="closeModal()">&times;</span>
-            <h4>Thêm mới slide </h4>
+            <h4>Lưu slide </h4>
             <asp:Label ID="lblAddErrorMessage" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
             <div class="row justify-content-center main-edit-modal">
                 <!-- Form group for Post Title and Slug -->
@@ -116,7 +109,7 @@
             </div>
 
             <div class="d-flex justify-content-end">
-                <asp:Button ID="btnUserAdd" runat="server" Text="Thêm Mới" class="btn btn-primary btn-user mx-1"
+                <asp:Button ID="btnUserAdd" runat="server" Text="Lưu" class="btn btn-primary btn-user mx-1"
                     OnClick="btnAdd_Click" />
                 <asp:Button ID="btnCancel" runat="server" Text="Hủy" class="btn btn-secondary btn-user mx-1"
                     OnClientClick="closeModal(); return false;" />
@@ -124,70 +117,6 @@
 
         </div>
     </div>
-
-    <%-- Edit User Modal --%>
-    <div id="myEditModal" class="modal">
-        <div class="modal-content">
-            <%--            <asp:UpdatePanel ID="UpdatePanelEdit" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="true">
-                <ContentTemplate>--%>
-
-            <span class="close d-flex justify-content-end" onclick="closeEdit()">&times;</span>
-            <h4>Chỉnh Cập nhật slide </h4>
-            <asp:Label ID="Label1" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
-            <div class="row justify-content-center main-edit-modal">
-                <!-- Form group for Post Title and Slug -->
-                <div class="col-md-11">
-
-                    <div class="form-group">
-                        <label for="txtEditTieuDeMot">Tiêu đề 1</label>
-                        <asp:TextBox ID="txtEditTieuDeMot" runat="server" CssClass="form-control form-control-user" placeholder="Tên công ty đối tác"></asp:TextBox>
-                    </div>
-                    <div class="form-group">
-                        <label for="txtEditTieuDeHai">Tiêu đề 2</label>
-                        <asp:TextBox ID="txtEditTieuDeHai" runat="server" CssClass="form-control form-control-user" placeholder="Tên công ty đối tác"></asp:TextBox>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-8">
-                            <label for="txtEditLienKetUrl">Liên kết trang mới</label>
-                            <asp:TextBox ID="txtEditLienKetUrl" runat="server" CssClass="form-control form-control-user" placeholder="Liên kết "></asp:TextBox>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="txtEditStt">Trình tự hiển thị</label>
-                            <asp:TextBox ID="txtEditStt" runat="server" CssClass="form-control form-control-user" placeholder="Số thứ tự "></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-6">
-                            <label for="chkEditTrangThai" class="mb-3">Trạng thái</label>
-                            <br />
-                            <asp:CheckBox ID="chkEditTrangThai" runat="server" CssClass="form-control-user" />
-                            <label class="form-check-label" for="chkEditTrangThai">Hiển thị</label>
-
-                        </div>
-                        <div class="col-md-6">
-                            <label for="txtEditNgayTao">Ngày tạo</label>
-                            <asp:TextBox ID="txtEditNgayTao" runat="server" CssClass="form-control form-control-user" TextMode="Date" ReadOnly="true"></asp:TextBox>
-                        </div>
-                    </div>
-                    <!-- Form group for Thumbnail URL -->
-                    <div>
-                        <div class="form-group">
-                            <label for="txtEditThumbnailUrl">URL ảnh đại diện (Thumbnail)</label>
-                            <uc1:ImportImageEdit runat="server" ID="ImportImageEdit" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex justify-content-end">
-                <asp:Button ID="Button1" runat="server" Text="Cập nhật" class="btn btn-primary mx-1 btn-user btn-modal" OnClick="btnEdit_Click" Style="min-width: 50px;" />
-                <asp:Button ID="Button2" runat="server" Text="Hủy" class="btn btn-secondary mx-1 btn-user btn-modal" OnClientClick="closeEdit(); return false;" Style="min-width: 50px;" />
-            </div>
-
-            <%--                </ContentTemplate>
-                </asp:UpdatePanel>--%>
-        </div>
-    </div>
-
 
 
     <%-- Modal delete comfirm --%>
@@ -206,7 +135,7 @@
 
     <uc1:AdminNotification runat="server" ID="AdminNotificationUserControl" />
 
-            <asp:HiddenField ID="hdnRowId" runat="server" />
+    <asp:HiddenField ID="hdnRowId" runat="server" />
 
     <%--   <asp:UpdatePanel ID="UpdatePanelId" runat="server">
         <ContentTemplate>
@@ -241,5 +170,67 @@
         function closeEdit() {
             document.getElementById("myEditModal").style.display = "none";
         }
+    </script>
+    <script>
+
+        var OpenSelectImage = function () {
+            var txtid = $('[data-selector="txtImage"]').attr('id');
+            var ws = getWindowSize();
+            $.lightbox('/RichFilemanager/default.aspx?field_name=' + txtid
+                + '&key=' + uploadThumbnailKey
+                + '&selectFun=setImageUrl',
+                {
+                    iframe: true,
+                    width: ws.width - 60,
+                    height: ws.height - 40,
+                });
+        };
+        var getWindowSize = function () {
+            var w = 0; var h = 0;
+            //IE
+            if (!window.innerWidth) {
+                if (!(document.documentElement.clientWidth === 0)) {
+                    //strict mode
+                    w = document.documentElement.clientWidth;
+                    h = document.documentElement.clientHeight;
+                } else {
+                    //quirks mode
+                    w = document.body.clientWidth; h = document.body.clientHeight;
+                }
+            } else {
+                //w3c
+                w = window.innerWidth; h = window.innerHeight;
+            }
+            return {
+                width: w, height: h
+            };
+        };
+        var setImageUrl = function (txtid, url) {
+            document.getElementById(txtid).value = url;
+            $('[data-selector="imgThumb"]').attr('src', url);
+            //call next function
+        };
+
+        /*--Image album--*/
+        var OpenSelectImageAlbum = function () {
+            var txtid = $('[data-selector="txtImageUrl"]').attr('id');
+            var ws = getWindowSize();
+            $.lightbox('/RichFilemanager/default.aspx?field_name=' + txtid
+                + '&key=' + uploadThumbnailKeyAlbum
+                + '&selectFun=setImageAlbumUrl',
+                {
+                    iframe: true,
+                    width: ws.width - 60,
+                    height: ws.height - 40,
+                });
+        };
+        var setImageAlbumUrl = function (txtid, url) {
+            document.getElementById(txtid).value = url;
+            $('[data-selector="imgImageUrl"]').attr('src', url);
+            //call next function
+        };
+
+
+
     </script>
 </asp:Content>

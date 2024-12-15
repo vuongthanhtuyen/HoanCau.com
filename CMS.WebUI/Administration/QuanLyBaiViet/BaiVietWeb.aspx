@@ -1,460 +1,398 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Administration/MasterPage/AdminPage.Master" CodeBehind="BaiVietWeb.aspx.cs" Inherits="CMS.WebUI.Administration.QuanLyBaiViet.BaiVietWeb" %>
 
 <%@ Import Namespace="SweetCMS.Core.Helper" %>
-<%@ Register Src="~/Administration/AdminUserControl/AdminNotification.ascx" TagPrefix="uc1" TagName="AdminNotification" %>
 <%@ Register Src="~/Administration/AdminUserControl/PagingAdmin.ascx" TagPrefix="uc1" TagName="PagingAdmin" %>
-<%@ Register Src="~/Administration/AdminUserControl/ImportImage.ascx" TagPrefix="uc1" TagName="ImportImage" %>
-<%@ Register Src="~/Administration/AdminUserControl/SummernoteEditor.ascx" TagPrefix="uc1" TagName="SummernoteEditor" %>
-<%@ Register Src="~/Administration/AdminUserControl/ImportImageEdit.ascx" TagPrefix="uc1" TagName="ImportImageEdit" %>
-<%@ Register Src="~/Administration/AdminUserControl/SearchUserControl.ascx" TagPrefix="uc1" TagName="SearchUserControl" %>
 <%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 
-
-<asp:Content ID="ctSearch" ContentPlaceHolderID="ctSearch" runat="server">
-    <uc1:SearchUserControl runat="server" ID="SearchUserControl" />
-</asp:Content>
-
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
-    <%--    <link href="Assets/css/Modal.css" rel="stylesheet" />--%>
-    <link href="../Assets/css/Modal.css" rel="stylesheet" />
-        <link href="/Administration/Style/plugins/lightbox-evolution-1.8/theme/default/jquery.lightbox.css" rel="stylesheet" />
+    <link href="/Administration/Style/plugins/lightbox-evolution-1.8/theme/default/jquery.lightbox.css" rel="stylesheet" />
     <link href="/Administration/Style/dist/css/imgareaselect-default.css" rel="stylesheet" />
-
 </asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:ScriptManager ID="ScriptManger1" runat="Server" />
-    <main>
-        <div>
-            <div class="col-xs-12 padding-none header-controls-right">
-                <span class="notifications"></span>
-                <button class="btn btn-primary btn-sm btn-flat padding-fa mr-4 " id="btnOpenModal" type="button"
-                    onclick="openModal()" runat="server">
-                    <i class="fa fa-plus"></i>Thêm mới</button>
 
+    <div class="card card-primary card-outline">
+        <div class="card-header justify-content-between">
+            <h3 class="card-title">
+                <i class="fas fa-edit"></i>
+                Danh sách bài viết
+            </h3>
+            <button type="button" onclick="MakeModal()" class="btn btn-primary col-2 float-sm-right">
+                    Thêm mới
+                </button>
+        </div>
+        <div class="card-body">
+            <div class="col-xs-12 padding-none header-controls-right">
+               
                 <asp:Label ID="lblResult" CssClass="text-info" runat="server" Text=""></asp:Label>
             </div>
-        </div>
+            <br />
+            <asp:UpdatePanel ID="UpdatePanelMainTable" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <asp:GridView ID="GridViewTable" runat="server" AutoGenerateColumns="false"
+                        CssClass="table table-striped table-bordered" CellPadding="10" CellSpacing="2"
+                        GridLines="None" OnRowCommand="GridViewTable_RowCommand">
+                        <Columns>
+                            <asp:TemplateField HeaderText="STT">
+                                <ItemTemplate>
+                                    <%# (int)ViewState["LastIndex"] + (Container.DataItemIndex + 1) %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="TieuDe" HeaderText="Tiêu đề" />
+                            <asp:TemplateField HeaderText="Danh mục">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="ChinhSuaDanhMuc" runat="server"
+                                        Text='<%# Eval("TenDanhMuc") ?? "Không có danh mục"  %>'
+                                        CommandArgument='<%# Eval("Id") %>'
+                                        CommandName="ChinhSuaDanhMuc">
+                                    </asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="CreateBy" HeaderText="Tác giả" />
+                            <asp:BoundField DataField="ViewCount" HeaderText="Lượt xem" />
+                            <asp:TemplateField HeaderText="Hiển thị">
+                                <ItemTemplate>
+                                    <asp:CheckBox ID="TrangThai" runat="server"
+                                        Checked='<%# Eval("TrangThai") %>' Enabled="False" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="ChinhSuaGanNhat" HeaderText="Ngày chỉnh" DataFormatString="{0:dd/MM/yyyy}" HtmlEncode="false" />
+                            <asp:TemplateField HeaderText="Hành Động" HeaderStyle-Width="130px">
+                                <ItemTemplate>
+                                    <a class="btn btn-primary" onclick="MakeModal('<%# Eval("Id") %>');">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <asp:LinkButton ID="Xoa" runat="server" CssClass="btn btn-danger"
+                                        CommandArgument='<%# Eval("Id") %>' ToolTip="Xóa" CommandName="Xoa">
+                                         <span class="fa fa-trash"></span> 
+                                    </asp:LinkButton>
 
-        <br />
-        <asp:GridView ID="GridViewTable" runat="server" AutoGenerateColumns="false"
-            CssClass="table table-striped table-bordered" CellPadding="10" CellSpacing="2"
-            GridLines="None" OnRowCommand="GridViewTable_RowCommand">
-            <Columns>
-                <asp:TemplateField HeaderText="STT">
-                    <ItemTemplate>
-                        <%# (int)ViewState["LastIndex"] + (Container.DataItemIndex + 1) %>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:BoundField DataField="TieuDe" HeaderText="Tiêu đề" />
-                <asp:TemplateField HeaderText="Danh mục">
-                    <ItemTemplate>
-                        <asp:LinkButton ID="ChinhSuaDanhMuc" runat="server"
-                            Text='<%# Eval("TenDanhMuc") %>' CommandArgument='<%# Eval("Id") %>'
-                            CommandName="ChinhSuaDanhMuc">
-                        </asp:LinkButton>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:BoundField DataField="TacGia" HeaderText="Tác giả" />
-                <asp:BoundField DataField="ViewCount" HeaderText="Lượt xem" />
-
-                <asp:TemplateField HeaderText="Hiển thị">
-                    <ItemTemplate>
-                        <asp:CheckBox ID="TrangThai" runat="server"
-                            Checked='<%# Eval("TrangThai") %>' Enabled="False" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-
-
-                <asp:BoundField DataField="ChinhSuaGanNhat" HeaderText="Ngày chỉnh" DataFormatString="{0:dd/MM/yyyy}" HtmlEncode="false" />
-
-
-                <asp:TemplateField HeaderText="Hành Động" HeaderStyle-Width="230px">
-                    <ItemTemplate>
-                        <asp:LinkButton ID="ChinhSuaChiTiet" runat="server" CssClass="btn btn-primary btn-xs btn-flat"
-                            CommandArgument='<%# Eval("Id") %>' CommandName="ChinhSuaChiTiet" ToolTip="Cập nhật">
-                                         <span class="fa fa-eye"></span> Cập nhật
-                        </asp:LinkButton>
-
-                        <asp:LinkButton ID="Xoa" runat="server" CssClass="btn btn-danger btn-xs btn-flat"
-                            CommandArgument='<%# Eval("Id") %>' ToolTip="Xóa" CommandName="Xoa">
-                                             <span class="fa fa-trash"></span> Xóa
-                        </asp:LinkButton>
-
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
-        </asp:GridView>
-    </main>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                </ContentTemplate>
+            </asp:UpdatePanel>
 
 
-    <uc1:PagingAdmin runat="server" ID="PagingAdminWeb" />
 
-    <%-- Modal add new Bài viết --%>
-    <div id="myModal" class="modal">
-        <div class="modal-content-post">
-            <span class="close d-flex justify-content-end" onclick="closeModal()">&times;</span>
-            <h4>Thêm mới bài viết </h4>
-            <asp:Label ID="lblAddErrorMessage" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
-            <div class="row justify-content-center main-edit-modal">
-                <!-- Form group for Post Title and Slug -->
-                <div class="col-md-8">
-                    <div class="form-group row">
-                        <div class="col-md-6">
-                            <label for="txtTieuDe">Tiêu đề bài viết</label>
-                            <asp:TextBox ID="txtTieuDe" runat="server" CssClass="form-control form-control-user" placeholder="Tiêu đề bài viết"></asp:TextBox>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="txtSlug">Slug</label>
-                            <asp:TextBox ID="txtSlug" runat="server" CssClass="form-control form-control-user" placeholder="Slug"></asp:TextBox>
-                        </div>
-                    </div>
-
-                    <!-- Form group for Short Description and Main Content -->
-                    <div class="form-group">
-                        <label for="txtMoTaNgan">Mô tả ngắn</label>
-
-                        <asp:TextBox ID="txtMoTaNgan" runat="server" CssClass="form-control form-control-user" TextMode="MultiLine" placeholder="Mô tả ngắn"></asp:TextBox>
-                    </div>
-                    <div class="form-group">
-                        <label for="txtNoiDungChinh">Nội dung chính</label>
-
-
-                        <CKEditor:CKEditorControl ID="txtNoiDungChinh" Width="100%" CssClass="ck-editor"
-                            Toolbar="Full" BodyId="StaticPageContent" Language="en-US" AutoParagraph="false"
-                            BasePath="/Administration/Style/plugins/ckeditor/" runat="server" Height="300">
-                        </CKEditor:CKEditorControl>
-                    </div>
-
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group row">
-                        <label class="control-label">Hình minh họa</label>
-                        <label style="margin-left: 5px;" class="small">(Click vào hình ảnh để thay đổi hình minh họa)</label>
-                        <div class="row text-center">
-                            <div class="img-thumbnail">
-                                <img data-selector="imgThumb" id="imgThumb" runat="server" onclick="OpenSelectImage();"  src="/Administration/UploadImage/00000biet-thu-quoc-anh.png"
-                                    style="cursor: pointer; max-width: 200px" class="imgthumb img-responsive" />
-                            </div>
-                            <input style="display: none;" data-selector="txtImage" type="text" id="txtImage" runat="server" class="form-control" />
-                            <div id="divRemoveThumb" runat="server" visible="false">
-                                <a onclick="RemoveThumbnail();" title="Xóa hình mình họa" class="btn btn-default btn-flat btn-sm">Xóa hình minh họa</a>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-
-
-                    <label for="txtThumbnailUrl">URL ảnh đại diện (Thumbnail)</label>
-                    <uc1:ImportImage runat="server" ID="ImportImage" />
-
-
-                </div>
+            <uc1:PagingAdmin runat="server" ID="PagingAdminWeb" />
+            <asp:UpdatePanel ID="UpdatePanelID" runat="server">
+                <ContentTemplate>
+                    <asp:HiddenField ID="hdnRowId" runat="server" />
+                </ContentTemplate>
+            </asp:UpdatePanel>
+            <div class="text-muted mt-3">
+                
             </div>
-
-            <div class="d-flex justify-content-end">
-                <asp:Button ID="btnUserAdd" runat="server" Text="Thêm Mới" class="btn btn-primary btn-user mx-1"
-                    OnClick="btnAdd_Click" />
-                <asp:Button ID="btnCancel" runat="server" Text="Hủy" class="btn btn-secondary btn-user mx-1"
-                    OnClientClick="closeModal(); return false;" />
-            </div>
-
         </div>
+        <!-- /.card -->
     </div>
-
-    <%-- Edit Bài viết Modal --%>
-    <div id="myEditModal" class="modal">
-        <div class="modal-content-post">
-
-            <span class="close d-flex justify-content-end" onclick="closeEdit()">&times;</span>
-            <h4>Cập nhật bài viết </h4>
-            <asp:Label ID="lblEditMessager" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
-            <div class="row justify-content-center main-edit-modal">
-                <!-- Form group for Post Title and Slug -->
-                <div class="col-md-8">
-                    <div class="form-group row">
-                        <div class="col-md-6">
-                            <label for="txtEditTieuDe">Tiêu đề bài viết</label>
-                            <asp:TextBox ID="txtEditTieuDe" runat="server" CssClass="form-control form-control-user" placeholder="Tiêu đề bài viết"></asp:TextBox>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="txtEditSlug">Slug</label>
-                            <asp:TextBox ID="txtEditSlug" runat="server" CssClass="form-control form-control-user" placeholder="Slug"></asp:TextBox>
-                        </div>
-                    </div>
-
-                    <!-- Form group for Short Description and Main Content -->
-                    <div class="form-group">
-                        <label for="txtEditMoTaNgan">Mô tả ngắn</label>
-                        <asp:TextBox ID="txtEditMoTaNgan" runat="server" CssClass="form-control form-control-user" TextMode="MultiLine" placeholder="Mô tả ngắn"></asp:TextBox>
-                    </div>
-                    <div class="form-group">
-                        <label for="txtEditNoiDungChinh">Nội dung chính</label>
-                        <CKEditor:CKEditorControl ID="CKEditorControl1" Width="100%" CssClass="ck-editor"
-                            Toolbar="Full" BodyId="StaticPageContent" Language="en-US" AutoParagraph="false"
-                            BasePath="/Administration/Style/plugins/ckeditor/" runat="server" Height="300">
-                        </CKEditor:CKEditorControl>
-                    </div>
-
-                    <!-- Form group for Post Status and View Count -->
-                    <div class="form-group row">
-                        <div class="col-md-6">
-                            <label for="chkEditTrangThai" class="mb-3">Trạng thái</label>
-                            <br />
-                            <asp:CheckBox ID="chkEditTrangThai" runat="server" CssClass="form-control-user" />
-                            <label class="form-check-label" for="chkEditTrangThai">Hiển thị</label>
-
-                        </div>
-                        <div class="col-md-6">
-                            <label for="txtEditViewCount">Lượt xem</label>
-                            <asp:TextBox ID="txtEditViewCount" runat="server" CssClass="form-control form-control-user" placeholder="Lượt xem" Text="0" ReadOnly="true"></asp:TextBox>
-                        </div>
-                    </div>
-
-                    <!-- Form group for Creation Date and Last Edited Date -->
-                    <div class="form-group row">
-                        <div class="col-md-6">
-                            <label for="txtEditNgayTao">Ngày tạo</label>
-                            <asp:TextBox ID="txtEditNgayTao" runat="server" CssClass="form-control form-control-user" TextMode="Date" ReadOnly="true"></asp:TextBox>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="txtEditChinhSuaGanNhat">Chỉnh Cập nhật gần nhất</label>
-                            <asp:TextBox ID="txtEditChinhSuaGanNhat" runat="server" CssClass="form-control form-control-user" TextMode="Date"></asp:TextBox>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Form group for Thumbnail URL -->
-                <div class="col-md-3">
-                    <div class="form-group row">
-                        <label for="txtEditThumbnailUrl">URL ảnh đại diện (Thumbnail)</label>
-                        <uc1:ImportImageEdit runat="server" ID="txtEditThumbnailUrl" />
-                    </div>
-                </div>
-            </div>
-
-            <div class="d-flex justify-content-end">
-                <asp:Button ID="Button1" runat="server" Text="Cập nhật" class="btn btn-primary mx-1 btn-user btn-modal" OnClick="btnEdit_Click" Style="min-width: 50px;" />
-                <asp:Button ID="Button2" runat="server" Text="Hủy" class="btn btn-secondary mx-1 btn-user btn-modal" OnClientClick="closeEdit(); return false;" Style="min-width: 50px;" />
-            </div>
-
-        </div>
-    </div>
-
-
-    <%-- Edit Role Modal --%>
-    <div id="danhMucEditModal" class="modal">
-        <div class="modal-content main-edit-modal">
-            <span class="close d-flex justify-content-end" onclick="closeDanhMucEditModal()">&times;</span>
-            <h4>Chỉnh Cập nhật danh mục</h4>
-            <div class="justify-content-center align-items-center mt-4">
-                <asp:TextBox ID="txtEditRoleIdUser" runat="server" CssClass="form-control" placeholder="IdUser" Visible="false"></asp:TextBox>
-                <asp:GridView ID="GridViewDanhMuc" runat="server" AutoGenerateColumns="false"
-                    CssClass="table table-striped table-bordered" CellPadding="10" CellSpacing="2"
-                    GridLines="None">
-
-                    <Columns>
-                        <asp:TemplateField HeaderText="Id" Visible="false">
-                            <ItemTemplate>
-                                <asp:Label ID="lblDanhMucId" runat="server" Text='<%# Eval("Id")%>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <%--<asp:BoundField DataField="Id" HeaderText="Id" />--%>
-                        <asp:BoundField DataField="Ten" HeaderText="Tên danh mục" />
-                        <asp:TemplateField HeaderText="Chọn danh mục">
-                            <ItemTemplate>
-                                <asp:CheckBox ID="chkIsHaveDanhMuc" runat="server"
-                                    Checked='<%# Eval("IsHaveDanhMuc").ToString() == "1" %>' />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
-                <hr>
-            </div>
-            <div class="d-flex justify-content-end">
-                <asp:Button ID="btnEditDanhMuc" runat="server" Text="Cập nhật" class="btn btn-primary mx-1 btn-user btn-modal" OnClick="btnDanhMucEditSave_Click" />
-                <asp:Button ID="btnCancelEditDanhMuc" runat="server" Text="Hủy" class="btn btn-secondary mx-1 btn-user btn-modal" OnClientClick="closeDanhMucEditModal(); return false;" />
-            </div>
-        </div>
-    </div>
-
-
-    <%-- Modal delete comfirm --%>
-    <div id="confirmDeleteModal" class="modal">
-        <div class="modal-content">
-            <span class="close d-flex justify-content-end" onclick="closeDelete(); return false;">&times;</span>
-            <h5>Bạn có chắc chắn muốn xóa bài viết này?</h5>
-            <asp:Label ID="Label2" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
-            <div class="d-flex justify-content-end">
-                <asp:Button ID="Button3" runat="server" Text="Xóa" class="btn btn-primary mx-1 btn-user btn-modal" OnClick="btnDelete_Click" />
-                <asp:Button ID="Button4" runat="server" Text="Hủy" class="btn btn-secondary mx-1 btn-user btn-modal" OnClientClick="closeDelete(); return false;" />
-            </div>
-        </div>
-    </div>
-    <asp:HiddenField ID="hdnRowId" runat="server" />
-
-
-    <uc1:AdminNotification runat="server" ID="AdminNotificationUserControl" />
-
 
     <script>
-        function openModal() {
-            document.getElementById("myModal").style.display = "block";
-            document.getElementById("<%= lblResult.ClientID %>").innerText = "";
-            return false;
-        }
+
+        function MakeModal($id) {
+            $('[data-selector="txtIdBaiViet"]').val($id);
+            $('[data-selector="btnRefresh"]')[0].click();
+            $('#myModal').modal('show');
+        };
+
         function closeModal() {
-            document.getElementById("myModal").style.display = "none";
-            document.getElementById("<%= lblAddErrorMessage.ClientID %>").innerText = "";
-
+            $('#myModal').modal('hide');
         }
-
         function openDelete() {
-            document.getElementById("confirmDeleteModal").style.display = "block";
-            document.getElementById("<%= lblResult.ClientID %>").innerText = "";
-
+            $('#confirmDeleteModal').modal('show');
             return false;
         }
 
         function closeDelete() {
-            document.getElementById("confirmDeleteModal").style.display = "none";
-
-        }
-
-        function openEdit() {
-            document.getElementById("<%= lblResult.ClientID %>").innerText = "";
-            document.getElementById("myEditModal").style.display = "block";
-            return false;
-        }
-
-        function closeEdit() {
-            document.getElementById("myEditModal").style.display = "none";
-
+            $('#confirmDeleteModal').modal('hide');
         }
         function openDanhMucEditModal(id) {
-            document.getElementById("danhMucEditModal").style.display = "block";
+            $('#danhMucEditModal').modal('show');
             return false;
         }
 
         function closeDanhMucEditModal() {
-            document.getElementById("danhMucEditModal").style.display = "none";
-
+            $('#danhMucEditModal').modal('hide');
         }
     </script>
-     <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js?v=f81a959662efae2fc3cc158351e6d90c#property=646b0f87d8c6d2001a06c301&product=inline-share-buttons&source=platform" async="async"></script>
- 
- 
-
 </asp:Content>
+
+<asp:Content runat="server" ID="Content1" ContentPlaceHolderID="ModalContent">
+
+    <div class="modal fade" id="myModal" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <asp:UpdatePanel ID="UpdatePanelModal" runat="server" UpdateMode="Conditional">
+                    <ContentTemplate>
+                        <div class="modal-header">
+
+                            <h4 runat="server" id="lblModalTitle"></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row justify-content-center main-edit-modal">
+                                <!-- Form group for Post Title and Slug -->
+                                <div class="col-md-8">
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label for="txtTieuDe ">Tiêu đề bài viết</label>
+                                            <input id="txtTieuDe" onkeyup="CreateFriendlyUrl(this);" runat="server" class="validate[required] form-control form-control-user" placeholder="Tiêu đề bài viết" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="txtFriendlyURL">Slug</label>
+                                            <input data-selector="txtFriendlyURL" id="txtSlug" runat="server" class="validate[required] form-control form-control-user" placeholder="Slug" />
+                                        </div>
+                                    </div>
+                                    <!-- Form group for Short Description and Main Content -->
+                                    <div class="form-group">
+                                        <label for="txtMoTaNgan">Mô tả ngắn</label>
+                                        <textarea id="txtMoTaNgan" runat="server" class="form-control form-control-user" placeholder="Mô tả ngắn" rows="4"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtNoiDungChinh">Nội dung chính</label>
+                                        <CKEditor:CKEditorControl ID="txtNoiDungChinh" Width="100%" CssClass="ck-editor"
+                                            Toolbar="Full" BodyId="StaticPageContent" Language="en-US" AutoParagraph="false"
+                                            BasePath="/Administration/Style/plugins/ckeditor/" runat="server" Height="300">
+                                        </CKEditor:CKEditorControl>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Hình minh họa</label>
+                                        <label style="margin-left: 5px;" class="small">(Click vào hình ảnh để thay đổi hình minh họa)</label>
+                                        <div class="row text-center">
+                                            <div class="img-thumbnail d-flex justify-content-center">
+                                                <img data-selector="imgThumb" id="imgThumb" runat="server" onclick="OpenSelectImage();" src="../UploadImage/addNewImage.png"
+                                                    style="cursor: pointer; max-width: 300px" class="imgthumb img-responsive" />
+                                            </div>
+                                            <input style="display: none;" data-selector="txtImage" type="text" id="txtImage" runat="server" class="form-control" />
+                                            <div id="divRemoveThumb" runat="server" visible="false">
+                                                <a onclick="RemoveThumbnail();" title="Xóa hình mình họa" class="btn btn-default btn-flat btn-sm">Xóa hình minh họa</a>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label for="chkTrangThai" class="mb-3">Trạng thái</label>
+                                            <br />
+                                            <asp:CheckBox ID="chkTrangThai" runat="server" CssClass="form-control-user" Checked="true" />
+                                            <label class="form-check-label" for="chkTrangThai">Hiển thị</label>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="txtViewCount">Lượt xem</label>
+                                            <input id="txtViewCount" runat="server" textmode="Number" class="form-control form-control-user" placeholder="Lượt xem" text="0" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="txtDisplayOrder">Thứ tự hiển thị</label>
+                                            <input id="txtDisplayOrder" runat="server" class="form-control form-control-user" placeholder="Thứ tự hiển thị" value="-1" type="number" />
+                                        </div>
+
+
+                                    </div>
+                                    <div class="form-group" id="txtInfo" runat="server" visible="false">
+                                        <label>Người tạo: <%= _CreateBy %></label>
+                                        <label>Ngày tạo: <%= _CreateDate %></label>
+                                        <label>Người cập nhật: <%= _UpdateDate %></label>
+                                        <label>Ngày cập nhật: <%= _UpdateDate %></label>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-end">
+                            </div>
+
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <input runat="server" id="txtIdBaiViet" data-selector="txtIdBaiViet" class="hidden" />
+                            <a runat="server" id="btnRefresh" data-selector="btnRefresh" onserverclick="btnRefresh_ServerClick"
+                                class="hidden"></a>
+
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <asp:Button ID="btnSendServer" runat="server" Text="Lưu" class="btn btn-primary btn-user mx-1"
+                                OnClick="btnSendServer_Click" />
+                        </div>
+
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="Button3" />
+                    </Triggers>
+                </asp:UpdatePanel>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+
+    <%-- Edit Role Modal --%>
+
+    <div class="modal fade" id="danhMucEditModal" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <asp:UpdatePanel ID="UpdatepanelEidtRole" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Thêm danh mục cho bài viết</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input id="txtEditRoleIdUser" runat="server" class="form-control" placeholder="IdUser" visible="false" />
+                            <asp:GridView ID="GridViewDanhMuc" runat="server" AutoGenerateColumns="false"
+                                CssClass="table table-striped table-bordered" CellPadding="10" CellSpacing="2"
+                                GridLines="None">
+                                <Columns>
+                                    <asp:TemplateField HeaderText="Id" Visible="false">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblDanhMucId" runat="server" Text='<%# Eval("Id")%>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <%--<asp:BoundField DataField="Id" HeaderText="Id" />--%>
+                                    <asp:BoundField DataField="Ten" HeaderText="Tên danh mục" />
+                                    <asp:TemplateField HeaderText="Chọn danh mục">
+                                        <ItemTemplate>
+                                            <asp:CheckBox ID="chkIsHaveDanhMuc" runat="server"
+                                                Checked='<%# Eval("IsHaveDanhMuc").ToString() == "1" %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
+                        </div>
+                        <div class="modal-footer justify-content-end">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <asp:Button ID="btnEditDanhMuc" runat="server" Text="Lưu" class="btn btn-primary" OnClick="btnDanhMucEditSave_Click" />
+
+                        </div>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <%-- Modal delete comfirm --%>
+
+    <div class="modal fade" id="confirmDeleteModal" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Thông báo</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc muốn xóa đối tượng này? </p>
+                </div>
+                <div class="modal-footer justify-content-end">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <asp:Button ID="Button3" runat="server" Text="Xóa" class="btn btn-danger" OnClick="btnDelete_Click" />
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</asp:Content>
+
+
 <asp:Content runat="server" ID="scriptEnd" ContentPlaceHolderID="ContentScript">
-    <script src="/Administration/Style/plugins/lightbox-evolution-1.8/js/jquery.lightbox.1.8.min.js"></script>
-<script src="/Administration/Style/plugins/jQueryUI/jquery-ui.min.js"></script>
-<script src="/Administration/Style/dist/js/jquery.imgareaselect.pack.js"></script>
-<script>
-    var uploadThumbnailKey = "<%=SecurityHelper.Encrypt("/Uploads/Article/")%>";
-    var uploadThumbnailKeyAlbum = "<%=SecurityHelper.Encrypt("/Uploads/Article/Picture/")%>";
 
-    var OpenSelectImage = function () {
-        var txtid = $('[data-selector="txtImage"]').attr('id');
-        var ws = getWindowSize();
-        $.lightbox('/RichFilemanager/default.aspx?field_name=' + txtid
-            + '&key=' + uploadThumbnailKey
-            + '&selectFun=setImageUrl',
-            {
-                iframe: true,
-                width: ws.width - 60,
-                height: ws.height - 40,
-            });
-    };
-    var getWindowSize = function () {
-        var w = 0; var h = 0;
-        //IE
-        if (!window.innerWidth) {
-            if (!(document.documentElement.clientWidth === 0)) {
-                //strict mode
-                w = document.documentElement.clientWidth;
-                h = document.documentElement.clientHeight;
-            } else {
-                //quirks mode
-                w = document.body.clientWidth; h = document.body.clientHeight;
-            }
-        } else {
-            //w3c
-            w = window.innerWidth; h = window.innerHeight;
-        }
-        return {
-            width: w, height: h
+    <script>
+
+        function CheckValid() {
+            var validated = $("#<%= UpdatePanelModal.ClientID%>").validationEngine('validate', { promptPosition: "TopLeft", scroll: false });
+            if (validated)
+                return validated;
         };
-    };
-    var setImageUrl = function (txtid, url) {
-        document.getElementById(txtid).value = url;
-        $('[data-selector="imgThumb"]').attr('src', url);
-        //call next function
-    };
+        function DisableContentChanged() {
+            window.onbeforeunload = null;
+        };
 
-    /*--Image album--*/
-    var OpenSelectImageAlbum = function () {
-        var txtid = $('[data-selector="txtImageUrl"]').attr('id');
-        var ws = getWindowSize();
-        $.lightbox('/RichFilemanager/default.aspx?field_name=' + txtid
-            + '&key=' + uploadThumbnailKeyAlbum
-            + '&selectFun=setImageAlbumUrl',
-            {
-                iframe: true,
-                width: ws.width - 60,
-                height: ws.height - 40,
-            });
-    };
-    var setImageAlbumUrl = function (txtid, url) {
-        document.getElementById(txtid).value = url;
-        $('[data-selector="imgImageUrl"]').attr('src', url);
-        //call next function
-    };
-    function CloseAddImageAlbumPopup() {
-        $('#image-detail').modal('hide');
-        $('#image-detail-multiple').modal('hide');
-    };
-    function MakeNewImage() {
-        $('[data-selector="txtImageId"]').val('');
-        $('[data-selector="btnDiscard"]')[0].click();
-    };
-    function MakeExistedImage(imageId) {
-        $('[data-selector="txtImageId"]').val(imageId);
-        $('[data-selector="btnDiscard"]')[0].click();
-    };
-    function RemoveExistedImage(imageId, event) {
-        event.stopPropagation();
-        $('[data-selector="txtImageId"]').val(imageId);
-        $('[data-selector="btnRemoveImageAlbum"]')[0].click();
-    };
-    function saveImagesToAlbum() {
-        try {
-            var arr = [];
-            $('.files .preview a').each(function () {
-                arr.push($(this).attr("href"));
-            });
-            $('[data-selector="hdfJsonImage"]').val(JSON.stringify(arr));
-            $('[data-selector="lbtConfirmAlbum"]')[0].click();
+        function CreateFriendlyUrl(tag) {
+            var str = $(tag).val()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '') // Loại bỏ dấu
+                .replace(/[^\w\s]+/g, '')        // Loại bỏ ký tự đặc biệt
+                .replace(/\s+/g, '-')           // Thay khoảng trắng bằng dấu gạch ngang
+                .toLowerCase();                 // Chuyển về chữ thường
+            $('[data-selector="txtFriendlyURL"]').val(str);
         }
-        catch (e) {
-            return false;
-        }
-    }
-    function MakeNewImageMultiple() {
-        $('[data-selector="hdfMappingId"]').val('');
-        $('.files').empty();
-    };
-    function SortAbleImageAlbum() {
-        $("#content-image > div:not(.binded-sortable)").sortable({
-            items: ".item:not(.upload)",
-            update: function (event, ui) {
-                var newOrder = [];
-                $("#content-image .item:not(.upload)").each(function (i, t) {
-                    newOrder.push($(t).attr('data-ar'));
-                })
-                $('[data-selector="txtImageAlbumDisplayOrder"]').val(newOrder.join('|'));
+
+    </script>
+
+    <script src="/Administration/Style/plugins/lightbox-evolution-1.8/js/jquery.lightbox.1.8.min.js"></script>
+    <script src="/Administration/Style/dist/js/jquery.imgareaselect.pack.js"></script>
+    <script>
+        var uploadThumbnailKey = "<%=SecurityHelper.Encrypt("/Uploads/Article/")%>";
+        var uploadThumbnailKeyAlbum = "<%=SecurityHelper.Encrypt("/Uploads/Article/Picture/")%>";
+
+        var OpenSelectImage = function () {
+            var txtid = $('[data-selector="txtImage"]').attr('id');
+            var ws = getWindowSize();
+            $.lightbox('/RichFilemanager/default.aspx?field_name=' + txtid
+                + '&key=' + uploadThumbnailKey
+                + '&selectFun=setImageUrl',
+                {
+                    iframe: true,
+                    width: ws.width - 60,
+                    height: ws.height - 40,
+                });
+        };
+        var getWindowSize = function () {
+            var w = 0; var h = 0;
+            //IE
+            if (!window.innerWidth) {
+                if (!(document.documentElement.clientWidth === 0)) {
+                    //strict mode
+                    w = document.documentElement.clientWidth;
+                    h = document.documentElement.clientHeight;
+                } else {
+                    //quirks mode
+                    w = document.body.clientWidth; h = document.body.clientHeight;
+                }
+            } else {
+                //w3c
+                w = window.innerWidth; h = window.innerHeight;
             }
-        });
-        $("#content-image > div:not(.binded-sortable)").addClass('binded-sortable');
-    };
-</script>
+            return {
+                width: w, height: h
+            };
+        };
+        var setImageUrl = function (txtid, url) {
+            document.getElementById(txtid).value = url;
+            $('[data-selector="imgThumb"]').attr('src', url);
+            //call next function
+        };
+
+        /*--Image album--*/
+        var OpenSelectImageAlbum = function () {
+            var txtid = $('[data-selector="txtImageUrl"]').attr('id');
+            var ws = getWindowSize();
+            $.lightbox('/RichFilemanager/default.aspx?field_name=' + txtid
+                + '&key=' + uploadThumbnailKeyAlbum
+                + '&selectFun=setImageAlbumUrl',
+                {
+                    iframe: true,
+                    width: ws.width - 60,
+                    height: ws.height - 40,
+                });
+        };
+        var setImageAlbumUrl = function (txtid, url) {
+            document.getElementById(txtid).value = url;
+            $('[data-selector="imgImageUrl"]').attr('src', url);
+            //call next function
+        };
+
+
+    </script>
 </asp:Content>

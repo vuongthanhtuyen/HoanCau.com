@@ -15,48 +15,48 @@ namespace CMS.WebUI
     {
 
         /// <summary>
-        /// imgThumb control.
+        /// lblcontent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgThumb;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblcontent;
 
         /// <summary>
-        /// txtImage control.
+        /// txtEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtImage;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEmail;
 
         /// <summary>
-        /// divRemoveThumb control.
+        /// txtSubject control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRemoveThumb;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtSubject;
 
         /// <summary>
-        /// btnSend control.
+        /// txtMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSend;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtMessage;
 
         /// <summary>
-        /// lblmessage control.
+        /// btnSendMail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblmessage;
+        protected global::System.Web.UI.WebControls.Button btnSendMail;
     }
 }

@@ -57,7 +57,7 @@ namespace CMS.WebUI.Administration
             List<DoiTac> doiTacList = new List<DoiTac>();
             int totalRow = 0;
             doiTacList = DoiTacBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], null, out totalRow);
-            SearchUserControl.SetSearcKey();
+             
             ViewState["LastIndex"] = (pageIndex - 1) * pageSize;
             PagingAdminWeb.GetPaging(totalRow, pageIndex);
             GridViewTable.DataSource = doiTacList;
@@ -93,14 +93,14 @@ namespace CMS.WebUI.Administration
                     doiTac = DoiTacBLL.Insert(doiTac);
                     ScriptManager.RegisterStartupScript(this, GetType(), "CloseModal", "closeModal();", true);
                     
-                    ShowNotification("Thêm mới đối tác thành công");
+                    ShowNotification("Lưu đối tác thành công");
                     
                 }
             }
 
             catch (Exception ex)
             {
-                ShowNotification("Thêm mới đối tác thất bại! \n Lỗi: " + ex.Message, false);
+                ShowNotification("Lưu đối tác thất bại! \n Lỗi: " + ex.Message, false);
 
             }
         }

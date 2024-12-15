@@ -24,13 +24,31 @@ namespace CMS.WebUI.Administration.MasterPage
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
 
         /// <summary>
-        /// form1 control.
+        /// xxx control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm xxx;
+
+        /// <summary>
+        /// scriptMain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager scriptMain;
+
+        /// <summary>
+        /// lblUserName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblUserName;
 
         /// <summary>
         /// MenuLeftNavbars control.
@@ -42,33 +60,6 @@ namespace CMS.WebUI.Administration.MasterPage
         protected global::System.Web.UI.WebControls.Literal MenuLeftNavbars;
 
         /// <summary>
-        /// ctSearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ctSearch;
-
-        /// <summary>
-        /// ddlContentLanguage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlContentLanguage;
-
-        /// <summary>
-        /// nameUser control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label nameUser;
-
-        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>
@@ -76,6 +67,15 @@ namespace CMS.WebUI.Administration.MasterPage
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+
+        /// <summary>
+        /// ModalContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ModalContent;
 
         /// <summary>
         /// ContentScript control.

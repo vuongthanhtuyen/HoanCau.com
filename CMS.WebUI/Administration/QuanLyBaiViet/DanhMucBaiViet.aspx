@@ -2,25 +2,15 @@
 
 
 <%@ Register Src="~/Administration/AdminUserControl/AdminNotification.ascx" TagPrefix="uc1" TagName="AdminNotification" %>
-<%@ Register Src="~/Administration/AdminUserControl/SearchUserControl.ascx" TagPrefix="uc1" TagName="SearchUserControl" %>
-
-
-
-<asp:Content ID="ctSearch" ContentPlaceHolderID="ctSearch" runat="server">
-    <uc1:SearchUserControl runat="server" ID="SearchUserControl" />
-        <link href="/Assets/validation-engine/css/validationEngine.jquery.css" rel="stylesheet" type="text/css" />
-
-</asp:Content>
 
 
 
 <asp:Content ID="test" ContentPlaceHolderID="head" runat="server">
-    <link href="../Assets/plugins/style.min.css" rel="stylesheet" />
 </asp:Content>
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:ScriptManager ID="ScriptManger1" runat="Server" />
+     
     <main style="min-height: 500px;">
         <div class="box">
             <div class="box-body">
@@ -51,7 +41,7 @@
             <asp:UpdatePanel ID="UpdatePanelEdit" UpdateMode="Conditional" runat="server">
                 <ContentTemplate>
                     <span class="close d-flex justify-content-end" onclick="closeModal()">&times;</span>
-                    <h4 runat="server" id="lblTitle">Thêm mới </h4>
+                    <h4 runat="server" id="lblTitle">Lưu </h4>
                     <asp:HiddenField ID="HiddenIDDanhMuc" runat="server" />
                     <asp:Label ID="lblErrorMessage" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
                     <div class="justify-content-center align-items-center main-edit-modal" style="max-height: 500px; overflow-y: auto; overflow-x: hidden;">
@@ -139,12 +129,13 @@
                             <asp:Button ID="btnSave" runat="server" Text="Lưu" class="btn btn-primary mx-1 btn-user btn-modal" OnClick="btnSave_Click" Style="min-width: 50px;" />
                             <asp:Button ID="btnCancal" runat="server" Text="Hủy" class="btn btn-secondary mx-1 btn-user btn-modal" OnClientClick="closeModal(); return false;" Style="min-width: 50px;" />
                         </div>
+                    </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
     </div>
-    </div>
-    
+
+
 
 
     <%-- Modal delete comfirm --%>
@@ -246,7 +237,7 @@
             });
         }
 
-       
+
 
     </script>
     <script src="/Assets/validation-engine/js/languages/jquery.validationEngine-vi.js" type="text/javascript" charset="utf-8"></script>

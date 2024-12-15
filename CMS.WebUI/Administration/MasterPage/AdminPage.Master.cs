@@ -2,11 +2,14 @@
 using CMS.DataAsscess;
 using SubSonic;
 using SweetCMS.Core.Helper;
+using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Web;
+using System.Web.DynamicData;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
@@ -15,12 +18,15 @@ namespace CMS.WebUI.Administration.MasterPage
 {
     public partial class AdminPage : System.Web.UI.MasterPage
     {
+        private static string _currentMenu = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (!IsPostBack)
             {
+                _currentMenu = Request.Url.AbsolutePath.ToLower();
                 ShowMenu();
-                ddlContentLanguage.SelectedValue = ApplicationContext.Current.ContentCurrentLanguageId.ToString();
+                //ddlContentLanguage.SelectedValue = ApplicationContext.Current.ContentCurrentLanguageId.ToString();
             }
             if ((List<MenuPermisstion>)Session["MenuPermission"] == null)
             {
@@ -33,9 +39,15 @@ namespace CMS.WebUI.Administration.MasterPage
                 Response.Redirect("~/Administration/Login.aspx?url="+ requestURL, false);
             }
         }
+
+        public void ShowMessage(string _icon, string title)
+        {
+            string script = string.Format("ShowAlert('{0}','{1}');", _icon, title);
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "RunScript", script, true);
+        }
         protected void ddlContentLanguage_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ApplicationContext.Current.ContentCurrentLanguageId = int.Parse(ddlContentLanguage.SelectedValue);
+            //ApplicationContext.Current.ContentCurrentLanguageId = int.Parse(ddlContentLanguage.SelectedValue);
 
             //HttpCookie testCookie = new HttpCookie("VuongThanhTuyen", "2");
             //testCookie.Expires = DateTime.UtcNow.AddDays(1);
@@ -44,108 +56,31 @@ namespace CMS.WebUI.Administration.MasterPage
 
             Response.Redirect(ApplicationContext.Current.CurrentUri.AbsoluteUri, false);
         }
-
+       
         private void ShowMenu()
         {
             if (ApplicationContext.Current.CurrentUserID <1)
             {
                 Response.Redirect("~/Administration/Login.aspx", false);
             }
-            //else if ((List<MenuPermisstion>)Session["MenuPermission"] == null)
-            //{
-            //    Response.Redirect("~/Administration/Login.aspx", false);
-            //}
+
             else
             {
                 try
                 {
                     int userId = ApplicationContext.Current.CurrentUserID;
-                    
-                    string currentUrl = Request.Url.AbsolutePath + ".aspx";
                     var list = LoginBLL.MenuCheckByUser(userId);
-                    nameUser.Text = NguoiDungManagerBLL.GetById(userId).HoVaTen ?? "";
+                    lblUserName.InnerText = NguoiDungManagerBLL.GetById(userId).HoVaTen ?? string.Empty;
 
-                    //var list = MenuManagerBLL.GetAllMenu();
-
-                    string a = "";
-                    foreach (var menu in list)
+                    string strMenu = string.Empty;
+                    // truyền menu cha, và list menu con của menu đó
+                    foreach (var menu in list.Where(m => m.MenuChaId == 0).OrderBy(m => m.Ten))
                     {
-
-                        if (menu.Url == null)
-                        {
-                            if (list.Any(x => x.Url == currentUrl && x.MenuChaId == menu.Id))
-                            {
-                                a = a + string.Format($@" 
-                            <li class=""nav-item active"">
-                                <a class=""nav-link collapsed"" href=""#"" data-toggle=""collapse"" data-target=""#{menu.Ma}""
-                                    aria-expanded=""true"" aria-controls=""{menu.Ma}"">
-                                    <i class=""fas fa-fw fa-cog""></i>
-                                    <span>{menu.Ten}</span>
-                                </a>
-                                <div id=""{menu.Ma}"" class=""collapse show"" aria-labelledby=""headingTwo"" data-parent=""#accordionSidebar"">
-                                    <div class=""bg-white py-2 collapse-inner rounded"">
-                                        <h6 class=""collapse-header"">{menu.Ten}</h6>");
-                                foreach (var submenu in list.Where(x => x.MenuChaId == menu.Id))
-                                {
-                                    if (submenu.Url == currentUrl)
-                                    {
-                                        a += string.Format(@"<a class=""collapse-item active"" href=""{0}"">{1}</a>", submenu.Url, submenu.Ten);
-                                    }
-                                    else
-                                    {
-                                        a += string.Format(@"<a class=""collapse-item"" href=""{0}"">{1}</a>", submenu.Url, submenu.Ten);
-                                    }
-                                }
-                                a = a + string.Format(@" </div>
-                                        </div>
-                                    </li>");
-                            }
-                            else
-                            {
-                                a = a + string.Format($@" <li class=""nav-item"">
-                                <a class=""nav-link collapsed"" href=""#"" data-toggle=""collapse"" data-target=""#{menu.Ma}""
-                                    aria-expanded=""true"" aria-controls=""{menu.Ma}"">
-                                    <i class=""fas fa-fw fa-cog""></i>
-                                    <span>{menu.Ten}</span>
-                                </a>
-                                <div id=""{menu.Ma}"" class=""collapse"" aria-labelledby=""headingTwo"" data-parent=""#accordionSidebar"">
-                                    <div class=""bg-white py-2 collapse-inner rounded"">
-                                        <h6 class=""collapse-header"">{menu.Ma}</h6>");
-                                foreach (var submenu in list.Where(x => x.MenuChaId == menu.Id))
-                                {
-                                    a += string.Format(@"<a class=""collapse-item"" href=""{0}"">{1}</a>", submenu.Url, submenu.Ten);
-                                }
-                                a = a + string.Format(@" </div>
-                                        </div>
-                                    </li>");
-                            }
-                        }
-                        else if (menu.MenuChaId == null)
-                        {
-                            if (menu.Url == currentUrl)
-                            {
-                                a += string.Format($@"  
-                        <li class=""nav-item active"">
-                            <a class=""nav-link"" href=""{menu.Url}"">
-                                <i class=""fas fa-fw fa-chart-area""></i>
-                                <span>{menu.Ten}</span></a>
-                        </li>");
-                            }
-                            else
-                            {
-                                a += string.Format($@"  
-                        <li class=""nav-item"">
-                            <a class=""nav-link"" href=""{menu.Url}"">
-                                <i class=""fas fa-fw fa-chart-area""></i>
-                                <span>{menu.Ten}</span></a>
-                        </li>");
-                            }
-
-                        }
+                        List<MenuAdmin> menuChild = list.Where(m => m.MenuChaId == menu.Id).ToList();
+                        strMenu += RenderMenu(menu, menuChild);
                     }
-
-
-                    MenuLeftNavbars.Text = a;
+        
+                    MenuLeftNavbars.Text =strMenu; 
 
                 }
                 catch
@@ -155,6 +90,77 @@ namespace CMS.WebUI.Administration.MasterPage
             }
 
 
+        }
+
+       
+
+        private string RenderMenu(MenuAdmin menu, List<MenuAdmin> menuChilds)
+        {
+            StringBuilder strMenu = new StringBuilder();
+            StringBuilder strMenuChild = new StringBuilder();
+            bool isOn = false;
+            if (menuChilds != null && menuChilds.Count > 0)
+            {
+               
+                if (menuChilds.Any(x => x.Url.ToLower() == _currentMenu))
+                {
+                    isOn = true;
+                }
+
+                foreach (MenuAdmin child in menuChilds)
+                {
+                    strMenuChild.Append($@"
+                 <li class=""nav-item"">
+                     <a href=""{child.Url}"" class=""nav-link {GetActive(child.Url.ToLower() ==_currentMenu)} "">
+                       <i class=""far fa-circle nav-icon""></i>
+                       <p>{child.Ten}</p>
+                     </a>
+                 </li>
+               ");
+                }
+                strMenu.Append($@"
+               <li class=""nav-item {GetOpenMenu(isOn)}"">
+                 <a href=""#"" class=""nav-link {GetActive(isOn)}"">
+                   <i class=""nav-icon {menu.Icon}""></i>
+                   <p>
+                     {menu.Ten}
+                     <i class=""fas fa-angle-left right""></i>
+                   </p>
+                 </a>
+                 <ul class=""nav nav-treeview"">
+                   {strMenuChild}
+                 </ul>
+               </li>
+         ");
+            }
+            else
+            {
+                strMenu.Append($@" 
+                   <li class=""nav-item  "">
+                     <a href=""{menu.Url}"" class=""nav-link {GetActive(menu.Url.ToLower() == _currentMenu)}"">
+                       <i class="" nav-icon {menu.Icon}""></i>
+                       <p>{menu.Ten}</p>
+                     </a>
+                   </li>
+                 ");
+            }
+            return strMenu.ToString();
+        }
+        private string GetActive(bool active)
+        {
+            if (active)
+            {
+                return " active ";
+            }
+            return string.Empty;
+        }
+        private string GetOpenMenu(bool active)
+        {
+            if (active)
+            {
+                return " menu-is-opening menu-open ";
+            }
+            return string.Empty;
         }
     }
 }

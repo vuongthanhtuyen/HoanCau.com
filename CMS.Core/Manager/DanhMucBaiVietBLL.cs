@@ -10,12 +10,22 @@ using System.Reflection;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
+using static CMS.Core.Manager.FriendlyUrlBLL;
 
 namespace CMS.Core.Manager
 {
+    public class CategoryType
+    {
+        public const byte None = 0;
+        public const byte Article = 1;
+        public const byte KeyProject = 2;
+        public const byte Project = 10;
+        public const byte Video = 11;
+
+    }
     public class DanhMucBaiVietBLL
     {
-      
+    
         public static List<DanhMucDto> GetPaging(int? PageSize, int? PageIndex, string Key, bool? ASC, int? DanhMucChaId, out int rowsCount)
         {
             rowsCount = 0;
@@ -42,7 +52,8 @@ namespace CMS.Core.Manager
         public static List<DanhMuc> GetNameAndId(int langId)
         {
              return new Select(DanhMuc.IdColumn, DanhMuc.TenColumn)
-                .From(DanhMuc.Schema).Where(DanhMuc.LangIDColumn).IsEqualTo(langId).ExecuteTypedList<DanhMuc>();
+                .From(DanhMuc.Schema).Where(DanhMuc.LangIDColumn)
+                .IsEqualTo(langId).ExecuteTypedList<DanhMuc>();
         }
 
         public static DanhMuc GetById(int id)
@@ -67,7 +78,7 @@ namespace CMS.Core.Manager
         {
             if(keySearch != null)
             {
-                string sql = string.Format("select* from DanhMuc as d inner join FriendlyUrl as f on d.Id = f.PostId where PostType = {1} and langID = {2} and Ten like N'%{0}%' or Slug like '%{0}%'", keySearch, CatType, langId)
+                string sql = string.Format("select* from DanhMuc as d inner join FriendlyUrl as f on d.Id = f.PostId where PostType = {1} and langID = {2} and Ten like N'%{0}%' or Slug like '%{0}%' and Status != {3}", keySearch, CatType, langId, BasicStatusHelper.Deleted)
 ;               return new InlineQuery().ExecuteTypedList<DanhMuc>(sql);
             }
             return new Select().From(DanhMuc.Schema).InnerJoin(FriendlyUrl.PostIdColumn, DanhMuc.IdColumn)
@@ -98,9 +109,11 @@ namespace CMS.Core.Manager
                 .Where(NhomBaiViet.DanhmucIdColumn)
                 .IsEqualTo(id).Execute();
 
-            FriendlyUrlBLL.DeleteByPostId(id);
+            FriendlyUrlBLL.DeleteByPostId(id, FriendlyURLTypeHelper.Category);
 
-            return new DanhMucController().Delete(id);
+            return new Update(DanhMuc.Schema)
+                .Set(DanhMuc.StatusColumn).EqualTo(BasicStatusHelper.Deleted)
+                .Where(DanhMuc.IdColumn).IsEqualTo(id).Execute() > 0; 
         }
 
         public static DanhMuc IsExistsSlug(string slug)

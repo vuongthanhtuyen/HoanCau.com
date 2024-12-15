@@ -80,7 +80,7 @@ namespace SweetCMS.DataAccess
 	    /// Inserts a record, can be used with the Object Data Source
 	    /// </summary>
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
-	    public void Insert(string Ten,int? DanhMucChaId,string Slug,string MoTa,int? LangID)
+	    public void Insert(string Ten,int? DanhMucChaId,string Slug,string MoTa,int? LangID,DateTime CreateDate,DateTime UpdateDate,string CreateBy,string UpdateBy,int DisplayOrderDisplayOrder,string Status,int Type,string ThumbnailUrl)
 	    {
 		    DanhMuc item = new DanhMuc();
 		    
@@ -94,6 +94,22 @@ namespace SweetCMS.DataAccess
             
             item.LangID = LangID;
             
+            item.CreateDate = CreateDate;
+            
+            item.UpdateDate = UpdateDate;
+            
+            item.CreateBy = CreateBy;
+            
+            item.UpdateBy = UpdateBy;
+            
+            item.DisplayOrderDisplayOrder = DisplayOrderDisplayOrder;
+            
+            item.Status = Status;
+            
+            item.Type = Type;
+            
+            item.ThumbnailUrl = ThumbnailUrl;
+            
 	    
 		    item.Save(UserName);
 	    }
@@ -102,7 +118,7 @@ namespace SweetCMS.DataAccess
 	    /// Updates a record, can be used with the Object Data Source
 	    /// </summary>
         [DataObjectMethod(DataObjectMethodType.Update, true)]
-	    public void Update(int Id,string Ten,int? DanhMucChaId,string Slug,string MoTa,int? LangID)
+	    public void Update(int Id,string Ten,int? DanhMucChaId,string Slug,string MoTa,int? LangID,DateTime CreateDate,DateTime UpdateDate,string CreateBy,string UpdateBy,int DisplayOrderDisplayOrder,string Status,int Type,string ThumbnailUrl)
 	    {
 		    DanhMuc item = new DanhMuc();
 	        item.MarkOld();
@@ -119,6 +135,22 @@ namespace SweetCMS.DataAccess
 			item.MoTa = MoTa;
 				
 			item.LangID = LangID;
+				
+			item.CreateDate = CreateDate;
+				
+			item.UpdateDate = UpdateDate;
+				
+			item.CreateBy = CreateBy;
+				
+			item.UpdateBy = UpdateBy;
+				
+			item.DisplayOrderDisplayOrder = DisplayOrderDisplayOrder;
+				
+			item.Status = Status;
+				
+			item.Type = Type;
+				
+			item.ThumbnailUrl = ThumbnailUrl;
 				
 	        item.Save(UserName);
 	    }

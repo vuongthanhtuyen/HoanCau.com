@@ -1,0 +1,12 @@
+﻿.hidden {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+.custom-toast {
+/*    text-align: center;*/
+    max-width: 250px; /* Làm toast ngắn hơn */
+    padding: 10px; /* Thu nhỏ khoảng cách nội dung */
+    display: flex; /* Sử dụng flexbox */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}

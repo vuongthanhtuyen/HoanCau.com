@@ -237,7 +237,7 @@ namespace SweetCMS.DataAccess
 				colvarNgayTao.DataType = DbType.DateTime;
 				colvarNgayTao.MaxLength = 0;
 				colvarNgayTao.AutoIncrement = false;
-				colvarNgayTao.IsNullable = true;
+				colvarNgayTao.IsNullable = false;
 				colvarNgayTao.IsPrimaryKey = false;
 				colvarNgayTao.IsForeignKey = false;
 				colvarNgayTao.IsReadOnly = false;
@@ -251,7 +251,7 @@ namespace SweetCMS.DataAccess
 				colvarChinhSuaGanNhat.DataType = DbType.DateTime;
 				colvarChinhSuaGanNhat.MaxLength = 0;
 				colvarChinhSuaGanNhat.AutoIncrement = false;
-				colvarChinhSuaGanNhat.IsNullable = true;
+				colvarChinhSuaGanNhat.IsNullable = false;
 				colvarChinhSuaGanNhat.IsPrimaryKey = false;
 				colvarChinhSuaGanNhat.IsForeignKey = false;
 				colvarChinhSuaGanNhat.IsReadOnly = false;
@@ -287,6 +287,76 @@ namespace SweetCMS.DataAccess
 						colvarLangID.DefaultSetting = @"((1))";
 				colvarLangID.ForeignKeyTableName = "";
 				schema.Columns.Add(colvarLangID);
+				
+				TableSchema.TableColumn colvarStatus = new TableSchema.TableColumn(schema);
+				colvarStatus.ColumnName = "Status";
+				colvarStatus.DataType = DbType.AnsiString;
+				colvarStatus.MaxLength = 20;
+				colvarStatus.AutoIncrement = false;
+				colvarStatus.IsNullable = false;
+				colvarStatus.IsPrimaryKey = false;
+				colvarStatus.IsForeignKey = false;
+				colvarStatus.IsReadOnly = false;
+				
+						colvarStatus.DefaultSetting = @"('Active')";
+				colvarStatus.ForeignKeyTableName = "";
+				schema.Columns.Add(colvarStatus);
+				
+				TableSchema.TableColumn colvarCreateBy = new TableSchema.TableColumn(schema);
+				colvarCreateBy.ColumnName = "CreateBy";
+				colvarCreateBy.DataType = DbType.String;
+				colvarCreateBy.MaxLength = 50;
+				colvarCreateBy.AutoIncrement = false;
+				colvarCreateBy.IsNullable = false;
+				colvarCreateBy.IsPrimaryKey = false;
+				colvarCreateBy.IsForeignKey = false;
+				colvarCreateBy.IsReadOnly = false;
+				
+						colvarCreateBy.DefaultSetting = @"('Administrator')";
+				colvarCreateBy.ForeignKeyTableName = "";
+				schema.Columns.Add(colvarCreateBy);
+				
+				TableSchema.TableColumn colvarUpdateBy = new TableSchema.TableColumn(schema);
+				colvarUpdateBy.ColumnName = "UpdateBy";
+				colvarUpdateBy.DataType = DbType.String;
+				colvarUpdateBy.MaxLength = 50;
+				colvarUpdateBy.AutoIncrement = false;
+				colvarUpdateBy.IsNullable = false;
+				colvarUpdateBy.IsPrimaryKey = false;
+				colvarUpdateBy.IsForeignKey = false;
+				colvarUpdateBy.IsReadOnly = false;
+				
+						colvarUpdateBy.DefaultSetting = @"('Administrator')";
+				colvarUpdateBy.ForeignKeyTableName = "";
+				schema.Columns.Add(colvarUpdateBy);
+				
+				TableSchema.TableColumn colvarDisplayOrder = new TableSchema.TableColumn(schema);
+				colvarDisplayOrder.ColumnName = "DisplayOrder";
+				colvarDisplayOrder.DataType = DbType.Int32;
+				colvarDisplayOrder.MaxLength = 0;
+				colvarDisplayOrder.AutoIncrement = false;
+				colvarDisplayOrder.IsNullable = false;
+				colvarDisplayOrder.IsPrimaryKey = false;
+				colvarDisplayOrder.IsForeignKey = false;
+				colvarDisplayOrder.IsReadOnly = false;
+				
+						colvarDisplayOrder.DefaultSetting = @"((-1))";
+				colvarDisplayOrder.ForeignKeyTableName = "";
+				schema.Columns.Add(colvarDisplayOrder);
+				
+				TableSchema.TableColumn colvarTypeBaiViet = new TableSchema.TableColumn(schema);
+				colvarTypeBaiViet.ColumnName = "TypeBaiViet";
+				colvarTypeBaiViet.DataType = DbType.Int32;
+				colvarTypeBaiViet.MaxLength = 0;
+				colvarTypeBaiViet.AutoIncrement = false;
+				colvarTypeBaiViet.IsNullable = false;
+				colvarTypeBaiViet.IsPrimaryKey = false;
+				colvarTypeBaiViet.IsForeignKey = false;
+				colvarTypeBaiViet.IsReadOnly = false;
+				
+						colvarTypeBaiViet.DefaultSetting = @"((1))";
+				colvarTypeBaiViet.ForeignKeyTableName = "";
+				schema.Columns.Add(colvarTypeBaiViet);
 				
 				BaseSchema = schema;
 				//add this schema to the provider
@@ -364,17 +434,17 @@ namespace SweetCMS.DataAccess
 		  
 		[XmlAttribute("NgayTao")]
 		[Bindable(true)]
-		public DateTime? NgayTao 
+		public DateTime NgayTao 
 		{
-			get { return GetColumnValue<DateTime?>(Columns.NgayTao); }
+			get { return GetColumnValue<DateTime>(Columns.NgayTao); }
 			set { SetColumnValue(Columns.NgayTao, value); }
 		}
 		  
 		[XmlAttribute("ChinhSuaGanNhat")]
 		[Bindable(true)]
-		public DateTime? ChinhSuaGanNhat 
+		public DateTime ChinhSuaGanNhat 
 		{
-			get { return GetColumnValue<DateTime?>(Columns.ChinhSuaGanNhat); }
+			get { return GetColumnValue<DateTime>(Columns.ChinhSuaGanNhat); }
 			set { SetColumnValue(Columns.ChinhSuaGanNhat, value); }
 		}
 		  
@@ -392,6 +462,46 @@ namespace SweetCMS.DataAccess
 		{
 			get { return GetColumnValue<int?>(Columns.LangID); }
 			set { SetColumnValue(Columns.LangID, value); }
+		}
+		  
+		[XmlAttribute("Status")]
+		[Bindable(true)]
+		public string Status 
+		{
+			get { return GetColumnValue<string>(Columns.Status); }
+			set { SetColumnValue(Columns.Status, value); }
+		}
+		  
+		[XmlAttribute("CreateBy")]
+		[Bindable(true)]
+		public string CreateBy 
+		{
+			get { return GetColumnValue<string>(Columns.CreateBy); }
+			set { SetColumnValue(Columns.CreateBy, value); }
+		}
+		  
+		[XmlAttribute("UpdateBy")]
+		[Bindable(true)]
+		public string UpdateBy 
+		{
+			get { return GetColumnValue<string>(Columns.UpdateBy); }
+			set { SetColumnValue(Columns.UpdateBy, value); }
+		}
+		  
+		[XmlAttribute("DisplayOrder")]
+		[Bindable(true)]
+		public int DisplayOrder 
+		{
+			get { return GetColumnValue<int>(Columns.DisplayOrder); }
+			set { SetColumnValue(Columns.DisplayOrder, value); }
+		}
+		  
+		[XmlAttribute("TypeBaiViet")]
+		[Bindable(true)]
+		public int TypeBaiViet 
+		{
+			get { return GetColumnValue<int>(Columns.TypeBaiViet); }
+			set { SetColumnValue(Columns.TypeBaiViet, value); }
 		}
 		
 		#endregion
@@ -476,7 +586,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Inserts a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Insert(string varTieuDe,string varSlug,string varMoTaNgan,string varNoiDungChinh,int? varTacGiaId,int? varViewCount,string varThumbnailUrl,DateTime? varNgayTao,DateTime? varChinhSuaGanNhat,bool? varTrangThai,int? varLangID)
+		public static void Insert(string varTieuDe,string varSlug,string varMoTaNgan,string varNoiDungChinh,int? varTacGiaId,int? varViewCount,string varThumbnailUrl,DateTime varNgayTao,DateTime varChinhSuaGanNhat,bool? varTrangThai,int? varLangID,string varStatus,string varCreateBy,string varUpdateBy,int varDisplayOrder,int varTypeBaiViet)
 		{
 			BaiViet item = new BaiViet();
 			
@@ -502,6 +612,16 @@ namespace SweetCMS.DataAccess
 			
 			item.LangID = varLangID;
 			
+			item.Status = varStatus;
+			
+			item.CreateBy = varCreateBy;
+			
+			item.UpdateBy = varUpdateBy;
+			
+			item.DisplayOrder = varDisplayOrder;
+			
+			item.TypeBaiViet = varTypeBaiViet;
+			
 		
 			if (System.Web.HttpContext.Current != null)
 				item.Save(System.Web.HttpContext.Current.User.Identity.Name);
@@ -512,7 +632,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Updates a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Update(int varId,string varTieuDe,string varSlug,string varMoTaNgan,string varNoiDungChinh,int? varTacGiaId,int? varViewCount,string varThumbnailUrl,DateTime? varNgayTao,DateTime? varChinhSuaGanNhat,bool? varTrangThai,int? varLangID)
+		public static void Update(int varId,string varTieuDe,string varSlug,string varMoTaNgan,string varNoiDungChinh,int? varTacGiaId,int? varViewCount,string varThumbnailUrl,DateTime varNgayTao,DateTime varChinhSuaGanNhat,bool? varTrangThai,int? varLangID,string varStatus,string varCreateBy,string varUpdateBy,int varDisplayOrder,int varTypeBaiViet)
 		{
 			BaiViet item = new BaiViet();
 			
@@ -539,6 +659,16 @@ namespace SweetCMS.DataAccess
 				item.TrangThai = varTrangThai;
 			
 				item.LangID = varLangID;
+			
+				item.Status = varStatus;
+			
+				item.CreateBy = varCreateBy;
+			
+				item.UpdateBy = varUpdateBy;
+			
+				item.DisplayOrder = varDisplayOrder;
+			
+				item.TypeBaiViet = varTypeBaiViet;
 			
 			item.IsNew = false;
 			if (System.Web.HttpContext.Current != null)
@@ -637,6 +767,41 @@ namespace SweetCMS.DataAccess
         
         
         
+        public static TableSchema.TableColumn StatusColumn
+        {
+            get { return Schema.Columns[12]; }
+        }
+        
+        
+        
+        public static TableSchema.TableColumn CreateByColumn
+        {
+            get { return Schema.Columns[13]; }
+        }
+        
+        
+        
+        public static TableSchema.TableColumn UpdateByColumn
+        {
+            get { return Schema.Columns[14]; }
+        }
+        
+        
+        
+        public static TableSchema.TableColumn DisplayOrderColumn
+        {
+            get { return Schema.Columns[15]; }
+        }
+        
+        
+        
+        public static TableSchema.TableColumn TypeBaiVietColumn
+        {
+            get { return Schema.Columns[16]; }
+        }
+        
+        
+        
         #endregion
 		#region Columns Struct
 		public struct Columns
@@ -653,6 +818,11 @@ namespace SweetCMS.DataAccess
 			 public static string ChinhSuaGanNhat = @"ChinhSuaGanNhat";
 			 public static string TrangThai = @"TrangThai";
 			 public static string LangID = @"langID";
+			 public static string Status = @"Status";
+			 public static string CreateBy = @"CreateBy";
+			 public static string UpdateBy = @"UpdateBy";
+			 public static string DisplayOrder = @"DisplayOrder";
+			 public static string TypeBaiViet = @"TypeBaiViet";
 						
 		}
 		#endregion

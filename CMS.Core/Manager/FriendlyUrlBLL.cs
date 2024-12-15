@@ -65,10 +65,10 @@ namespace CMS.Core.Manager
             return new Delete().From(FriendlyUrl.Schema).Where(FriendlyUrl.SlugUrlColumn)
                 .IsEqualTo(slugString).Execute() > 0;
         }
-        public static bool DeleteByPostId(int postId)
+        public static bool DeleteByPostId(int postId, int posttype)
         {
-            return new Delete().From(FriendlyUrl.Schema).Where(FriendlyUrl.SlugUrlColumn)
-                .IsEqualTo(postId).Execute() > 0;
+            return new Delete().From(FriendlyUrl.Schema).Where(FriendlyUrl.PostIdColumn)
+                .IsEqualTo(postId).And(FriendlyUrl.PostTypeColumn).IsEqualTo(posttype).Execute() > 0;
         }
         public static FriendlyUrl GetByPostId(int postID)
         {

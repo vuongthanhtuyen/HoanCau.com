@@ -67,7 +67,7 @@ namespace CMS.DataAsscess
         public DateTime NgayTao { get; set; }
         public DateTime? ChinhSuaGanNhat { get; set; }
         public bool TrangThai { get; set; }
-        public string TacGia { get; set; } // u.HoVaTen
+        public string CreateBy { get; set; } // u.HoVaTen
         public string TenDanhMuc { get; set; } // ISNULL(STRING_AGG(c.Ten, ', '), N'Không')
         public int DanhMucId { get; set; } // ISNULL(STRING_AGG(c.Ten, ', '), N'Không')
         public int DanhMucChaId { get; set; } // ISNULL(STRING_AGG(c.Ten, ', '), N'Không')

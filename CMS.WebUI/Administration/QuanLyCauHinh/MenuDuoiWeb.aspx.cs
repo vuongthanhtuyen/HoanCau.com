@@ -154,7 +154,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                             }
                             ItemTreeView addChild = new ItemTreeView();
                             addChild.MenuId = parentId;
-                            addChild.text = "Thêm mới";
+                            addChild.text = "Lưu";
                             addChild.icon = "fa fa-plus";
                             addChild.state = new ItemState { opened = true };
                             if (IsEditMenu)
@@ -168,7 +168,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                         {
                             ItemTreeView addChild = new ItemTreeView();
                             addChild.MenuId = parentId;
-                            addChild.text = "Thêm mới";
+                            addChild.text = "Lưu";
                             addChild.icon = "fa fa-plus";
                             addChild.state = new ItemState { opened = true };
                             if (IsEditMenu)
@@ -187,7 +187,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                 //{
                 //    ItemTreeView addChild = new ItemTreeView();
                 //    addChild.MenuId = 0;
-                //    addChild.text = "Thêm mới";
+                //    addChild.text = "Lưu";
                 //    addChild.icon = "fa fa-plus";
                 //    addChild.state = new ItemState { opened = true };
                 //    if (IsEditMenu)
@@ -199,7 +199,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                 //}
                 hdfRightsTreeViewData.Value = JsonConvert.SerializeObject(new { MenuId = 0, text = "Danh sách Menu dưới", children = lstTree, icon = "fa fa-list-ul", state = new { opened = true } });
                 UpdatePanelMainTable.Update();
-                SearchUserControl.SetSearcKey();
+                 
 
             }
             catch
@@ -230,7 +230,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
             //    listMenuDto = MenuWebDuoiBLL.GetPaging(pageSize, pageIndex, null, null, menuCha, out totalRow);
             //else
             //    listMenuDto = MenuWebDuoiBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], null, null, out totalRow);
-            //SearchUserControl.SetSearcKey();
+            // 
 
             //ViewState["LastIndex"] = (pageIndex - 1) * pageSize;
             //PagingAdminWeb.GetPaging(totalRow, pageIndex);

@@ -3,17 +3,11 @@
 
 <%@ Register Src="~/Administration/AdminUserControl/AdminNotification.ascx" TagPrefix="uc1" TagName="AdminNotification" %>
 <%@ Register Src="~/Administration/AdminUserControl/PagingAdmin.ascx" TagPrefix="uc1" TagName="PagingAdmin" %>
-<%@ Register Src="~/Administration/AdminUserControl/SearchUserControl.ascx" TagPrefix="uc1" TagName="SearchUserControl" %>
-
-
-<asp:Content ID="ctSearch" ContentPlaceHolderID="ctSearch" runat="server">
-    <uc1:SearchUserControl runat="server" ID="SearchUserControl" />
-</asp:Content>
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <asp:ScriptManager ID="ScriptManger1" runat="Server" />
+     
     <main>
         <div>
             <div class="col-xs-12 padding-none header-controls-right">

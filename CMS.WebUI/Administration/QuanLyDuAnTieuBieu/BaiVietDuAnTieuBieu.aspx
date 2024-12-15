@@ -7,14 +7,6 @@
 <%@ Register Src="~/Administration/AdminUserControl/SummernoteEditor.ascx" TagPrefix="uc1" TagName="SummernoteEditor" %>
 <%@ Register Src="~/Administration/AdminUserControl/DuAnTieuBieuUpLoad.ascx" TagPrefix="uc1" TagName="DuAnTieuBieuUpLoad" %>
 <%@ Register Src="~/Administration/AdminUserControl/ImportImageEdit.ascx" TagPrefix="uc1" TagName="ImportImageEdit" %>
-<%@ Register Src="~/Administration/AdminUserControl/SearchUserControl.ascx" TagPrefix="uc1" TagName="SearchUserControl" %>
-
-
-
-<asp:Content ID="ctSearch" ContentPlaceHolderID="ctSearch" runat="server">
-    <uc1:SearchUserControl runat="server" ID="SearchUserControl" />
-</asp:Content>
-
 
 
 
@@ -46,14 +38,14 @@
             cursor: pointer;
         }
     </style>
-    <asp:ScriptManager ID="ScriptManger1" runat="Server" />
+     
     <main>
         <div>
             <div class="col-xs-12 padding-none header-controls-right">
                 <span class="notifications"></span>
                 <button class="btn btn-primary btn-sm btn-flat padding-fa mr-4 " id="btnOpenModal" type="button"
                     onclick="openModal()" runat="server">
-                    <i class="fa fa-plus"></i>Thêm mới</button>
+                    <i class="fa fa-plus"></i>Lưu</button>
 
                 <asp:Label ID="lblResult" CssClass="text-info" runat="server" Text=""></asp:Label>
             </div>
@@ -114,7 +106,7 @@
     <div id="myModal" class="modal">
         <div class="modal-content-post">
             <span class="close d-flex justify-content-end" onclick="closeModal()">&times;</span>
-            <h4>Thêm mới bài viết </h4>
+            <h4>Lưu bài viết </h4>
             <asp:Label ID="lblAddErrorMessage" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
             <div class="row justify-content-center main-edit-modal">
                 <!-- Form group for Post Title and Slug -->
@@ -148,7 +140,7 @@
             </div>
 
             <div class="d-flex justify-content-end">
-                <asp:Button ID="btnUserAdd" runat="server" Text="Thêm Mới" class="btn btn-primary btn-user mx-1"
+                <asp:Button ID="btnUserAdd" runat="server" Text="Lưu" class="btn btn-primary btn-user mx-1"
                     OnClick="btnAdd_Click" />
                 <asp:Button ID="btnCancel" runat="server" Text="Hủy" class="btn btn-secondary btn-user mx-1"
                     OnClientClick="closeModal(); return false;" />

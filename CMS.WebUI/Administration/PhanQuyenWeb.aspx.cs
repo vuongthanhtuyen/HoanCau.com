@@ -64,7 +64,7 @@ namespace CMS.WebUI.Administration
 
 
             list = VaiTroManagerBll.GetPaging(pageSize, pageIndex, Request.QueryString["search"], null, out totalRow);
-            SearchUserControl.SetSearcKey();
+             
             int idUser = int.Parse(Session["UserId"].ToString());
             if (idUser != 31)
             {
@@ -127,14 +127,14 @@ namespace CMS.WebUI.Administration
                         if (vaiTro != null)
                         {
                             lblAddErrorMessage.Text = "";
-                            ShowNotification("Thêm mới quyền thành công");
+                            ShowNotification("Lưu quyền thành công");
                             txtTenVaiTro.Text = string.Empty;
                             txtMa.Text = string.Empty;
                             UpdatePanelAdd.Update();
                         }
                         else
                         {
-                            ShowNotification("Thêm mới quyền thất bại", false);
+                            ShowNotification("Lưu quyền thất bại", false);
                         }
                     }
 
@@ -142,7 +142,7 @@ namespace CMS.WebUI.Administration
             }
             catch (Exception ex)
             {
-                ShowNotification("Thêm mới vai trò thất bại! \n Lỗi: " + ex.Message, false);
+                ShowNotification("Lưu vai trò thất bại! \n Lỗi: " + ex.Message, false);
 
             }
         }

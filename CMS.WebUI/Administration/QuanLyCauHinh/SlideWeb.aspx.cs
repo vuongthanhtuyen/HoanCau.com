@@ -58,7 +58,7 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
             List<TrinhChieuAnh> trinhChieuAnhList = new List<TrinhChieuAnh>();
             int totalRow = 0;
             trinhChieuAnhList = SlideBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], true, out totalRow);
-            SearchUserControl.SetSearcKey();
+             
             PagingAdminWeb.GetPaging(totalRow, pageIndex);
             GridViewTable.DataSource = trinhChieuAnhList;
             GridViewTable.DataBind();
@@ -96,58 +96,58 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                     ScriptManager.RegisterStartupScript(this, GetType(), "CloseModal", "closeModal();", true);
                     BindDataByQuyen();
                     //UpdatePanelMainTable.Update();
-                    ShowNotification("Thêm mới Slide thành công");
+                    ShowNotification("Lưu Slide thành công");
                     txtTieuDeMot.Text = string.Empty;
                     txtTieuDeHai.Text = string.Empty;
                     txtLienKetUrl.Text = string.Empty;
                     txtStt.Text = string.Empty;
-                    chkEditTrangThai.Checked = false;
+                    //chkEditTrangThai.Checked = false;
 
                 }
             }
 
             catch (Exception ex)
             {
-                ShowNotification("Thêm mới slide thất bại! \n Lỗi: " + ex.Message, false);
+                ShowNotification("Lưu slide thất bại! \n Lỗi: " + ex.Message, false);
 
             }
         }
         protected void btnEdit_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (!VaiTroManagerBll.AllowEdit(ApplicationContext.Current.CurrentUserID, MenuMa))
-                {
-                    ShowNotification("Bạn không có quyền truy cập chức năng này", false);
-                    return;
-                }
-                int slideId = int.Parse(hdnRowId.Value); // Lấy ID người dùng đã chỉnh sửa
-                hdnRowId.Value = "";
-                // Lấy thông tin người dùng từ cơ sở dữ liệu
-                TrinhChieuAnh slide = SlideBLL.GetById(slideId);
-                //UpdatePanelEdit.Update();
-                slide.NoiDungMot = txtEditTieuDeMot.Text; // Cập nhật tên slide từ textbox
-                slide.NoiDungHai = txtEditTieuDeHai.Text; // Cập nhật tên slide từ textbox
-                slide.LienKetUrl = txtEditLienKetUrl.Text; // Cập nhật URL liên kết từ textbox
-                slide.TrangThai = chkEditTrangThai.Checked; // Cập nhật trạng thái từ checkbox
-                slide.HinhAnhUrl = ImportImageEdit.GetStringFileUrl();
-                slide.Stt = int.Parse(txtEditStt.Text);
-                SlideBLL.Update(slide);
-                BindDataByQuyen();
-                //UpdatePanelMainTable.Update();
-                ScriptManager.RegisterStartupScript(this, GetType(), "closeEdit", "closeEdit();", true);
+            //try
+            //{
+            //    if (!VaiTroManagerBll.AllowEdit(ApplicationContext.Current.CurrentUserID, MenuMa))
+            //    {
+            //        ShowNotification("Bạn không có quyền truy cập chức năng này", false);
+            //        return;
+            //    }
+            //    int slideId = int.Parse(hdnRowId.Value); // Lấy ID người dùng đã chỉnh sửa
+            //    hdnRowId.Value = "";
+            //    // Lấy thông tin người dùng từ cơ sở dữ liệu
+            //    TrinhChieuAnh slide = SlideBLL.GetById(slideId);
+            //    //UpdatePanelEdit.Update();
+            //    slide.NoiDungMot = txtEditTieuDeMot.Text; // Cập nhật tên slide từ textbox
+            //    slide.NoiDungHai = txtEditTieuDeHai.Text; // Cập nhật tên slide từ textbox
+            //    slide.LienKetUrl = txtEditLienKetUrl.Text; // Cập nhật URL liên kết từ textbox
+            //    slide.TrangThai = chkEditTrangThai.Checked; // Cập nhật trạng thái từ checkbox
+            //    slide.HinhAnhUrl = ImportImageEdit.GetStringFileUrl();
+            //    slide.Stt = int.Parse(txtEditStt.Text);
+            //    SlideBLL.Update(slide);
+            //    BindDataByQuyen();
+            //    //UpdatePanelMainTable.Update();
+            //    ScriptManager.RegisterStartupScript(this, GetType(), "closeEdit", "closeEdit();", true);
 
-                ShowNotification("Cập nhật thành công", true);
-                txtEditTieuDeMot.Text = string.Empty;
-                txtEditTieuDeHai.Text = string.Empty;
-                txtEditLienKetUrl.Text = string.Empty;
-                txtEditStt.Text = string.Empty;
-                chkEditTrangThai.Checked = false;
-            }
-            catch (Exception ex)
-            {
-                ShowNotification("Cập nhật slide thất bại! \n " + ex.Message, false);
-            }
+            //    ShowNotification("Cập nhật thành công", true);
+            //    txtEditTieuDeMot.Text = string.Empty;
+            //    txtEditTieuDeHai.Text = string.Empty;
+            //    txtEditLienKetUrl.Text = string.Empty;
+            //    txtEditStt.Text = string.Empty;
+            //    chkEditTrangThai.Checked = false;
+            //}
+            //catch (Exception ex)
+            //{
+            //    ShowNotification("Cập nhật slide thất bại! \n " + ex.Message, false);
+            //}
         }
         protected void btnDelete_Click(object sender, EventArgs e)
         {
@@ -191,23 +191,23 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                 if (slide != null)
                 {
                     hdnRowId.Value = slideId.ToString();
-                    if (e.CommandName == "ChinhSuaChiTiet")
-                    {                          
-                        txtEditLienKetUrl.Text = slide.LienKetUrl;
-                        txtEditTieuDeHai.Text = slide.NoiDungHai;
-                        txtEditTieuDeMot.Text = slide.NoiDungMot;
-                        txtEditStt.Text = slide.Stt.ToString();
-                        txtEditNgayTao.Text = ((DateTime)slide.NgayTao).ToString("yyyy-MM-dd");
-                        chkEditTrangThai.Checked = slide.TrangThai ?? false;
-                        ImportImageEdit.SetFileImage(slide.HinhAnhUrl);
-                        //UpdatePanelMainTable.Update();
+                    //if (e.CommandName == "ChinhSuaChiTiet")
+                    //{                          
+                    //    txtEditLienKetUrl.Text = slide.LienKetUrl;
+                    //    txtEditTieuDeHai.Text = slide.NoiDungHai;
+                    //    txtEditTieuDeMot.Text = slide.NoiDungMot;
+                    //    txtEditStt.Text = slide.Stt.ToString();
+                    //    txtEditNgayTao.Text = ((DateTime)slide.NgayTao).ToString("yyyy-MM-dd");
+                    //    chkEditTrangThai.Checked = slide.TrangThai ?? false;
+                    //    ImportImageEdit.SetFileImage(slide.HinhAnhUrl);
+                    //    //UpdatePanelMainTable.Update();
 
-                        ScriptManager.RegisterStartupScript(this, GetType(), "openEdit", "openEdit();", true);
-                    }
-                    else if (e.CommandName == "Xoa")
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "openDelete", "openDelete();", true);
-                    }
+                    //    ScriptManager.RegisterStartupScript(this, GetType(), "openEdit", "openEdit();", true);
+                    //}
+                    //else if (e.CommandName == "Xoa")
+                    //{
+                    //    ScriptManager.RegisterStartupScript(this, GetType(), "openDelete", "openDelete();", true);
+                    //}
                 }
                 else
                 {

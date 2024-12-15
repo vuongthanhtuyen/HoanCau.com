@@ -7,8 +7,10 @@ using SweetCMS.Core.Helper;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
+using System.Web.DynamicData;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -17,20 +19,26 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
     public partial class BaiVietWeb : AdminPermistion
     {
         public override string MenuMa { get; set; } = "Danh-sach-bai-viet";
+        public static string _ModalTitle = string.Empty;
+        public static string _CreateDate = string.Empty;
+        public static string _UpdateDate = string.Empty;
+        public static string _CreateBy = string.Empty;
+        public static string _UpdateBy = string.Empty;
+
         //private const int idCurrentUser = 31;
         protected void Page_Load(object sender, EventArgs e)
-        {   
+        {
             if (!IsPostBack)
             {
                 BindDataByQuyen();
-                AdminNotificationUserControl.Visible = false;
+                //AdminNotificationUserControl.Visible = false;
                 if (!IsAlive()) Response.Redirect("/Administration/Login.aspx");
 
             }
         }
         private void BindDataByQuyen()
         {
-            btnOpenModal.Visible = CheckPermission(MenuMa, Them);
+            //btnOpenModal.Visible = CheckPermission(MenuMa, Them);
             if (CheckPermission(MenuMa, Xem))
             {
                 BindGrid();
@@ -53,6 +61,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     }
                 }
             }
+            UpdatePanelMainTable.Update();
         }
 
         private void BindGrid(int pageIndex = 1, int pageSize = 10)
@@ -60,14 +69,51 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
             pageIndex = PagingAdminWeb.GetPageIndex();
             List<BaiVietDto> postList = new List<BaiVietDto>();
             int totalRow = 0;
-            postList = BaiVietBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], null, null, ApplicationContext.Current.ContentCurrentLanguageId, out totalRow);
-
-            SearchUserControl.SetSearcKey();
+            postList = BaiVietBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], null, TypeBaiViet.BaiViet, ApplicationContext.Current.ContentCurrentLanguageId, out totalRow);
 
             ViewState["LastIndex"] = (pageIndex - 1) * pageSize;
             PagingAdminWeb.GetPaging(totalRow, pageIndex);
             GridViewTable.DataSource = postList;
             GridViewTable.DataBind();
+            UpdatePanelMainTable.Update();
+
+        }
+        protected void btnRefresh_ServerClick(object sender, EventArgs e)
+        {
+            int _id = 0;
+            
+            if (int.TryParse(txtIdBaiViet.Value, out _id))
+            {
+
+                var baiViet = BaiVietBLL.GetById(_id);
+                txtTieuDe.Value = baiViet.TieuDe;
+                txtNoiDungChinh.Text = (Server.HtmlDecode(baiViet.NoiDungChinh));
+                txtSlug.Value = baiViet.Slug;
+                imgThumb.Src = Helpers.GetThumbnailUrl(baiViet.ThumbnailUrl);
+                chkTrangThai.Checked = baiViet.TrangThai ?? false;
+                txtInfo.Visible = true;
+                _CreateDate = baiViet.NgayTao.ToString("yyyy-MM-dd");
+                _UpdateDate = baiViet.NgayTao.ToString("yyyy-MM-dd");
+                txtMoTaNgan.Value = Server.HtmlDecode(baiViet.MoTaNgan);
+                txtViewCount.Value = baiViet.ViewCount.ToString();
+                _ModalTitle = baiViet.TieuDe;
+                _CreateBy = baiViet.CreateBy;
+                _UpdateBy = baiViet.UpdateBy;
+                txtDisplayOrder.Value = baiViet.DisplayOrder.ToString();
+
+            }
+            else
+            {
+                txtInfo.Visible = false;
+                _ModalTitle = "Thêm mới";
+                _CreateBy = _UpdateBy = _CreateDate = _UpdateDate = string.Empty;
+                txtTieuDe.Value = txtSlug.Value = txtMoTaNgan.Value = txtImage.Value = txtNoiDungChinh.Text = string.Empty;
+                imgThumb.Attributes["src"] = "../UploadImage/addNewImage.png"; // Reset hình ảnh
+                txtViewCount.Value = txtDisplayOrder.Value = "0";
+                chkTrangThai.Checked = true; // Đặt trạng thái mặc định là checked
+            }
+            lblModalTitle.InnerText = _ModalTitle;
+            UpdatePanelModal.Update();
         }
         protected void GridViewTable_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -80,25 +126,11 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     hdnRowId.Value = baiVietId.ToString();
                     if (e.CommandName == "ChinhSuaDanhMuc")
                     {
-                        var danhMuclist = BaiVietBLL.GetAllDanhMucBaiVietById(baiVietId, ApplicationContext.Current.ContentCurrentLanguageId);
+                        var danhMuclist = BaiVietBLL.GetAllDanhMucBaiVietById(baiVietId, ApplicationContext.Current.ContentCurrentLanguageId, CategoryType.Article);
                         GridViewDanhMuc.DataSource = danhMuclist;
                         GridViewDanhMuc.DataBind();
-                        // Đăng ký đoạn mã JavaScript
-                        //UpdatePanel3.Update();
+                        UpdatepanelEidtRole.Update();
                         ScriptManager.RegisterStartupScript(this, GetType(), "openDanhMucEditModal", "openDanhMucEditModal();", true);
-                    }
-                    else if (e.CommandName == "ChinhSuaChiTiet")
-                    {
-                        txtEditTieuDe.Text = baiViet.TieuDe;
-                        CKEditorControl1.Text = (Server.HtmlDecode(baiViet.NoiDungChinh));
-                        txtEditSlug.Text = baiViet.Slug;
-                        txtEditThumbnailUrl.SetFileImage(baiViet.ThumbnailUrl);
-                        chkEditTrangThai.Checked = baiViet.TrangThai ?? false;
-                        txtEditNgayTao.Text = ((DateTime)baiViet.NgayTao).ToString("yyyy-MM-dd");
-                        txtEditMoTaNgan.Text = baiViet.MoTaNgan;
-
-                        //UpdatePanel2.Update();
-                        ScriptManager.RegisterStartupScript(this, GetType(), "openEdit", "openEdit();", true);
                     }
                     else if (e.CommandName == "Xoa")
                     {
@@ -107,220 +139,162 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                 }
                 else
                 {
-                    ShowNotification("Bài viết không tồn tại", false);
+                    OpenMessageBox(MessageBoxType.Error, MessageBoxString.Error);
                 }
             }
             catch (Exception ex)
             {
-                ShowNotification(ex.Message, false);
+                OpenMessageBox(MessageBoxType.Error, MessageBoxString.Error);
             }
 
         }
-        protected void btnAdd_Click(object sender, EventArgs e)
+        protected void btnSendServer_Click(object sender, EventArgs e)
         {
             try
             {
-
+                int id = 0;
+                bool isAdd = true;
                 BaiViet baiViet = new BaiViet();
-                lblAddErrorMessage.Text = "";
+                if (int.TryParse(txtIdBaiViet.Value, out id))
+                {
+                    if (id > 0)
+                    {
+                        baiViet = BaiVietBLL.GetById(id);
+                        isAdd = false;
+                    }
+                }
                 string noiDungChinh = Server.HtmlEncode(txtNoiDungChinh.Text);
-                //string noiDungChinhs = Server.HtmlEncode(txtNoiDungChinh.Text);
-                //lblAddErrorMessage.Text = "KHông endcode" + noiDungChinh + "\n Có endcode" + Server.HtmlDecode(noiDungChinhs);
-                if (string.IsNullOrEmpty(txtTieuDe.Text.Trim()) || txtTieuDe.Text.Trim().Length <= 3)
+                if (string.IsNullOrEmpty(txtTieuDe.Value.Trim()) || txtTieuDe.Value.Trim().Length <= 3)
                 {
-                    lblAddErrorMessage.Text += "Tiêu đề không được để trống<br />";
-                }
-                if (string.IsNullOrEmpty(noiDungChinh.Trim()) || noiDungChinh.Length <= 3)
-                {
-                    lblAddErrorMessage.Text += "Nội dung chính không hợp lệ <br /> ";
-                }
-                if (string.IsNullOrEmpty(txtSlug.Text.Trim()) || txtSlug.Text.Trim().Length <= 3 ||
-                    txtSlug.Text.Contains(" "))
-                {
-                    lblAddErrorMessage.Text += "Slug không hợp lệ<br />";
+                    AddErrorPrompt(txtTieuDe.ClientID, "Không được bỏ trống trường này");
                 }
 
-                if (lblAddErrorMessage.Text.Length > 0)
+                if (string.IsNullOrEmpty(txtSlug.Value.Trim()) || txtSlug.Value.Trim().Length <= 3 ||
+                    txtSlug.Value.Contains(" "))
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "OpenModal", "openModal();", true);
+                    AddErrorPrompt(txtSlug.ClientID, "Không được bỏ trống trường này");
+                }
+                else if (FriendlyUrlBLL.CheckExists(txtSlug.Value.Trim(), id))
+                {
+                    AddErrorPrompt(txtSlug.ClientID, "Url này đã được sử dụng trong hệ thống");
+                    txtSlug.Focus();
+                }
+                if (!IsValid)
+                {
+                    ShowErrorPrompt();
                     return;
                 }
-                if (FriendlyUrlBLL.GetByMa(txtSlug.Text)!=null) {
-                    lblAddErrorMessage.Text = "Url thân thiện này đã tồn tại, vui lòng nhập tên khác";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "OpenModal", "openModal();", true);
-                    return;
-
-                }
-                if (!VaiTroManagerBll.AllowAdd(ApplicationContext.Current.CurrentUserID, MenuMa))
+                if (isAdd)
                 {
-                    ShowNotification("Bạn không có quyền truy cập chức năng này", false);
-                    return;
+                    if (!VaiTroManagerBll.AllowAdd(ApplicationContext.Current.CurrentUserID, MenuMa))
+                    {
+                        OpenMessageBox(MessageBoxType.Error, MessageBoxString.ErrorPermission);
+                        return;
+                    }
                 }
                 else
                 {
-
-                    baiViet.TieuDe = txtTieuDe.Text;
-                    baiViet.NoiDungChinh = noiDungChinh;
-                    baiViet.Slug = txtSlug.Text;
-                    baiViet.ThumbnailUrl = ImportImage.GetStringFileUrl();
-                    baiViet.MoTaNgan = txtMoTaNgan.Text;
+                    if (!VaiTroManagerBll.AllowEdit(ApplicationContext.Current.CurrentUserID, MenuMa))
+                    {
+                        OpenMessageBox(MessageBoxType.Error, MessageBoxString.ErrorPermission);
+                        return;
+                    }
+                }
+                baiViet.TieuDe = txtTieuDe.Value.Trim();
+                baiViet.NoiDungChinh = noiDungChinh.Trim();
+                baiViet.Slug = txtSlug.Value.Trim();
+                if (!string.IsNullOrEmpty(txtImage.Value.Trim()))
+                {
+                    baiViet.ThumbnailUrl = Helpers.ConvertToSavePath(txtImage.Value.Trim(), true);
+                }
+                baiViet.MoTaNgan = Server.HtmlEncode(txtMoTaNgan.Value.Trim());
+                baiViet.ViewCount = int.Parse(txtViewCount.Value);
+                baiViet.Status = BasicStatusHelper.Active;
+                baiViet.TrangThai = chkTrangThai.Checked;
+                baiViet.DisplayOrder = int.Parse(txtDisplayOrder.Value.Trim());    
+                baiViet.UpdateBy = NguoiDungManagerBLL.GetById(ApplicationContext.Current.CurrentUserID).TenTruyCap ?? string.Empty;
+                if (isAdd)
+                {
+                    baiViet.TypeBaiViet = TypeBaiViet.BaiViet;
+                    baiViet.CreateBy = NguoiDungManagerBLL.GetById(ApplicationContext.Current.CurrentUserID).TenTruyCap ?? string.Empty;
                     baiViet.NgayTao = DateTime.Now;
-                    baiViet.TacGiaId = int.Parse(Session["UserId"].ToString());
-                    baiViet.TrangThai = true;
-                    baiViet.ViewCount = 1;
+                    baiViet.TacGiaId = ApplicationContext.Current.CurrentUserID;
                     baiViet.ChinhSuaGanNhat = DateTime.Now;
                     baiViet.LangID = ApplicationContext.Current.ContentCurrentLanguageId;
-
                     baiViet = BaiVietBLL.Insert(baiViet);
-                    ScriptManager.RegisterStartupScript(this, GetType(), "CloseModal", "closeModal();", true);
-                    if (baiViet != null)
-                    {
-                        lblAddErrorMessage.Text = "";
-                        ShowNotification("Thêm mới bài viết thành công");
-                        BindDataByQuyen();
-                        //UpdatePanel1.Update();
 
+                }
+                else
+                {
+                    baiViet.ChinhSuaGanNhat = DateTime.Now;
+                    baiViet = BaiVietBLL.Update(baiViet);
+                    hdnRowId.Value = "0";
+                }
 
-                        txtTieuDe.Text = string.Empty;
-                        txtSlug.Text = string.Empty;
-                        txtMoTaNgan.Text = string.Empty;
-                        //SummernoteEditor.GetEmpty();
-                    }
-                    else
-                    {
-                        ShowNotification("Thêm mới bài viết thất bại", false);
-                    }
+                if (baiViet != null)
+                {
+                    BindDataByQuyen();
+                    OpenMessageBox(MessageBoxType.Success, MessageBoxString.Success);
 
+                }
+                else
+                {
+                    OpenMessageBox(MessageBoxType.Error, MessageBoxString.Error);
                 }
             }
 
             catch (Exception ex)
             {
-                ShowNotification("Thêm mới bài viết thất bại! \n Lỗi: " + ex.Message, false);
+
+
+                OpenMessageBox(MessageBoxType.Error, MessageBoxString.Error);
 
             }
         }
-
-
-
-
         protected void btnDelete_Click(object sender, EventArgs e)
         {
             try
             {
-                int baiVietId = int.Parse(hdnRowId.Value);
-                hdnRowId.Value = "";
-                if (!string.IsNullOrEmpty(baiVietId.ToString()))
+                int baiVietId = 0;
+                
+                if (int.TryParse(hdnRowId.Value,out baiVietId))
                 {
-                    var nguoiDung = BaiVietBLL.GetById(baiVietId);
 
-                    if (nguoiDung == null)
+                    if(baiVietId > 0)
                     {
-                        ShowNotification("Lỗi không tìm thấy bài viết", false);
-                    }
-                    if (!VaiTroManagerBll.AllowDelete(ApplicationContext.Current.CurrentUserID, MenuMa))
-                    {
-                        ShowNotification("Bạn không có quyền truy cập chức năng này", false);
-                        return;
-                    }
+                        hdnRowId.Value = "";
+                        var obj = BaiVietBLL.GetById(baiVietId);
 
-
-                    else if (BaiVietBLL.Delete(baiVietId))
-                    {
-                        ShowNotification("Đã xóa bài viết");
-                        //UpdatePanel1.Update();
-                        BindDataByQuyen();
-                    }
-                    else
-                    {
-                        ShowNotification("Xóa bài viết không thành công", false);
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                ShowNotification("Xóa thất bại! \n " + ex.Message, false);
-            }
-        }
-
-
-        // Thực hiện việc xóa user bằng userId
-
-        protected void btnEdit_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string noidungchinh = Server.HtmlEncode(CKEditorControl1.Text);
-                lblEditMessager.Text = "";
-                if (string.IsNullOrEmpty(txtEditTieuDe.Text.Trim()) || txtEditTieuDe.Text.Trim().Length <= 3)
-                {
-                    lblEditMessager.Text += "Tiêu đề không được để trống<br />";
-                }
-                if (string.IsNullOrEmpty(noidungchinh.Trim()) || noidungchinh.Length<= 3)
-                {
-                    lblEditMessager.Text += "Nội dung chính không hợp lệ <br /> ";
-                }
-                if (string.IsNullOrEmpty(txtEditSlug.Text.Trim()) || txtEditSlug.Text.Trim().Length <= 3 ||
-                    txtSlug.Text.Contains(" "))
-                {
-                    lblEditMessager.Text += "Slug không hợp lệ<br />";
-                }
-
-                if (lblEditMessager.Text.Length > 0)
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "openEdit", "openEdit();", true);
-
-                    return;
-                }
-                if (!VaiTroManagerBll.AllowEdit(ApplicationContext.Current.CurrentUserID, MenuMa))
-                {
-                    ShowNotification("Bạn không có quyền truy cập chức năng này", false);
-                    return;
-                }
-                else
-                {
-                    int baiVietId = int.Parse(hdnRowId.Value); // Lấy ID người dùng đã chỉnh sửa
-                    // Lấy thông tin người dùng từ cơ sở dữ liệu
-                    BaiViet baiViet = BaiVietBLL.GetById(baiVietId);
-                    if (baiViet.Slug != txtEditSlug.Text) { 
-                        var friendlyUrl = FriendlyUrlBLL.GetByMa(txtEditSlug.Text);
-                        if (friendlyUrl != null) {
-
-                            lblEditMessager.Text = "Url thân thiện này đã tồn tại, vui lòng nhập url khác!";
-                            ScriptManager.RegisterStartupScript(this, GetType(), "openEdit", "openEdit();", true);
-
+                        if (obj == null)
+                        {
+                            OpenMessageBox(MessageBoxType.Error, MessageBoxString.Error);
                             return;
                         }
+                        if (!VaiTroManagerBll.AllowDelete(ApplicationContext.Current.CurrentUserID, MenuMa))
+                        {
+                            OpenMessageBox(MessageBoxType.Error, MessageBoxString.ErrorPermission);
+                            return;
+                        }
+                        if (BaiVietBLL.Delete(baiVietId))
+                        {
+                            BindDataByQuyen();
+                            OpenMessageBox(MessageBoxType.Success, MessageBoxString.SuccessDelete);
+                        }
+                        else
+                        {
+                            OpenMessageBox(MessageBoxType.Error, MessageBoxString.Error);
+                        }
                     }
-                    hdnRowId.Value = "";
-                    lblEditMessager.Text = "";
-
-                    
-
-
-
-                    baiViet.TieuDe = txtEditTieuDe.Text;
-                    baiViet.NoiDungChinh = noidungchinh; // Giả sử phương thức GetContent() trả về nội dung
-                    baiViet.Slug = txtEditSlug.Text;
-                    baiViet.ThumbnailUrl = txtEditThumbnailUrl.GetStringFileUrl();
-                    baiViet.TrangThai = chkEditTrangThai.Checked;
-                    baiViet.ChinhSuaGanNhat = DateTime.Now;
-                    baiViet.MoTaNgan = txtEditMoTaNgan.Text;
-
-                    BaiVietBLL.Update(baiViet);
-                    BindDataByQuyen();
-                    //UpdatePanel2.Update();
-                    ScriptManager.RegisterStartupScript(this, GetType(), "closeEdit", "closeEdit();", true);
-
-                    ShowNotification("Cập nhật thành công", true);
                 }
+                
             }
             catch (Exception ex)
             {
-                ShowNotification("Cập nhật bài viết thất bại! \n " + ex.Message, false);
+                OpenMessageBox(MessageBoxType.Error, MessageBoxString.Error);
             }
         }
+
+
         protected void btnDanhMucEditSave_Click(object sender, EventArgs e)
         {
             try
@@ -329,7 +303,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                 hdnRowId.Value = "";
                 if (!VaiTroManagerBll.AllowEdit(ApplicationContext.Current.CurrentUserID, MenuMa))
                 {
-                    ShowNotification("Bạn không có quyền truy cập chức năng này", false);
+                    OpenMessageBox(MessageBoxType.Error, MessageBoxString.ErrorPermission);
                     return;
                 }
 
@@ -352,38 +326,30 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                             };
                             listNewUpdate.Add(newUpdate);
                         }
-
                         else
                         {
-                            ShowNotification("Không gửi được dữ liệu lên máy chủ ", false);
+                            OpenMessageBox(MessageBoxType.Error, MessageBoxString.Error);
                             return;
                         }
                     }
                     else
                     {
-                        ShowNotification("Không thể kiểm tra dữ liệu trong hàng", false);
+                        OpenMessageBox(MessageBoxType.Error, MessageBoxString.Error);
 
                     }
-
                 }
 
                 int result = BaiVietBLL.UpdateCategoryByPostId(listNewUpdate, danhMucId);
-                ShowNotification("Cập nhật danh mục thành công");
                 BindDataByQuyen();
-                //UpdatePanel1.Update();
-
+                OpenMessageBox(MessageBoxType.Success, MessageBoxString.Success);
 
             }
             catch (Exception ex)
             {
-
-                ShowNotification("Cập nhật danh mục thất bại! \n " + ex.Message, false);
+                OpenMessageBox(MessageBoxType.Error, MessageBoxString.Error);
             }
 
         }
-        private void ShowNotification(string message, bool isSuccess = true)
-        {
-            AdminNotificationUserControl.LoadMessage(message, isSuccess);
-        }
+
     }
 }

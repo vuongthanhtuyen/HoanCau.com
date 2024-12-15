@@ -15,15 +15,6 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
     {
 
         /// <summary>
-        /// SearchUserControl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::CMS.WebUI.Administration.AdminUserControl.SearchUserControl SearchUserControl;
-
-        /// <summary>
         /// ScriptManger1 control.
         /// </summary>
         /// <remarks>

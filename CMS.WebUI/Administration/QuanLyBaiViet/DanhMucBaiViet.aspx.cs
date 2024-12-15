@@ -65,7 +65,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
         {
             BindDataTree();
             BindListDanhMucCha();
-            SearchUserControl.SetSearcKey();
+             
             GetModal();
         }
 
@@ -154,7 +154,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                 {
                     ItemTreeView addChild = new ItemTreeView();
                     addChild.MenuId = 0;
-                    addChild.text = "Thêm mới";
+                    addChild.text = "Lưu";
                     addChild.icon = "fa fa-plus";
                     addChild.state = new ItemState { opened = true };
                     if (IsAddMenu)
@@ -249,20 +249,24 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     }
                     isAdd = false;
                 }
-
                 danhMuc.Ten = txtEditTen.Text;
                 danhMuc.Slug = txtEditMa.Text;
+                danhMuc.Type = CategoryType.Article;
                 danhMuc.DanhMucChaId = int.Parse(ddlEditDanhMuc.SelectedValue);
                 danhMuc.MoTa = txtEditMota.Text;
+                danhMuc.CreateBy =  NguoiDungManagerBLL.GetById(ApplicationContext.Current.CurrentUserID).TenTruyCap;
+                danhMuc.CreateDate = DateTime.Now;
                 if (isAdd)
                 {
                     danhMuc.LangID = ApplicationContext.Current.ContentCurrentLanguageId;
                     danhMuc = DanhMucBaiVietBLL.Insert(danhMuc);
-                    //ShowNotification("Thêm mới thành công", false);
+                    //ShowNotification("Lưu thành công", false);
 
                 }
                 else
                 {
+                    danhMuc.UpdateDate = DateTime.Now;
+                    danhMuc.UpdateBy = NguoiDungManagerBLL.GetById(ApplicationContext.Current.CurrentUserID).TenTruyCap;
                     danhMuc = DanhMucBaiVietBLL.Update(danhMuc);
                     try
                     {

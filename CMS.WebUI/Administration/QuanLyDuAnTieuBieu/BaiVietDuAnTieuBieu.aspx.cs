@@ -58,8 +58,8 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
             pageIndex = PagingAdminWeb.GetPageIndex();
             List<BaiVietDto> postList = new List<BaiVietDto>();
             int totalRow = 0;
-            postList = BaiVietBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], null, 4, ApplicationContext.Current.ContentCurrentLanguageId, out totalRow);
-            SearchUserControl.SetSearcKey();
+            postList = BaiVietBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], null,  TypeBaiViet.DuAnTieuBieu, ApplicationContext.Current.ContentCurrentLanguageId, out totalRow);
+             
             ViewState["LastIndex"] = (pageIndex - 1) * pageSize;
             PagingAdminWeb.GetPaging(totalRow, pageIndex);
             GridViewTable.DataSource = postList;
@@ -117,14 +117,14 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
                     baiViet.TrangThai = true;
                     baiViet.ViewCount = 1;
                     baiViet.ChinhSuaGanNhat = DateTime.Now;
-
+                    baiViet.TypeBaiViet = TypeBaiViet.DuAnTieuBieu;
                     baiViet = BaiVietBLL.InsertDuAnTieuBieu(baiViet);
                     BindDataByQuyen();
                     ScriptManager.RegisterStartupScript(this, GetType(), "CloseModal", "closeModal();", true);
                     if (baiViet != null)
                     {
                         lblAddErrorMessage.Text = "";
-                        ShowNotification("Thêm mới bài viết thành công");
+                        ShowNotification("Lưu bài viết thành công");
 
 
                         txtTieuDe.Text = string.Empty;
@@ -137,7 +137,7 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
                     }
                     else
                     {
-                        ShowNotification("Thêm mới bài viết thất bại", false);
+                        ShowNotification("Lưu bài viết thất bại", false);
                     }
 
                 }
@@ -145,7 +145,7 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
 
             catch (Exception ex)
             {
-                ShowNotification("Thêm mới bài viết thất bại! \n Lỗi: " + ex.Message, false);
+                ShowNotification("Lưu bài viết thất bại! \n Lỗi: " + ex.Message, false);
 
             }
         }
@@ -266,7 +266,7 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
                     hdnRowId.Value = baiVietId.ToString();
                     if (e.CommandName == "ChinhSuaDanhMuc")
                     {
-                        var danhMuclist = BaiVietBLL.GetAllDanhMucBaiVietById(baiVietId, ApplicationContext.Current.CurrentLanguageId);
+                        var danhMuclist = BaiVietBLL.GetAllDanhMucBaiVietById(baiVietId, ApplicationContext.Current.CurrentLanguageId, CategoryType.KeyProject);
                         GridViewDanhMuc.DataSource = danhMuclist;
                         GridViewDanhMuc.DataBind();
                         // Đăng ký đoạn mã JavaScript

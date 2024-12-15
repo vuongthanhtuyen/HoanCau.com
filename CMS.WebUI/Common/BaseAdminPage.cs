@@ -139,6 +139,19 @@ namespace CMS.WebUI.Common
                 return strStatus.ToString();
             }
         }
+        protected Administration.MasterPage.AdminPage CURRENT_MASTERPAGE
+        {
+            get
+            {
+                try
+                {
+                    System.Web.UI.MasterPage masterPage = this.Master;
+                    return (Administration.MasterPage.AdminPage)masterPage;
+                }
+                catch (Exception) { }
+                return null;
+            }
+        }
         public class ContactStatusHelper
         {
             public const string New = "New";
@@ -166,6 +179,30 @@ namespace CMS.WebUI.Common
             public const string NotApproved = "NotApproved";
             public const string Deleted = "Deleted";
         }
+        public class MessageBoxType
+        {
+            public const string Success ="success";
+            public const string Error ="error";
+            public const string Info = "info";
+            public const string Warning = "warning";
+            public const string Question = "question";
+        }
+        public class MessageBoxString
+        {
+            public const string Success = "Dữ liệu đã được cập nhật";
+            public const string SuccessDelete = "Dữ liệu đã xóa thành công";
+            public const string ErrorSytem = "Lỗi hệ thống";
+            public const string Error = "Đã có lỗi xãy ra, vui lòng thử lại sau";
+            public const string ErrorPermission = "Bạn không có quyền thực hiện thao tác này";
+            //public const string ErrorSytem = "Lỗi hệ thống";
+        }
 
+        public virtual void OpenMessageBox(string _icon, string _title)
+        {
+            if (CURRENT_MASTERPAGE != null)
+            {
+                CURRENT_MASTERPAGE.ShowMessage(_icon, _title);
+            }
+        }
     }
 }

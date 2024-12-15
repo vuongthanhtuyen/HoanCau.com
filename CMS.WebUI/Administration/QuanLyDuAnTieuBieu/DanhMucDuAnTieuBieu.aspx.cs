@@ -51,8 +51,8 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
             pageIndex = PagingAdminWeb.GetPageIndex();
             List<DanhMucDto> list = new List<DanhMucDto>();
             int totalRow = 0;
-            list = DanhMucBaiVietBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], null, 4, out totalRow);
-            SearchUserControl.SetSearcKey();
+            list = DanhMucBaiVietBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], null, CategoryType.KeyProject, out totalRow);
+             
 
             ViewState["LastIndex"] = (pageIndex - 1) * pageSize;
             PagingAdminWeb.GetPaging(totalRow, pageIndex);
@@ -105,6 +105,10 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
                         danhMuc.Ten = txtTen.Text;
                         danhMuc.Slug = txtMa.Text;
                         danhMuc.MoTa = txtMota.Text;
+                        danhMuc.Type = CategoryType.KeyProject;
+                        danhMuc.CreateDate = DateTime.Now;
+                        danhMuc.UpdateDate = DateTime.Now;
+                        danhMuc.CreateBy = danhMuc.UpdateBy = NguoiDungManagerBLL.GetById(ApplicationContext.Current.CurrentUserID).TenTruyCap;
                         danhMuc = DanhMucBaiVietBLL.Insert(danhMuc);
                         BindDataByQuyen();
                         ScriptManager.RegisterStartupScript(this, GetType(), "CloseModal", "closeModal();", true);

@@ -55,7 +55,7 @@ namespace CMS.WebUI.Administration
             List<LienHe> LienHeList = new List<LienHe>();
             int totalRow = 0;
             LienHeList = LienHeBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], true, out totalRow);
-            SearchUserControl.SetSearcKey();
+             
 
             ViewState["LastIndex"] = (pageIndex - 1) * pageSize;
             PagingAdminWeb.GetPaging(totalRow, pageIndex);

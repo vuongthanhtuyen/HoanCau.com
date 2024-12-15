@@ -72,6 +72,10 @@
     min-width: 50px;
     max-width: 100px;
 }
+.hidden {
+    display: none !important;
+    visibility: hidden !important;
+}
 /*.modal-content {
     width: 100%;*/ /* Chiếm toàn bộ chiều rộng của modal */
     /*max-width: 800px;*/ /* Đặt giới hạn chiều rộng nếu cần */

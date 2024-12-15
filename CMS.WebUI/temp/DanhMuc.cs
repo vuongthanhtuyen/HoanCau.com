@@ -205,6 +205,118 @@ namespace SweetCMS.DataAccess
 				colvarLangID.ForeignKeyTableName = "";
 				schema.Columns.Add(colvarLangID);
 				
+				TableSchema.TableColumn colvarCreateDate = new TableSchema.TableColumn(schema);
+				colvarCreateDate.ColumnName = "CreateDate";
+				colvarCreateDate.DataType = DbType.DateTime;
+				colvarCreateDate.MaxLength = 0;
+				colvarCreateDate.AutoIncrement = false;
+				colvarCreateDate.IsNullable = false;
+				colvarCreateDate.IsPrimaryKey = false;
+				colvarCreateDate.IsForeignKey = false;
+				colvarCreateDate.IsReadOnly = false;
+				
+						colvarCreateDate.DefaultSetting = @"(getdate())";
+				colvarCreateDate.ForeignKeyTableName = "";
+				schema.Columns.Add(colvarCreateDate);
+				
+				TableSchema.TableColumn colvarUpdateDate = new TableSchema.TableColumn(schema);
+				colvarUpdateDate.ColumnName = "UpdateDate";
+				colvarUpdateDate.DataType = DbType.DateTime;
+				colvarUpdateDate.MaxLength = 0;
+				colvarUpdateDate.AutoIncrement = false;
+				colvarUpdateDate.IsNullable = false;
+				colvarUpdateDate.IsPrimaryKey = false;
+				colvarUpdateDate.IsForeignKey = false;
+				colvarUpdateDate.IsReadOnly = false;
+				
+						colvarUpdateDate.DefaultSetting = @"(getdate())";
+				colvarUpdateDate.ForeignKeyTableName = "";
+				schema.Columns.Add(colvarUpdateDate);
+				
+				TableSchema.TableColumn colvarCreateBy = new TableSchema.TableColumn(schema);
+				colvarCreateBy.ColumnName = "CreateBy";
+				colvarCreateBy.DataType = DbType.String;
+				colvarCreateBy.MaxLength = 50;
+				colvarCreateBy.AutoIncrement = false;
+				colvarCreateBy.IsNullable = false;
+				colvarCreateBy.IsPrimaryKey = false;
+				colvarCreateBy.IsForeignKey = false;
+				colvarCreateBy.IsReadOnly = false;
+				
+						colvarCreateBy.DefaultSetting = @"('Administrator')";
+				colvarCreateBy.ForeignKeyTableName = "";
+				schema.Columns.Add(colvarCreateBy);
+				
+				TableSchema.TableColumn colvarUpdateBy = new TableSchema.TableColumn(schema);
+				colvarUpdateBy.ColumnName = "UpdateBy";
+				colvarUpdateBy.DataType = DbType.String;
+				colvarUpdateBy.MaxLength = 50;
+				colvarUpdateBy.AutoIncrement = false;
+				colvarUpdateBy.IsNullable = false;
+				colvarUpdateBy.IsPrimaryKey = false;
+				colvarUpdateBy.IsForeignKey = false;
+				colvarUpdateBy.IsReadOnly = false;
+				
+						colvarUpdateBy.DefaultSetting = @"('Administrator')";
+				colvarUpdateBy.ForeignKeyTableName = "";
+				schema.Columns.Add(colvarUpdateBy);
+				
+				TableSchema.TableColumn colvarDisplayOrderDisplayOrder = new TableSchema.TableColumn(schema);
+				colvarDisplayOrderDisplayOrder.ColumnName = "DisplayOrderDisplayOrder";
+				colvarDisplayOrderDisplayOrder.DataType = DbType.Int32;
+				colvarDisplayOrderDisplayOrder.MaxLength = 0;
+				colvarDisplayOrderDisplayOrder.AutoIncrement = false;
+				colvarDisplayOrderDisplayOrder.IsNullable = false;
+				colvarDisplayOrderDisplayOrder.IsPrimaryKey = false;
+				colvarDisplayOrderDisplayOrder.IsForeignKey = false;
+				colvarDisplayOrderDisplayOrder.IsReadOnly = false;
+				
+						colvarDisplayOrderDisplayOrder.DefaultSetting = @"((-1))";
+				colvarDisplayOrderDisplayOrder.ForeignKeyTableName = "";
+				schema.Columns.Add(colvarDisplayOrderDisplayOrder);
+				
+				TableSchema.TableColumn colvarStatus = new TableSchema.TableColumn(schema);
+				colvarStatus.ColumnName = "Status";
+				colvarStatus.DataType = DbType.AnsiString;
+				colvarStatus.MaxLength = 20;
+				colvarStatus.AutoIncrement = false;
+				colvarStatus.IsNullable = false;
+				colvarStatus.IsPrimaryKey = false;
+				colvarStatus.IsForeignKey = false;
+				colvarStatus.IsReadOnly = false;
+				
+						colvarStatus.DefaultSetting = @"('Active')";
+				colvarStatus.ForeignKeyTableName = "";
+				schema.Columns.Add(colvarStatus);
+				
+				TableSchema.TableColumn colvarType = new TableSchema.TableColumn(schema);
+				colvarType.ColumnName = "Type";
+				colvarType.DataType = DbType.Int32;
+				colvarType.MaxLength = 0;
+				colvarType.AutoIncrement = false;
+				colvarType.IsNullable = false;
+				colvarType.IsPrimaryKey = false;
+				colvarType.IsForeignKey = false;
+				colvarType.IsReadOnly = false;
+				
+						colvarType.DefaultSetting = @"((1))";
+				colvarType.ForeignKeyTableName = "";
+				schema.Columns.Add(colvarType);
+				
+				TableSchema.TableColumn colvarThumbnailUrl = new TableSchema.TableColumn(schema);
+				colvarThumbnailUrl.ColumnName = "ThumbnailUrl";
+				colvarThumbnailUrl.DataType = DbType.AnsiString;
+				colvarThumbnailUrl.MaxLength = 255;
+				colvarThumbnailUrl.AutoIncrement = false;
+				colvarThumbnailUrl.IsNullable = false;
+				colvarThumbnailUrl.IsPrimaryKey = false;
+				colvarThumbnailUrl.IsForeignKey = false;
+				colvarThumbnailUrl.IsReadOnly = false;
+				
+						colvarThumbnailUrl.DefaultSetting = @"('')";
+				colvarThumbnailUrl.ForeignKeyTableName = "";
+				schema.Columns.Add(colvarThumbnailUrl);
+				
 				BaseSchema = schema;
 				//add this schema to the provider
 				//so we can query it later
@@ -262,6 +374,70 @@ namespace SweetCMS.DataAccess
 			get { return GetColumnValue<int?>(Columns.LangID); }
 			set { SetColumnValue(Columns.LangID, value); }
 		}
+		  
+		[XmlAttribute("CreateDate")]
+		[Bindable(true)]
+		public DateTime CreateDate 
+		{
+			get { return GetColumnValue<DateTime>(Columns.CreateDate); }
+			set { SetColumnValue(Columns.CreateDate, value); }
+		}
+		  
+		[XmlAttribute("UpdateDate")]
+		[Bindable(true)]
+		public DateTime UpdateDate 
+		{
+			get { return GetColumnValue<DateTime>(Columns.UpdateDate); }
+			set { SetColumnValue(Columns.UpdateDate, value); }
+		}
+		  
+		[XmlAttribute("CreateBy")]
+		[Bindable(true)]
+		public string CreateBy 
+		{
+			get { return GetColumnValue<string>(Columns.CreateBy); }
+			set { SetColumnValue(Columns.CreateBy, value); }
+		}
+		  
+		[XmlAttribute("UpdateBy")]
+		[Bindable(true)]
+		public string UpdateBy 
+		{
+			get { return GetColumnValue<string>(Columns.UpdateBy); }
+			set { SetColumnValue(Columns.UpdateBy, value); }
+		}
+		  
+		[XmlAttribute("DisplayOrderDisplayOrder")]
+		[Bindable(true)]
+		public int DisplayOrderDisplayOrder 
+		{
+			get { return GetColumnValue<int>(Columns.DisplayOrderDisplayOrder); }
+			set { SetColumnValue(Columns.DisplayOrderDisplayOrder, value); }
+		}
+		  
+		[XmlAttribute("Status")]
+		[Bindable(true)]
+		public string Status 
+		{
+			get { return GetColumnValue<string>(Columns.Status); }
+			set { SetColumnValue(Columns.Status, value); }
+		}
+		  
+		[XmlAttribute("Type")]
+		[Bindable(true)]
+		public int Type 
+		{
+			get { return GetColumnValue<int>(Columns.Type); }
+			set { SetColumnValue(Columns.Type, value); }
+		}
+		  
+		[XmlAttribute("ThumbnailUrl")]
+		[Bindable(true)]
+		public string ThumbnailUrl 
+		{
+			get { return GetColumnValue<string>(Columns.ThumbnailUrl); }
+			set { SetColumnValue(Columns.ThumbnailUrl, value); }
+		}
 		
 		#endregion
 		
@@ -313,7 +489,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Inserts a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Insert(string varTen,int? varDanhMucChaId,string varSlug,string varMoTa,int? varLangID)
+		public static void Insert(string varTen,int? varDanhMucChaId,string varSlug,string varMoTa,int? varLangID,DateTime varCreateDate,DateTime varUpdateDate,string varCreateBy,string varUpdateBy,int varDisplayOrderDisplayOrder,string varStatus,int varType,string varThumbnailUrl)
 		{
 			DanhMuc item = new DanhMuc();
 			
@@ -327,6 +503,22 @@ namespace SweetCMS.DataAccess
 			
 			item.LangID = varLangID;
 			
+			item.CreateDate = varCreateDate;
+			
+			item.UpdateDate = varUpdateDate;
+			
+			item.CreateBy = varCreateBy;
+			
+			item.UpdateBy = varUpdateBy;
+			
+			item.DisplayOrderDisplayOrder = varDisplayOrderDisplayOrder;
+			
+			item.Status = varStatus;
+			
+			item.Type = varType;
+			
+			item.ThumbnailUrl = varThumbnailUrl;
+			
 		
 			if (System.Web.HttpContext.Current != null)
 				item.Save(System.Web.HttpContext.Current.User.Identity.Name);
@@ -337,7 +529,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Updates a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Update(int varId,string varTen,int? varDanhMucChaId,string varSlug,string varMoTa,int? varLangID)
+		public static void Update(int varId,string varTen,int? varDanhMucChaId,string varSlug,string varMoTa,int? varLangID,DateTime varCreateDate,DateTime varUpdateDate,string varCreateBy,string varUpdateBy,int varDisplayOrderDisplayOrder,string varStatus,int varType,string varThumbnailUrl)
 		{
 			DanhMuc item = new DanhMuc();
 			
@@ -352,6 +544,22 @@ namespace SweetCMS.DataAccess
 				item.MoTa = varMoTa;
 			
 				item.LangID = varLangID;
+			
+				item.CreateDate = varCreateDate;
+			
+				item.UpdateDate = varUpdateDate;
+			
+				item.CreateBy = varCreateBy;
+			
+				item.UpdateBy = varUpdateBy;
+			
+				item.DisplayOrderDisplayOrder = varDisplayOrderDisplayOrder;
+			
+				item.Status = varStatus;
+			
+				item.Type = varType;
+			
+				item.ThumbnailUrl = varThumbnailUrl;
 			
 			item.IsNew = false;
 			if (System.Web.HttpContext.Current != null)
@@ -408,6 +616,62 @@ namespace SweetCMS.DataAccess
         
         
         
+        public static TableSchema.TableColumn CreateDateColumn
+        {
+            get { return Schema.Columns[6]; }
+        }
+        
+        
+        
+        public static TableSchema.TableColumn UpdateDateColumn
+        {
+            get { return Schema.Columns[7]; }
+        }
+        
+        
+        
+        public static TableSchema.TableColumn CreateByColumn
+        {
+            get { return Schema.Columns[8]; }
+        }
+        
+        
+        
+        public static TableSchema.TableColumn UpdateByColumn
+        {
+            get { return Schema.Columns[9]; }
+        }
+        
+        
+        
+        public static TableSchema.TableColumn DisplayOrderDisplayOrderColumn
+        {
+            get { return Schema.Columns[10]; }
+        }
+        
+        
+        
+        public static TableSchema.TableColumn StatusColumn
+        {
+            get { return Schema.Columns[11]; }
+        }
+        
+        
+        
+        public static TableSchema.TableColumn TypeColumn
+        {
+            get { return Schema.Columns[12]; }
+        }
+        
+        
+        
+        public static TableSchema.TableColumn ThumbnailUrlColumn
+        {
+            get { return Schema.Columns[13]; }
+        }
+        
+        
+        
         #endregion
 		#region Columns Struct
 		public struct Columns
@@ -418,6 +682,14 @@ namespace SweetCMS.DataAccess
 			 public static string Slug = @"Slug";
 			 public static string MoTa = @"MoTa";
 			 public static string LangID = @"langID";
+			 public static string CreateDate = @"CreateDate";
+			 public static string UpdateDate = @"UpdateDate";
+			 public static string CreateBy = @"CreateBy";
+			 public static string UpdateBy = @"UpdateBy";
+			 public static string DisplayOrderDisplayOrder = @"DisplayOrderDisplayOrder";
+			 public static string Status = @"Status";
+			 public static string Type = @"Type";
+			 public static string ThumbnailUrl = @"ThumbnailUrl";
 						
 		}
 		#endregion

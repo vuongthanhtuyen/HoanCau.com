@@ -7,9 +7,16 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static CMS.Core.Manager.FriendlyUrlBLL;
 
 namespace CMS.Core.Manager
 {
+    public class TypeBaiViet
+    {
+        public const int BaiViet = 1;
+        public const int DuAnTieuBieu = 2;
+
+    }
     public class BaiVietBLL
     {
         public static List<BaiVietDto> GetPaging(int? PageSize, int? PageIndex, string Key, bool? ASC, int? DanhMucChaId, int langID, out int rowsCount)
@@ -21,7 +28,6 @@ namespace CMS.Core.Manager
             {
                 if (sp.OutputValues.Count > 0)
                     rowsCount = Convert.ToInt32(sp.OutputValues[0]);
-
             }
             return sp.ExecuteTypedList<BaiVietDto>();
         }
@@ -32,9 +38,10 @@ namespace CMS.Core.Manager
 
             new Delete().From(NhomHinhAnh.Schema)
                 .Where(NhomHinhAnh.BaiVietIdColumn).IsEqualTo(baiVietId).Execute();
-            FriendlyUrlBLL.DeleteByPostId(baiVietId);
-
-            return new BaiVietController().Delete(baiVietId);
+            FriendlyUrlBLL.DeleteByPostId(baiVietId, FriendlyURLTypeHelper.Article);
+            return new Update(BaiViet.Schema)
+                .Set(BaiViet.StatusColumn).EqualTo(BasicStatusHelper.Deleted)
+                .Where(BaiViet.IdColumn).IsEqualTo(baiVietId).Execute() > 0;
         }
         public static BaiViet GetById(int baiVietId)
         {
@@ -66,7 +73,7 @@ namespace CMS.Core.Manager
 
 
 
-        public static List<DanhMucBaiVietDto> GetAllDanhMucBaiVietById(int postId, int langId)
+        public static List<DanhMucBaiVietDto> GetAllDanhMucBaiVietById(int postId, int langId, int type)
         {
             string sql = string.Format(@"Select c.Id, c.Ten, c.Slug,
                 case
@@ -74,7 +81,7 @@ namespace CMS.Core.Manager
 	                else 0
                 end as IsHaveDanhMuc
                 from DanhMuc as c
-                left join NhomBaiViet as cd on cd.DanhMucId = c.Id AND cd.BaiVietId = {0} where c.LangID = {1}", postId,langId);
+                left join NhomBaiViet as cd on cd.DanhMucId = c.Id AND cd.BaiVietId = {0} where c.LangID = {1} and c.Type = {2} ", postId,langId, type);
             return new InlineQuery().ExecuteTypedList<DanhMucBaiVietDto>(sql);
         }
 

@@ -3,27 +3,20 @@
 
 <%@ Register Src="~/Administration/AdminUserControl/AdminNotification.ascx" TagPrefix="uc1" TagName="AdminNotification" %>
 <%@ Register Src="~/Administration/AdminUserControl/PagingAdmin.ascx" TagPrefix="uc1" TagName="PagingAdmin" %>
-<%@ Register Src="~/Administration/AdminUserControl/SearchUserControl.ascx" TagPrefix="uc1" TagName="SearchUserControl" %>
-
-
-
-<asp:Content ID="ctSearch" ContentPlaceHolderID="ctSearch" runat="server">
-    <uc1:SearchUserControl runat="server" ID="SearchUserControl" />
-</asp:Content>
 
 <asp:Content ID="test" ContentPlaceHolderID="head" runat="server">
     <link href="../Assets/plugins/style.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <asp:ScriptManager ID="ScriptManger1" runat="Server" />
+     
     <main style="min-height: 500px;">
         <div>
             <div class="col-xs-12 padding-none header-controls-right">
                 <span class="notifications"></span>
                 <button class="btn btn-primary btn-sm btn-flat padding-fa mr-4" id="btnOpenModal" type="button"
                     onclick="openModal()" runat="server">
-                    <i class="fa fa-plus"></i>Thêm mới</button>
+                    <i class="fa fa-plus"></i>Lưu</button>
 
                 <asp:Label ID="lblResult" CssClass="text-info" runat="server" Text=""></asp:Label>
             </div>
@@ -59,7 +52,7 @@
             <asp:UpdatePanel ID="UpdatePanelAdd" UpdateMode="Conditional" runat="server">
                 <ContentTemplate>
                     <span class="close d-flex justify-content-end" onclick="closeModal()">&times;</span>
-                    <h4>Thêm mới Menu </h4>
+                    <h4>Lưu Menu </h4>
                     <asp:Label ID="lblAddErrorMessage" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
                     <div class="justify-content-center align-items-center main-edit-modal">
                         <div class="form-group">
@@ -142,7 +135,7 @@
                         </div>
 
                         <div class="d-flex justify-content-end">
-                            <asp:Button ID="btnAdd" runat="server" Text="Thêm Mới" class="btn btn-primary btn-user mx-1"
+                            <asp:Button ID="btnAdd" runat="server" Text="Lưu" class="btn btn-primary btn-user mx-1"
                                 OnClick="btnAdd_Click" />
                             <asp:Button ID="btnCancel" runat="server" Text="Hủy" class="btn btn-secondary btn-user mx-1"
                                 OnClientClick="closeModal(); return false;" />

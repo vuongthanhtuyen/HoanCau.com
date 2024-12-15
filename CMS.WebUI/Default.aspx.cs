@@ -56,7 +56,7 @@ namespace CMS.WebUI
 
                 a += string.Format($@"
                     <div class=""elementSlideMain"">
-                        <div class=""wrapImgResize wrapImgSlideMain""><img src=""/Administration/UploadImage/{item.HinhAnhUrl}"" alt=""TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ"" /></div>
+                        <div class=""wrapImgResize wrapImgSlideMain""><img src=""/Administration/UploadImage/{item.HinhAnhUrl}"" alt=""ĐẠI HỌC THÁI BÌNH DƯƠNG"" /></div>
                             <div class=""wrapTextSlideMain"">
                                 <div class=""container-xxl containerTextSlideMain"">
                                     <div class=""contentTextSlideMain"">
@@ -271,20 +271,20 @@ namespace CMS.WebUI
                                         <div class=""wrapTitle title1 center wow fadeInUp"" data-wow-duration=""1s"" data-wow-delay=""0.2s"">
                                             <h2 class=""titleSub"">Giới thiệu</h2>
 
-                                            <h3 class=""titleMain"">Tập đoàn Hoàn Cầu Khu vực Khánh Hòa</h3>
+                                            <h3 class=""titleMain"">Tập đoàn Đại Học Thái Bình Dương Khu vực Khánh Hòa</h3>
                                         </div>
                                         <div class=""row rowItem"">
                                             <div class=""col-lg-5 colImgItem"">
                                                 <div class=""contentCol wow fadeInLeft"" data-wow-duration=""1s"" data-wow-delay=""0.2s"">
                                                     <div class=""wrapImgAnimation""><img src=""/Assets/images/about/about-bg.png"" alt=""Animation""></div>
-                                                    <div class=""wrapImgItem""><img class=""imgContent"" src=""/Assets/images/about/roadmap-hoan-cau-1.png"" alt=""TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ""></div>
+                                                    <div class=""wrapImgItem""><img class=""imgContent"" src=""/Assets/images/about/roadmap-hoan-cau-1.png"" alt=""ĐẠI HỌC THÁI BÌNH DƯƠNG""></div>
                                                 </div>
                                             </div>
                                             <div class=""col-lg-7 colTextItem"">
                                                 <div class=""contentCol"">
                                                     <div class=""wrapTextItem wow fadeInUp"" data-wow-duration=""1s"" data-wow-delay=""0.4s"">
-                                                        <p><b>Tập đoàn Hoàn Cầu Khu vực Khánh Hòa (Group HC – KH)</b> ngày nay gồm các Công ty thành viên của Tập đoàn Hoàn Cầu Khu vực Khánh Hòa được tách và thành lập từ Công ty TNHH Hoàn Cầu thành lập năm 1993, do Bà Trần Thị Hường làm Chủ tịch Hội đồng Thành viên. Việc quản lý và điều hành theo mô hình Group HC - KH là chủ trương của Tập đoàn Hoàn Cầu tập trung xây dựng và phát triển các dự án chất lượng cao tại Khu vực Khánh Hòa.</p>
-                                                        <p><b style=""color:#ffcb0c;"">Với lịch sử hơn 30 năm xây dựng và phát triển,</b> Tập đoàn Hoàn Cầu nói chung và Group HC-KH đã có những bước phát triển mạnh mẽ, trở thành một trong những Tập đoàn hàng đầu đáng tin cậy trên thị trường Việt Nam và cả Thị trường Quốc tế về các dự án đầu tư. Tập đoàn Hoàn Cầu luôn kiên định với chiến lược phát triển của mình Đầu tư, cung cấp các sản phẩm dịch vụ uy tín, khơi dậy tiềm năng cho sự phát triển, tạo nên giá trị gia tăng cho xã hội.</p>
+                                                        <p><b>Tập đoàn Đại Học Thái Bình Dương Khu vực Khánh Hòa (Group HC – KH)</b> ngày nay gồm các Công ty thành viên của Tập đoàn Đại Học Thái Bình Dương Khu vực Khánh Hòa được tách và thành lập từ Công ty TNHH Đại Học Thái Bình Dương thành lập năm 1993, do Bà Trần Thị Hường làm Chủ tịch Hội đồng Thành viên. Việc quản lý và điều hành theo mô hình Group HC - KH là chủ trương của Tập đoàn Đại Học Thái Bình Dương tập trung xây dựng và phát triển các dự án chất lượng cao tại Khu vực Khánh Hòa.</p>
+                                                        <p><b style=""color:#ffcb0c;"">Với lịch sử hơn 30 năm xây dựng và phát triển,</b> Tập đoàn Đại Học Thái Bình Dương nói chung và Group HC-KH đã có những bước phát triển mạnh mẽ, trở thành một trong những Tập đoàn hàng đầu đáng tin cậy trên thị trường Việt Nam và cả Thị trường Quốc tế về các dự án đầu tư. Tập đoàn Đại Học Thái Bình Dương luôn kiên định với chiến lược phát triển của mình Đầu tư, cung cấp các sản phẩm dịch vụ uy tín, khơi dậy tiềm năng cho sự phát triển, tạo nên giá trị gia tăng cho xã hội.</p>
                                                         <div class=""wrapBoss"">
                                                             <div class=""media"">
                                                                 <div class=""wrapImg"">
@@ -293,7 +293,7 @@ namespace CMS.WebUI
                                                                 <div class=""media-body"">
                                                                     <h3 class=""titleName"">Bà TRẦN THỊ HƯỜNG</h3>
                                                                     <h4 class=""titlePostion"">NGƯỜI SÁNG LẬP</h4>
-                                                                    <div class=""wrapTextItem"">Công ty TNHH Hoàn Cầu được thành lập ngày 01/02/1993 với vốn điều lệ 193 tỷ đồng, do Bà Trần Thị Hường làm Chủ tịch Hội đồng Thành viên.</div>
+                                                                    <div class=""wrapTextItem"">Công ty TNHH Đại Học Thái Bình Dương được thành lập ngày 01/02/1993 với vốn điều lệ 193 tỷ đồng, do Bà Trần Thị Hường làm Chủ tịch Hội đồng Thành viên.</div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -323,8 +323,8 @@ namespace CMS.WebUI
                                              <div class=""row rowList"">
                                                  <div class=""col-lg-12 colText"">
                                                      <div class=""wrapTextItem wow fadeInUp"" data-wow-duration=""1s"" data-wow-delay=""0.4s"">
-                                                         <p>Với định hướng, mục tiêu rõ ràng trong hoạt động, kết hợp cùng nền tảng tài chính vững chắc và nguồn nhân lực chất lượng cao, Hoàn Cầu đã và đang không ngừng tiến lên trong nhiều lĩnh vực. Có được thành quả đó chính là nhờ “chữ tín” và sự đầu tư đúng hướng, hiệu quả mà Hoàn Cầu đã mang đến cho Quý Khách hàng. Ở mỗi lĩnh vực, Hoàn Cầu đều đem đến những sản phẩm tốt nhất, đúng tiến độ nhất và giá cả cạnh tranh nhất.</p>
-                                                         <p>Để đạt được “Giá trị cốt lõi”, công tác phát triển nguồn nhân lực của Tập đoàn Hoàn Cầu Khu vực Khánh Hòa được quan tâm và đầu tư với nền tảng trọng tâm là tìm kiếm và phát triển những nhân sự có các tố chất và ưu điểm nổi bật: “Năng động – Sáng tạo – Nhiệt huyết”!.</p>
+                                                         <p>Với định hướng, mục tiêu rõ ràng trong hoạt động, kết hợp cùng nền tảng tài chính vững chắc và nguồn nhân lực chất lượng cao, Đại Học Thái Bình Dương đã và đang không ngừng tiến lên trong nhiều lĩnh vực. Có được thành quả đó chính là nhờ “chữ tín” và sự đầu tư đúng hướng, hiệu quả mà Đại Học Thái Bình Dương đã mang đến cho Quý Khách hàng. Ở mỗi lĩnh vực, Đại Học Thái Bình Dương đều đem đến những sản phẩm tốt nhất, đúng tiến độ nhất và giá cả cạnh tranh nhất.</p>
+                                                         <p>Để đạt được “Giá trị cốt lõi”, công tác phát triển nguồn nhân lực của Tập đoàn Đại Học Thái Bình Dương Khu vực Khánh Hòa được quan tâm và đầu tư với nền tảng trọng tâm là tìm kiếm và phát triển những nhân sự có các tố chất và ưu điểm nổi bật: “Năng động – Sáng tạo – Nhiệt huyết”!.</p>
                                                      </div>
                                                  </div>
                                                  <div class=""col-lg-12 colList"">
@@ -338,7 +338,7 @@ namespace CMS.WebUI
                                                                          </div>
                                                                          <div class=""media-body"">
                                                                              <h4 class=""titlItemMain"">Tầm nhìn</h4>
-                                                                             <div class=""wrapTextItem"">Tập đoàn Hoàn Cầu Khu vực Khánh Hòa Đầu tư, cung cấp các sản phẩm dịch vụ uy tín, khơi dậy tiềm năng cho sự phát triển, tạo nên giá trị gia tăng cho xã hội.</div>
+                                                                             <div class=""wrapTextItem"">Tập đoàn Đại Học Thái Bình Dương Khu vực Khánh Hòa Đầu tư, cung cấp các sản phẩm dịch vụ uy tín, khơi dậy tiềm năng cho sự phát triển, tạo nên giá trị gia tăng cho xã hội.</div>
                                                                          </div>
                                                                      </div>
                                                                  </div>
@@ -351,7 +351,7 @@ namespace CMS.WebUI
                                                                          </div>
                                                                          <div class=""media-body"">
                                                                              <h4 class=""titlItemMain"">Sứ mệnh</h4>
-                                                                             <div class=""wrapTextItem"">Trở thành đơn vị chủ lực của Tập đoàn Hoàn Cầu đầu tư đa ngành hàng đầu tại Khu vực Khánh Hòa, Việt Nam, thể hiện tầm vóc, trí tuệ và niềm tự hào Việt Nam trên trường quốc tế</div>
+                                                                             <div class=""wrapTextItem"">Trở thành đơn vị chủ lực của Tập đoàn Đại Học Thái Bình Dương đầu tư đa ngành hàng đầu tại Khu vực Khánh Hòa, Việt Nam, thể hiện tầm vóc, trí tuệ và niềm tự hào Việt Nam trên trường quốc tế</div>
                                                                          </div>
                                                                      </div>
                                                                  </div>

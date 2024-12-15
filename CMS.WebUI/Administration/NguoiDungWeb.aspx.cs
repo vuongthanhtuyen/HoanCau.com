@@ -66,7 +66,7 @@ namespace CMS.WebUI.Administration
             {
                 postList = postList.Where(x => x.Id != 31).ToList();
             }
-            SearchUserControl.SetSearcKey();
+             
             ViewState["LastIndex"] = (pageIndex - 1) * pageSize;
             PagingAdminWeb.GetPaging(totalRow, pageIndex);
             GridViewTable.DataSource = postList;
@@ -189,7 +189,7 @@ namespace CMS.WebUI.Administration
                         if (nguoiDung != null)
                         {
                             lblAddErrorMessage.Text = "";
-                            ShowNotification("Thêm mới người dùng thành công");
+                            ShowNotification("Lưu người dùng thành công");
                             txtHoVaTen.Text = string.Empty;
                             txtEmail.Text = string.Empty;
                             txtSoDienThoai.Text = string.Empty;
@@ -202,7 +202,7 @@ namespace CMS.WebUI.Administration
                         }
                         else
                         {
-                            ShowNotification("Thêm mới người dùng thất bại", false);
+                            ShowNotification("Lưu người dùng thất bại", false);
                         }
                     }
 
@@ -211,7 +211,7 @@ namespace CMS.WebUI.Administration
 
             catch (Exception ex)
             {
-                ShowNotification("Thêm mới người dùng thất bại! \n Lỗi: " + ex.Message, false);
+                ShowNotification("Lưu người dùng thất bại! \n Lỗi: " + ex.Message, false);
 
             }
         }

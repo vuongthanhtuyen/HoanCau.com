@@ -53,6 +53,18 @@ namespace CMS.WebUI
            
 
         }
+        protected void btnSendMail_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //string email = txtEmail.Text;
+
+            }
+            catch (Exception ex) 
+            { lblcontent.InnerText = "Lỗi!! " + ex.Message; }
+
+        }
+
 
 
         [WebMethod]

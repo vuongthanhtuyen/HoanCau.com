@@ -86,6 +86,7 @@
     <Compile Include="Publich\LichSuPhatTrienPublishBLL.cs" />
     <Compile Include="Publich\MenuPulishBLL.cs" />
     <Compile Include="Publich\DefaultService.cs" />
+    <Compile Include="StatusHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CMS.DataAsscess\CMS.DataAsscess.csproj">

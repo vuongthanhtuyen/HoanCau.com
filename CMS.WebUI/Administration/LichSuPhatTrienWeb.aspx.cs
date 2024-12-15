@@ -58,7 +58,7 @@ namespace CMS.WebUI.Administration
             int totalRow = 0;
             LichSuPhatTrienList = LichSuPhatTrienBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], true, out totalRow);
             ViewState["LastIndex"] = (pageIndex - 1) * pageSize;
-            SearchUserControl.SetSearcKey();
+             
             PagingAdminWeb.GetPaging(totalRow, pageIndex);
             GridViewTable.DataSource = LichSuPhatTrienList;
             GridViewTable.DataBind();
@@ -95,14 +95,14 @@ namespace CMS.WebUI.Administration
                     lichSuPhatTrien_ob = LichSuPhatTrienBLL.Insert(lichSuPhatTrien_ob);
                     ScriptManager.RegisterStartupScript(this, GetType(), "CloseModal", "closeModal();", true);
 
-                    ShowNotification("Thêm mới thành công");
+                    ShowNotification("Lưu thành công");
 
                 }
             }
 
             catch (Exception ex)
             {
-                ShowNotification("Thêm mới thất bại! \n Lỗi: " + ex.Message, false);
+                ShowNotification("Lưu thất bại! \n Lỗi: " + ex.Message, false);
 
             }
         }
