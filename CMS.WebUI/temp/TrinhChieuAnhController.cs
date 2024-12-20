@@ -80,7 +80,7 @@ namespace SweetCMS.DataAccess
 	    /// Inserts a record, can be used with the Object Data Source
 	    /// </summary>
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
-	    public void Insert(string NoiDungMot,string NoiDungHai,string HinhAnhUrl,string LienKetUrl,bool? TrangThai,DateTime? NgayTao,int? Stt)
+	    public void Insert(string NoiDungMot,string NoiDungHai,string HinhAnhUrl,string LienKetUrl,bool? TrangThai,DateTime NgayTao,int? Stt)
 	    {
 		    TrinhChieuAnh item = new TrinhChieuAnh();
 		    
@@ -106,7 +106,7 @@ namespace SweetCMS.DataAccess
 	    /// Updates a record, can be used with the Object Data Source
 	    /// </summary>
         [DataObjectMethod(DataObjectMethodType.Update, true)]
-	    public void Update(int Id,string NoiDungMot,string NoiDungHai,string HinhAnhUrl,string LienKetUrl,bool? TrangThai,DateTime? NgayTao,int? Stt)
+	    public void Update(int Id,string NoiDungMot,string NoiDungHai,string HinhAnhUrl,string LienKetUrl,bool? TrangThai,DateTime NgayTao,int? Stt)
 	    {
 		    TrinhChieuAnh item = new TrinhChieuAnh();
 	        item.MarkOld();

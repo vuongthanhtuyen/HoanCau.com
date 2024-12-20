@@ -292,9 +292,9 @@ namespace SweetCMS.DataAccess
 		  
 		[XmlAttribute("NgayTao")]
 		[Bindable(true)]
-		public DateTime? NgayTao 
+		public DateTime NgayTao 
 		{
-			get { return GetColumnValue<DateTime?>(Columns.NgayTao); }
+			get { return GetColumnValue<DateTime>(Columns.NgayTao); }
 			set { SetColumnValue(Columns.NgayTao, value); }
 		}
 		  
@@ -325,7 +325,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Inserts a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Insert(string varNoiDungMot,string varNoiDungHai,string varHinhAnhUrl,string varLienKetUrl,bool? varTrangThai,DateTime? varNgayTao,int? varStt)
+		public static void Insert(string varNoiDungMot,string varNoiDungHai,string varHinhAnhUrl,string varLienKetUrl,bool? varTrangThai,DateTime varNgayTao,int? varStt)
 		{
 			TrinhChieuAnh item = new TrinhChieuAnh();
 			
@@ -353,7 +353,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Updates a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Update(int varId,string varNoiDungMot,string varNoiDungHai,string varHinhAnhUrl,string varLienKetUrl,bool? varTrangThai,DateTime? varNgayTao,int? varStt)
+		public static void Update(int varId,string varNoiDungMot,string varNoiDungHai,string varHinhAnhUrl,string varLienKetUrl,bool? varTrangThai,DateTime varNgayTao,int? varStt)
 		{
 			TrinhChieuAnh item = new TrinhChieuAnh();
 			

@@ -22,9 +22,13 @@ namespace SweetCMS.DataAccess
         
 		public static readonly string DanhMuc = @"DanhMuc";
         
+		public static readonly string DefaultSetting = @"DefaultSetting";
+        
 		public static readonly string DoiTac = @"DoiTac";
         
 		public static readonly string FriendlyUrl = @"FriendlyUrl";
+        
+		public static readonly string LichSuHeThong = @"LichSuHeThong";
         
 		public static readonly string LichSuPhatTrien = @"LichSuPhatTrien";
         
@@ -67,6 +71,11 @@ namespace SweetCMS.DataAccess
             get { return DataService.GetSchema("DanhMuc", "DataAcessProvider"); }
 		}
         
+		public static TableSchema.Table DefaultSetting
+		{
+            get { return DataService.GetSchema("DefaultSetting", "DataAcessProvider"); }
+		}
+        
 		public static TableSchema.Table DoiTac
 		{
             get { return DataService.GetSchema("DoiTac", "DataAcessProvider"); }
@@ -75,6 +84,11 @@ namespace SweetCMS.DataAccess
 		public static TableSchema.Table FriendlyUrl
 		{
             get { return DataService.GetSchema("FriendlyUrl", "DataAcessProvider"); }
+		}
+        
+		public static TableSchema.Table LichSuHeThong
+		{
+            get { return DataService.GetSchema("LichSuHeThong", "DataAcessProvider"); }
 		}
         
 		public static TableSchema.Table LichSuPhatTrien

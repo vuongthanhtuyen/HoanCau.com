@@ -6,6 +6,7 @@ using SweetCMS.Core.Helper;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -21,15 +22,32 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
             if (!IsPostBack)
             {
                 BindDataByQuyen();
-                AdminNotificationUserControl.Visible = false;
                 if (!IsAlive()) Response.Redirect("/Administration/Login.aspx");
 
             }
         }
 
+        private void BindGrid(int pageIndex = 1, int pageSize = 10)
+        {
+            pageIndex = PagingAdminWeb.GetPageIndex();
+            List<TrinhChieuAnh> trinhChieuAnhList = new List<TrinhChieuAnh>();
+            int totalRow = 0;
+            trinhChieuAnhList = SlideBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], true, out totalRow);
+
+            PagingAdminWeb.GetPaging(totalRow, pageIndex);
+            GridViewTable.DataSource = trinhChieuAnhList;
+            GridViewTable.DataBind();
+        }
+
+
+
+        public static string _ModalTitle = string.Empty;
+        public static string _CreateDate = string.Empty;
+
+
         private void BindDataByQuyen()
         {
-            btnOpenModal.Visible = CheckPermission(MenuMa, Them);
+            //btnOpenModal.Visible = CheckPermission(MenuMa, Them);
             if (CheckPermission(MenuMa, Xem))
             {
                 BindGrid();
@@ -50,184 +68,212 @@ namespace CMS.WebUI.Administration.QuanLyCauHinh
                     }
                 }
             }
+            UpdatePanelMainTable.Update();
         }
 
-        private void BindGrid(int pageIndex = 1, int pageSize = 10)
+        protected void btnRefresh_ServerClick(object sender, EventArgs e)
         {
-            pageIndex = PagingAdminWeb.GetPageIndex();
-            List<TrinhChieuAnh> trinhChieuAnhList = new List<TrinhChieuAnh>();
-            int totalRow = 0;
-            trinhChieuAnhList = SlideBLL.GetPaging(pageSize, pageIndex, Request.QueryString["search"], true, out totalRow);
-             
-            PagingAdminWeb.GetPaging(totalRow, pageIndex);
-            GridViewTable.DataSource = trinhChieuAnhList;
-            GridViewTable.DataBind();
-        }
+            int _id = 0;
 
-        #region
-        protected void btnAdd_Click(object sender, EventArgs e)
-        {
             try
             {
-                TrinhChieuAnh slide = new TrinhChieuAnh();
-                lblAddErrorMessage.Text = "";
-                if (string.IsNullOrEmpty(txtTieuDeMot.Text.Trim()) || string.IsNullOrEmpty(txtTieuDeHai.Text.Trim()))
+                if (int.TryParse(txtIdHidden.Value, out _id))
                 {
-                    lblAddErrorMessage.Text += "Tiêu đề không được để trống <br />";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "OpenModal", "openModal();", true);
-                    return;
+
+                    var objSlide = SlideBLL.GetById(_id);
+                    txtTieuDeMot.Value = objSlide.NoiDungMot;
+                    txtTieuDeHai.Value = objSlide.NoiDungHai;
+                    txtLienKetUrl.Value = objSlide.LienKetUrl;
+                    imgThumb.Src = Helpers.GetThumbnailUrl(objSlide.HinhAnhUrl);
+                    chkTrangThai.Checked = objSlide.TrangThai ?? false;
+                    txtInfo.Visible = true;
+                    _CreateDate = objSlide.NgayTao.ToString("yyyy-MM-dd");
+                    _ModalTitle = "Cập nhật";
                 }
                 else
                 {
+                    txtInfo.Visible = false;
+                    _ModalTitle = "Thêm mới";
+                    _CreateDate = txtTieuDeMot.Value = txtTieuDeHai.Value = txtLienKetUrl.Value = string.Empty;
+                    imgThumb.Attributes["src"] = "../UploadImage/addNewImage.png"; // Reset hình ảnh
+                    chkTrangThai.Checked = true;
+                }
+                lblModalTitle.InnerText = _ModalTitle;
+                UpdatePanelModal.Update();
+            }
+            catch (Exception ex)
+            {
+                OpenMessageBox(MessageBoxType.Error, ex.Message);
+            }
+        }
+        protected void GridViewTable_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                int objSlideId = Convert.ToInt32(e.CommandArgument);
+                var objSlide = SlideBLL.GetById(objSlideId);
+                if (objSlide != null)
+                {
+                    txtIdHidden.Value = objSlideId.ToString();
+                    if (e.CommandName == "Xoa")
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "openDelete", "openDelete();", true);
+                    }
+                    UpdatePanelModal.Update();
+                }
+                else
+                {
+                    OpenMessageBox(MessageBoxType.Error, MessageBoxString.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                OpenMessageBox(MessageBoxType.Error, MessageBoxString.Error);
+            }
+
+        }
+        protected void btnSendServer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = 0;
+                bool isAdd = true;
+                TrinhChieuAnh objSlide = new TrinhChieuAnh();
+                if (int.TryParse(txtIdHidden.Value, out id))
+                {
+                    if (id > 0)
+                    {
+                        objSlide = SlideBLL.GetById(id);
+                        isAdd = false;
+                    }
+                }
+                //if (string.IsNullOrEmpty(txtTieuDeMot.Value.Trim()) || txtTieuDeMot.Value.Trim().Length <= 3)
+                //{
+                //    AddErrorPrompt(txtTieuDeMot.ClientID, "Không được bỏ trống trường này");
+                //}
+
+                //if (string.IsNullOrEmpty(txtTieuDeHai.Value.Trim()) || txtTieuDeHai.Value.Trim().Length <= 3)
+                //{
+                //    AddErrorPrompt(txtTieuDeHai.ClientID, "Không được bỏ trống trường này");
+                //}
+
+                if (!IsValid)
+                {
+                    ShowErrorPrompt();
+                    return;
+                }
+                if (isAdd)
+                {
                     if (!VaiTroManagerBll.AllowAdd(ApplicationContext.Current.CurrentUserID, MenuMa))
                     {
-                        ShowNotification("Bạn không có quyền truy cập chức năng này", false);
+                        OpenMessageBox(MessageBoxType.Error, MessageBoxString.ErrorPermission);
                         return;
                     }
-                    slide.NoiDungMot = txtTieuDeMot.Text;
-                    slide.NoiDungHai = txtTieuDeHai.Text;
-                    slide.LienKetUrl = txtLienKetUrl.Text;
-                    slide.TrangThai = true;
-                    slide.NgayTao = DateTime.Now;
-                    slide.Stt = int.Parse(txtStt.Text);
-                    slide.HinhAnhUrl = txtThumbnailUrl.GetStringFileUrl();
-                    
-                    slide = SlideBLL.Insert(slide);
-                    ScriptManager.RegisterStartupScript(this, GetType(), "CloseModal", "closeModal();", true);
-                    BindDataByQuyen();
-                    //UpdatePanelMainTable.Update();
-                    ShowNotification("Lưu Slide thành công");
-                    txtTieuDeMot.Text = string.Empty;
-                    txtTieuDeHai.Text = string.Empty;
-                    txtLienKetUrl.Text = string.Empty;
-                    txtStt.Text = string.Empty;
-                    //chkEditTrangThai.Checked = false;
+                }
+                else
+                {
+                    if (!VaiTroManagerBll.AllowEdit(ApplicationContext.Current.CurrentUserID, MenuMa))
+                    {
+                        OpenMessageBox(MessageBoxType.Error, MessageBoxString.ErrorPermission);
+                        return;
+                    }
+                }
+                objSlide.NoiDungMot = txtTieuDeMot.Value.Trim();
+                objSlide.NoiDungHai = txtTieuDeHai.Value.Trim();
+                objSlide.LienKetUrl = txtLienKetUrl.Value.Trim();
+                int _display = -1;
+                int.TryParse(txtStt.Value, out _display);
+                objSlide.Stt = _display;
+                if (!string.IsNullOrEmpty(txtImage.Value.Trim()))
+                {
+                    objSlide.HinhAnhUrl = Helpers.ConvertToSavePath(txtImage.Value.Trim(), true);
+                }
 
+                objSlide.TrangThai = chkTrangThai.Checked;
+                if (isAdd)
+                {
+                    objSlide.NgayTao = DateTime.Now;
+                    objSlide = SlideBLL.Insert(objSlide);
+                    LichSuHeThongBLL.LogAction(LichSuHeThongType.INSERT, LichSuHeThongGroup.QuanLySlide, objSlide.NoiDungMot);
+
+                }
+                else
+                {
+                    objSlide = SlideBLL.Update(objSlide);
+                    LichSuHeThongBLL.LogAction(LichSuHeThongType.UPDATE, LichSuHeThongGroup.QuanLySlide, objSlide.NoiDungMot);
+
+                    txtIdHidden.Value = "0";
+                }
+
+                if (objSlide != null)
+                {
+                    BindDataByQuyen();
+                    OpenMessageBox(MessageBoxType.Success, MessageBoxString.Success);
+
+                }
+                else
+                {
+                    OpenMessageBox(MessageBoxType.Error, MessageBoxString.Error);
                 }
             }
 
             catch (Exception ex)
             {
-                ShowNotification("Lưu slide thất bại! \n Lỗi: " + ex.Message, false);
+
+
+                OpenMessageBox(MessageBoxType.Error, MessageBoxString.Error);
 
             }
-        }
-        protected void btnEdit_Click(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    if (!VaiTroManagerBll.AllowEdit(ApplicationContext.Current.CurrentUserID, MenuMa))
-            //    {
-            //        ShowNotification("Bạn không có quyền truy cập chức năng này", false);
-            //        return;
-            //    }
-            //    int slideId = int.Parse(hdnRowId.Value); // Lấy ID người dùng đã chỉnh sửa
-            //    hdnRowId.Value = "";
-            //    // Lấy thông tin người dùng từ cơ sở dữ liệu
-            //    TrinhChieuAnh slide = SlideBLL.GetById(slideId);
-            //    //UpdatePanelEdit.Update();
-            //    slide.NoiDungMot = txtEditTieuDeMot.Text; // Cập nhật tên slide từ textbox
-            //    slide.NoiDungHai = txtEditTieuDeHai.Text; // Cập nhật tên slide từ textbox
-            //    slide.LienKetUrl = txtEditLienKetUrl.Text; // Cập nhật URL liên kết từ textbox
-            //    slide.TrangThai = chkEditTrangThai.Checked; // Cập nhật trạng thái từ checkbox
-            //    slide.HinhAnhUrl = ImportImageEdit.GetStringFileUrl();
-            //    slide.Stt = int.Parse(txtEditStt.Text);
-            //    SlideBLL.Update(slide);
-            //    BindDataByQuyen();
-            //    //UpdatePanelMainTable.Update();
-            //    ScriptManager.RegisterStartupScript(this, GetType(), "closeEdit", "closeEdit();", true);
-
-            //    ShowNotification("Cập nhật thành công", true);
-            //    txtEditTieuDeMot.Text = string.Empty;
-            //    txtEditTieuDeHai.Text = string.Empty;
-            //    txtEditLienKetUrl.Text = string.Empty;
-            //    txtEditStt.Text = string.Empty;
-            //    chkEditTrangThai.Checked = false;
-            //}
-            //catch (Exception ex)
-            //{
-            //    ShowNotification("Cập nhật slide thất bại! \n " + ex.Message, false);
-            //}
         }
         protected void btnDelete_Click(object sender, EventArgs e)
         {
             try
             {
-                int slideId = int.Parse(hdnRowId.Value);
-                hdnRowId.Value = "";
-                if (!string.IsNullOrEmpty(slideId.ToString()))
+                int objSlideId = 0;
+
+                if (int.TryParse(txtIdHidden.Value, out objSlideId))
                 {
-                    var slide = SlideBLL.GetById(slideId);
 
-                    if (slide == null)
+                    if (objSlideId > 0)
                     {
-                        ShowNotification("Lỗi không tìm thấy slide", false);
-                    }
-                    if (!VaiTroManagerBll.AllowDelete(ApplicationContext.Current.CurrentUserID, MenuMa))
-                    {
-                        ShowNotification("Bạn không có quyền truy cập chức năng này", false);
-                        return;
-                    }
+                        txtIdHidden.Value = "";
+                        var obj = SlideBLL.GetById(objSlideId);
 
-                    SlideBLL.Delete(slideId);
-                    BindDataByQuyen();
-                    //UpdatePanelMainTable.Update();
-                    ShowNotification("Đã xóa slide");
-                   
+                        if (obj == null)
+                        {
+                            OpenMessageBox(MessageBoxType.Error, MessageBoxString.Error);
+                            return;
+                        }
+                        if (!VaiTroManagerBll.AllowDelete(ApplicationContext.Current.CurrentUserID, MenuMa))
+                        {
+                            OpenMessageBox(MessageBoxType.Error, MessageBoxString.ErrorPermission);
+                            return;
+                        }
+
+
+                        if (SlideBLL.Delete(objSlideId))
+                        {
+                            BindDataByQuyen();
+                            LichSuHeThongBLL.LogAction(LichSuHeThongType.DELETE, LichSuHeThongGroup.QuanLySlide, obj.NoiDungMot);
+
+                            OpenMessageBox(MessageBoxType.Success, MessageBoxString.SuccessDelete);
+                        }
+                        else
+                        {
+                            OpenMessageBox(MessageBoxType.Error, MessageBoxString.Error);
+                        }
+                    }
                 }
+
             }
             catch (Exception ex)
             {
-                ShowNotification("Xóa thất bại! \n " + ex.Message, false);
+                OpenMessageBox(MessageBoxType.Error, MessageBoxString.Error);
             }
         }
 
-        protected void GridViewTable_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            try
-            {
-                int slideId = Convert.ToInt32(e.CommandArgument);
-                var slide = SlideBLL.GetById(slideId);
-                if (slide != null)
-                {
-                    hdnRowId.Value = slideId.ToString();
-                    //if (e.CommandName == "ChinhSuaChiTiet")
-                    //{                          
-                    //    txtEditLienKetUrl.Text = slide.LienKetUrl;
-                    //    txtEditTieuDeHai.Text = slide.NoiDungHai;
-                    //    txtEditTieuDeMot.Text = slide.NoiDungMot;
-                    //    txtEditStt.Text = slide.Stt.ToString();
-                    //    txtEditNgayTao.Text = ((DateTime)slide.NgayTao).ToString("yyyy-MM-dd");
-                    //    chkEditTrangThai.Checked = slide.TrangThai ?? false;
-                    //    ImportImageEdit.SetFileImage(slide.HinhAnhUrl);
-                    //    //UpdatePanelMainTable.Update();
 
-                    //    ScriptManager.RegisterStartupScript(this, GetType(), "openEdit", "openEdit();", true);
-                    //}
-                    //else if (e.CommandName == "Xoa")
-                    //{
-                    //    ScriptManager.RegisterStartupScript(this, GetType(), "openDelete", "openDelete();", true);
-                    //}
-                }
-                else
-                {
-                    ShowNotification("slide này không tồn tại", false);
-                }
-            }
-            catch (Exception ex)
-            {
-                ShowNotification(ex.Message, false);
-            }
 
-        }
-        #endregion
-
-        // Thực hiện việc xóa user bằng userId
-        private void ShowNotification(string message, bool isSuccess = true)
-        {
-            AdminNotificationUserControl.Visible = true;
-            //AdminNotificationUserControl.LoadMessage(message, isSuccess);
-        }
 
     }
 

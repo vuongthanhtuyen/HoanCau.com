@@ -1,4 +1,5 @@
 ﻿using CMS.Core.Publich;
+using SweetCMS.Core.Helper;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -32,10 +33,9 @@ namespace CMS.WebUI.Controls.ControlContentPage
                 string thm = "";
                 if (baiViet.ThumbnailUrl != null)
                 {
-                    thm = string.Format($@" <img src=""Administration/UploadImage/{baiViet.ThumbnailUrl}"" alt=""{baiViet.TieuDe}"">");
                 }
                 var postView = string.Format($@"
-                            <div class=""wrapImg"">  {thm}  </div>
+                            <div class=""wrapImg"">  <img src=""{Helpers.GetThumbnailUrl(baiViet.ThumbnailUrl)}"" alt=""{baiViet.TieuDe}"">  </div>
                                 <div class=""contentText"">
                                     <p class=""titleNewsMain"">{baiViet.TieuDe}</p>
 

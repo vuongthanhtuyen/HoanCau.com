@@ -1,6 +1,7 @@
 ﻿using CMS.Core.Manager;
 using CMS.Core.Publich;
 using CMS.DataAsscess;
+using SweetCMS.Core.Helper;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -56,7 +57,7 @@ namespace CMS.WebUI
 
                 a += string.Format($@"
                     <div class=""elementSlideMain"">
-                        <div class=""wrapImgResize wrapImgSlideMain""><img src=""/Administration/UploadImage/{item.HinhAnhUrl}"" alt=""ĐẠI HỌC THÁI BÌNH DƯƠNG"" /></div>
+                        <div class=""wrapImgResize wrapImgSlideMain""><img src=""{Helpers.GetThumbnailUrl(item.HinhAnhUrl)}"" alt=""ĐẠI HỌC THÁI BÌNH DƯƠNG"" /></div>
                             <div class=""wrapTextSlideMain"">
                                 <div class=""container-xxl containerTextSlideMain"">
                                     <div class=""contentTextSlideMain"">
@@ -224,7 +225,7 @@ namespace CMS.WebUI
                 a += string.Format($@"
                    <div class=""itemSlide"">
                                 <div class=""contentSlide wow zoomIn"" data-wow-duration=""1s"" data-wow-delay=""0.4s"">
-                                    <div class=""wrapImg""><a class=""wrapImgResize img16And9"" href=""{item.LienKetUrl}"" target=""_blank"" title=""{item.Ten}""><img src=""/Administration/UploadImage/{item.HinhAnhUrl}"" alt=""{item.Ten}""></a></div>
+                                    <div class=""wrapImg""><a class=""wrapImgResize img16And9"" href=""{item.LienKetUrl}"" target=""_blank"" title=""{item.Ten}""><img src=""{Helpers.GetThumbnailUrl(item.HinhAnhUrl)}"" alt=""{item.Ten}""></a></div>
                                 </div>
                             </div>
                     ");

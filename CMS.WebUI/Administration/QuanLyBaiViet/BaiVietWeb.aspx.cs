@@ -31,9 +31,28 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
             if (!IsPostBack)
             {
                 BindDataByQuyen();
+                BindStatus();
                 //AdminNotificationUserControl.Visible = false;
                 if (!IsAlive()) Response.Redirect("/Administration/Login.aspx");
 
+            }
+        }
+        private void BindStatus()
+        {
+            try
+            {
+                ddlStatus.Items.Clear();
+                ddlStatus.Items.Add(new ListItem("Tất cả", string.Empty));
+                ddlStatus.Items.Add(new ListItem("Mới", ArticleStatusHelper.New.ToString()));
+                ddlStatus.Items.Add(new ListItem("Nháp", ArticleStatusHelper.Draft.ToString()));
+                ddlStatus.Items.Add(new ListItem("Đã đăng", ArticleStatusHelper.Published.ToString()));
+                ddlStatus.Items.Add(new ListItem("Khóa", ArticleStatusHelper.UnPublished.ToString()));
+                ddlStatus.Items.Add(new ListItem("Chờ duyệt", ArticleStatusHelper.WaitForApprove.ToString()));
+            }
+            catch (Exception exc)
+            {
+
+                //ProcessException(exc);
             }
         }
         private void BindDataByQuyen()
@@ -81,39 +100,49 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
         protected void btnRefresh_ServerClick(object sender, EventArgs e)
         {
             int _id = 0;
-            
-            if (int.TryParse(txtIdBaiViet.Value, out _id))
-            {
 
-                var baiViet = BaiVietBLL.GetById(_id);
-                txtTieuDe.Value = baiViet.TieuDe;
-                txtNoiDungChinh.Text = (Server.HtmlDecode(baiViet.NoiDungChinh));
-                txtSlug.Value = baiViet.Slug;
-                imgThumb.Src = Helpers.GetThumbnailUrl(baiViet.ThumbnailUrl);
-                chkTrangThai.Checked = baiViet.TrangThai ?? false;
-                txtInfo.Visible = true;
-                _CreateDate = baiViet.NgayTao.ToString("yyyy-MM-dd");
-                _UpdateDate = baiViet.NgayTao.ToString("yyyy-MM-dd");
-                txtMoTaNgan.Value = Server.HtmlDecode(baiViet.MoTaNgan);
-                txtViewCount.Value = baiViet.ViewCount.ToString();
-                _ModalTitle = baiViet.TieuDe;
-                _CreateBy = baiViet.CreateBy;
-                _UpdateBy = baiViet.UpdateBy;
-                txtDisplayOrder.Value = baiViet.DisplayOrder.ToString();
-
-            }
-            else
+            try
             {
-                txtInfo.Visible = false;
-                _ModalTitle = "Thêm mới";
-                _CreateBy = _UpdateBy = _CreateDate = _UpdateDate = string.Empty;
-                txtTieuDe.Value = txtSlug.Value = txtMoTaNgan.Value = txtImage.Value = txtNoiDungChinh.Text = string.Empty;
-                imgThumb.Attributes["src"] = "../UploadImage/addNewImage.png"; // Reset hình ảnh
-                txtViewCount.Value = txtDisplayOrder.Value = "0";
-                chkTrangThai.Checked = true; // Đặt trạng thái mặc định là checked
+                if (int.TryParse(txtIdHidden.Value, out _id))
+                {
+
+                    var baiViet = BaiVietBLL.GetById(_id);
+                    txtTieuDe.Value = baiViet.TieuDe;
+                    txtNoiDungChinh.Text = (Server.HtmlDecode(baiViet.NoiDungChinh));
+                    txtSlug.Value = baiViet.Slug;
+                    imgThumb.Src = Helpers.GetThumbnailUrl(baiViet.ThumbnailUrl);
+                    chkTrangThai.Checked = baiViet.TrangThai ?? false;
+                    txtInfo.Visible = true;
+                    _CreateDate = baiViet.NgayTao.ToString("dd/MM/yyyy");
+                    _UpdateDate = baiViet.ChinhSuaGanNhat.ToString("dd/MM/yyyy");
+                    txtMoTaNgan.Value = Server.HtmlDecode(baiViet.MoTaNgan);
+                    txtViewCount.Value = baiViet.ViewCount.ToString();
+                    _ModalTitle = baiViet.TieuDe;
+                    _CreateBy = baiViet.CreateBy;
+                    _UpdateBy = baiViet.UpdateBy;
+                    ddlStatus.SelectedValue = baiViet.Status ?? ArticleStatusHelper.New;
+                    txtDisplayOrder.Value = baiViet.DisplayOrder.ToString();
+                    txtNgayDangCongKhai.Value = baiViet.NgayDang.ToString("dd/MM/yyyy");
+                }
+                else
+                {
+                    txtInfo.Visible = false;
+                    _ModalTitle = "Thêm mới";
+                    _CreateBy = _UpdateBy = _CreateDate = _UpdateDate = string.Empty;
+                    ddlStatus.SelectedValue = string.Empty;
+                    txtTieuDe.Value = txtSlug.Value = txtMoTaNgan.Value = txtImage.Value = txtNoiDungChinh.Text = string.Empty;
+                    imgThumb.Attributes["src"] = "../UploadImage/addNewImage.png"; // Reset hình ảnh
+                    txtViewCount.Value = txtDisplayOrder.Value = "0";
+                    chkTrangThai.Checked = true; // Đặt trạng thái mặc định là checked
+                    txtNgayDangCongKhai.Value = DateTime.Now.ToString("dd/MM/yyyy");
+                }
+                lblModalTitle.InnerText = _ModalTitle;
+                UpdatePanelModal.Update();
             }
-            lblModalTitle.InnerText = _ModalTitle;
-            UpdatePanelModal.Update();
+            catch (Exception ex)
+            {
+                OpenMessageBox(MessageBoxType.Error, ex.Message);
+            }
         }
         protected void GridViewTable_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -155,7 +184,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                 int id = 0;
                 bool isAdd = true;
                 BaiViet baiViet = new BaiViet();
-                if (int.TryParse(txtIdBaiViet.Value, out id))
+                if (int.TryParse(txtIdHidden.Value, out id))
                 {
                     if (id > 0)
                     {
@@ -207,11 +236,15 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                 {
                     baiViet.ThumbnailUrl = Helpers.ConvertToSavePath(txtImage.Value.Trim(), true);
                 }
+                baiViet.Status = ddlStatus.SelectedValue;
                 baiViet.MoTaNgan = Server.HtmlEncode(txtMoTaNgan.Value.Trim());
                 baiViet.ViewCount = int.Parse(txtViewCount.Value);
                 baiViet.Status = BasicStatusHelper.Active;
                 baiViet.TrangThai = chkTrangThai.Checked;
-                baiViet.DisplayOrder = int.Parse(txtDisplayOrder.Value.Trim());    
+                baiViet.DisplayOrder = int.Parse(txtDisplayOrder.Value.Trim());
+                DateTime ngayDang = DateTime.Now;
+                DateTime.TryParse(txtNgayDangCongKhai.Value, out ngayDang);
+                baiViet.NgayDang = ngayDang;
                 baiViet.UpdateBy = NguoiDungManagerBLL.GetById(ApplicationContext.Current.CurrentUserID).TenTruyCap ?? string.Empty;
                 if (isAdd)
                 {
@@ -222,13 +255,14 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     baiViet.ChinhSuaGanNhat = DateTime.Now;
                     baiViet.LangID = ApplicationContext.Current.ContentCurrentLanguageId;
                     baiViet = BaiVietBLL.Insert(baiViet);
-
+                    LichSuHeThongBLL.LogAction(LichSuHeThongType.INSERT, LichSuHeThongGroup.QuanLyBaiViet, baiViet.TieuDe);
                 }
                 else
                 {
                     baiViet.ChinhSuaGanNhat = DateTime.Now;
                     baiViet = BaiVietBLL.Update(baiViet);
                     hdnRowId.Value = "0";
+                    LichSuHeThongBLL.LogAction(LichSuHeThongType.UPDATE, LichSuHeThongGroup.QuanLyBaiViet, baiViet.TieuDe);
                 }
 
                 if (baiViet != null)
@@ -256,11 +290,11 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
             try
             {
                 int baiVietId = 0;
-                
-                if (int.TryParse(hdnRowId.Value,out baiVietId))
+
+                if (int.TryParse(hdnRowId.Value, out baiVietId))
                 {
 
-                    if(baiVietId > 0)
+                    if (baiVietId > 0)
                     {
                         hdnRowId.Value = "";
                         var obj = BaiVietBLL.GetById(baiVietId);
@@ -278,6 +312,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                         if (BaiVietBLL.Delete(baiVietId))
                         {
                             BindDataByQuyen();
+                            LichSuHeThongBLL.LogAction(LichSuHeThongType.DELETE, LichSuHeThongGroup.QuanLyBaiViet, obj.TieuDe);
                             OpenMessageBox(MessageBoxType.Success, MessageBoxString.SuccessDelete);
                         }
                         else
@@ -286,7 +321,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                         }
                     }
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -340,6 +375,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                 }
 
                 int result = BaiVietBLL.UpdateCategoryByPostId(listNewUpdate, danhMucId);
+                //LichSuHeThongBLL.LogAction(LichSuHeThongType.INSERT, LichSuHeThongGroup.QuanLyBaiViet, .TieuDe);
                 BindDataByQuyen();
                 OpenMessageBox(MessageBoxType.Success, MessageBoxString.Success);
 

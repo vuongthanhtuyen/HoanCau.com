@@ -1,380 +1,234 @@
 ﻿<%@ Page Language="C#" ValidateRequest="false" AutoEventWireup="true" MasterPageFile="~/Administration/MasterPage/AdminPage.Master" CodeBehind="MenuTrenWeb.aspx.cs" Inherits="CMS.WebUI.Administration.QuanLyCauHinh.MenuTrenWeb" %>
 
-<%@ Register Src="~/Administration/AdminUserControl/AdminNotification.ascx" TagPrefix="uc1" TagName="AdminNotification" %>
-<%@ Register Src="~/Administration/AdminUserControl/PagingAdmin.ascx" TagPrefix="uc1" TagName="PagingAdmin" %>
-
+<%@ Import Namespace="SweetCMS.Core.Helper" %>
 <asp:Content ID="test" ContentPlaceHolderID="head" runat="server">
-
-
-    <link href="../Assets/plugins/style.min.css" rel="stylesheet" />
+    <link href="/Administration/Assets/plugins/style.min.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-     
-    <main style="min-height: 500px;">
-        <div>
+    <div class="card card-primary card-outline">
+        <div class="card-header justify-content-between">
+            <h3 class="card-title">
+                <i class="fas fa-edit"></i>
+                Danh sách Menu trên
+            </h3>
+            <%--<button type="button" onclick="MakeModal()" class="btn btn-primary col-2 float-sm-right">
+                Thêm mới
+            </button>--%>
+        </div>
+        <div class="card-body">
             <div class="col-xs-12 padding-none header-controls-right">
-                <span class="notifications"></span>
-                <button class="btn btn-primary btn-sm btn-flat padding-fa mr-4" id="btnOpenModal" type="button"
-                    onclick="openModal()" runat="server">
-                    <i class="fa fa-plus"></i>Lưu</button>
-
-                <asp:Label ID="lblResult" CssClass="text-info" runat="server" Text=""></asp:Label>
             </div>
-        </div>
-        <br />
-        <div class="box">
-            <div class="box-body">
-                <div class="row">
-
-                    <div class="col-md-12 form-group">
-                        <asp:UpdatePanel ID="UpdatePanelMainTable" UpdateMode="Conditional" runat="server">
-                            <ContentTemplate>
-                                <div class="rightsTreeView"></div>
-                                <input runat="server" type="hidden" id="hdfRightsTreeViewData" data-selector="hdfRightsTreeViewData" value="" />
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-
-    <uc1:PagingAdmin runat="server" ID="PagingAdminWeb" />
-
-    <%-- Modal add new --%>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <asp:UpdatePanel ID="UpdatePanelAdd" UpdateMode="Conditional" runat="server">
+            <asp:UpdatePanel ID="UpdatePanelMainTable" UpdateMode="Conditional" runat="server">
                 <ContentTemplate>
+                    <div class="rightsTreeView"></div>
+                    <input runat="server" type="hidden" id="hdfRightsTreeViewData" data-selector="hdfRightsTreeViewData" value="" />
 
-                    <span class="close d-flex justify-content-end" onclick="closeModal()">&times;</span>
-                    <h4>Lưu Menu </h4>
-                    <asp:Label ID="lblAddErrorMessage" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
-                    <div class="justify-content-center align-items-center main-edit-modal">
-                        <div class="form-group">
-                            <label for="ddlAddMenuCha">Chọn menu Cha</label>
-                            <asp:DropDownList ID="ddlAddMenuCha" runat="server" CssClass="form-control form-control-user">
-                            </asp:DropDownList>
-                        </div>
-                        <div class="form-group">
-                            <label for="txtTen">Tên</label>
-                            <asp:TextBox ID="txtTen" runat="server" CssClass="form-control form-control-user" placeholder="Tên danh mục"></asp:TextBox>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-9">
-                                <label for="txtUrl">Url thân thiện</label>
-                                <asp:TextBox ID="txtUrl" runat="server" CssClass="form-control form-control-user" placeholder="Url thân thiện"></asp:TextBox>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="txtEditStt">STT</label>
-                                <asp:TextBox ID="txtStt" runat="server" Text="1" placeholder="Số thứ tự" CssClass="form-control form-control-user"></asp:TextBox>
-
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="txtMa">Get Url </label>
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="baiViet-tab" data-toggle="tab" data-target="#baiViet" type="button" role="tab" aria-controls="baiViet" aria-selected="true">Bài viết</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="danhMuc-tab" data-toggle="tab" data-target="#danhMuc" type="button" role="tab" aria-controls="danhMuc" aria-selected="false">Danh Mục</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="urlKhac-tab" data-toggle="tab" data-target="#urlKhac" type="button" role="tab" aria-controls="urlKhac" aria-selected="false">Dự án tiêu biểu</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="trangTinh-tab" data-toggle="tab" data-target="#trangTinh" type="button" role="tab" aria-controls="trangTinh" aria-selected="false">Trang tĩnh</button>
-                                </li>
-
-                            </ul>
-                            <div class="tab-content tab-select-url" id="myTabContent">
-                                <div class="tab-pane fade show active" id="baiViet" role="tabpanel" aria-labelledby="baiViet-tab">
-                                    <div class="col-md-12 mt-3">
-                                        <div class="form-group">
-                                            <asp:DropDownList ID="drAddbaiviet" runat="server" CssClass="form-control form-control-user">
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" style="min-height: 100px" id="danhMuc" role="tabpanel" aria-labelledby="danhMuc-tab">
-                                    <div class="col-md-12 mt-3">
-                                        <div class="form-group">
-                                            <asp:DropDownList ID="drAddDanhSach" runat="server" CssClass="form-control form-control-user">
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="tab-pane fade" style="min-height: 100px" id="urlKhac" role="tabpanel" aria-labelledby="urlKhac-tab">
-                                    <div class="col-md-12 mt-3">
-
-                                        <div class="form-group">
-                                            <asp:DropDownList ID="drAddDuAnTieuBieu" runat="server" CssClass="form-control form-control-user">
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" style="min-height: 100px" id="trangTinh" role="tabpanel" aria-labelledby="trangTinh-tab">
-                                    <div class="col-md-12 mt-3">
-                                        <div class="form-group">
-                                            <asp:DropDownList ID="drAddTrangTinh" runat="server" CssClass="form-control form-control-user">
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-end">
-                            <asp:Button ID="btnAdd" runat="server" Text="Lưu" class="btn btn-primary btn-user mx-1"
-                                OnClick="btnAdd_Click" />
-                            <asp:Button ID="btnCancel" runat="server" Text="Hủy" class="btn btn-secondary btn-user mx-1"
-                                OnClientClick="closeModal(); return false;" />
-                        </div>
-                    </div>
                 </ContentTemplate>
+
             </asp:UpdatePanel>
 
-
         </div>
+        <!-- /.card -->
+        <asp:UpdatePanel ID="UpdatePanelId" runat="server">
+            <ContentTemplate>
+                <asp:HiddenField ID="hdnRowId" runat="server" />
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </div>
-
-    <%-- Edit Modal --%>
-    <div id="myEditModal" class="modal">
-        <div class="modal-content">
-            <asp:UpdatePanel ID="UpdatePanelEdit" UpdateMode="Conditional" runat="server">
-                <ContentTemplate>
-                    <span class="close d-flex justify-content-end" onclick="closeEdit()">&times;</span>
-                    <h4>Chỉnh Cập nhật menu </h4>
-                    <asp:Label ID="Label1" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
-                    <div class="justify-content-center align-items-center main-edit-modal">
-
-                        <div class="form-group">
-                            <asp:Label for="ddlEditMenuCha" ID="lblEditDrop" runat="server" Text="Chọn menu cha"></asp:Label>
-                            <asp:DropDownList ID="ddlEditMenuCha" runat="server" CssClass="form-control form-control-user">
-                            </asp:DropDownList>
-                        </div>
-                        <div class="form-group">
-                            <label for="txtEditTen">Tên</label>
-                            <asp:TextBox ID="txtEditTen" runat="server" CssClass="form-control form-control-user" placeholder="Tên danh mục"></asp:TextBox>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <label for="chkEditTrangThai" class="mb-3">Trạng thái</label>
-                                <br />
-                                <asp:CheckBox ID="chkEditTrangThai" runat="server" CssClass="form-control-user" />
-                                <label class="form-check-label" for="chkEditTrangThai">Hiển thị</label>
-
-                            </div>
-                            <div class="col-md-6">
-                                <label for="txtEditNgayTao">Ngày tạo</label>
-                                <asp:TextBox ID="txtEditNgayTao" runat="server" CssClass="form-control form-control-user" TextMode="Date" ReadOnly="true"></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-9">
-                                <label for="txtEditUrl">Url thân thiện</label>
-                                <asp:TextBox ID="txtEditUrl" runat="server" CssClass="form-control form-control-user" placeholder="Url thân thiện"></asp:TextBox>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="txtEditStt">STT</label>
-                                <asp:TextBox ID="txtEditStt" Text="1" runat="server" placeholder="Số thứ tự" CssClass="form-control form-control-user"></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="txtEditMa">Get Url </label>
-                            <ul class="nav nav-tabs" id="myTabEdit" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="baiVietEdit-tab" data-toggle="tab" data-target="#baiVietEdit" type="button" role="tab" aria-controls="baiVietEdit" aria-selected="true">Bài viết</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="danhMucEdit-tab" data-toggle="tab" data-target="#danhMucEdit" type="button" role="tab" aria-controls="danhMucEdit" aria-selected="false">Danh Mục</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="urlKhacEdit-tab" data-toggle="tab" data-target="#urlKhacEdit" type="button" role="tab" aria-controls="urlKhacEdit" aria-selected="false">Dự án tiêu biểu</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="trangTinhEdit-tab" data-toggle="tab" data-target="#trangTinhEdit" type="button" role="tab" aria-controls="trangTinhEdit" aria-selected="false">Trang tĩnh</button>
-                                </li>
-                            </ul>
-                            <div class="tab-content tab-select-url" id="myTabEditContent">
-                                <div class="tab-pane fade show active" id="baiVietEdit" role="tabpanel" aria-labelledby="baiVietEdit-tab">
-                                    <div class="col-md-12 mt-3">
-                                        <div class="form-group">
-                                            <asp:DropDownList ID="drEditBaiviet" runat="server" CssClass="form-control form-control-user">
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" style="min-height: 100px" id="danhMucEdit" role="tabpanel" aria-labelledby="danhMucEdit-tab">
-                                    <div class="col-md-12 mt-3">
-                                        <div class="form-group">
-                                            <asp:DropDownList ID="drEditDanhSach" runat="server" CssClass="form-control form-control-user">
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane fade" style="min-height: 100px" id="urlKhacEdit" role="tabpanel" aria-labelledby="urlKhacEdit-tab">
-                                    <div class="col-md-12 mt-3">
-                                        <div class="form-group">
-                                            <asp:DropDownList ID="drEditDuAnTieuBieu" runat="server" CssClass="form-control form-control-user">
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" style="min-height: 100px" id="trangTinhEdit" role="tabpanel" aria-labelledby="trangTinhEdit-tab">
-                                    <div class="col-md-12 mt-3">
-                                        <div class="form-group">
-                                            <asp:DropDownList ID="drEditTrangTinh" runat="server" CssClass="form-control form-control-user">
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        <a class="btn btn-danger btn-xs btn-flat" onclick="openDelete()" style="min-width: 50px;"><span class="fa fa-trash"></span>Xóa</a>
-                        <asp:Button ID="Button1" runat="server" Text="Cập nhật" class="btn btn-primary mx-1 btn-user btn-modal" OnClick="btnEdit_Click" Style="min-width: 50px;" />
-                        <asp:Button ID="Button2" runat="server" Text="Hủy" class="btn btn-secondary mx-1 btn-user btn-modal" OnClientClick="closeEdit(); return false;" Style="min-width: 50px;" />
-                    </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-        </div>
-    </div>
-
-    <%-- Modal delete comfirm --%>
-    <div id="confirmDeleteModal" class="modal">
-        <div class="modal-content">
-            <span class="close d-flex justify-content-end" onclick="closeDelete(); return false;">&times;</span>
-            <h5>Bạn có chắc chắn muốn xóa menu này?</h5>
-            <asp:Label ID="Label2" runat="server" CssClass="text-danger pb-2" Text=""></asp:Label>
-            <div class="d-flex justify-content-end">
-                <asp:Button ID="Button3" runat="server" Text="Xóa" class="btn btn-primary mx-1 btn-user btn-modal" OnClick="btnDelete_Click" />
-                <asp:Button ID="Button4" runat="server" Text="Hủy" class="btn btn-secondary mx-1 btn-user btn-modal" OnClientClick="closeDelete(); return false;" />
-            </div>
-        </div>
-    </div>
-
-
-    <uc1:AdminNotification runat="server" ID="AdminNotificationUserControl" />
-
-    <asp:UpdatePanel ID="UpdatePanelId" runat="server">
-        <ContentTemplate>
-            <asp:HiddenField ID="hdnRowId" runat="server" />
-        </ContentTemplate>
-    </asp:UpdatePanel>
     <script>
-        function openModal() {
-            document.getElementById("myModal").style.display = "block";
-            return false;
-        }
+
+        function MakeModal($id,$parenId) {
+            $('[data-selector="txtIdHidden"]').val($id);
+            $('[data-selector="txtHidMenuIdParent"]').val($parenId);
+            $('[data-selector="btnRefresh"]')[0].click();
+            $('#myModal').modal('show');
+        };
         function closeModal() {
-            document.getElementById("myModal").style.display = "none";
-
+            $('#myModal').modal('hide');
         }
-
-        function openDelete(event) {
-
-            document.getElementById("confirmDeleteModal").style.display = "block";
-
+        function openDelete() {
+            $('#confirmDeleteModal').modal('show');
             return false;
         }
 
         function closeDelete() {
-            document.getElementById("confirmDeleteModal").style.display = "none";
-
+            $('#confirmDeleteModal').modal('hide');
         }
-
-        function openEdit() {
-            document.getElementById("myEditModal").style.display = "block";
+        function openDanhMucEditModal(id) {
+            $('#danhMucEditModal').modal('show');
             return false;
         }
 
-        function closeEdit() {
-            document.getElementById("myEditModal").style.display = "none";
-
+        function closeDanhMucEditModal() {
+            $('#danhMucEditModal').modal('hide');
         }
-
     </script>
-
-
 </asp:Content>
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentScript" runat="server">
+
+
+<asp:Content runat="server" ID="Content3" ContentPlaceHolderID="ModalContent">
+
+    <div class="modal fade" id="myModal" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <asp:UpdatePanel ID="UpdatePanelModal" runat="server" UpdateMode="Conditional">
+                    <ContentTemplate>
+                        <div class="modal-header">
+                            <h4 runat="server" id="lblModalTitle"></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row justify-content-center main-edit-modal">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="txtTen">Tên</label>
+                                        <asp:TextBox ID="txtTen" runat="server" CssClass="form-control form-control-user" placeholder="Tên danh mục"></asp:TextBox>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-9">
+                                            <label for="txtUrl">Url thân thiện</label>
+                                            <asp:TextBox ID="txtUrl" runat="server" CssClass="form-control form-control-user" placeholder="Url thân thiện"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="txtEditStt">STT</label>
+                                            <asp:TextBox ID="txtStt" runat="server" Text="1" placeholder="Số thứ tự" CssClass="form-control form-control-user"></asp:TextBox>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label for="chkTrangThai" class="mb-3">Trạng thái</label>
+                                            <br />
+                                            <asp:CheckBox ID="chkTrangThai" runat="server" CssClass="form-control-user" />
+                                            <label class="form-check-label" for="chkTrangThai">Hiển thị</label>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="txtNgayTao"> </label>
+                                            <label>Ngày tạo: <%= _CreateDate %></label>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtMa">Get Url </label>
+                                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="baiViet-tab" data-toggle="tab" data-target="#baiViet" type="button" role="tab" aria-controls="baiViet" aria-selected="true">Bài viết</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="danhMuc-tab" data-toggle="tab" data-target="#danhMuc" type="button" role="tab" aria-controls="danhMuc" aria-selected="false">Danh Mục</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="urlKhac-tab" data-toggle="tab" data-target="#urlKhac" type="button" role="tab" aria-controls="urlKhac" aria-selected="false">Dự án tiêu biểu</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="trangTinh-tab" data-toggle="tab" data-target="#trangTinh" type="button" role="tab" aria-controls="trangTinh" aria-selected="false">Trang tĩnh</button>
+                                            </li>
+
+                                        </ul>
+                                        <div class="tab-content tab-select-url" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="baiViet" role="tabpanel" aria-labelledby="baiViet-tab">
+                                                <div class="col-md-12 mt-3">
+                                                    <div class="form-group">
+                                                        <asp:DropDownList ID="drAddbaiviet" runat="server" CssClass="form-control form-control-user">
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" style="min-height: 100px" id="danhMuc" role="tabpanel" aria-labelledby="danhMuc-tab">
+                                                <div class="col-md-12 mt-3">
+                                                    <div class="form-group">
+                                                        <asp:DropDownList ID="drAddDanhSach" runat="server" CssClass="form-control form-control-user">
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="tab-pane fade" style="min-height: 100px" id="urlKhac" role="tabpanel" aria-labelledby="urlKhac-tab">
+                                                <div class="col-md-12 mt-3">
+
+                                                    <div class="form-group">
+                                                        <asp:DropDownList ID="drAddDuAnTieuBieu" runat="server" CssClass="form-control form-control-user">
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" style="min-height: 100px" id="trangTinh" role="tabpanel" aria-labelledby="trangTinh-tab">
+                                                <div class="col-md-12 mt-3">
+                                                    <div class="form-group">
+                                                        <asp:DropDownList ID="drAddTrangTinh" runat="server" CssClass="form-control form-control-user">
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <div class="modal-footer justify-content-end">
+                            <input runat="server" id="txtHidMenuIdParent" data-selector="txtHidMenuIdParent" class="hidden" />
+                            <input runat="server" id="txtIdHidden" data-selector="txtIdHidden" class="hidden" />
+                            <a runat="server" id="btnRefresh" data-selector="btnRefresh" onserverclick="btnRefresh_ServerClick"
+                                class="hidden"></a>
+                            <a class="btn btn-danger mx-1 btn-user btn-modal " runat="server" visible="false" id="btnXoa" onclick="openDelete()" style="min-width: 50px;"><span class="fa fa-trash"></span>Xóa</a>
+
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <asp:Button ID="btnSave" runat="server" Text="Lưu" class="btn btn-primary mx-1 btn-user btn-modal" OnClick="btnSave_Click" Style="min-width: 50px;" />
+                        </div>
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="btnRefresh" EventName="ServerClick" />
+                        <asp:AsyncPostBackTrigger ControlID="Button3" />
+
+                    </Triggers>
+                </asp:UpdatePanel>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <%-- Modal delete comfirm --%>
+
+    <div class="modal fade" id="confirmDeleteModal" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Thông báo</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc muốn xóa đối tượng này? </p>
+                </div>
+                <div class="modal-footer justify-content-end">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <asp:Button ID="Button3" runat="server" Text="Xóa" class="btn btn-danger" OnClick="btnDelete_Click" />
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</asp:Content>
+
+
+
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentScript" runat="server">
     <script src="/Administration/Assets/plugins/jstree.min.js"></script>
-
-    <script type="text/javascript">
-
-        $(document).on('change', '#<%= drAddbaiviet.ClientID %>', function () {
-            var selectedValue = $(this).val();  // Lấy giá trị của DropDownList
-            $('#<%= txtUrl.ClientID %>').val(selectedValue);
-            if (!$('#<%= txtTen.ClientID %>').val())
-                $('#<%= txtTen.ClientID %>').val($(this).find("option:selected").text());
-        });
-        $(document).on('change', '#<%= drAddDanhSach.ClientID %>', function () {
-            var selectedValue = $(this).val();  // Lấy giá trị của DropDownList
-            $('#<%= txtUrl.ClientID %>').val(selectedValue);
-            if (!$('#<%= txtTen.ClientID %>').val())
-                $('#<%= txtTen.ClientID %>').val($(this).find("option:selected").text());
-        });
-        $(document).on('change', '#<%= drAddTrangTinh.ClientID %>', function () {
-            var selectedValue = $(this).val();  // Lấy giá trị của DropDownList
-            $('#<%= txtUrl.ClientID %>').val(selectedValue);
-            if (!$('#<%= txtTen.ClientID %>').val())
-                $('#<%= txtTen.ClientID %>').val($(this).find("option:selected").text());
-        });
-        $(document).on('change', '#<%= drAddDuAnTieuBieu.ClientID %>', function () {
-            var selectedValue = $(this).val();  // Lấy giá trị của DropDownList
-            $('#<%= txtUrl.ClientID %>').val(selectedValue);
-            if (!$('#<%= txtTen.ClientID %>').val())
-                $('#<%= txtTen.ClientID %>').val($(this).find("option:selected").text());
-        });
-
-    </script>
-    <script type="text/javascript">
-        // Lấy giá trị của DropDownList khi thay đổi và gán vào TextBox
-        $(document).on('change', '#<%= drEditBaiviet.ClientID %>', function () {
-            var selectedValue = $(this).val();  // Lấy giá trị của DropDownList
-            $('#<%= txtEditUrl.ClientID %>').val(selectedValue);
-            if (!$('#<%= txtEditTen.ClientID %>').val())
-                $('#<%= txtEditTen.ClientID %>').val($(this).find("option:selected").text());
-        });
-
-        $(document).on('change', '#<%= drEditDanhSach.ClientID %>', function () {
-            var selectedValue = $(this).val();
-            $('#<%= txtEditUrl.ClientID %>').val(selectedValue);
-            if (!$('#<%= txtEditTen.ClientID %>').val())
-                $('#<%= txtEditTen.ClientID %>').val($(this).find("option:selected").text());
-        });
-        $(document).on('change', '#<%= drEditTrangTinh.ClientID %>', function () {
-            var selectedValue = $(this).val();
-            $('#<%= txtEditUrl.ClientID %>').val(selectedValue);
-            if (!$('#<%= txtEditTen.ClientID %>').val())
-                $('#<%= txtEditTen.ClientID %>').val($(this).find("option:selected").text());
-        });
-        $(document).on('change', '#<%= drEditDuAnTieuBieu.ClientID %>', function () {
-            var selectedValue = $(this).val();
-            $('#<%= txtEditUrl.ClientID %>').val(selectedValue);
-            if (!$('#<%= txtEditTen.ClientID %>').val())
-                $('#<%= txtEditTen.ClientID %>').val($(this).find("option:selected").text());
-        });
-    </script>
-
-
+    <script src="/Administration/Style/plugins/lightbox-evolution-1.8/js/jquery.lightbox.1.8.min.js"></script>
+    <script src="/Administration/Style/dist/js/jquery.imgareaselect.pack.js"></script>
 
     <script>
         $(function () {
@@ -387,7 +241,6 @@
                 renderTreeView(updateJsonData);
             });
         });
-
         function renderTreeView(jsonData) {
             $(".rightsTreeView").jstree({
                 "plugins": [
@@ -417,44 +270,129 @@
                 }
             });
 
-            
-
             $('#txtKeysearch').keyup(function () {
                 $('.rightsTreeView').jstree(true).show_all();
                 $('.rightsTreeView').jstree('search', $(this).val());
             });
         }
 
-        //// Lấy tất cả các thẻ <a> có class jstree-anchor
-        //var anchors = document.querySelectorAll("a.jstree-anchor");
+    </script>
+    <script>
+        function CheckValid() {
+            var validated = $("#<%= UpdatePanelModal.ClientID%>").validationEngine('validate', { promptPosition: "TopLeft", scroll: false });
+            if (validated)
+                return validated;
+        };
+        function DisableContentChanged() {
+            window.onbeforeunload = null;
+        };
 
-        //// Duyệt qua từng thẻ <a>
-        //anchors.forEach(function (anchor) {
-        //    // Lấy thẻ <a> con bên trong
-        //    var childLink = anchor.querySelector("a");
+        function CreateFriendlyUrl(tag) {
+            var str = $(tag).val()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '') // Loại bỏ dấu
+                .replace(/[^\w\s]+/g, '')        // Loại bỏ ký tự đặc biệt
+                .replace(/\s+/g, '-')           // Thay khoảng trắng bằng dấu gạch ngang
+                .toLowerCase();                 // Chuyển về chữ thường
+            $('[data-selector="txtFriendlyURL"]').val(str);
+        }
 
-        //    // Nếu tìm thấy thẻ <a> con
-        //    if (childLink) {
-        //        // Chuyển thẻ <a> con ra ngoài sau thẻ cha
-        //        anchor.insertAdjacentHTML('afterend', childLink.outerHTML);
-        //        // Xóa thẻ <a> con ra khỏi thẻ cha
-        //        childLink.remove();
-        //    }
-        //});
-        setTimeout(function () {
-            document.querySelectorAll("a.btn-danger").forEach(function (deleteButton) {
-                deleteButton.addEventListener("click", function (event) {
-                    event.stopPropagation();
-                    //event.preventDefault();
-                    openDelete();
+    </script>
+
+    <script>
+        var uploadThumbnailKey = "<%= SecurityHelper.Encrypt("/Uploads/Article/")%>";
+        var uploadThumbnailKeyAlbum = "<%= SecurityHelper.Encrypt("/Uploads/Article/Picture/")%>";
+
+        var OpenSelectImage = function () {
+            var txtid = $('[data-selector="txtImage"]').attr('id');
+            var ws = getWindowSize();
+            $.lightbox('/RichFilemanager/default.aspx?field_name=' + txtid
+                + '&key=' + uploadThumbnailKey
+                + '&selectFun=setImageUrl',
+                {
+                    iframe: true,
+                    width: ws.width - 60,
+                    height: ws.height - 40,
                 });
-            });
-        }, 500); 
+        };
+        var getWindowSize = function () {
+            var w = 0; var h = 0;
+            //IE
+            if (!window.innerWidth) {
+                if (!(document.documentElement.clientWidth === 0)) {
+                    //strict mode
+                    w = document.documentElement.clientWidth;
+                    h = document.documentElement.clientHeight;
+                } else {
+                    //quirks mode
+                    w = document.body.clientWidth; h = document.body.clientHeight;
+                }
+            } else {
+                //w3c
+                w = window.innerWidth; h = window.innerHeight;
+            }
+            return {
+                width: w, height: h
+            };
+        };
+        var setImageUrl = function (txtid, url) {
+            document.getElementById(txtid).value = url;
+            $('[data-selector="imgThumb"]').attr('src', url);
+            //call next function
+        };
 
+        /*--Image album--*/
+        var OpenSelectImageAlbum = function () {
+            var txtid = $('[data-selector="txtImageUrl"]').attr('id');
+            var ws = getWindowSize();
+            $.lightbox('/RichFilemanager/default.aspx?field_name=' + txtid
+                + '&key=' + uploadThumbnailKeyAlbum
+                + '&selectFun=setImageAlbumUrl',
+                {
+                    iframe: true,
+                    width: ws.width - 60,
+                    height: ws.height - 40,
+                });
+        };
+        var setImageAlbumUrl = function (txtid, url) {
+            document.getElementById(txtid).value = url;
+            $('[data-selector="imgImageUrl"]').attr('src', url);
+            //call next function
+        };
+
+
+    </script>
+
+    <script type="text/javascript">
+
+        $(document).on('change', '#<%= drAddbaiviet.ClientID %>', function () {
+            var selectedValue = $(this).val();  // Lấy giá trị của DropDownList
+            $('#<%= txtUrl.ClientID %>').val(selectedValue);
+            if (!$('#<%= txtTen.ClientID %>').val())
+                $('#<%= txtTen.ClientID %>').val($(this).find("option:selected").text());
+        });
+        $(document).on('change', '#<%= drAddDanhSach.ClientID %>', function () {
+            var selectedValue = $(this).val();  // Lấy giá trị của DropDownList
+            $('#<%= txtUrl.ClientID %>').val(selectedValue);
+            if (!$('#<%= txtTen.ClientID %>').val())
+                $('#<%= txtTen.ClientID %>').val($(this).find("option:selected").text());
+        });
+        $(document).on('change', '#<%= drAddTrangTinh.ClientID %>', function () {
+            var selectedValue = $(this).val();  // Lấy giá trị của DropDownList
+            $('#<%= txtUrl.ClientID %>').val(selectedValue);
+            if (!$('#<%= txtTen.ClientID %>').val())
+                $('#<%= txtTen.ClientID %>').val($(this).find("option:selected").text());
+        });
+        $(document).on('change', '#<%= drAddDuAnTieuBieu.ClientID %>', function () {
+            var selectedValue = $(this).val();  // Lấy giá trị của DropDownList
+            $('#<%= txtUrl.ClientID %>').val(selectedValue);
+            if (!$('#<%= txtTen.ClientID %>').val())
+                $('#<%= txtTen.ClientID %>').val($(this).find("option:selected").text());
+        });
 
     </script>
 
 
 
-
 </asp:Content>
+

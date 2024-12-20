@@ -51,11 +51,15 @@
     <Compile Include="BaiVietController.cs" />
     <Compile Include="DanhMuc.cs" />
     <Compile Include="DanhMucController.cs" />
+    <Compile Include="DefaultSetting.cs" />
+    <Compile Include="DefaultSettingController.cs" />
     <Compile Include="DoiTac.cs" />
     <Compile Include="DoiTacController.cs" />
     <Compile Include="ExtendClass.cs" />
     <Compile Include="FriendlyUrl.cs" />
     <Compile Include="FriendlyUrlController.cs" />
+    <Compile Include="LichSuHeThong.cs" />
+    <Compile Include="LichSuHeThongController.cs" />
     <Compile Include="LichSuPhatTrien.cs" />
     <Compile Include="LichSuPhatTrienController.cs" />
     <Compile Include="LienHe.cs" />

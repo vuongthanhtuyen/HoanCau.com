@@ -1,4 +1,6 @@
 ﻿using CMS.DataAsscess;
+using SweetCMS.Core.Helper;
+using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +26,9 @@ namespace CMS.WebUI.Controls
                         <div class=""contentCol wow zoomIn"" data-wow-duration=""1s"" data-wow-delay=""0.4s"">
                             <div class=""contentImg"">
                                 <div class=""wrapImg"">
-                                    <a class=""wrapImgResize img16And9"" href=""{post.Slug}"" title=""{post.TieuDe}"">
-                                        <img src=""/Administration/UploadImage/{post.ThumbnailUrl}"" alt=""{post.TieuDe}"" /></a>
+                                    <a class=""wrapImgResize img16And9"" href=""
+                {post.Slug}"" title=""{post.TieuDe}"">
+                                        <img src=""{Helpers.GetThumbnailUrl(post.ThumbnailUrl)}"" alt=""{post.TieuDe}"" /></a>
                                 </div>
 
                                 <div class=""time"">

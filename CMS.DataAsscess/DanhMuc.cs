@@ -261,19 +261,19 @@ namespace SweetCMS.DataAccess
 				colvarUpdateBy.ForeignKeyTableName = "";
 				schema.Columns.Add(colvarUpdateBy);
 				
-				TableSchema.TableColumn colvarDisplayOrderDisplayOrder = new TableSchema.TableColumn(schema);
-				colvarDisplayOrderDisplayOrder.ColumnName = "DisplayOrderDisplayOrder";
-				colvarDisplayOrderDisplayOrder.DataType = DbType.Int32;
-				colvarDisplayOrderDisplayOrder.MaxLength = 0;
-				colvarDisplayOrderDisplayOrder.AutoIncrement = false;
-				colvarDisplayOrderDisplayOrder.IsNullable = false;
-				colvarDisplayOrderDisplayOrder.IsPrimaryKey = false;
-				colvarDisplayOrderDisplayOrder.IsForeignKey = false;
-				colvarDisplayOrderDisplayOrder.IsReadOnly = false;
+				TableSchema.TableColumn colvarDisplayOrder = new TableSchema.TableColumn(schema);
+				colvarDisplayOrder.ColumnName = "DisplayOrder";
+				colvarDisplayOrder.DataType = DbType.Int32;
+				colvarDisplayOrder.MaxLength = 0;
+				colvarDisplayOrder.AutoIncrement = false;
+				colvarDisplayOrder.IsNullable = false;
+				colvarDisplayOrder.IsPrimaryKey = false;
+				colvarDisplayOrder.IsForeignKey = false;
+				colvarDisplayOrder.IsReadOnly = false;
 				
-						colvarDisplayOrderDisplayOrder.DefaultSetting = @"((-1))";
-				colvarDisplayOrderDisplayOrder.ForeignKeyTableName = "";
-				schema.Columns.Add(colvarDisplayOrderDisplayOrder);
+						colvarDisplayOrder.DefaultSetting = @"((-1))";
+				colvarDisplayOrder.ForeignKeyTableName = "";
+				schema.Columns.Add(colvarDisplayOrder);
 				
 				TableSchema.TableColumn colvarStatus = new TableSchema.TableColumn(schema);
 				colvarStatus.ColumnName = "Status";
@@ -407,12 +407,12 @@ namespace SweetCMS.DataAccess
 			set { SetColumnValue(Columns.UpdateBy, value); }
 		}
 		  
-		[XmlAttribute("DisplayOrderDisplayOrder")]
+		[XmlAttribute("DisplayOrder")]
 		[Bindable(true)]
-		public int DisplayOrderDisplayOrder 
+		public int DisplayOrder 
 		{
-			get { return GetColumnValue<int>(Columns.DisplayOrderDisplayOrder); }
-			set { SetColumnValue(Columns.DisplayOrderDisplayOrder, value); }
+			get { return GetColumnValue<int>(Columns.DisplayOrder); }
+			set { SetColumnValue(Columns.DisplayOrder, value); }
 		}
 		  
 		[XmlAttribute("Status")]
@@ -489,7 +489,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Inserts a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Insert(string varTen,int? varDanhMucChaId,string varSlug,string varMoTa,int? varLangID,DateTime varCreateDate,DateTime varUpdateDate,string varCreateBy,string varUpdateBy,int varDisplayOrderDisplayOrder,string varStatus,int varType,string varThumbnailUrl)
+		public static void Insert(string varTen,int? varDanhMucChaId,string varSlug,string varMoTa,int? varLangID,DateTime varCreateDate,DateTime varUpdateDate,string varCreateBy,string varUpdateBy,int varDisplayOrder,string varStatus,int varType,string varThumbnailUrl)
 		{
 			DanhMuc item = new DanhMuc();
 			
@@ -511,7 +511,7 @@ namespace SweetCMS.DataAccess
 			
 			item.UpdateBy = varUpdateBy;
 			
-			item.DisplayOrderDisplayOrder = varDisplayOrderDisplayOrder;
+			item.DisplayOrder = varDisplayOrder;
 			
 			item.Status = varStatus;
 			
@@ -529,7 +529,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Updates a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Update(int varId,string varTen,int? varDanhMucChaId,string varSlug,string varMoTa,int? varLangID,DateTime varCreateDate,DateTime varUpdateDate,string varCreateBy,string varUpdateBy,int varDisplayOrderDisplayOrder,string varStatus,int varType,string varThumbnailUrl)
+		public static void Update(int varId,string varTen,int? varDanhMucChaId,string varSlug,string varMoTa,int? varLangID,DateTime varCreateDate,DateTime varUpdateDate,string varCreateBy,string varUpdateBy,int varDisplayOrder,string varStatus,int varType,string varThumbnailUrl)
 		{
 			DanhMuc item = new DanhMuc();
 			
@@ -553,7 +553,7 @@ namespace SweetCMS.DataAccess
 			
 				item.UpdateBy = varUpdateBy;
 			
-				item.DisplayOrderDisplayOrder = varDisplayOrderDisplayOrder;
+				item.DisplayOrder = varDisplayOrder;
 			
 				item.Status = varStatus;
 			
@@ -644,7 +644,7 @@ namespace SweetCMS.DataAccess
         
         
         
-        public static TableSchema.TableColumn DisplayOrderDisplayOrderColumn
+        public static TableSchema.TableColumn DisplayOrderColumn
         {
             get { return Schema.Columns[10]; }
         }
@@ -686,7 +686,7 @@ namespace SweetCMS.DataAccess
 			 public static string UpdateDate = @"UpdateDate";
 			 public static string CreateBy = @"CreateBy";
 			 public static string UpdateBy = @"UpdateBy";
-			 public static string DisplayOrderDisplayOrder = @"DisplayOrderDisplayOrder";
+			 public static string DisplayOrder = @"DisplayOrder";
 			 public static string Status = @"Status";
 			 public static string Type = @"Type";
 			 public static string ThumbnailUrl = @"ThumbnailUrl";

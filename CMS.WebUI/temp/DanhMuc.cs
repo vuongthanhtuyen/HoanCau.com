@@ -261,20 +261,6 @@ namespace SweetCMS.DataAccess
 				colvarUpdateBy.ForeignKeyTableName = "";
 				schema.Columns.Add(colvarUpdateBy);
 				
-				TableSchema.TableColumn colvarDisplayOrderDisplayOrder = new TableSchema.TableColumn(schema);
-				colvarDisplayOrderDisplayOrder.ColumnName = "DisplayOrderDisplayOrder";
-				colvarDisplayOrderDisplayOrder.DataType = DbType.Int32;
-				colvarDisplayOrderDisplayOrder.MaxLength = 0;
-				colvarDisplayOrderDisplayOrder.AutoIncrement = false;
-				colvarDisplayOrderDisplayOrder.IsNullable = false;
-				colvarDisplayOrderDisplayOrder.IsPrimaryKey = false;
-				colvarDisplayOrderDisplayOrder.IsForeignKey = false;
-				colvarDisplayOrderDisplayOrder.IsReadOnly = false;
-				
-						colvarDisplayOrderDisplayOrder.DefaultSetting = @"((-1))";
-				colvarDisplayOrderDisplayOrder.ForeignKeyTableName = "";
-				schema.Columns.Add(colvarDisplayOrderDisplayOrder);
-				
 				TableSchema.TableColumn colvarStatus = new TableSchema.TableColumn(schema);
 				colvarStatus.ColumnName = "Status";
 				colvarStatus.DataType = DbType.AnsiString;
@@ -316,6 +302,20 @@ namespace SweetCMS.DataAccess
 						colvarThumbnailUrl.DefaultSetting = @"('')";
 				colvarThumbnailUrl.ForeignKeyTableName = "";
 				schema.Columns.Add(colvarThumbnailUrl);
+				
+				TableSchema.TableColumn colvarDisplayOrder = new TableSchema.TableColumn(schema);
+				colvarDisplayOrder.ColumnName = "DisplayOrder";
+				colvarDisplayOrder.DataType = DbType.Int32;
+				colvarDisplayOrder.MaxLength = 0;
+				colvarDisplayOrder.AutoIncrement = false;
+				colvarDisplayOrder.IsNullable = false;
+				colvarDisplayOrder.IsPrimaryKey = false;
+				colvarDisplayOrder.IsForeignKey = false;
+				colvarDisplayOrder.IsReadOnly = false;
+				
+						colvarDisplayOrder.DefaultSetting = @"((-1))";
+				colvarDisplayOrder.ForeignKeyTableName = "";
+				schema.Columns.Add(colvarDisplayOrder);
 				
 				BaseSchema = schema;
 				//add this schema to the provider
@@ -407,14 +407,6 @@ namespace SweetCMS.DataAccess
 			set { SetColumnValue(Columns.UpdateBy, value); }
 		}
 		  
-		[XmlAttribute("DisplayOrderDisplayOrder")]
-		[Bindable(true)]
-		public int DisplayOrderDisplayOrder 
-		{
-			get { return GetColumnValue<int>(Columns.DisplayOrderDisplayOrder); }
-			set { SetColumnValue(Columns.DisplayOrderDisplayOrder, value); }
-		}
-		  
 		[XmlAttribute("Status")]
 		[Bindable(true)]
 		public string Status 
@@ -437,6 +429,14 @@ namespace SweetCMS.DataAccess
 		{
 			get { return GetColumnValue<string>(Columns.ThumbnailUrl); }
 			set { SetColumnValue(Columns.ThumbnailUrl, value); }
+		}
+		  
+		[XmlAttribute("DisplayOrder")]
+		[Bindable(true)]
+		public int DisplayOrder 
+		{
+			get { return GetColumnValue<int>(Columns.DisplayOrder); }
+			set { SetColumnValue(Columns.DisplayOrder, value); }
 		}
 		
 		#endregion
@@ -489,7 +489,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Inserts a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Insert(string varTen,int? varDanhMucChaId,string varSlug,string varMoTa,int? varLangID,DateTime varCreateDate,DateTime varUpdateDate,string varCreateBy,string varUpdateBy,int varDisplayOrderDisplayOrder,string varStatus,int varType,string varThumbnailUrl)
+		public static void Insert(string varTen,int? varDanhMucChaId,string varSlug,string varMoTa,int? varLangID,DateTime varCreateDate,DateTime varUpdateDate,string varCreateBy,string varUpdateBy,string varStatus,int varType,string varThumbnailUrl,int varDisplayOrder)
 		{
 			DanhMuc item = new DanhMuc();
 			
@@ -511,13 +511,13 @@ namespace SweetCMS.DataAccess
 			
 			item.UpdateBy = varUpdateBy;
 			
-			item.DisplayOrderDisplayOrder = varDisplayOrderDisplayOrder;
-			
 			item.Status = varStatus;
 			
 			item.Type = varType;
 			
 			item.ThumbnailUrl = varThumbnailUrl;
+			
+			item.DisplayOrder = varDisplayOrder;
 			
 		
 			if (System.Web.HttpContext.Current != null)
@@ -529,7 +529,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Updates a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Update(int varId,string varTen,int? varDanhMucChaId,string varSlug,string varMoTa,int? varLangID,DateTime varCreateDate,DateTime varUpdateDate,string varCreateBy,string varUpdateBy,int varDisplayOrderDisplayOrder,string varStatus,int varType,string varThumbnailUrl)
+		public static void Update(int varId,string varTen,int? varDanhMucChaId,string varSlug,string varMoTa,int? varLangID,DateTime varCreateDate,DateTime varUpdateDate,string varCreateBy,string varUpdateBy,string varStatus,int varType,string varThumbnailUrl,int varDisplayOrder)
 		{
 			DanhMuc item = new DanhMuc();
 			
@@ -553,13 +553,13 @@ namespace SweetCMS.DataAccess
 			
 				item.UpdateBy = varUpdateBy;
 			
-				item.DisplayOrderDisplayOrder = varDisplayOrderDisplayOrder;
-			
 				item.Status = varStatus;
 			
 				item.Type = varType;
 			
 				item.ThumbnailUrl = varThumbnailUrl;
+			
+				item.DisplayOrder = varDisplayOrder;
 			
 			item.IsNew = false;
 			if (System.Web.HttpContext.Current != null)
@@ -644,28 +644,28 @@ namespace SweetCMS.DataAccess
         
         
         
-        public static TableSchema.TableColumn DisplayOrderDisplayOrderColumn
+        public static TableSchema.TableColumn StatusColumn
         {
             get { return Schema.Columns[10]; }
         }
         
         
         
-        public static TableSchema.TableColumn StatusColumn
+        public static TableSchema.TableColumn TypeColumn
         {
             get { return Schema.Columns[11]; }
         }
         
         
         
-        public static TableSchema.TableColumn TypeColumn
+        public static TableSchema.TableColumn ThumbnailUrlColumn
         {
             get { return Schema.Columns[12]; }
         }
         
         
         
-        public static TableSchema.TableColumn ThumbnailUrlColumn
+        public static TableSchema.TableColumn DisplayOrderColumn
         {
             get { return Schema.Columns[13]; }
         }
@@ -686,10 +686,10 @@ namespace SweetCMS.DataAccess
 			 public static string UpdateDate = @"UpdateDate";
 			 public static string CreateBy = @"CreateBy";
 			 public static string UpdateBy = @"UpdateBy";
-			 public static string DisplayOrderDisplayOrder = @"DisplayOrderDisplayOrder";
 			 public static string Status = @"Status";
 			 public static string Type = @"Type";
 			 public static string ThumbnailUrl = @"ThumbnailUrl";
+			 public static string DisplayOrder = @"DisplayOrder";
 						
 		}
 		#endregion

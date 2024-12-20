@@ -131,7 +131,7 @@ namespace CMS.Core.Manager
 	                else 1
 	                end as DaChon
                 from BaiViet as b 
-                left join NhomBaiViet as n on b.Id = n.BaiVietId and n.DanhmucId = {danhMucId} where b.LangID = {langId}");
+                left join NhomBaiViet as n on b.Id = n.BaiVietId and n.DanhmucId = {danhMucId} and b.LangID = {langId} where TypeBaiViet = {TypeBaiViet.BaiViet} and Status != '{BasicStatusHelper.Deleted}' ");
             return new InlineQuery().ExecuteTypedList<BaiVietInDanhMucDto>(sql);
 
         }

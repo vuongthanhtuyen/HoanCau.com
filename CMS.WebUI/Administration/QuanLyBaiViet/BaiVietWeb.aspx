@@ -17,12 +17,12 @@
                 Danh sách bài viết
             </h3>
             <button type="button" onclick="MakeModal()" class="btn btn-primary col-2 float-sm-right">
-                    Thêm mới
-                </button>
+                Thêm mới
+            </button>
         </div>
         <div class="card-body">
             <div class="col-xs-12 padding-none header-controls-right">
-               
+
                 <asp:Label ID="lblResult" CssClass="text-info" runat="server" Text=""></asp:Label>
             </div>
             <br />
@@ -82,7 +82,6 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
             <div class="text-muted mt-3">
-                
             </div>
         </div>
         <!-- /.card -->
@@ -91,7 +90,7 @@
     <script>
 
         function MakeModal($id) {
-            $('[data-selector="txtIdBaiViet"]').val($id);
+            $('[data-selector="txtIdHidden"]').val($id);
             $('[data-selector="btnRefresh"]')[0].click();
             $('#myModal').modal('show');
         };
@@ -177,11 +176,16 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-md-6">
-                                            <label for="chkTrangThai" class="mb-3">Trạng thái</label>
+                                            <label for="chkTrangThai" class="mb-3">Nổi bật</label>
                                             <br />
                                             <asp:CheckBox ID="chkTrangThai" runat="server" CssClass="form-control-user" Checked="true" />
                                             <label class="form-check-label" for="chkTrangThai">Hiển thị</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="txtViewCount">Trạng thái</label>
 
+                                            <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control form-control-user">
+                                            </asp:DropDownList>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="txtViewCount">Lượt xem</label>
@@ -191,13 +195,16 @@
                                             <label for="txtDisplayOrder">Thứ tự hiển thị</label>
                                             <input id="txtDisplayOrder" runat="server" class="form-control form-control-user" placeholder="Thứ tự hiển thị" value="-1" type="number" />
                                         </div>
-
+                                        <div class="col-md-12">
+                                            <label for="txtDisplayOrder">Ngày đăng (công khai)</label>
+                                            <input id="txtNgayDangCongKhai" runat="server" class="form-control form-control-user" type="date" />
+                                        </div>
 
                                     </div>
                                     <div class="form-group" id="txtInfo" runat="server" visible="false">
                                         <label>Người tạo: <%= _CreateBy %></label>
                                         <label>Ngày tạo: <%= _CreateDate %></label>
-                                        <label>Người cập nhật: <%= _UpdateDate %></label>
+                                        <label>Người cập nhật: <%= _UpdateBy %></label>
                                         <label>Ngày cập nhật: <%= _UpdateDate %></label>
 
                                     </div>
@@ -209,7 +216,7 @@
 
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <input runat="server" id="txtIdBaiViet" data-selector="txtIdBaiViet" class="hidden" />
+                            <input runat="server" id="txtIdHidden" data-selector="txtIdHidden" class="hidden" />
                             <a runat="server" id="btnRefresh" data-selector="btnRefresh" onserverclick="btnRefresh_ServerClick"
                                 class="hidden"></a>
 

@@ -81,7 +81,7 @@ namespace CMS.Core.Manager
 	                else 0
                 end as IsHaveDanhMuc
                 from DanhMuc as c
-                left join NhomBaiViet as cd on cd.DanhMucId = c.Id AND cd.BaiVietId = {0} where c.LangID = {1} and c.Type = {2} ", postId,langId, type);
+                left join NhomBaiViet as cd on cd.DanhMucId = c.Id AND cd.BaiVietId = {0} where c.Status !={3} and c.LangID = {1} and c.Type = {2} ", postId,langId, type, BasicStatusHelper.Deleted);
             return new InlineQuery().ExecuteTypedList<DanhMucBaiVietDto>(sql);
         }
 

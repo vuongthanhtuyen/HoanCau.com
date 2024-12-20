@@ -159,6 +159,15 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
         protected global::System.Web.UI.WebControls.CheckBox chkTrangThai;
 
         /// <summary>
+        /// ddlStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
+
+        /// <summary>
         /// txtViewCount control.
         /// </summary>
         /// <remarks>
@@ -177,6 +186,15 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtDisplayOrder;
 
         /// <summary>
+        /// txtNgayDangCongKhai control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtNgayDangCongKhai;
+
+        /// <summary>
         /// txtInfo control.
         /// </summary>
         /// <remarks>
@@ -186,13 +204,13 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtInfo;
 
         /// <summary>
-        /// txtIdBaiViet control.
+        /// txtIdHidden control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtIdBaiViet;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtIdHidden;
 
         /// <summary>
         /// btnRefresh control.

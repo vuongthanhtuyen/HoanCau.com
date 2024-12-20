@@ -358,6 +358,20 @@ namespace SweetCMS.DataAccess
 				colvarTypeBaiViet.ForeignKeyTableName = "";
 				schema.Columns.Add(colvarTypeBaiViet);
 				
+				TableSchema.TableColumn colvarNgayDang = new TableSchema.TableColumn(schema);
+				colvarNgayDang.ColumnName = "NgayDang";
+				colvarNgayDang.DataType = DbType.DateTime;
+				colvarNgayDang.MaxLength = 0;
+				colvarNgayDang.AutoIncrement = false;
+				colvarNgayDang.IsNullable = false;
+				colvarNgayDang.IsPrimaryKey = false;
+				colvarNgayDang.IsForeignKey = false;
+				colvarNgayDang.IsReadOnly = false;
+				
+						colvarNgayDang.DefaultSetting = @"(getdate())";
+				colvarNgayDang.ForeignKeyTableName = "";
+				schema.Columns.Add(colvarNgayDang);
+				
 				BaseSchema = schema;
 				//add this schema to the provider
 				//so we can query it later
@@ -503,6 +517,14 @@ namespace SweetCMS.DataAccess
 			get { return GetColumnValue<int>(Columns.TypeBaiViet); }
 			set { SetColumnValue(Columns.TypeBaiViet, value); }
 		}
+		  
+		[XmlAttribute("NgayDang")]
+		[Bindable(true)]
+		public DateTime NgayDang 
+		{
+			get { return GetColumnValue<DateTime>(Columns.NgayDang); }
+			set { SetColumnValue(Columns.NgayDang, value); }
+		}
 		
 		#endregion
 		
@@ -586,7 +608,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Inserts a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Insert(string varTieuDe,string varSlug,string varMoTaNgan,string varNoiDungChinh,int? varTacGiaId,int? varViewCount,string varThumbnailUrl,DateTime varNgayTao,DateTime varChinhSuaGanNhat,bool? varTrangThai,int? varLangID,string varStatus,string varCreateBy,string varUpdateBy,int varDisplayOrder,int varTypeBaiViet)
+		public static void Insert(string varTieuDe,string varSlug,string varMoTaNgan,string varNoiDungChinh,int? varTacGiaId,int? varViewCount,string varThumbnailUrl,DateTime varNgayTao,DateTime varChinhSuaGanNhat,bool? varTrangThai,int? varLangID,string varStatus,string varCreateBy,string varUpdateBy,int varDisplayOrder,int varTypeBaiViet,DateTime varNgayDang)
 		{
 			BaiViet item = new BaiViet();
 			
@@ -622,6 +644,8 @@ namespace SweetCMS.DataAccess
 			
 			item.TypeBaiViet = varTypeBaiViet;
 			
+			item.NgayDang = varNgayDang;
+			
 		
 			if (System.Web.HttpContext.Current != null)
 				item.Save(System.Web.HttpContext.Current.User.Identity.Name);
@@ -632,7 +656,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Updates a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Update(int varId,string varTieuDe,string varSlug,string varMoTaNgan,string varNoiDungChinh,int? varTacGiaId,int? varViewCount,string varThumbnailUrl,DateTime varNgayTao,DateTime varChinhSuaGanNhat,bool? varTrangThai,int? varLangID,string varStatus,string varCreateBy,string varUpdateBy,int varDisplayOrder,int varTypeBaiViet)
+		public static void Update(int varId,string varTieuDe,string varSlug,string varMoTaNgan,string varNoiDungChinh,int? varTacGiaId,int? varViewCount,string varThumbnailUrl,DateTime varNgayTao,DateTime varChinhSuaGanNhat,bool? varTrangThai,int? varLangID,string varStatus,string varCreateBy,string varUpdateBy,int varDisplayOrder,int varTypeBaiViet,DateTime varNgayDang)
 		{
 			BaiViet item = new BaiViet();
 			
@@ -669,6 +693,8 @@ namespace SweetCMS.DataAccess
 				item.DisplayOrder = varDisplayOrder;
 			
 				item.TypeBaiViet = varTypeBaiViet;
+			
+				item.NgayDang = varNgayDang;
 			
 			item.IsNew = false;
 			if (System.Web.HttpContext.Current != null)
@@ -802,6 +828,13 @@ namespace SweetCMS.DataAccess
         
         
         
+        public static TableSchema.TableColumn NgayDangColumn
+        {
+            get { return Schema.Columns[17]; }
+        }
+        
+        
+        
         #endregion
 		#region Columns Struct
 		public struct Columns
@@ -823,6 +856,7 @@ namespace SweetCMS.DataAccess
 			 public static string UpdateBy = @"UpdateBy";
 			 public static string DisplayOrder = @"DisplayOrder";
 			 public static string TypeBaiViet = @"TypeBaiViet";
+			 public static string NgayDang = @"NgayDang";
 						
 		}
 		#endregion
