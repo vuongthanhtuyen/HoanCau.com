@@ -163,5 +163,30 @@ namespace CMS.DataAsscess
         public string Slug { get; set; }
         public int IsHaveDanhMuc { get; set; }
     }
+    public class ItemFile
+    {
+        public int Id { get; set; }
+        public string AttachmentFileIdString { get; set; }
+        public string Title { get; set; }
+        public string FileUrl { get; set; }
+
+    }
+    public class ItemDanhMucFileDinhKem
+    {
+        public int Id { get; set; }
+        public string Ten { get; set; }
+        public int DanhMucChaId  { get; set; }
+        public int DisplayOrder { get; set; }
+
+    }
+
+
+    public class ItemFileDto
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string FileUrl { get; set; }
+        public int CategoryId { get; set; }
+    }
 
 }

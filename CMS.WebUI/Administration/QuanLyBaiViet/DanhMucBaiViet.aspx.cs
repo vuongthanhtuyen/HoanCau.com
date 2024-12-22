@@ -74,6 +74,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     txtInfo.Visible = false;
                     tabBaiViet.Visible = false;
                     txtDisplayOrder.Value = "-1";
+                    txtTieuDe.Value = txtSlug.Value = string.Empty;
                     _ModalTitle = "Thêm mới";
                     _CreateBy = _UpdateBy = _CreateDate = _UpdateDate = string.Empty;
                     ddlStatus.SelectedValue = string.Empty;
@@ -81,7 +82,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     imgThumb.Attributes["src"] = "../UploadImage/addNewImage.png"; // Reset hình ảnh
                                                                                    // Đặt trạng thái mặc định là checked
                 }
-                lblModalTitle.InnerText = _ModalTitle;
+                
                 UpdatePanelModal.Update();
             }
             catch (Exception ex)
@@ -142,7 +143,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
             try
             {
                 List<ItemTreeView> lstTree = new List<ItemTreeView>();
-                List<DanhMuc> lst = DanhMucBaiVietBLL.GetAllNoPaging(ApplicationContext.Current.ContentCurrentLanguageId, FriendlyUrlBLL.FriendlyURLTypeHelper.Category, Request.QueryString["search"]);
+                List<DanhMuc> lst = DanhMucBaiVietBLL.GetAllNoPaging(ApplicationContext.Current.ContentCurrentLanguageId, CategoryType.Article, Request.QueryString["search"]);
                 //lst = lst.Where(x => x.Id != 4).ToList();
 
                 if (lst != null && lst.Count > 0)

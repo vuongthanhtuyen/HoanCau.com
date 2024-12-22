@@ -143,7 +143,8 @@ namespace CMS.Core.Manager
             {
                 PostId = baiViet.Id,
                 PostType = FriendlyUrlBLL.FriendlyURLTypeHelper.Project,
-                SlugUrl = baiViet.Slug
+                SlugUrl = baiViet.Slug,
+                Status = BasicStatusHelper.Active
             });
             return baiViet;
         }

@@ -284,6 +284,7 @@
     <Content Include="Administration\Assets\js\sb-admin-2.js" />
     <Content Include="Administration\Assets\js\sb-admin-2.min.js" />
     <Content Include="Administration\Assets\js\toast.js" />
+    <Content Include="Administration\NhomFileDinhKem.aspx" />
     <Content Include="Administration\Style\dist\css\AdminLTE.css" />
     <Content Include="Administration\Style\dist\css\AdminLTE.min.css" />
     <Content Include="Administration\Style\dist\css\analytics.css" />
@@ -2702,6 +2703,7 @@
     <Content Include="Controls\ControlContentPage\BaiVietPublish.ascx" />
     <Content Include="Controls\ControlContentPage\Category.ascx" />
     <Content Include="Controls\ControlContentPage\DuAnTieuBieu.ascx" />
+    <Content Include="Controls\ControlContentPage\FileDinhKemControl.ascx" />
     <Content Include="Controls\DanhSachBaiViet.ascx" />
     <Content Include="Controls\DanhSachDuAnTieuBieu.ascx" />
     <Content Include="Controls\PagePublish.ascx" />
@@ -3890,6 +3892,13 @@
     <Compile Include="Administration\Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Administration\NhomFileDinhKem.aspx.cs">
+      <DependentUpon>NhomFileDinhKem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\NhomFileDinhKem.aspx.designer.cs">
+      <DependentUpon>NhomFileDinhKem.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AjaxHandler.aspx.cs">
       <DependentUpon>AjaxHandler.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3942,6 +3951,13 @@
     </Compile>
     <Compile Include="Controls\ControlContentPage\DuAnTieuBieu.ascx.designer.cs">
       <DependentUpon>DuAnTieuBieu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ControlContentPage\FileDinhKemControl.ascx.cs">
+      <DependentUpon>FileDinhKemControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ControlContentPage\FileDinhKemControl.ascx.designer.cs">
+      <DependentUpon>FileDinhKemControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\DanhSachBaiViet.ascx.cs">
       <DependentUpon>DanhSachBaiViet.ascx</DependentUpon>
@@ -4158,6 +4174,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Assets\images\LogoTbd\" />
     <Folder Include="bin\" />
+    <Folder Include="Html\" />
     <Folder Include="uploads\Article\" />
     <Folder Include="uploads\Content\" />
   </ItemGroup>

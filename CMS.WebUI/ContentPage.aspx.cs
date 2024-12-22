@@ -62,6 +62,18 @@ namespace CMS.WebUI
                             ctrlBaiVietGioiThieu.Visible = false;
 
                         }
+                        if (objFriendlyURL.PostType == FriendlyURLTypeHelper.FileAttactment)
+                        {
+                            ltrHead.Text = string.Format(@"<link rel=""stylesheet"" type=""text/css"" href=""/Assets/css/news-list.css?v=f81a959662efae2fc3cc158351e6d90c"" />");
+                            ltrBelow.Text = string.Format(@"<script src=""/Assets/js/news-list.js?v=f81a959662efae2fc3cc158351e6d90c""></script>");
+                            ctrlDuAnTieuBieu.Visible = false;
+                            ctrlCategory.Visible = false;
+                            ctrlBaiVietPublish.Visible = false;
+                            ctrlBaiVietGioiThieu.Visible = false;
+                            ctrlFileDinhKemControl.Visible = true;
+                            ctrlFileDinhKemControl.IdDanhMuc = objFriendlyURL.PostId;
+
+                        }
 
                     }
 

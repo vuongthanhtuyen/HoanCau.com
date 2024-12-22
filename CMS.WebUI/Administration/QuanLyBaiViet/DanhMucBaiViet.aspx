@@ -216,7 +216,7 @@
                 <asp:UpdatePanel ID="UpdatePanelModal" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
                         <div class="modal-header">
-                            <h4 runat="server" id="lblModalTitle"></h4>
+                            <h4 runat="server"> <%= _ModalTitle %></h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>

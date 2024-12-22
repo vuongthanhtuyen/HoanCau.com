@@ -4,6 +4,8 @@
 <%@ Register Src="~/Controls/ControlContentPage/Category.ascx" TagPrefix="uc1" TagName="CategoryControl" %>
 <%@ Register Src="~/Controls/ControlContentPage/BaiVietGioiThieu.ascx" TagPrefix="uc1" TagName="BaiVietGioiThieu" %>
 <%@ Register Src="~/Controls/ControlContentPage/DuAnTieuBieu.ascx" TagPrefix="uc1" TagName="DuAnTieuBieuControl" %>
+<%@ Register Src="~/Controls/ControlContentPage/FileDinhKemControl.ascx" TagPrefix="uc1" TagName="FileDinhKemControl" %>
+
 
 
 <asp:Content ID="ContentHead" ContentPlaceHolderID="ContentHead" runat="server">
@@ -16,7 +18,7 @@
     <uc1:CategoryControl runat="server" id="ctrlCategory" />
     <uc1:BaiVietGioiThieu runat="server" ID="ctrlBaiVietGioiThieu" />
     <uc1:DuAnTieuBieuControl runat="server" id="ctrlDuAnTieuBieu" />
-    
+    <uc1:FileDinhKemControl runat="server" id="ctrlFileDinhKemControl" />
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="contentEnd" runat="server">
     <asp:Literal ID="ltrBelow" runat="server" EnableViewState="false"></asp:Literal>

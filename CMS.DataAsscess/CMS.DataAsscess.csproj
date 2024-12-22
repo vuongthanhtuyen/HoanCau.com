@@ -56,6 +56,8 @@
     <Compile Include="DoiTac.cs" />
     <Compile Include="DoiTacController.cs" />
     <Compile Include="ExtendClass.cs" />
+    <Compile Include="FileAttactment.cs" />
+    <Compile Include="FileAttactmentController.cs" />
     <Compile Include="FriendlyUrl.cs" />
     <Compile Include="FriendlyUrlController.cs" />
     <Compile Include="LichSuHeThong.cs" />

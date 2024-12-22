@@ -220,17 +220,17 @@ namespace SweetCMS.DataAccess
 		  
 		[XmlAttribute("PostId")]
 		[Bindable(true)]
-		public int? PostId 
+		public int PostId 
 		{
-			get { return GetColumnValue<int?>(Columns.PostId); }
+			get { return GetColumnValue<int>(Columns.PostId); }
 			set { SetColumnValue(Columns.PostId, value); }
 		}
 		  
 		[XmlAttribute("PostType")]
 		[Bindable(true)]
-		public int? PostType 
+		public int PostType 
 		{
-			get { return GetColumnValue<int?>(Columns.PostType); }
+			get { return GetColumnValue<int>(Columns.PostType); }
 			set { SetColumnValue(Columns.PostType, value); }
 		}
 		  
@@ -261,7 +261,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Inserts a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Insert(string varSlugUrl,int? varPostId,int? varPostType,string varStatus)
+		public static void Insert(string varSlugUrl,int varPostId,int varPostType,string varStatus)
 		{
 			FriendlyUrl item = new FriendlyUrl();
 			
@@ -283,7 +283,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Updates a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Update(int varId,string varSlugUrl,int? varPostId,int? varPostType,string varStatus)
+		public static void Update(int varId,string varSlugUrl,int varPostId,int varPostType,string varStatus)
 		{
 			FriendlyUrl item = new FriendlyUrl();
 			

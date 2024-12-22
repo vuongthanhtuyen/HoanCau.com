@@ -59,7 +59,26 @@
     <meta name="title" content="Tập đoàn Đại Học Thái Bình Dương khu vực Khánh Hòa trao 292 suất quà Tết cho người dân khó khăn | ĐẠI HỌC THÁI BÌNH DƯƠNG" />
     <meta name="description" content="ĐẠI HỌC THÁI BÌNH DƯƠNG, Tập đoàn Đại Học Thái Bình Dương khu vực Khánh Hòa trao 292 suất quà Tết cho người dân khó khăn" />
     <meta name="keywords" content="ĐẠI HỌC THÁI BÌNH DƯƠNG, Tập đoàn Đại Học Thái Bình Dương khu vực Khánh Hòa trao 292 suất quà Tết cho người dân khó khăn" />
+       <link rel="stylesheet" href="/Administration/Assets/adminTemplate/plugins/fontawesome-free/css/all.min.css">
+   <!-- Ionicons -->
+   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
+   <!-- Theme style -->
+   <link rel="stylesheet" href="/Administration/Assets/adminTemplate/plugins/jquery-ui/jquery-ui.min.css">
+   <link rel="stylesheet" href="/Administration/Assets/adminTemplate/dist/css/adminlte.min.css?v=3.2.0">
+   <!-- overlayScrollbars -->
+   <link rel="stylesheet" href="/Administration/Assets/adminTemplate/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+   <!-- Daterange picker -->
+   <link rel="stylesheet" href="/Administration/Assets/adminTemplate/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+   <%-- validate enginer --%>
+
+   <!-- SweetAlert2 -->
+   <link rel="stylesheet" href="/Administration/Style/plugins/validationEngine/validationEngine.jquery.css">
+   <!-- Toastr -->
+   <!-- SweetAlert2 -->
+   <link rel="stylesheet" href="/Administration/Assets/adminTemplate/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+   <!-- Toastr -->
+   <link rel="stylesheet" href="/Administration/Assets/adminTemplate/plugins/toastr/toastr.min.css">
     <!-- CSS-->
     <link rel="stylesheet" type="text/css" href="Assets/css/lib.css?v=f81a959662efae2fc3cc158351e6d90c" />
     <link rel="stylesheet" type="text/css" href="Assets/css/fonts.css?v=f81a959662efae2fc3cc158351e6d90c" />
@@ -308,6 +327,20 @@
 
     });
     </script>
+        <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/Administration/Assets/adminTemplate/plugins/jquery/jquery.min.js") %>
+        <%: Scripts.Render("~/Administration/Assets/adminTemplate/plugins/jquery-ui/jquery-ui.min.js") %>
+        <%: Scripts.Render("~/Administration/Assets/adminTemplate/plugins/bootstrap/js/bootstrap.bundle.min.js") %>
+        <%: Scripts.Render("~/Administration/Assets/adminTemplate/plugins/daterangepicker/daterangepicker.js") %>
+        <%: Scripts.Render("~/Administration/Assets/adminTemplate/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js") %>
+        <%: Scripts.Render("~/Administration/Assets/adminTemplate/dist/js/adminlte.js?v=3.2.0") %>
+        <%: Scripts.Render("~/Administration/Assets/adminTemplate/plugins/sweetalert2/sweetalert2.min.js") %>
+        <%: Scripts.Render("~/Administration/Assets/adminTemplate/plugins/toastr/toastr.min.js") %>
+
+        <%-- validate enginer --%>
+        <script src="<%=ResolveClientUrl("~/Administration/Style/plugins/validationEngine/jquery.validationEngine.js")%>"></script>
+        <script src="<%=ResolveClientUrl("~/Administration/Style/plugins/validationEngine/jquery.validationEngine-vi-VN.js")%>"></script>
+    </asp:PlaceHolder>
     <script src="/Assets/js/lib.js?v=f81a959662efae2fc3cc158351e6d90c"></script>
    <asp:ContentPlaceHolder ID="contentEnd" runat="server">
 

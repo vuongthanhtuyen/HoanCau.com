@@ -60,15 +60,6 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
         protected global::System.Web.UI.UpdatePanel UpdatePanelModal;
 
         /// <summary>
-        /// lblModalTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblModalTitle;
-
-        /// <summary>
         /// tabBaiViet control.
         /// </summary>
         /// <remarks>

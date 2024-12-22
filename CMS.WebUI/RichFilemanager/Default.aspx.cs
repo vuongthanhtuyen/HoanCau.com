@@ -246,6 +246,8 @@ namespace SweetCMS.WebUI.RichFilemanager
                     data["upload"]["numberOfFiles"] = 20;
                     data["upload"]["fileSizeLimit"] = 50 * 1000 * 1000;//100Mb
                     data["edit"]["enabled"] = true;
+
+
                 }
                 //else
                 //{

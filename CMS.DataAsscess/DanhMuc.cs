@@ -142,7 +142,7 @@ namespace SweetCMS.DataAccess
 				TableSchema.TableColumn colvarTen = new TableSchema.TableColumn(schema);
 				colvarTen.ColumnName = "Ten";
 				colvarTen.DataType = DbType.String;
-				colvarTen.MaxLength = 50;
+				colvarTen.MaxLength = 500;
 				colvarTen.AutoIncrement = false;
 				colvarTen.IsNullable = true;
 				colvarTen.IsPrimaryKey = false;

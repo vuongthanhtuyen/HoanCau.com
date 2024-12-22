@@ -13,7 +13,13 @@ namespace CMS.WebUI.Controls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        public string ImageThumbnail
+        {
+            get;set;
+            
         }
         public void ShowBreadcrumb( string title,string urlImage = null,  List<Breadcrumb> breadcrumbs = null)
         {
@@ -36,7 +42,7 @@ namespace CMS.WebUI.Controls
             }
             string showView = string.Format($@"<div class=""wrapImgItem"">
                 <div class=""wrapImgResize"">
-                    <img src=""{urlImage}"" alt=""{title}"" /></div>
+                    <img src=""{ImageThumbnail}"" alt=""{title}"" /></div>
                 </div>
                 <div class=""contentText"">
                     <div class=""container-xl"">

@@ -196,7 +196,7 @@ namespace SweetCMS.DataAccess
 				colvarHienThi.DataType = DbType.Boolean;
 				colvarHienThi.MaxLength = 0;
 				colvarHienThi.AutoIncrement = false;
-				colvarHienThi.IsNullable = true;
+				colvarHienThi.IsNullable = false;
 				colvarHienThi.IsPrimaryKey = false;
 				colvarHienThi.IsForeignKey = false;
 				colvarHienThi.IsReadOnly = false;
@@ -223,7 +223,7 @@ namespace SweetCMS.DataAccess
 				colvarNgayTao.DataType = DbType.DateTime;
 				colvarNgayTao.MaxLength = 0;
 				colvarNgayTao.AutoIncrement = false;
-				colvarNgayTao.IsNullable = true;
+				colvarNgayTao.IsNullable = false;
 				colvarNgayTao.IsPrimaryKey = false;
 				colvarNgayTao.IsForeignKey = false;
 				colvarNgayTao.IsReadOnly = false;
@@ -298,9 +298,9 @@ namespace SweetCMS.DataAccess
 		  
 		[XmlAttribute("HienThi")]
 		[Bindable(true)]
-		public bool? HienThi 
+		public bool HienThi 
 		{
-			get { return GetColumnValue<bool?>(Columns.HienThi); }
+			get { return GetColumnValue<bool>(Columns.HienThi); }
 			set { SetColumnValue(Columns.HienThi, value); }
 		}
 		  
@@ -314,9 +314,9 @@ namespace SweetCMS.DataAccess
 		  
 		[XmlAttribute("NgayTao")]
 		[Bindable(true)]
-		public DateTime? NgayTao 
+		public DateTime NgayTao 
 		{
-			get { return GetColumnValue<DateTime?>(Columns.NgayTao); }
+			get { return GetColumnValue<DateTime>(Columns.NgayTao); }
 			set { SetColumnValue(Columns.NgayTao, value); }
 		}
 		  
@@ -347,7 +347,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Inserts a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Insert(string varTen,int? varMenuChaId,string varSlug,string varMoTa,bool? varHienThi,int? varStt,DateTime? varNgayTao,int? varLangID)
+		public static void Insert(string varTen,int? varMenuChaId,string varSlug,string varMoTa,bool varHienThi,int? varStt,DateTime varNgayTao,int? varLangID)
 		{
 			MenuWebDuoi item = new MenuWebDuoi();
 			
@@ -377,7 +377,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Updates a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Update(int varId,string varTen,int? varMenuChaId,string varSlug,string varMoTa,bool? varHienThi,int? varStt,DateTime? varNgayTao,int? varLangID)
+		public static void Update(int varId,string varTen,int? varMenuChaId,string varSlug,string varMoTa,bool varHienThi,int? varStt,DateTime varNgayTao,int? varLangID)
 		{
 			MenuWebDuoi item = new MenuWebDuoi();
 			

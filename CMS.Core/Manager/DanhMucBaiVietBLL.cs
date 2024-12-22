@@ -21,6 +21,12 @@ namespace CMS.Core.Manager
         public const byte KeyProject = 2;
         public const byte Project = 10;
         public const byte Video = 11;
+        public const byte FileAttactment = 12;
+        //public const int Category = 0;
+        //public const int Article = 1;
+        //public const int Project = 2;
+        //public const int Info = 3;
+
 
     }
     public class DanhMucBaiVietBLL
@@ -65,12 +71,16 @@ namespace CMS.Core.Manager
         {
 
             danhMuc = new DanhMucController().Insert(danhMuc);
-
+            if(danhMuc.Type == CategoryType.FileAttactment && danhMuc.DanhMucChaId != 0)
+            {
+                return danhMuc;
+            }    
             FriendlyUrlBLL.Insert(new FriendlyUrl()
             {
                 PostId = danhMuc.Id,
                 PostType = FriendlyUrlBLL.FriendlyURLTypeHelper.Category,
-                SlugUrl = danhMuc.Slug
+                SlugUrl = danhMuc.Slug,
+                Status = BasicStatusHelper.Active
             });
             return danhMuc;
         }
@@ -78,25 +88,28 @@ namespace CMS.Core.Manager
         {
             if(keySearch != null)
             {
-                string sql = string.Format("select* from DanhMuc as d inner join FriendlyUrl as f on d.Id = f.PostId where PostType = {1} and langID = {2} and Ten like N'%{0}%' or Slug like '%{0}%' and Status != {3}", keySearch, CatType, langId, BasicStatusHelper.Deleted)
+                string sql = string.Format("select * from DanhMuc as  where PostType = {1} and langID = {2} and (Ten like N'%{0}%' or Slug like '%{0}%') and Status != {3}", keySearch, CatType, langId, BasicStatusHelper.Deleted)
 ;               return new InlineQuery().ExecuteTypedList<DanhMuc>(sql);
             }
-            return new Select().From(DanhMuc.Schema).InnerJoin(FriendlyUrl.PostIdColumn, DanhMuc.IdColumn)
-                .Where(DanhMuc.LangIDColumn).IsEqualTo(langId).And(FriendlyUrl.PostTypeColumn).IsEqualTo(CatType)
+            return new Select().From(DanhMuc.Schema)
+                .Where(DanhMuc.LangIDColumn).IsEqualTo(langId).And(DanhMuc.TypeColumn).IsEqualTo(CatType)
+                .And(DanhMuc.StatusColumn).IsNotEqualTo(BasicStatusHelper.Deleted)
                 .ExecuteTypedList<DanhMuc>();
         }
         public static DanhMuc Update(DanhMuc danhMuc)
         {
-
+            danhMuc = new DanhMucController().Update(danhMuc);
+            if (danhMuc.Type == CategoryType.FileAttactment && danhMuc.DanhMucChaId != 0)
+            {
+                return danhMuc;
+            }
             var friendlyUrl = FriendlyUrlBLL.GetByPostIdAndTypeId(danhMuc.Id, FriendlyUrlBLL.FriendlyURLTypeHelper.Category);
             if(danhMuc.Slug != friendlyUrl.SlugUrl)
             {
                 friendlyUrl.SlugUrl = danhMuc.Slug;
                 FriendlyUrlBLL.Update(friendlyUrl);
             }
-
-
-            return new DanhMucController().Update(danhMuc);
+            return danhMuc;
         }
         public static List<DanhMuc> GetAllByParentId(int id)
         {
@@ -110,7 +123,12 @@ namespace CMS.Core.Manager
                 .IsEqualTo(id).Execute();
 
             FriendlyUrlBLL.DeleteByPostId(id, FriendlyURLTypeHelper.Category);
-
+            new Update(DanhMuc.Schema)
+                .Set(DanhMuc.DanhMucChaIdColumn).EqualTo(0)
+                .Where(DanhMuc.DanhMucChaIdColumn).IsEqualTo(id).Execute();
+            new Update(DanhMuc.Schema)
+                .Set(DanhMuc.SlugColumn).EqualTo(string.Empty)
+                .Where(DanhMuc.DanhMucChaIdColumn).IsEqualTo(id).Execute();
             return new Update(DanhMuc.Schema)
                 .Set(DanhMuc.StatusColumn).EqualTo(BasicStatusHelper.Deleted)
                 .Where(DanhMuc.IdColumn).IsEqualTo(id).Execute() > 0; 
@@ -125,7 +143,7 @@ namespace CMS.Core.Manager
         }
         public static List<BaiVietInDanhMucDto> GetBaiVietInDanhMuc(int danhMucId, int langId)
         {
-            string sql = string.Format($@"select b.Id as BaiVietId, b.TieuDe, n.DanhmucId as DanhMucId,
+            string sql = string.Format($@" select b.Id as BaiVietId, b.TieuDe, n.DanhmucId as DanhMucId,
                 case 
 	                when n.Id is null then 0
 	                else 1

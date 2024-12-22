@@ -65,7 +65,7 @@ namespace CMS.WebUI.Administration
 
             list = VaiTroManagerBll.GetPaging(pageSize, pageIndex, Request.QueryString["search"], null, out totalRow);
              
-            int idUser = int.Parse(Session["UserId"].ToString());
+            int idUser = ApplicationContext.Current.CurrentUserID;
             if (idUser != 31)
             {
                 list = list.Where(x => x.Id != 1).ToList();
