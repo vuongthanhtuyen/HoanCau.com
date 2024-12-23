@@ -25,16 +25,17 @@ namespace CMS.WebUI.Controls.ControlContentPage
             //}
             BaiViet baiViet = new BaiViet();
             baiViet = BaiVietPublishBLL.GetByMa(slugPost);
-            baiViet.ViewCount += 1;
-            baiViet = BaiVietPublishBLL.Update(baiViet);
-            Page.Title = baiViet.TieuDe;
-            string thm = "";
-            if (baiViet.ThumbnailUrl != null)
-            {
-                //thm = string.Format($@" <img src = ""Administration/UploadImage/{baiViet.ThumbnailUrl}
-                //"" alt = ""{baiViet.TieuDe} "">");
-            }
-            var postView = string.Format($@"
+            if (baiViet != null) {
+                baiViet.ViewCount += 1;
+                baiViet = BaiVietPublishBLL.Update(baiViet);
+                Page.Title = baiViet.TieuDe;
+                string thm = "";
+                if (baiViet.ThumbnailUrl != null)
+                {
+                    //thm = string.Format($@" <img src = ""Administration/UploadImage/{baiViet.ThumbnailUrl}
+                    //"" alt = ""{baiViet.TieuDe} "">");
+                }
+                var postView = string.Format($@"
                 
                             <div class=""wrapImg""> {thm}</div>
                             <div class=""contentText"">
@@ -68,35 +69,36 @@ namespace CMS.WebUI.Controls.ControlContentPage
                          
                 ");
 
-            ltlPostView.Text = postView;
+                ltlPostView.Text = postView;
 
 
 
-            DanhMuc danhMuc = new DanhMuc();
-            danhMuc = BaiVietPublishBLL.GetDanhMucByIdBaiViet(baiViet.Id);
-            int danhMucId = 0;
-            List<Breadcrumb> list = new List<Breadcrumb>();
-            if (danhMuc != null)
-            {
-                Breadcrumb breadcrumb = new Breadcrumb()
+                DanhMuc danhMuc = new DanhMuc();
+                danhMuc = BaiVietPublishBLL.GetDanhMucByIdBaiViet(baiViet.Id);
+                int danhMucId = 0;
+                List<Breadcrumb> list = new List<Breadcrumb>();
+                if (danhMuc != null)
                 {
-                    Title = danhMuc.Ten,
-                    Url = danhMuc.Slug
-                };
-                danhMucId = danhMuc.Id;
-                list.Add(breadcrumb);
-            }
-            else
-            {
-                Breadcrumb breadcrumb = new Breadcrumb()
+                    Breadcrumb breadcrumb = new Breadcrumb()
+                    {
+                        Title = danhMuc.Ten,
+                        Url = danhMuc.Slug
+                    };
+                    danhMucId = danhMuc.Id;
+                    list.Add(breadcrumb);
+                }
+                else
                 {
-                    Title = "Tất cả bài viết",
-                    Url = "DanhMucPublish"
-                };
-                list.Add(breadcrumb);
-            }
+                    Breadcrumb breadcrumb = new Breadcrumb()
+                    {
+                        Title = "Tất cả bài viết",
+                        Url = "DanhMucPublish"
+                    };
+                    list.Add(breadcrumb);
+                }
 
-            SlideTop.ShowBreadcrumb(baiViet.TieuDe, null, list);
+                SlideTop.ShowBreadcrumb(baiViet.TieuDe, null, list);
+            }
         }
     }
 }

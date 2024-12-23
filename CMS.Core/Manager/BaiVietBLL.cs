@@ -55,6 +55,7 @@ namespace CMS.Core.Manager
             {
                 PostId = baiViet.Id,
                 PostType = FriendlyUrlBLL.FriendlyURLTypeHelper.Article,
+                Status = BasicStatusHelper.Active,
                 SlugUrl = baiViet.Slug
             });
             return baiViet;
@@ -66,6 +67,7 @@ namespace CMS.Core.Manager
             if (friendUrl.SlugUrl != baiViet.Slug)
             {
                 friendUrl.SlugUrl = baiViet.Slug;
+                //friendUrl.GetDBType
                 FriendlyUrlBLL.Update(friendUrl);
             }
             return new BaiVietController().Update(baiViet);
@@ -81,7 +83,7 @@ namespace CMS.Core.Manager
 	                else 0
                 end as IsHaveDanhMuc
                 from DanhMuc as c
-                left join NhomBaiViet as cd on cd.DanhMucId = c.Id AND cd.BaiVietId = {0} where c.Status !={3} and c.LangID = {1} and c.Type = {2} ", postId,langId, type, BasicStatusHelper.Deleted);
+                left join NhomBaiViet as cd on cd.DanhMucId = c.Id AND cd.BaiVietId = {0} where c.Status != '{3}' and c.LangID = {1} and c.Type = {2} ", postId,langId, type, BasicStatusHelper.Deleted);
             return new InlineQuery().ExecuteTypedList<DanhMucBaiVietDto>(sql);
         }
 

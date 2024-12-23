@@ -80,7 +80,7 @@ namespace SweetCMS.DataAccess
 	    /// Inserts a record, can be used with the Object Data Source
 	    /// </summary>
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
-	    public void Insert(string SlugUrl,int? PostId,int? PostType,string Status)
+	    public void Insert(string SlugUrl,int PostId,int PostType,string Status)
 	    {
 		    FriendlyUrl item = new FriendlyUrl();
 		    
@@ -100,7 +100,7 @@ namespace SweetCMS.DataAccess
 	    /// Updates a record, can be used with the Object Data Source
 	    /// </summary>
         [DataObjectMethod(DataObjectMethodType.Update, true)]
-	    public void Update(int Id,string SlugUrl,int? PostId,int? PostType,string Status)
+	    public void Update(int Id,string SlugUrl,int PostId,int PostType,string Status)
 	    {
 		    FriendlyUrl item = new FriendlyUrl();
 	        item.MarkOld();

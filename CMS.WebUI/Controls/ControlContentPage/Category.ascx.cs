@@ -19,6 +19,7 @@ namespace CMS.WebUI.Controls.ControlContentPage
         }
         public void Binding(string slugCate)
         {
+            
             try
             {
                 DanhMuc danhMuc = new DanhMuc();
@@ -32,12 +33,12 @@ namespace CMS.WebUI.Controls.ControlContentPage
                 //    {
                 //        idDanhMuc = result; // Gán giá trị nếu parse thành công
 
-
                 danhMuc = DanhMucPublishBLL.GetByMa(slugCate);
 
                 postList = DanhMucPublishBLL.GetPaging(10, 1, null, null, danhMuc.Id,ApplicationContext.Current.CurrentLanguageId, out totalRow);
                 SlideTop.ShowBreadcrumb(danhMuc.Ten);
                 Page.Title = danhMuc.Ten.ToString();
+                SlideTop.ImageThumbnail = Helpers.GetThumbnailUrl(danhMuc.ThumbnailUrl);
 
 
                 DanhSachBaiViet.GetAllPost(postList);

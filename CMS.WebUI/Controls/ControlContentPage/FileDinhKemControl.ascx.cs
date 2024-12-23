@@ -21,13 +21,16 @@ namespace CMS.WebUI.Controls.ControlContentPage
             if (!IsPostBack)
             {
                 var fileDinhKem = DanhMucBaiVietBLL.GetById(IdDanhMuc);
-                SlideTop.ImageThumbnail = Helpers.GetThumbnailUrl(fileDinhKem.ThumbnailUrl);
-                SlideTop.ShowBreadcrumb(fileDinhKem.Ten);
-                List<ItemDanhMucFileDinhKem> listChid = FileAttactmentBLL.GetChildInByParentDanhMuc(IdDanhMuc);
-                List<ItemFileDto> listFile = FileAttactmentBLL.GetAllFileDinhKemByListCate(listChid.Select(x => x.Id).ToArray());
-                if (listChid != null && listChid.Count > 0 && listFile != null && listFile.Count > 0)
+                if(fileDinhKem != null)
                 {
-                    ltrFiledinhKem.Text =  BindDanhMuc(listChid, listFile, IdDanhMuc, true);
+                    SlideTop.ImageThumbnail = Helpers.GetThumbnailUrl(fileDinhKem.ThumbnailUrl);
+                    SlideTop.ShowBreadcrumb(fileDinhKem.Ten);
+                    List<ItemDanhMucFileDinhKem> listChid = FileAttactmentBLL.GetChildInByParentDanhMuc(IdDanhMuc);
+                    List<ItemFileDto> listFile = FileAttactmentBLL.GetAllFileDinhKemByListCate(listChid.Select(x => x.Id).ToArray());
+                    if (listChid != null && listChid.Count > 0 && listFile != null && listFile.Count > 0)
+                    {
+                        ltrFiledinhKem.Text = BindDanhMuc(listChid, listFile, IdDanhMuc, true);
+                    }
                 }
             }
         }

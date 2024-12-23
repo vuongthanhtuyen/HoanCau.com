@@ -74,6 +74,8 @@
     <Compile Include="MenuWebDuoiController.cs" />
     <Compile Include="MenuWebTren.cs" />
     <Compile Include="MenuWebTrenController.cs" />
+    <Compile Include="NganhDaoTao.cs" />
+    <Compile Include="NganhDaoTaoController.cs" />
     <Compile Include="NguoiDung.cs" />
     <Compile Include="NguoiDungController.cs" />
     <Compile Include="NguoiDungVaiTroChitiet.cs" />

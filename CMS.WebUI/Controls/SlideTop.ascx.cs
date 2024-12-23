@@ -16,7 +16,7 @@ namespace CMS.WebUI.Controls
             
         }
 
-        public string ImageThumbnail
+        public static string ImageThumbnail
         {
             get;set;
             

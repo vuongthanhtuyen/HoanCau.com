@@ -197,7 +197,7 @@ namespace SweetCMS.DataAccess
 				colvarNgayTao.DataType = DbType.DateTime;
 				colvarNgayTao.MaxLength = 0;
 				colvarNgayTao.AutoIncrement = false;
-				colvarNgayTao.IsNullable = true;
+				colvarNgayTao.IsNullable = false;
 				colvarNgayTao.IsPrimaryKey = false;
 				colvarNgayTao.IsForeignKey = false;
 				colvarNgayTao.IsReadOnly = false;
@@ -258,9 +258,9 @@ namespace SweetCMS.DataAccess
 		  
 		[XmlAttribute("NgayTao")]
 		[Bindable(true)]
-		public DateTime? NgayTao 
+		public DateTime NgayTao 
 		{
-			get { return GetColumnValue<DateTime?>(Columns.NgayTao); }
+			get { return GetColumnValue<DateTime>(Columns.NgayTao); }
 			set { SetColumnValue(Columns.NgayTao, value); }
 		}
 		
@@ -283,7 +283,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Inserts a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Insert(string varTen,string varHinhAnhUrl,string varLienKetUrl,bool? varTrangThai,DateTime? varNgayTao)
+		public static void Insert(string varTen,string varHinhAnhUrl,string varLienKetUrl,bool? varTrangThai,DateTime varNgayTao)
 		{
 			DoiTac item = new DoiTac();
 			
@@ -307,7 +307,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Updates a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Update(int varId,string varTen,string varHinhAnhUrl,string varLienKetUrl,bool? varTrangThai,DateTime? varNgayTao)
+		public static void Update(int varId,string varTen,string varHinhAnhUrl,string varLienKetUrl,bool? varTrangThai,DateTime varNgayTao)
 		{
 			DoiTac item = new DoiTac();
 			

@@ -1,5 +1,6 @@
 ﻿using CMS.Core.Manager;
 using CMS.WebUI.Controls;
+using SweetCMS.Core.Helper;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -26,18 +27,18 @@ namespace CMS.WebUI
             //pageIndex = PagingAdminWeb.GetPageIndex();
             List<DoiTac> doiTacList = new List<DoiTac>();
             int totalRow = 0;
-            doiTacList = DoiTacBLL.GetPaging(5, 1, null, null, out totalRow);
+            doiTacList = DoiTacBLL.GetPaging(40, 1, null, null, out totalRow);
             //ViewState["LastIndex"] = (pageIndex - 1) * pageSize;
             //PagingAdminWeb.GetPaging(totalRow, pageIndex);
             SlideTop.ShowBreadcrumb("Đối tác");
 
             string doiTacShow = "";
-            foreach (var doiTac in doiTacList)
+            foreach (var doiTac in doiTacList.OrderBy(x => x.NgayTao))
             {
                 doiTacShow += string.Format($@"
                     <div class=""col colItem"">
                         <div class=""contentItem"">
-                            <div class=""wrapImg""><a class=""wrapImgResize img16And9"" href=""{doiTac.LienKetUrl}"" target=""_blank"" title=""{doiTac.Ten}""><img src=""/Administration/UploadImage/{doiTac.HinhAnhUrl}"" alt=""{doiTac.Ten}"" /></a></div>
+                            <div class=""wrapImg""><a class=""wrapImgResize img16And9"" href=""{doiTac.LienKetUrl}"" target=""_blank"" title=""{doiTac.Ten}""><img src=""{Helpers.GetThumbnailUrl(doiTac.HinhAnhUrl)}"" alt=""{doiTac.Ten}"" /></a></div>
                             <div class=""wrapText"">
                                 <h3 class=""titleItem""><a class=""linkTitleItem"" href=""{doiTac.LienKetUrl}"" target=""_blank"" title=""{doiTac.Ten}"">{doiTac.Ten}</a></h3>
                                 <div class=""textDes""></div>

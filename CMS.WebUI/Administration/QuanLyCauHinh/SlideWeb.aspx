@@ -177,7 +177,7 @@
 
                                         <div class="col-md-6">
                                             <div class="form-group ">
-                                                <label for="chkTrangThai" class="mb-3">Nổi bật</label>
+                                                <label for="chkTrangThai" class="mb-3"> Trạng thái</label>
                                                 <br />
                                                 <asp:CheckBox ID="chkTrangThai" runat="server" CssClass="form-control-user" Checked="true" />
                                                 <label class="form-check-label" for="chkTrangThai">Hiển thị</label>

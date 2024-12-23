@@ -284,6 +284,8 @@
     <Content Include="Administration\Assets\js\sb-admin-2.js" />
     <Content Include="Administration\Assets\js\sb-admin-2.min.js" />
     <Content Include="Administration\Assets\js\toast.js" />
+    <Content Include="Administration\ChuongTrinhDaoTao.aspx" />
+    <Content Include="Administration\NganhDaoTaoAdmin.aspx" />
     <Content Include="Administration\NhomFileDinhKem.aspx" />
     <Content Include="Administration\Style\dist\css\AdminLTE.css" />
     <Content Include="Administration\Style\dist\css\AdminLTE.min.css" />
@@ -3854,6 +3856,13 @@
     <Compile Include="Administration\AdminUserControl\SummernoteEditor.ascx.designer.cs">
       <DependentUpon>SummernoteEditor.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Administration\ChuongTrinhDaoTao.aspx.cs">
+      <DependentUpon>ChuongTrinhDaoTao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ChuongTrinhDaoTao.aspx.designer.cs">
+      <DependentUpon>ChuongTrinhDaoTao.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administration\Common\AdminPermistion.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -3891,6 +3900,13 @@
     </Compile>
     <Compile Include="Administration\Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\NganhDaoTaoAdmin.aspx.cs">
+      <DependentUpon>NganhDaoTaoAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\NganhDaoTaoAdmin.aspx.designer.cs">
+      <DependentUpon>NganhDaoTaoAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administration\NhomFileDinhKem.aspx.cs">
       <DependentUpon>NhomFileDinhKem.aspx</DependentUpon>

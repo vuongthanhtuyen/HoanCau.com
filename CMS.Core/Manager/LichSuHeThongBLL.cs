@@ -38,7 +38,9 @@ namespace CMS.Core.Manager
         public const string TopMenuManagement = "Quản lý menu trên";
         public const string BottomMenuManagement = "Quản lý menu dưới";
         public const string QuanLySlide = "Quản lý Slide";
-        
+        public const string QuanLyDoiTac = "Quản lý đối tác";
+        public const string QuanLyChuongTrinhDaoTao  = "Quản lý chương trình đào tạo";
+
     }
 
     public class LichSuHeThongBLL

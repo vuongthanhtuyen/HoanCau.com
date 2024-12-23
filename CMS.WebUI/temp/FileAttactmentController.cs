@@ -80,11 +80,11 @@ namespace SweetCMS.DataAccess
 	    /// Inserts a record, can be used with the Object Data Source
 	    /// </summary>
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
-	    public void Insert(string Titie,string FileUrl,int Type,int CategoryId)
+	    public void Insert(string Title,string FileUrl,int Type,int CategoryId)
 	    {
 		    FileAttactment item = new FileAttactment();
 		    
-            item.Titie = Titie;
+            item.Title = Title;
             
             item.FileUrl = FileUrl;
             
@@ -100,7 +100,7 @@ namespace SweetCMS.DataAccess
 	    /// Updates a record, can be used with the Object Data Source
 	    /// </summary>
         [DataObjectMethod(DataObjectMethodType.Update, true)]
-	    public void Update(int Id,string Titie,string FileUrl,int Type,int CategoryId)
+	    public void Update(int Id,string Title,string FileUrl,int Type,int CategoryId)
 	    {
 		    FileAttactment item = new FileAttactment();
 	        item.MarkOld();
@@ -108,7 +108,7 @@ namespace SweetCMS.DataAccess
 		    
 			item.Id = Id;
 				
-			item.Titie = Titie;
+			item.Title = Title;
 				
 			item.FileUrl = FileUrl;
 				

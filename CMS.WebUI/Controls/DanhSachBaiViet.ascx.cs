@@ -19,6 +19,7 @@ namespace CMS.WebUI.Controls
 
         public void GetAllPost(List<BaiVietDto> postList,string url = "BaiVietPublish.aspx?id=")
         {
+           
             string postListShow = "";
             foreach (var post in postList)
             {

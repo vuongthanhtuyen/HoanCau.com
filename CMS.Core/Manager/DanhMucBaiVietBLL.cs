@@ -22,6 +22,7 @@ namespace CMS.Core.Manager
         public const byte Project = 10;
         public const byte Video = 11;
         public const byte FileAttactment = 12;
+        public const byte ChuongTrinhDaoTao = 20;
         //public const int Category = 0;
         //public const int Article = 1;
         //public const int Project = 2;
@@ -107,6 +108,8 @@ namespace CMS.Core.Manager
             if(danhMuc.Slug != friendlyUrl.SlugUrl)
             {
                 friendlyUrl.SlugUrl = danhMuc.Slug;
+                //friendlyUrl.Status = BasicStatusHelper.Active;
+                //friendlyUrl.PostType = FriendlyURLTypeHelper.Category;
                 FriendlyUrlBLL.Update(friendlyUrl);
             }
             return danhMuc;

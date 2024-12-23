@@ -35,6 +35,8 @@ namespace SweetCMS.DataAccess{
             return sp;
         }
 
+
+
         /// <summary>
         /// Creates an object wrapper for the StoreNguoiDungTimKiemPhanTrang Procedure
         /// </summary>
@@ -56,6 +58,29 @@ namespace SweetCMS.DataAccess{
             sp.Command.AddOutputParameter("@total_row", DbType.Int32, 0, 10);
             return sp;
         }
+
+        /// <summary>
+        /// Creates an object wrapper for the StoreNganhDaoTaoTimKiemPhanTrang Procedure
+        /// </summary>
+        public static StoredProcedure StoreNganhDaoTaoTimKiemPhanTrang(int? PageSize, int? PageIndex, string Key, bool? ASC, out int Totalrow)
+        {
+            Totalrow = 0;
+            SubSonic.StoredProcedure sp = new SubSonic.StoredProcedure("StoreNganhDaoTaoTimKiemPhanTrang", DataService.GetInstance("DataAcessProvider"), "dbo");
+
+            sp.Command.AddParameter("@PageSize", PageSize, DbType.Int32, 0, 10);
+
+            sp.Command.AddParameter("@PageIndex", PageIndex, DbType.Int32, 0, 10);
+
+            sp.Command.AddParameter("@Key", Key, DbType.String, null, null);
+
+            sp.Command.AddParameter("@ASC", ASC, DbType.Boolean, null, null);
+
+            sp.Command.AddOutputParameter("@total_row", DbType.Int32, 0, 10);
+
+            return sp;
+        }
+
+
         /// <summary>
         /// Creates an object wrapper for the StoreNguoiDungTimKiemPhanTrang Procedure
         /// </summary>

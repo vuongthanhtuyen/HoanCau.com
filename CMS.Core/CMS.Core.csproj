@@ -66,6 +66,7 @@
     <Compile Include="Helper\SecurityHelper.cs" />
     <Compile Include="Helper\VnUnicodeHelper.cs" />
     <Compile Include="Manager\BaiVietBLL.cs" />
+    <Compile Include="Manager\ChuongTrinhDaoTaoBLL.cs" />
     <Compile Include="Manager\DoiTacBLL.cs" />
     <Compile Include="Manager\FileAttactmentBLL.cs" />
     <Compile Include="Manager\FriendlyUrlBLL.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Manager\MenuManagerBLL.cs" />
     <Compile Include="Manager\MenuWebDuoiBLL.cs" />
     <Compile Include="Manager\MenuWebTrenBLL.cs" />
+    <Compile Include="Manager\NganhDaoTaoBLL.cs" />
     <Compile Include="Manager\NguoiDungManagerBLL.cs" />
     <Compile Include="Manager\DanhMucBaiVietBLL.cs" />
     <Compile Include="Manager\SettingManager.cs" />

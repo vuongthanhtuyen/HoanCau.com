@@ -33,7 +33,7 @@ namespace CMS.WebUI
                             ctrlDuAnTieuBieu.Visible = false;
 
                         }
-                        if (objFriendlyURL.PostType == FriendlyURLTypeHelper.Category)
+                        else if  (objFriendlyURL.PostType == FriendlyURLTypeHelper.Category)
                         {
                             ltrHead.Text = string.Format(@"<link rel=""stylesheet"" type=""text/css"" href=""/Assets/css/news-list.css?v=f81a959662efae2fc3cc158351e6d90c"" />");
                             ltrBelow.Text = string.Format(@"<script type=""text/javascript"" src=""https://platform-api.sharethis.com/js/sharethis.js?v=f81a959662efae2fc3cc158351e6d90c#property=646b0f87d8c6d2001a06c301&product=inline-share-buttons&source=platform"" async=""async""></script>");
@@ -42,7 +42,7 @@ namespace CMS.WebUI
                             ctrlBaiVietPublish.Visible = false;
                             ctrlDuAnTieuBieu.Visible = false;
                         }
-                        if (objFriendlyURL.PostType == FriendlyURLTypeHelper.Info)
+                        else if (objFriendlyURL.PostType == FriendlyURLTypeHelper.Info)
                         {
                             ltrHead.Text = string.Format(@"<link rel=""stylesheet"" type=""text/css"" href=""Assets/css/news-detail.css?v=f81a959662efae2fc3cc158351e6d90c"" />");
                             ltrBelow.Text = string.Format(@"<script type=""text/javascript"" src=""https://platform-api.sharethis.com/js/sharethis.js?v=f81a959662efae2fc3cc158351e6d90c#property=646b0f87d8c6d2001a06c301&product=inline-share-buttons&source=platform"" async=""async""></script>");
@@ -52,7 +52,7 @@ namespace CMS.WebUI
                             ctrlBaiVietPublish.Visible = false;
                             ctrlDuAnTieuBieu.Visible = false;
                         }
-                        if (objFriendlyURL.PostType == FriendlyURLTypeHelper.Project)
+                        else if (objFriendlyURL.PostType == FriendlyURLTypeHelper.Project)
                         {
                             ltrHead.Text = string.Format(@"<link rel=""stylesheet"" type=""text/css"" href=""/Assets/css/project-detail.css?v=f81a959662efae2fc3cc158351e6d90c"" />");
                             ltrBelow.Text = string.Format(@"<script src=""/Assets/js/project-detail.js?v=f81a959662efae2fc3cc158351e6d90c""></script>");
@@ -62,7 +62,7 @@ namespace CMS.WebUI
                             ctrlBaiVietGioiThieu.Visible = false;
 
                         }
-                        if (objFriendlyURL.PostType == FriendlyURLTypeHelper.FileAttactment)
+                        else if (objFriendlyURL.PostType == FriendlyURLTypeHelper.FileAttactment)
                         {
                             ltrHead.Text = string.Format(@"<link rel=""stylesheet"" type=""text/css"" href=""/Assets/css/news-list.css?v=f81a959662efae2fc3cc158351e6d90c"" />");
                             ltrBelow.Text = string.Format(@"<script src=""/Assets/js/news-list.js?v=f81a959662efae2fc3cc158351e6d90c""></script>");

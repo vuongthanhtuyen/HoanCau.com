@@ -44,6 +44,8 @@ namespace SweetCMS.DataAccess
         
 		public static readonly string MenuWebTren = @"MenuWebTren";
         
+		public static readonly string NganhDaoTao = @"NganhDaoTao";
+        
 		public static readonly string NguoiDung = @"NguoiDung";
         
 		public static readonly string NguoiDungVaiTroChitiet = @"NguoiDung_VaiTro_Chitiet";
@@ -126,6 +128,11 @@ namespace SweetCMS.DataAccess
 		public static TableSchema.Table MenuWebTren
 		{
             get { return DataService.GetSchema("MenuWebTren", "DataAcessProvider"); }
+		}
+        
+		public static TableSchema.Table NganhDaoTao
+		{
+            get { return DataService.GetSchema("NganhDaoTao", "DataAcessProvider"); }
 		}
         
 		public static TableSchema.Table NguoiDung
