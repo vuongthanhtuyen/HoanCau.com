@@ -3,12 +3,14 @@ using CMS.DataAsscess;
 using CMS.WebUI.Administration.AdminUserControl;
 using CMS.WebUI.Administration.Common;
 using Microsoft.Ajax.Utilities;
+using Newtonsoft.Json;
 using SweetCMS.Core.Helper;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -23,6 +25,7 @@ namespace CMS.WebUI.Administration
         public static string _UpdateDate = string.Empty;
         public static string _CreateBy = string.Empty;
         public static string _UpdateBy = string.Empty;
+        private static List<ItemFile> itemAttachments;
 
         //private const int idCurrentUser = 31;
         protected void Page_Load(object sender, EventArgs e)
@@ -172,7 +175,9 @@ namespace CMS.WebUI.Administration
                     _CreateBy = objNganhDaoTao.CreateBy;
                     _UpdateBy = objNganhDaoTao.UpdateBy;
                     ddlStatus.SelectedValue = objNganhDaoTao.Status ?? ArticleStatusHelper.New;
-                    txtDisplayOrder.Value = objNganhDaoTao.DisplayOrder.ToString();
+                    
+                    itemAttachments = FileAttactmentBLL.GetAllByTypeAndCateId(FileAttactmentType.NganhDaoTao, objNganhDaoTao.Id);
+                    ltrFileUpload.Text = GetFileUpload(itemAttachments);
                 }
                 else
                 {
@@ -180,7 +185,7 @@ namespace CMS.WebUI.Administration
                     txtSoNamDaoTao.Value = txtSoTinChi.Value = "1";
                     ddlSearchCategory.SelectedValue = txtViewCount.Value = "0";
                     txtDisplayOrder.Value = "-1";
-                    txtDieuKienNhapHoc.Value = txtHocPhi.Value = "0.00";
+                   
                     imgThumb.Src = string.Empty;
                     txtInfo.Visible = false;
                     _CreateDate = _UpdateDate = _CreateBy = _UpdateBy = string.Empty;
@@ -197,18 +202,39 @@ namespace CMS.WebUI.Administration
                 OpenMessageBox(MessageBoxType.Error, ex.Message);
             }
         }
+        private string GetFileUpload(List<ItemFile> listFileExtends, bool isPostBack = false)
+        {
+            StringBuilder fileUpload = new StringBuilder();
+            if (!isPostBack)
+            {
+                foreach (var item in listFileExtends)
+                {
+                    fileUpload.AppendFormat(templateFileUpload.InnerHtml, item.Id, item.Title, item.FileUrl);
+                }
+            }
+            else
+            {
+
+                foreach (var item in listFileExtends)
+                {
+                    fileUpload.AppendFormat(templateFileUpload.InnerHtml, item.AttachmentFileIdString, item.Title, item.FileUrl);
+
+                }
+            }
+            return fileUpload.ToString();
+        }
         protected void GridViewTable_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
             {
-                int baiVietId = Convert.ToInt32(e.CommandArgument);
-                var baiViet = BaiVietBLL.GetById(baiVietId);
-                if (baiViet != null)
+                int objNganhDaoTaoId = Convert.ToInt32(e.CommandArgument);
+                var objNganhDaoTao = NganhDaoTaoBLL.GetById(objNganhDaoTaoId);
+                if (objNganhDaoTao != null)
                 {
-                    hdnRowId.Value = baiVietId.ToString();
+                    hdnRowId.Value = objNganhDaoTaoId.ToString();
                     if (e.CommandName == "ChinhSuaDanhMuc")
                     {
-                        var danhMuclist = BaiVietBLL.GetAllDanhMucBaiVietById(baiVietId, ApplicationContext.Current.ContentCurrentLanguageId, CategoryType.Article);
+                        var danhMuclist = BaiVietBLL.GetAllDanhMucBaiVietById(objNganhDaoTaoId, ApplicationContext.Current.ContentCurrentLanguageId, CategoryType.Article);
                         GridViewDanhMuc.DataSource = danhMuclist;
                         GridViewDanhMuc.DataBind();
                         UpdatepanelEidtRole.Update();
@@ -216,6 +242,7 @@ namespace CMS.WebUI.Administration
                     }
                     else if (e.CommandName == "Xoa")
                     {
+
                         ScriptManager.RegisterStartupScript(this, GetType(), "openDelete", "openDelete();", true);
                     }
                 }
@@ -322,7 +349,58 @@ namespace CMS.WebUI.Administration
                     objNganhDaoTao = NganhDaoTaoBLL.Update(objNganhDaoTao);
                     hdnRowId.Value = "0";
                     LichSuHeThongBLL.LogAction(LichSuHeThongType.UPDATE, LichSuHeThongGroup.QuanLyChuongTrinhDaoTao, objNganhDaoTao.TenNganh);
+                   
                 }
+                #region update AttachmentFile
+                List<ItemFile> listAtt = JsonConvert.DeserializeObject<List<ItemFile>>(txtlistFileUploadJson.Value);
+                if (listAtt != null && listAtt.Count > 0)
+                {
+                    int idAttachfile = 0;
+
+                    foreach (ItemFile newAtt in listAtt)
+                    {
+                        if (int.TryParse(newAtt.AttachmentFileIdString, out idAttachfile))
+                        {
+                            var updateObj = FileAttactmentBLL.GetAttachmentFilebyPostIdAndTypeAndId(objNganhDaoTao.Id, FileAttactmentType.NganhDaoTao, idAttachfile);
+                            if (updateObj != null)
+                            {
+                                updateObj.Title = newAtt.Title;
+                                updateObj.FileUrl = newAtt.FileUrl;
+                                updateObj = FileAttactmentBLL.UpdateAttachmentFileInPost(updateObj);
+                                itemAttachments = itemAttachments.Where(t => t.Id != idAttachfile).ToList();
+                            }
+
+                        }
+                        else
+                        {
+                            FileAttactment attachmentFile = new FileAttactment()
+                            {
+                                CategoryId = objNganhDaoTao.Id,
+                                Type = FileAttactmentType.NganhDaoTao,
+                                FileUrl = newAtt.FileUrl,
+                                Title = newAtt.Title,
+                            };
+                            FileAttactmentBLL.InsertAttachmentFileInPost(attachmentFile);
+                        }
+                        //var itemAtt = AttachmentFileManager.GetAttachmentFilebyPostIdAndTypeAndId(objFAQ.FAQId, AttachmentFileType.FAQ, att.AttachmentFileId);
+
+                    }
+                    // xóa nếu cũ không có trong mới
+                    foreach (ItemFile att in itemAttachments)
+                    {
+
+                        FileAttactmentBLL.DeleteAttachmentFile(att.Id);
+                    }
+                }
+                else
+                {
+                    // xóa đi những file đang thuộc nhưng đã bị xóa
+                    if (itemAttachments != null && itemAttachments.Count > 0)
+                    {
+                        FileAttactmentBLL.DeleteAllAttachmentFileInPost(objNganhDaoTao.Id, FileAttactmentType.NganhDaoTao);
+                    }
+                }
+                #endregion
 
                 if (objNganhDaoTao != null)
                 {

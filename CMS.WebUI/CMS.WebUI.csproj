@@ -284,8 +284,23 @@
     <Content Include="Administration\Assets\js\sb-admin-2.js" />
     <Content Include="Administration\Assets\js\sb-admin-2.min.js" />
     <Content Include="Administration\Assets\js\toast.js" />
+    <Content Include="Administration\Assets\plugins\jstree\fancytree_all.min.js" />
+    <Content Include="Administration\Assets\plugins\jstree\fancytree_childcounter.js" />
+    <Content Include="Administration\Assets\plugins\jstree\jstree.js" />
+    <Content Include="Administration\Assets\plugins\jstree\jstree.min.js" />
+    <Content Include="Administration\Assets\plugins\jstree\skin-xp\icons.gif" />
+    <Content Include="Administration\Assets\plugins\jstree\skin-xp\vline.gif" />
+    <Content Include="Administration\Assets\plugins\jstree\theme-default\32px.png" />
+    <Content Include="Administration\Assets\plugins\jstree\theme-default\40px.png" />
+    <Content Include="Administration\Assets\plugins\jstree\theme-default\fancytree.css" />
+    <Content Include="Administration\Assets\plugins\jstree\theme-default\jstree.png" />
+    <Content Include="Administration\Assets\plugins\jstree\theme-default\style.css" />
+    <Content Include="Administration\Assets\plugins\jstree\theme-default\style.min.css" />
+    <Content Include="Administration\Assets\plugins\jstree\theme-default\throbber.gif" />
+    <Content Include="Administration\Assets\plugins\jstree\ui.fancytree.css" />
     <Content Include="Administration\ChuongTrinhDaoTao.aspx" />
     <Content Include="Administration\NganhDaoTaoAdmin.aspx" />
+    <Content Include="Administration\NhomCoCau.aspx" />
     <Content Include="Administration\NhomFileDinhKem.aspx" />
     <Content Include="Administration\Style\dist\css\AdminLTE.css" />
     <Content Include="Administration\Style\dist\css\AdminLTE.min.css" />
@@ -2654,6 +2669,7 @@
     <Content Include="Administration\Style\plugins\validationEngine\jquery.validationEngine-vi-VN.js" />
     <Content Include="Administration\Style\plugins\validationEngine\jquery.validationEngine.js" />
     <Content Include="Administration\Style\plugins\validationEngine\validationEngine.jquery.css" />
+    <Content Include="Administration\ThanhVien.aspx" />
     <Content Include="Administration\UploadImage\ion_Login.png" />
     <Content Include="AjaxHandler.aspx" />
     <Content Include="Assets\validation-engine\css\screenshot.png" />
@@ -2701,6 +2717,7 @@
     <Content Include="Assets\validation-engine\js\languages\jquery.validationEngine-zh_TW.js" />
     <Content Include="ContentPage.aspx" />
     <Content Include="Controls\btnContact.ascx" />
+    <Content Include="Controls\ChiTietThanhVien.ascx" />
     <Content Include="Controls\ControlContentPage\BaiVietGioiThieu.ascx" />
     <Content Include="Controls\ControlContentPage\BaiVietPublish.ascx" />
     <Content Include="Controls\ControlContentPage\Category.ascx" />
@@ -2708,6 +2725,7 @@
     <Content Include="Controls\ControlContentPage\FileDinhKemControl.ascx" />
     <Content Include="Controls\DanhSachBaiViet.ascx" />
     <Content Include="Controls\DanhSachDuAnTieuBieu.ascx" />
+    <Content Include="Controls\DanhSachThanhVien.ascx" />
     <Content Include="Controls\PagePublish.ascx" />
     <Content Include="Controls\SlideTop.ascx" />
     <Content Include="DanhSachDuAnTieuBieuPublish.aspx" />
@@ -3908,12 +3926,26 @@
     <Compile Include="Administration\NganhDaoTaoAdmin.aspx.designer.cs">
       <DependentUpon>NganhDaoTaoAdmin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Administration\NhomCoCau.aspx.cs">
+      <DependentUpon>NhomCoCau.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\NhomCoCau.aspx.designer.cs">
+      <DependentUpon>NhomCoCau.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administration\NhomFileDinhKem.aspx.cs">
       <DependentUpon>NhomFileDinhKem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Administration\NhomFileDinhKem.aspx.designer.cs">
       <DependentUpon>NhomFileDinhKem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ThanhVien.aspx.cs">
+      <DependentUpon>ThanhVien.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ThanhVien.aspx.designer.cs">
+      <DependentUpon>ThanhVien.aspx</DependentUpon>
     </Compile>
     <Compile Include="AjaxHandler.aspx.cs">
       <DependentUpon>AjaxHandler.aspx</DependentUpon>
@@ -3939,6 +3971,13 @@
     </Compile>
     <Compile Include="Controls\btnContact.ascx.designer.cs">
       <DependentUpon>btnContact.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ChiTietThanhVien.ascx.cs">
+      <DependentUpon>ChiTietThanhVien.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ChiTietThanhVien.ascx.designer.cs">
+      <DependentUpon>ChiTietThanhVien.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\ControlContentPage\BaiVietGioiThieu.ascx.cs">
       <DependentUpon>BaiVietGioiThieu.ascx</DependentUpon>
@@ -3988,6 +4027,13 @@
     </Compile>
     <Compile Include="Controls\DanhSachDuAnTieuBieu.ascx.designer.cs">
       <DependentUpon>DanhSachDuAnTieuBieu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DanhSachThanhVien.ascx.cs">
+      <DependentUpon>DanhSachThanhVien.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\DanhSachThanhVien.ascx.designer.cs">
+      <DependentUpon>DanhSachThanhVien.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\PagePublish.ascx.cs">
       <DependentUpon>PagePublish.ascx</DependentUpon>

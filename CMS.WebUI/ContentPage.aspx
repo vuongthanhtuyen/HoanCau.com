@@ -5,6 +5,10 @@
 <%@ Register Src="~/Controls/ControlContentPage/BaiVietGioiThieu.ascx" TagPrefix="uc1" TagName="BaiVietGioiThieu" %>
 <%@ Register Src="~/Controls/ControlContentPage/DuAnTieuBieu.ascx" TagPrefix="uc1" TagName="DuAnTieuBieuControl" %>
 <%@ Register Src="~/Controls/ControlContentPage/FileDinhKemControl.ascx" TagPrefix="uc1" TagName="FileDinhKemControl" %>
+<%@ Register Src="~/Controls/DanhSachThanhVien.ascx" TagPrefix="uc1" TagName="DanhSachThanhVien" %>
+<%@ Register Src="~/Controls/SlideTop.ascx" TagPrefix="uc1" TagName="SlideTop" %>
+
+
 
 
 
@@ -14,12 +18,17 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     
+    <uc1:SlideTop runat="server" ID="ctrlSlideTop" Visible ="false" />
     <uc1:BaiVietPublishControl runat="server" id="ctrlBaiVietPublish" />
     <uc1:CategoryControl runat="server" id="ctrlCategory" />
     <uc1:BaiVietGioiThieu runat="server" ID="ctrlBaiVietGioiThieu" />
     <uc1:DuAnTieuBieuControl runat="server" id="ctrlDuAnTieuBieu" />
     <uc1:FileDinhKemControl runat="server" id="ctrlFileDinhKemControl" />
+    <uc1:DanhSachThanhVien runat="server" id="ctrlDanhSachThanhVien" />
+
+
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="contentEnd" runat="server">
+
     <asp:Literal ID="ltrBelow" runat="server" EnableViewState="false"></asp:Literal>
 </asp:Content>

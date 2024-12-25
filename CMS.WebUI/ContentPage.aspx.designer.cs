@@ -24,6 +24,15 @@ namespace CMS.WebUI
         protected global::System.Web.UI.WebControls.Literal ltrHead;
 
         /// <summary>
+        /// ctrlSlideTop control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CMS.WebUI.Controls.SlideTop ctrlSlideTop;
+
+        /// <summary>
         /// ctrlBaiVietPublish control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace CMS.WebUI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::CMS.WebUI.Controls.ControlContentPage.FileDinhKemControl ctrlFileDinhKemControl;
+
+        /// <summary>
+        /// ctrlDanhSachThanhVien control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CMS.WebUI.Controls.DanhSachThanhVien ctrlDanhSachThanhVien;
 
         /// <summary>
         /// ltrBelow control.

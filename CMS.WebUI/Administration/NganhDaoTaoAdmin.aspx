@@ -196,10 +196,7 @@
                                                                 <input id="txtViewCount" runat="server" textmode="Number" class="form-control form-control-user" placeholder="Lượt xem" text="0" />
                                                             </div>
 
-                                                            <div class="col-md-6">
-                                                                <label for="txtDisplayOrder">Thứ tự hiển thị</label>
-                                                                <input id="txtDisplayOrder" runat="server" class="form-control form-control-user" placeholder="Thứ tự hiển thị" value="-1" type="number" />
-                                                            </div>
+
                                                         </div>
                                                         <div class="form-group" id="txtInfo" runat="server" visible="false">
                                                             <label>Người tạo: <%= _CreateBy %></label>
@@ -222,7 +219,7 @@
                                                     <div class="col-md-6">
                                                         <label for="txtHocPhi">Học phí</label>
                                                         <input data-selector="txtHocPhi" id="txtHocPhi" runat="server"
-                                                            class="validate[required] form-control" placeholder="Học phí" type="number" />
+                                                            class="validate[required] form-control" placeholder="Học phí" />
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="txtMaNganh">Mã ngành</label>
@@ -239,12 +236,74 @@
                                                         <input data-selector="txtSoTinChi" id="txtSoTinChi" runat="server"
                                                             class="validate[required] form-control" placeholder="Số tín chỉ" type="number" />
                                                     </div>
+                                                    <div class="col-md-6">
+                                                        <label for="txtDisplayOrder">Thứ tự hiển thị</label>
+                                                        <input id="txtDisplayOrder" runat="server" class="form-control form-control-user" placeholder="Thứ tự hiển thị" value="-1" type="number" />
+                                                    </div>
                                                     <div class="col-md-12">
                                                         <label for="txtDieuKienNhapHoc">Điều kiện nhập học</label>
                                                         <textarea data-selector="txtDieuKienNhapHoc" id="txtDieuKienNhapHoc" runat="server"
                                                             class="validate[required] form-control" placeholder="Điều kiện nhập học" rows="3"></textarea>
                                                     </div>
 
+                                                </div>
+                                                <hr />
+                                                <input type="hidden" id="txtlistFileUploadJson" data-selector="txtlistFileUploadJson" runat="server" value="" class="form-control" />
+                                                <input type="hidden" id="txtAllFileUploadElement" data-selector="txtAllFileUploadElement" runat="server" value="" class="form-control" />
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label class="box-title">Chuyên ngành</label>
+                                                    </div>
+                                                    <div class="col-md-6 text-right">
+                                                        <a class="btn btn-primary padding-fa" onclick="AddNewItemFileUpload();">Thêm mới  </a>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="box-body" id="listUploadTableBody">
+                                                            <asp:Literal runat="server" ID="ltrFileUpload" EnableViewState="false"></asp:Literal>
+                                                            <div runat="server" visible="false" enableviewstate="false" id="templateFileUpload">
+
+                                                                <div id="fileUploadElement{0}">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6 ">
+                                                                            <div class="form-group">
+                                                                                <label class="control-label">Tiêu đề</label>
+                                                                                <label style="display: inline-block; visibility: hidden; font-weight: normal;" id="lblErrorAlt{0}" class="text-red"><em>(Tiêu đề từ 1-250 ký tự)</em></label>
+
+                                                                                <div>
+                                                                                    <input type="text" class="form-control   validate[required]" data-id="{0}" value="{1}" data-selector="txtTitleData{0}" id="txtTitleData{0}" placeholder="Nhập tiêu đề" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-5 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <label class="control-label">Đường dẫn</label>
+                                                                                <label style="display: inline-block; visibility: hidden; font-weight: normal;" id="lblErrorUrl{0}" class="text-red"><em>(Đường dẫn từ 1-250 ký tự)</em></label>
+                                                                                <div class="input-group input-group">
+                                                                                    <input class="form-control  validate[required]" placeholder="Đường dẫn file" value="{2}" id="txtUrlFileUploadData{0}" data-selector="txtUrlFileUploadData{0}" type="text" />
+                                                                                    <span class="input-group-btn">
+                                                                                        <a class="btn btn-primary btn-open-modal padding-fa" onclick="OpenSelectAttachmentFile('txtUrlFileUploadData{0}');" data-toggle="modal" data-target="#image-detail">Tải lên
+                                                                                        </a>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-1 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <label class="control-label">Xóa </label>
+                                                                                <div>
+                                                                                    <a class="btn btn-danger" onclick="DeleteFileUpload('{0}');"><span class="fa fa-trash"></span>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -261,7 +320,7 @@
 
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             <asp:Button ID="btnSendServer" runat="server" Text="Lưu" class="btn btn-primary btn-user mx-1"
-                                OnClick="btnSendServer_Click" />
+                                OnClick="btnSendServer_Click" OnClientClick="CheckValid();" />
                         </div>
 
                     </ContentTemplate>
@@ -357,6 +416,7 @@
 
         function CheckValid() {
             var validated = $("#<%= UpdatePanelModal.ClientID%>").validationEngine('validate', { promptPosition: "TopLeft", scroll: false });
+            GetData();
             if (validated)
                 return validated;
         };
@@ -373,7 +433,94 @@
                 .toLowerCase();                 // Chuyển về chữ thường
             $('[data-selector="txtFriendlyURL"]').val(str);
         }
+        // File Upload
+        var idAttachMent = 0;
+        function AddNewItemFileUpload() {
+            idAttachMent++;
+            var idData = "add" + idAttachMent;
+            var insert =
+                `
+                <div id="fileUploadElement${idData}">
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <div class="form-group">
+                            <label class="control-label">Tiêu đề</label>
+                             <label style="display: inline-block; visibility: hidden; font-weight: normal;" id="lblErrorAlt${idData}"  class="text-red"><em>(Tiêu đề từ 1-250 ký tự)</em></label>
 
+                            <div>
+                                <input type="text" class="form-control   validate[required]" data-id="${idData}" data-selector="txtTitleData${idData}" id="txtTitleData${idData}" placeholder="Nhập tiêu đề" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">Đường dẫn</label>
+                            <label style="display: inline-block; visibility: hidden; font-weight: normal;" id="lblErrorUrl${idData}"  class="text-red"><em>(Đường dẫn từ 1-250 ký tự)</em></label>
+                            <div class="input-group input-group">
+                                <input class="form-control  validate[required]" placeholder="Đường dẫn file" id="txtUrlFileUploadData${idData}" data-selector="txtUrlFileUploadData${idData}" type="text" />
+                                <span class="input-group-btn">
+                                    <a class="btn btn-primary btn-open-modal padding-fa" onclick="OpenSelectAttachmentFile('txtUrlFileUploadData${idData}');" data-toggle="modal" data-target="#image-detail">Tải lên
+                                    </a>
+                                </span>
+                            </div>
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-1 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label"> Xóa </label>
+                            <div>
+                                <a class="btn btn-danger" onclick="DeleteFileUpload('${idData}');"> <span class="fa fa-trash"></span>
+                                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+ 
+`
+            document.getElementById("listUploadTableBody").insertAdjacentHTML('afterbegin', insert);
+        }
+        function GetData() {
+            // Lấy tất cả các thẻ có data-selector bắt đầu với 'txttitle'
+            var isValid = true;
+            var listfileUploads = $('[data-selector^="txtTitleData"]').map(function () {
+                var id = $(this).attr('data-id');
+                var url = $(`[data-selector="txtUrlFileUploadData${id}"]`).val();
+                var alt = $(this).val();
+
+                if (url === "" || url.length > 250) {
+                    $(`#lblErrorUrl${id}`).css('visibility', 'visible')
+                    isValid = false;
+                }
+                else {
+                    $(`#lblErrorUrl${id}`).css('visibility', 'hidden');
+                }
+                if (alt === "" || alt.length > 250) {
+                    $(`#lblErrorAlt${id}`).css('visibility', 'visible');
+                    isValid = false;
+                }
+                else {
+                    $(`#lblErrorAlt${id}`).css('visibility', 'hidden');
+                }
+                var fileUpload = {
+                    AttachmentFileIdString: id,
+                    FileUrl: url,
+                    Title: alt,
+                }
+                return fileUpload;
+            }).get();
+
+            $('[data-selector="txtlistFileUploadJson"]').val(JSON.stringify(listfileUploads))
+            return isValid;
+        };
+
+
+        function DeleteFileUpload(index) {
+            $(`#fileUploadElement${index}`).remove();
+        }
     </script>
 
     <script src="/Administration/Style/plugins/lightbox-evolution-1.8/js/jquery.lightbox.1.8.min.js"></script>

@@ -20,6 +20,9 @@ namespace CMS.Core.Manager
             public const int Info = 3;
             public const byte FileAttactment = 12;
             public const byte ChuongTrinhDaoTao = 20;
+            public const byte NganhDaoTao = 21;
+            public const byte NhomCoCau = 30;
+            public const byte ThanhVien = 31;
 
         }
         public static List<FriendlyUrl> GetAll()

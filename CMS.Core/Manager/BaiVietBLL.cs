@@ -15,6 +15,7 @@ namespace CMS.Core.Manager
     {
         public const int BaiViet = 1;
         public const int DuAnTieuBieu = 2;
+        public const int ThanhVien = 3;
 
     }
     public class BaiVietBLL
@@ -170,5 +171,7 @@ namespace CMS.Core.Manager
         }
 
         #endregion
+
+        
     }
 }

@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static CMS.Core.Manager.FriendlyUrlBLL;
 
 namespace CMS.Core.Manager
 {
@@ -17,17 +18,51 @@ namespace CMS.Core.Manager
             return new NganhDaoTaoController().FetchByID(id).SingleOrDefault();
 
         }
-        public static NganhDaoTao Insert(NganhDaoTao fileAttactment)
+        public static NganhDaoTao Insert(NganhDaoTao objNganhDaoTao)
         {
-            return new NganhDaoTaoController().Insert(fileAttactment);
+            objNganhDaoTao = new NganhDaoTaoController().Insert(objNganhDaoTao);
+            FriendlyUrlBLL.Insert(new FriendlyUrl()
+            {
+                PostId = objNganhDaoTao.Id,
+                PostType = FriendlyUrlBLL.FriendlyURLTypeHelper.NganhDaoTao,
+                Status = BasicStatusHelper.Active,
+                SlugUrl = objNganhDaoTao.Slug
+            });
+            return objNganhDaoTao;
+
         }
 
-        public static NganhDaoTao Update(NganhDaoTao fileAttactment)
+        public static NganhDaoTao Update(NganhDaoTao objNganhDaoTao)
         {
-            return new NganhDaoTaoController().Update(fileAttactment);
+            var friendUrl = FriendlyUrlBLL.GetByPostIdAndTypeId(objNganhDaoTao.Id, FriendlyUrlBLL.FriendlyURLTypeHelper.NganhDaoTao);
+            if (friendUrl == null )
+            {
+                FriendlyUrlBLL.Insert(new FriendlyUrl()
+                {
+                    PostId = objNganhDaoTao.Id,
+                    PostType = FriendlyUrlBLL.FriendlyURLTypeHelper.NganhDaoTao,
+                    Status = BasicStatusHelper.Active,
+                    SlugUrl = objNganhDaoTao.Slug
+                });
+            }
+            else if(friendUrl.SlugUrl != objNganhDaoTao.Slug)
+            {
+                 friendUrl.SlugUrl = objNganhDaoTao.Slug;
+                //friendUrl.GetDBType
+                FriendlyUrlBLL.Update(friendUrl);
+            }
+
+            return new NganhDaoTaoController().Update(objNganhDaoTao);
         }
         public static bool Delete(int id)
         {
+
+            new Delete().From(FileAttactment.Schema)
+             .Where(FileAttactment.CategoryIdColumn)
+             .IsEqualTo(id).And(FileAttactment.TypeColumn).IsEqualTo(FileAttactmentType.NganhDaoTao)
+             .Execute();
+            FriendlyUrlBLL.DeleteByPostId(id, FriendlyURLTypeHelper.NganhDaoTao);
+
             return new Delete().From(NganhDaoTao.Schema)
                 .Where(NganhDaoTao.IdColumn)
                 .IsEqualTo(id).Execute() > 0;

@@ -24,15 +24,6 @@ namespace CMS.WebUI
         protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentHead;
 
         /// <summary>
-        /// logoLangId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage logoLangId;
-
-        /// <summary>
         /// ltrMenuWebTren control.
         /// </summary>
         /// <remarks>
@@ -58,15 +49,6 @@ namespace CMS.WebUI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal ltrMenuWebDuoi;
-
-        /// <summary>
-        /// lblLienHeMaster control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLienHeMaster;
 
         /// <summary>
         /// contentEnd control.

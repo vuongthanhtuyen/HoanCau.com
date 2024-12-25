@@ -6,7 +6,7 @@
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
     <link href="/Administration/Style/plugins/lightbox-evolution-1.8/theme/default/jquery.lightbox.css" rel="stylesheet" />
     <link href="/Administration/Style/dist/css/imgareaselect-default.css" rel="stylesheet" />    
-    <link href="/Administration/Assets/plugins/style.min.css" rel="stylesheet" />
+    <link href="/Administration/Assets/plugins/jstree/theme-default/style.min.css" rel="stylesheet" />
 
 </asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -70,7 +70,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentScript" runat="server">
-    <script src="/Administration/Assets/plugins/jstree.min.js"></script>
+    <script src="/Administration/Assets/plugins/jstree/jstree.min.js"></script>
     <script src="/Administration/Style/plugins/lightbox-evolution-1.8/js/jquery.lightbox.1.8.min.js"></script>
     <script src="/Administration/Style/dist/js/jquery.imgareaselect.pack.js"></script>
 

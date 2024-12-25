@@ -17,16 +17,16 @@ namespace CMS.WebUI
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) { 
-                if(ApplicationContext.Current.CurrentLanguageId == 1)
-                {
-                    logoLangId.Src = "/Assets/images/language/vi.jpg";
-                    lblLienHeMaster.Text = "LIÊN HỆ";
-                }
-                else
-                {
-                    logoLangId.Src = "/Assets/images/language/en.jpg";
-                    lblLienHeMaster.Text = "CONTACT";
-                }
+                //if(ApplicationContext.Current.CurrentLanguageId == 1)
+                //{
+                //    logoLangId.Src = "/Assets/images/language/vi.jpg";
+                //    lblLienHeMaster.Text = "LIÊN HỆ";
+                //}
+                //else
+                //{
+                //    logoLangId.Src = "/Assets/images/language/en.jpg";
+                //    lblLienHeMaster.Text = "CONTACT";
+                //}
             }
             MenuWebTren();
             MenuWebDuoi();

@@ -16,6 +16,7 @@ namespace CMS.Core.Manager
     public class FileAttactmentType
     {
         public const byte FileDinhKem = 1;
+        public const byte NganhDaoTao = 21;
     }
     public class FileAttactmentBLL
     {

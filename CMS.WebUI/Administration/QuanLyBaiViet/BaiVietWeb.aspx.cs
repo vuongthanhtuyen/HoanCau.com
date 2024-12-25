@@ -113,8 +113,8 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     imgThumb.Src = Helpers.GetThumbnailUrl(baiViet.ThumbnailUrl);
                     chkTrangThai.Checked = baiViet.TrangThai ?? false;
                     txtInfo.Visible = true;
-                    _CreateDate = baiViet.NgayTao.ToString("dd/MM/yyyy");
-                    _UpdateDate = baiViet.ChinhSuaGanNhat.ToString("dd/MM/yyyy");
+                    _CreateDate = baiViet.NgayTao.ToString("yyyy-MM-dd");
+                    _UpdateDate = baiViet.ChinhSuaGanNhat.ToString("yyyy-MM-dd");
                     txtMoTaNgan.Value = Server.HtmlDecode(baiViet.MoTaNgan);
                     txtViewCount.Value = baiViet.ViewCount.ToString();
                     _ModalTitle = baiViet.TieuDe;
@@ -122,7 +122,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     _UpdateBy = baiViet.UpdateBy;
                     ddlStatus.SelectedValue = baiViet.Status ?? ArticleStatusHelper.New;
                     txtDisplayOrder.Value = baiViet.DisplayOrder.ToString();
-                    txtNgayDangCongKhai.Value = baiViet.NgayDang.ToString("dd/MM/yyyy");
+                    txtNgayDangCongKhai.Value = baiViet.NgayDang.ToString("yyyy-MM-dd");
                 }
                 else
                 {
@@ -134,7 +134,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     imgThumb.Attributes["src"] = "../UploadImage/addNewImage.png"; // Reset hình ảnh
                     txtViewCount.Value = txtDisplayOrder.Value = "0";
                     chkTrangThai.Checked = true; // Đặt trạng thái mặc định là checked
-                    txtNgayDangCongKhai.Value = DateTime.Now.ToString("dd/MM/yyyy");
+                    txtNgayDangCongKhai.Value = DateTime.Now.ToString("yyyy-MM-dd");
                 }
                 lblModalTitle.InnerText = _ModalTitle;
                 UpdatePanelModal.Update();
@@ -155,7 +155,7 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                     hdnRowId.Value = baiVietId.ToString();
                     if (e.CommandName == "ChinhSuaDanhMuc")
                     {
-                        var danhMuclist = BaiVietBLL.GetAllDanhMucBaiVietById(baiVietId, ApplicationContext.Current.ContentCurrentLanguageId, CategoryType.Article);
+                        var danhMuclist = BaiVietBLL.GetAllDanhMucBaiVietById(baiVietId, ApplicationContext.Current.ContentCurrentLanguageId, CategoryType.NhomCoCau);
                         GridViewDanhMuc.DataSource = danhMuclist;
                         GridViewDanhMuc.DataBind();
                         UpdatepanelEidtRole.Update();
@@ -236,10 +236,9 @@ namespace CMS.WebUI.Administration.QuanLyBaiViet
                 {
                     baiViet.ThumbnailUrl = Helpers.ConvertToSavePath(txtImage.Value.Trim(), true);
                 }
-                baiViet.Status = ddlStatus.SelectedValue;
+                baiViet.Status = string.IsNullOrEmpty(ddlStatus.SelectedValue) ? ArticleStatusHelper.New : ddlStatus.SelectedValue;
                 baiViet.MoTaNgan = Server.HtmlEncode(txtMoTaNgan.Value.Trim());
                 baiViet.ViewCount = int.Parse(txtViewCount.Value);
-                baiViet.Status = BasicStatusHelper.Active;
                 baiViet.TrangThai = chkTrangThai.Checked;
                 baiViet.DisplayOrder = int.Parse(txtDisplayOrder.Value.Trim());
                 DateTime ngayDang = DateTime.Now;

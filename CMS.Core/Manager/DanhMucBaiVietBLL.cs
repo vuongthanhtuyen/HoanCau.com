@@ -23,6 +23,7 @@ namespace CMS.Core.Manager
         public const byte Video = 11;
         public const byte FileAttactment = 12;
         public const byte ChuongTrinhDaoTao = 20;
+        public const byte NhomCoCau = 30;
         //public const int Category = 0;
         //public const int Article = 1;
         //public const int Project = 2;
@@ -192,6 +193,14 @@ namespace CMS.Core.Manager
             return new DanhMucController().Insert(danhMuc);
         }
         #endregion
+
+
+        public static List<DanhMuc> GetAllDanhMucByType(int type)
+        {
+            Select select = new Select();
+            select.From(DanhMuc.Schema).Where(DanhMuc.TypeColumn).IsEqualTo(type);
+            return select.ExecuteTypedList<DanhMuc>();
+        }
 
     }
 }

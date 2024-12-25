@@ -177,15 +177,6 @@ namespace CMS.WebUI.Administration
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtViewCount;
 
         /// <summary>
-        /// txtDisplayOrder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtDisplayOrder;
-
-        /// <summary>
         /// txtInfo control.
         /// </summary>
         /// <remarks>
@@ -210,7 +201,7 @@ namespace CMS.WebUI.Administration
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtHocPhi;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtHocPhi;
 
         /// <summary>
         /// txtMaNganh control.
@@ -240,6 +231,15 @@ namespace CMS.WebUI.Administration
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtSoTinChi;
 
         /// <summary>
+        /// txtDisplayOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtDisplayOrder;
+
+        /// <summary>
         /// txtDieuKienNhapHoc control.
         /// </summary>
         /// <remarks>
@@ -247,6 +247,42 @@ namespace CMS.WebUI.Administration
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDieuKienNhapHoc;
+
+        /// <summary>
+        /// txtlistFileUploadJson control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden txtlistFileUploadJson;
+
+        /// <summary>
+        /// txtAllFileUploadElement control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden txtAllFileUploadElement;
+
+        /// <summary>
+        /// ltrFileUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrFileUpload;
+
+        /// <summary>
+        /// templateFileUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl templateFileUpload;
 
         /// <summary>
         /// txtIdHidden control.

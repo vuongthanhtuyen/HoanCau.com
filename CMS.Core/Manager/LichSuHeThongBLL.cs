@@ -40,6 +40,8 @@ namespace CMS.Core.Manager
         public const string QuanLySlide = "Quản lý Slide";
         public const string QuanLyDoiTac = "Quản lý đối tác";
         public const string QuanLyChuongTrinhDaoTao  = "Quản lý chương trình đào tạo";
+        public const string QuanLyNhomCoCau = "Quản lý nhóm cơ cấu";
+        public const string QuanLyThanhVien = "Quản lý thành viên";
 
     }
 
