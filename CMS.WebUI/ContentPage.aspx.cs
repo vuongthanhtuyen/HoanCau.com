@@ -1,4 +1,5 @@
 ﻿using CMS.Core.Manager;
+using CMS.WebUI.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,9 +34,10 @@ namespace CMS.WebUI
                             ctrlBaiVietGioiThieu.Visible = false;
                             ctrlDuAnTieuBieu.Visible = false;
                             ctrlDanhSachThanhVien.Visible = false;
+                            ctrlBaiVietPublish.Visible = true;
 
                         }
-                        else if  (objFriendlyURL.PostType == FriendlyURLTypeHelper.Category)
+                        else if (objFriendlyURL.PostType == FriendlyURLTypeHelper.Category)
                         {
                             ltrHead.Text = string.Format(@"<link rel=""stylesheet"" type=""text/css"" href=""/Assets/css/news-list.css?v=f81a959662efae2fc3cc158351e6d90c"" />");
                             ltrBelow.Text = string.Format(@"<script type=""text/javascript"" src=""https://platform-api.sharethis.com/js/sharethis.js?v=f81a959662efae2fc3cc158351e6d90c#property=646b0f87d8c6d2001a06c301&product=inline-share-buttons&source=platform"" async=""async""></script>");
@@ -79,8 +81,10 @@ namespace CMS.WebUI
                             <link rel=""stylesheet"" href=""/Administration/Style/plugins/validationEngine/validationEngine.jquery.css"">
                             <link rel=""stylesheet"" href=""/Administration/Assets/adminTemplate/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css"">
                             <link rel=""stylesheet"" href=""/Administration/Assets/adminTemplate/plugins/toastr/toastr.min.css"">");
-                            ltrBelow.Text = string.Format(@"<script src=""/Assets/js/news-list.js?v=f81a959662efae2fc3cc158351e6d90c""></script> <script src=""/Administration/Assets/adminTemplate/plugins/jquery/jquery.min.js""></script>
+                            ltrBelow.Text = string.Format(@"<script src=""/Assets/js/news-list.js?v=f81a959662efae2fc3cc158351e6d90c""></script> 
+                            
                             <script src=""/Administration/Assets/adminTemplate/plugins/jquery-ui/jquery-ui.min.js""></script>
+                            <script src=""/Administration/Assets/adminTemplate/plugins/jquery/jquery.min.js""></script>
                             <script src=""/Administration/Assets/adminTemplate/plugins/bootstrap/js/bootstrap.bundle.min.js""></script>
                             <script src=""/Administration/Assets/adminTemplate/plugins/daterangepicker/daterangepicker.js""></script>
                             <script src=""/Administration/Assets/adminTemplate/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js""></script>
@@ -102,8 +106,15 @@ namespace CMS.WebUI
                         {
                             var objThanhVien = DanhMucBaiVietBLL.GetById(objFriendlyURL.PostId);
 
-                            ltrHead.Text = string.Format(@"<link rel=""stylesheet"" type=""text/css"" href=""/Assets/css/team.css?v=f81a959662efae2fc3cc158351e6d90c"" />");
-                            //ltrBelow.Text = string.Format(@"<script src=""/Assets/js/team.css.js?v=f81a959662efae2fc3cc158351e6d90c""></script>");
+                            ltrHead.Text = string.Format(@"<link rel=""stylesheet"" type=""text/css"" href=""/Assets/css/team.css?v=f81a959662efae2fc3cc158351e6d90c"" />
+                            <link rel=""stylesheet"" href=""https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"">                            
+                            <link rel=""stylesheet"" href=""/Administration/Assets/adminTemplate/dist/css/adminlte.min.css?v=3.2.0"">
+                           <link rel=""stylesheet"" href=""/Administration/Assets/adminTemplate/plugins/fontawesome-free/css/all.min.css"">                           ");
+                            ltrBelow.Text = string.Format(@"<script src=""/Administration/Assets/adminTemplate/plugins/jquery/jquery.min.js""></script>
+                            <script src=""/Administration/Assets/adminTemplate/plugins/bootstrap/js/bootstrap.bundle.min.js""></script>
+                            <script src=""/Administration/Assets/adminTemplate/dist/js/adminlte.js?v=3.2.0""></script>
+                            ");
+                            ctrlDanhSachThanhVien.IdDanhMuc = objThanhVien.Id;
                             ctrlDuAnTieuBieu.Visible = false;
                             ctrlCategory.Visible = false;
                             ctrlBaiVietPublish.Visible = false;
@@ -115,25 +126,55 @@ namespace CMS.WebUI
                             ctrlSlideTop.ImageThumbnail = objThanhVien.ThumbnailUrl;
                             ctrlSlideTop.ShowBreadcrumb(objThanhVien.Ten);
 
+
                         }
                         else if (objFriendlyURL.PostType == FriendlyURLTypeHelper.ThanhVien)
                         {
                             var objThanhVien = BaiVietBLL.GetById(objFriendlyURL.PostId);
-                            if(objThanhVien != null)
+                            if (objThanhVien != null)
                             {
-                            ltrHead.Text = string.Format(@"<link rel=""stylesheet"" type=""text/css"" href=""/Assets/css/news-list.css?v=f81a959662efae2fc3cc158351e6d90c"" />");
-                            ltrBelow.Text = string.Format(@"<script src=""/Assets/js/news-list.js?v=f81a959662efae2fc3cc158351e6d90c""></script>");
+                                ltrHead.Text = string.Format(@"<link rel=""stylesheet"" type=""text/css"" href=""/Assets/css/news-list.css?v=f81a959662efae2fc3cc158351e6d90c"" />");
+                                ltrBelow.Text = string.Format(@"<script src=""/Assets/js/news-list.js?v=f81a959662efae2fc3cc158351e6d90c""></script>");
+                                ctrlDuAnTieuBieu.Visible = false;
+                                ctrlCategory.Visible = false;
+                                ctrlBaiVietPublish.Visible = false;
+                                ctrlBaiVietGioiThieu.Visible = false;
+                                ctrlFileDinhKemControl.Visible = false;
+                                ctrlFileDinhKemControl.IdDanhMuc = objFriendlyURL.PostId;
+                                ctrlDanhSachThanhVien.Visible = false;
+                                ctrlSlideTop.Visible =true;
+                                ctrlSlideTop.ShowBreadcrumb(objThanhVien.TieuDe);
+                                ctrlChiTietThanhVien.ThanhVien = objThanhVien;
+                                ctrlChiTietThanhVien.Visible = true;
+
+                            }
+
+                        }
+                        else if (objFriendlyURL.PostType == FriendlyURLTypeHelper.ChuongTrinhDaoTao)
+                        {
+                            var objChuongTrinhDaoTao = DanhMucBaiVietBLL.GetById(objFriendlyURL.PostId);
+
+                            ltrHead.Text = string.Format(@"
+                            <link rel=""stylesheet"" href=""https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"">                            
+                            <link rel=""stylesheet"" href=""/Administration/Assets/adminTemplate/dist/css/adminlte.min.css?v=3.2.0"">
+                           <link rel=""stylesheet"" href=""/Administration/Assets/adminTemplate/plugins/fontawesome-free/css/all.min.css"">                           ");
+                            ltrBelow.Text = string.Format(@"<script src=""/Administration/Assets/adminTemplate/plugins/jquery/jquery.min.js""></script>
+                            <script src=""/Administration/Assets/adminTemplate/plugins/bootstrap/js/bootstrap.bundle.min.js""></script>
+                            <script src=""/Administration/Assets/adminTemplate/dist/js/adminlte.js?v=3.2.0""></script>
+                            ");
+                            ctrlDanhSachThanhVien.IdDanhMuc = objChuongTrinhDaoTao.Id;
                             ctrlDuAnTieuBieu.Visible = false;
                             ctrlCategory.Visible = false;
                             ctrlBaiVietPublish.Visible = false;
                             ctrlBaiVietGioiThieu.Visible = false;
                             ctrlFileDinhKemControl.Visible = false;
                             ctrlFileDinhKemControl.IdDanhMuc = objFriendlyURL.PostId;
+                            ctrlDanhSachThanhVien.Visible = false;
+                            ctrlChuongTrinhDaoTao.IdDanhMuc = objChuongTrinhDaoTao.Id;
+                            ctrlChuongTrinhDaoTao.Visible = true;
                             ctrlSlideTop.Visible = true;
-                            ctrlSlideTop.ImageThumbnail = objThanhVien.ThumbnailUrl;
-                                ctrlDanhSachThanhVien.Visible = false;
-
-                            }
+                            ctrlSlideTop.ImageThumbnail = objChuongTrinhDaoTao.ThumbnailUrl;
+                            ctrlSlideTop.ShowBreadcrumb(objChuongTrinhDaoTao.Ten);
 
                         }
 

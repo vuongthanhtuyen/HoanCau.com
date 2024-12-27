@@ -87,6 +87,24 @@ namespace CMS.WebUI
         protected global::CMS.WebUI.Controls.DanhSachThanhVien ctrlDanhSachThanhVien;
 
         /// <summary>
+        /// ctrlChiTietThanhVien control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CMS.WebUI.Controls.ChiTietThanhVien ctrlChiTietThanhVien;
+
+        /// <summary>
+        /// ctrlChuongTrinhDaoTao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CMS.WebUI.Controls.ChuongTrinhDaoTao ctrlChuongTrinhDaoTao;
+
+        /// <summary>
         /// ltrBelow control.
         /// </summary>
         /// <remarks>

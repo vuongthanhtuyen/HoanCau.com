@@ -7,6 +7,9 @@
 <%@ Register Src="~/Controls/ControlContentPage/FileDinhKemControl.ascx" TagPrefix="uc1" TagName="FileDinhKemControl" %>
 <%@ Register Src="~/Controls/DanhSachThanhVien.ascx" TagPrefix="uc1" TagName="DanhSachThanhVien" %>
 <%@ Register Src="~/Controls/SlideTop.ascx" TagPrefix="uc1" TagName="SlideTop" %>
+<%@ Register Src="~/Controls/ChiTietThanhVien.ascx" TagPrefix="uc1" TagName="ChiTietThanhVien"  %>
+<%@ Register Src="~/Controls/ChuongTrinhDaoTao.ascx" TagPrefix="uc1" TagName="ChuongTrinhDaoTao" %>
+
 
 
 
@@ -19,14 +22,14 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     
     <uc1:SlideTop runat="server" ID="ctrlSlideTop" Visible ="false" />
-    <uc1:BaiVietPublishControl runat="server" id="ctrlBaiVietPublish" />
-    <uc1:CategoryControl runat="server" id="ctrlCategory" />
-    <uc1:BaiVietGioiThieu runat="server" ID="ctrlBaiVietGioiThieu" />
-    <uc1:DuAnTieuBieuControl runat="server" id="ctrlDuAnTieuBieu" />
-    <uc1:FileDinhKemControl runat="server" id="ctrlFileDinhKemControl" />
-    <uc1:DanhSachThanhVien runat="server" id="ctrlDanhSachThanhVien" />
-
-
+    <uc1:BaiVietPublishControl runat="server" id="ctrlBaiVietPublish" Visible ="false" />
+    <uc1:CategoryControl runat="server" id="ctrlCategory" Visible ="false"/>
+    <uc1:BaiVietGioiThieu runat="server" ID="ctrlBaiVietGioiThieu" Visible ="false" />
+    <uc1:DuAnTieuBieuControl runat="server" id="ctrlDuAnTieuBieu" Visible ="false"/>
+    <uc1:FileDinhKemControl runat="server" id="ctrlFileDinhKemControl" Visible ="false" />
+    <uc1:DanhSachThanhVien runat="server" id="ctrlDanhSachThanhVien" Visible ="false"/>
+    <uc1:ChiTietThanhVien runat="server" ID="ctrlChiTietThanhVien"  Visible="false" />
+    <uc1:ChuongTrinhDaoTao runat="server" id="ctrlChuongTrinhDaoTao" Visible="false" />
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="contentEnd" runat="server">
 

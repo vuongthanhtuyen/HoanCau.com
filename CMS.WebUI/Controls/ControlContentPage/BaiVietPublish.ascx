@@ -9,7 +9,7 @@
 
 <uc1:SlideTop runat="server" ID="SlideTop" />
 <div class="wrapContent4 bgColor2 pageNewsDetail">
-    <div class="container-xxl containerItem">
+    <div class="container containerItem">
         <div class="contentItem">
             <div class="row rowItem">
                 <div class="col-lg-8 colText">

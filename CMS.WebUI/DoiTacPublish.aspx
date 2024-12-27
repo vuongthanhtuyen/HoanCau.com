@@ -18,7 +18,7 @@
     <!-- end breadcrumb-->
 
     <div class="wrapEvent bgColor2 wrapContent3 wrapPartner">
-        <div class="container-xxl containerItem">
+        <div class="container containerItem">
             <div class="contentItem">
                 <div class="listItem">
                     <div class="row rowList justify-content-center row-cols-1 row-cols-sm-2 row-cols-lg-3">

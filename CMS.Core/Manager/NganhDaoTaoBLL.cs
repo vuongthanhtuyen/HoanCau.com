@@ -198,5 +198,12 @@ namespace CMS.Core.Manager
             }
         }
 
+        public static List<NganhDaoTao> GetAllListNganhByDanhMucId(int danhMucId)
+        {
+            return new Select().From(NganhDaoTao.Schema).Where(NganhDaoTao.StatusColumn)
+                .IsNotEqualTo(BasicStatusHelper.Deleted).And(NganhDaoTao.NhomNganhColumn)
+                .IsEqualTo(danhMucId).ExecuteTypedList<NganhDaoTao>();
+        }
+
     }
 }

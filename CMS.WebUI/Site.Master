@@ -60,7 +60,6 @@
     <!-- CSS-->
     <link rel="stylesheet" type="text/css" href="/Assets/css/lib.css?v=f81a959662efae2fc3cc158351e6d90c" />
     <link rel="stylesheet" type="text/css" href="/Assets/css/fonts.css?v=f81a959662efae2fc3cc158351e6d90c" />
-    <link rel="stylesheet" type="text/css" href="/Assets/css/home.css?v=f81a959662efae2fc3cc158351e6d90c" />
     <asp:ContentPlaceHolder ID="ContentHead" runat="server">
     </asp:ContentPlaceHolder>
 

@@ -117,7 +117,8 @@ namespace CMS.Core.Manager
         }
         public static List<DanhMuc> GetAllByParentId(int id)
         {
-            var select = new Select().From(DanhMuc.Schema).Where(DanhMuc.DanhMucChaIdColumn).IsEqualTo(id);
+            var select = new Select().From(DanhMuc.Schema).Where(DanhMuc.DanhMucChaIdColumn).IsEqualTo(id)
+                .And(DanhMuc.StatusColumn).IsNotEqualTo(BasicStatusHelper.Deleted);
             return select.ExecuteTypedList<DanhMuc>();
         }
         public static bool Delete(int id)
@@ -143,6 +144,15 @@ namespace CMS.Core.Manager
             Select select = new Select();
             select.From(DanhMuc.Schema).Where(DanhMuc.SlugColumn).IsEqualTo(slug);
             return select.ExecuteSingle<DanhMuc>();
+        }
+        public static List<BaiViet> GetBaiVietInDanhMuc(int danhMucId)
+        {
+            Select select = new Select();
+            select.From(BaiViet.Schema).InnerJoin(NhomBaiViet.BaiVietIdColumn,BaiViet.IdColumn)
+                .Where(NhomBaiViet.DanhmucIdColumn).IsEqualTo(danhMucId)
+                .And(BaiViet.StatusColumn).IsNotEqualTo(BasicStatusHelper.Deleted)
+                .And(BaiViet.TrangThaiColumn).IsEqualTo(1);
+            return select.ExecuteTypedList<BaiViet>();
 
         }
         public static List<BaiVietInDanhMucDto> GetBaiVietInDanhMuc(int danhMucId, int langId)
@@ -192,13 +202,18 @@ namespace CMS.Core.Manager
             danhMuc.DanhMucChaId = 4;
             return new DanhMucController().Insert(danhMuc);
         }
+
+
+
+
         #endregion
 
 
         public static List<DanhMuc> GetAllDanhMucByType(int type)
         {
             Select select = new Select();
-            select.From(DanhMuc.Schema).Where(DanhMuc.TypeColumn).IsEqualTo(type);
+            select.From(DanhMuc.Schema).Where(DanhMuc.TypeColumn).IsEqualTo(type)
+                .And(DanhMuc.StatusColumn).IsNotEqualTo(BasicStatusHelper.Deleted);
             return select.ExecuteTypedList<DanhMuc>();
         }
 

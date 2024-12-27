@@ -1,139 +1,60 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="DanhSachThanhVien.ascx.cs" Inherits="CMS.WebUI.Controls.DanhSachThanhVien" %>
 
+<style>
+    .min-he {
+        min-height: 75px;
+    }
 
+    .callout.callout-info {
+        border-left-color: #ed1a3b;
+            padding: 10px;
+    }
+
+    .callout {
+        padding: 5px;
+        margin: 20px -14px;
+    }
+
+    .wrapTeam .wrapSlide .colTeam {
+        margin-top: 10px;
+    }
+
+   
+    .wrapContent4 {
+    padding: 3px 0;
+}
+</style>
 <!-- activity-->
-<div class="wrapActivity bgColor2 wrapTeam wrapContent3">
-    <div class="container-xxl containerItem">
+<div class="wrapActivity bgColor2 wrapTeam wrapContent4 danhsachthanhvien">
+    <div class="container containerItem">
         <div class="contentItem">
-            <div class="wrapSlide">
-                <div class="justify-content-center row rowTeam row-cols-1 row-cols-xl-3 row-cols-sm-2">
-                    <div class="col colTeam">
-                        <div class="itemaSlide">
-                            <div class="itemList wow zoomIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                                <div class="wrapOverImg">
-                                    <div class="wrapImg"><a class="wrapImgResize imgSquare" href="javascript:void(0);" title="Công ty Cổ phần Hoàn Cầu Ninh Hòa">
-                                        <img src="/Assets/images/team/cty-co-phan-hoan-cau-ninh-hoa.png" alt="Công ty Cổ phần Hoàn Cầu Ninh Hòa" /></a></div>
-                                </div>
-                                <div class="wrapOverTitle">
-                                    <h4 class="wrapTitleItem"><a class="titlItemMain" href="javascript:void(0);" title="Công ty Cổ phần Hoàn Cầu Ninh Hòa">Công ty Cổ phần Hoàn Cầu Ninh Hòa</a></h4>
+            <asp:Literal runat="server" ID="ltrMain" EnableViewState="false"></asp:Literal>
+            <div runat="server" visible="false" enableviewstate="false" id="templateList">
+                <div class="callout callout-info">
+                    <h2 style="display: inline;">{0}</h2>
+                </div>
+                <div class="wrapSlide">
+                    <div class="justify-content-center row rowTeam row-cols-1 row-cols-xl-4 row-cols-sm-2">
+                        {1}
+                    </div>
+                </div>
+            </div>
+
+            <div runat="server" visible="false" enableviewstate="false" id="templateSingleItem">
+                <div class="col colTeam">
+                    <div class="itemaSlide">
+                        <div class="itemList wow zoomIn" data-wow-duration="1s" data-wow-delay="0.4s">
+                            <div class="wrapOverImg">
+                                <div class="wrapImg">
+                                    <a class="wrapImgResize imgSquare" href="{2}" title="{0}">
+                                        <img src="{1}" alt="{0}" /></a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col colTeam">
-                        <div class="itemaSlide">
-                            <div class="itemList wow zoomIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                                <div class="wrapOverImg">
-                                    <div class="wrapImg"><a class="wrapImgResize imgSquare" href="javascript:void(0);" title="Công ty Cổ phần Hoàn Cầu Ninh Long">
-                                        <img src="/Assets/images/team/cty-co-phan-hoan-cau-ninh-long.png" alt="Công ty Cổ phần Hoàn Cầu Ninh Long" /></a></div>
-                                </div>
-                                <div class="wrapOverTitle">
-                                    <h4 class="wrapTitleItem"><a class="titlItemMain" href="javascript:void(0);" title="Công ty Cổ phần Hoàn Cầu Ninh Long">Công ty Cổ phần Hoàn Cầu Ninh Long</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col colTeam">
-                        <div class="itemaSlide">
-                            <div class="itemList wow zoomIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                                <div class="wrapOverImg">
-                                    <div class="wrapImg"><a class="wrapImgResize imgSquare" href="javascript:void(0);" title="Công ty cổ phần thành công">
-                                        <img src="/Assets/images/team/cty-co-phan-thanh-cong.png" alt="Công ty cổ phần thành công" /></a></div>
-                                </div>
-                                <div class="wrapOverTitle">
-                                    <h4 class="wrapTitleItem"><a class="titlItemMain" href="javascript:void(0);" title="Công ty cổ phần thành công">Công ty cổ phần thành công</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col colTeam">
-                        <div class="itemaSlide">
-                            <div class="itemList wow zoomIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                                <div class="wrapOverImg">
-                                    <div class="wrapImg"><a class="wrapImgResize imgSquare" href="javascript:void(0);" title="Công ty TNHH phát triển bất động sản hoàn cầu">
-                                        <img src="/Assets/images/team/cty-tnhh-bds-hoan-cau.png" alt="Công ty TNHH phát triển bất động sản hoàn cầu" /></a></div>
-                                </div>
-                                <div class="wrapOverTitle">
-                                    <h4 class="wrapTitleItem"><a class="titlItemMain" href="javascript:void(0);" title="Công ty TNHH phát triển bất động sản hoàn cầu">Công ty TNHH phát triển bất động sản hoàn cầu</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col colTeam">
-                        <div class="itemaSlide">
-                            <div class="itemList wow zoomIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                                <div class="wrapOverImg">
-                                    <div class="wrapImg"><a class="wrapImgResize imgSquare" href="javascript:void(0);" title="Công ty TNHH hoàn cầu cam ranh">
-                                        <img src="/Assets/images/team/cty-tnhh-hoan-cau-cam-ranh.png" alt="Công ty TNHH hoàn cầu cam ranh" /></a></div>
-                                </div>
-                                <div class="wrapOverTitle">
-                                    <h4 class="wrapTitleItem"><a class="titlItemMain" href="javascript:void(0);" title="Công ty TNHH hoàn cầu cam ranh">Công ty TNHH hoàn cầu cam ranh</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col colTeam">
-                        <div class="itemaSlide">
-                            <div class="itemList wow zoomIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                                <div class="wrapOverImg">
-                                    <div class="wrapImg"><a class="wrapImgResize imgSquare" href="javascript:void(0);" title="Công ty TNHH Hoàn Thành Thắng">
-                                        <img src="/Assets/images/team/cty-tnhh-hoan-thanh-thang.png" alt="Công ty TNHH Hoàn Thành Thắng" /></a></div>
-                                </div>
-                                <div class="wrapOverTitle">
-                                    <h4 class="wrapTitleItem"><a class="titlItemMain" href="javascript:void(0);" title="Công ty TNHH Hoàn Thành Thắng">Công ty TNHH Hoàn Thành Thắng</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col colTeam">
-                        <div class="itemaSlide">
-                            <div class="itemList wow zoomIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                                <div class="wrapOverImg">
-                                    <div class="wrapImg"><a class="wrapImgResize imgSquare" href="javascript:void(0);" title="Công ty tnhh nam nha trang">
-                                        <img src="/Assets/images/team/cty-tnhh-nam-nha-trang.png" alt="Công ty tnhh nam nha trang" /></a></div>
-                                </div>
-                                <div class="wrapOverTitle">
-                                    <h4 class="wrapTitleItem"><a class="titlItemMain" href="javascript:void(0);" title="Công ty tnhh nam nha trang">Công ty tnhh nam nha trang</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col colTeam">
-                        <div class="itemaSlide">
-                            <div class="itemList wow zoomIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                                <div class="wrapOverImg">
-                                    <div class="wrapImg"><a class="wrapImgResize imgSquare" href="javascript:void(0);" title="Công ty TNHH phương long bình">
-                                        <img src="/Assets/images/team/cty-tnhh-phuong-long-binh.png" alt="Công ty TNHH phương long bình" /></a></div>
-                                </div>
-                                <div class="wrapOverTitle">
-                                    <h4 class="wrapTitleItem"><a class="titlItemMain" href="javascript:void(0);" title="Công ty TNHH phương long bình">Công ty TNHH phương long bình</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col colTeam">
-                        <div class="itemaSlide">
-                            <div class="itemList wow zoomIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                                <div class="wrapOverImg">
-                                    <div class="wrapImg"><a class="wrapImgResize imgSquare" href="javascript:void(0);" title="Công ty TNHH Quốc Anh NT">
-                                        <img src="/Assets/images/team/cty-tnhh-quoc-anh-nt.png" alt="Công ty TNHH Quốc Anh NT" /></a></div>
-                                </div>
-                                <div class="wrapOverTitle">
-                                    <h4 class="wrapTitleItem"><a class="titlItemMain" href="javascript:void(0);" title="Công ty TNHH Quốc Anh NT">Công ty TNHH Quốc Anh NT</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col colTeam">
-                        <div class="itemaSlide">
-                            <div class="itemList wow zoomIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                                <div class="wrapOverImg">
-                                    <div class="wrapImg"><a class="wrapImgResize imgSquare" href="javascript:void(0);" title="Công ty TNHH tập đoàn Quốc Anh NT">
-                                        <img src="/Assets/images/team/cty-tnhh-tap-doan-quoc-anh-nt.png" alt="Công ty TNHH tập đoàn Quốc Anh NT" /></a></div>
-                                </div>
-                                <div class="wrapOverTitle">
-                                    <h4 class="wrapTitleItem"><a class="titlItemMain" href="javascript:void(0);" title="Công ty TNHH tập đoàn Quốc Anh NT">Công ty TNHH tập đoàn Quốc Anh NT</a></h4>
-                                </div>
+                            <div class="wrapOverTitle min-he">
+                                <h4 class="wrapTitleItem"><a class="titlItemMain" href="{2}" title="{0}">{0}</a>
+                                    <div class="titlItemMain">{3}</div>
+
+                                </h4>
                             </div>
                         </div>
                     </div>
@@ -146,8 +67,10 @@
                         <div class="col-sm-6 col-lg-4 colItem">
                             <div class="contentCol wow zoomIn" data-wow-duration="1s" data-wow-delay="0.4s">
                                 <div class="contentImg">
-                                    <div class="wrapImg"><a class="wrapImgResize img16And9" href="lich-su-phat-trien.html" title="Lịch sử phát triển">
-                                        <img src="/Assets/images/slide-main/2.jpg" alt="Lịch sử phát triển" /></a></div>
+                                    <div class="wrapImg">
+                                        <a class="wrapImgResize img16And9" href="lich-su-phat-trien.html" title="Lịch sử phát triển">
+                                            <img src="/Assets/images/slide-main/2.jpg" alt="Lịch sử phát triển" /></a>
+                                    </div>
 
                                     <div class="time">
                                         <div class="contentItem">
@@ -174,8 +97,10 @@
                         <div class="col-sm-6 col-lg-4 colItem">
                             <div class="contentCol wow zoomIn" data-wow-duration="1s" data-wow-delay="0.4s">
                                 <div class="contentImg">
-                                    <div class="wrapImg"><a class="wrapImgResize img16And9" href="so-do-to-chuc.html" title="Sơ đồ tổ chức">
-                                        <img src="/Assets/images/slide-main/3.jpg" alt="Sơ đồ tổ chức" /></a></div>
+                                    <div class="wrapImg">
+                                        <a class="wrapImgResize img16And9" href="so-do-to-chuc.html" title="Sơ đồ tổ chức">
+                                            <img src="/Assets/images/slide-main/3.jpg" alt="Sơ đồ tổ chức" /></a>
+                                    </div>
 
                                     <div class="time">
                                         <div class="contentItem">
@@ -202,8 +127,10 @@
                         <div class="col-sm-6 col-lg-4 colItem">
                             <div class="contentCol wow zoomIn" data-wow-duration="1s" data-wow-delay="0.4s">
                                 <div class="contentImg">
-                                    <div class="wrapImg"><a class="wrapImgResize img16And9" href="ban-lanh-dao.html" title="Ban lãnh đạo">
-                                        <img src="/Assets/images/slide-main/3.jpg" alt="Ban lãnh đạo" /></a></div>
+                                    <div class="wrapImg">
+                                        <a class="wrapImgResize img16And9" href="ban-lanh-dao.html" title="Ban lãnh đạo">
+                                            <img src="/Assets/images/slide-main/3.jpg" alt="Ban lãnh đạo" /></a>
+                                    </div>
 
                                     <div class="time">
                                         <div class="contentItem">

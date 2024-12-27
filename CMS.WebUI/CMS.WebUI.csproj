@@ -2717,7 +2717,9 @@
     <Content Include="Assets\validation-engine\js\languages\jquery.validationEngine-zh_TW.js" />
     <Content Include="ContentPage.aspx" />
     <Content Include="Controls\btnContact.ascx" />
+    <Content Include="Controls\ChiTietNganhDaoTao.ascx" />
     <Content Include="Controls\ChiTietThanhVien.ascx" />
+    <Content Include="Controls\ChuongTrinhDaoTao.ascx" />
     <Content Include="Controls\ControlContentPage\BaiVietGioiThieu.ascx" />
     <Content Include="Controls\ControlContentPage\BaiVietPublish.ascx" />
     <Content Include="Controls\ControlContentPage\Category.ascx" />
@@ -3972,12 +3974,26 @@
     <Compile Include="Controls\btnContact.ascx.designer.cs">
       <DependentUpon>btnContact.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ChiTietNganhDaoTao.ascx.cs">
+      <DependentUpon>ChiTietNganhDaoTao.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ChiTietNganhDaoTao.ascx.designer.cs">
+      <DependentUpon>ChiTietNganhDaoTao.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ChiTietThanhVien.ascx.cs">
       <DependentUpon>ChiTietThanhVien.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controls\ChiTietThanhVien.ascx.designer.cs">
       <DependentUpon>ChiTietThanhVien.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ChuongTrinhDaoTao.ascx.cs">
+      <DependentUpon>ChuongTrinhDaoTao.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ChuongTrinhDaoTao.ascx.designer.cs">
+      <DependentUpon>ChuongTrinhDaoTao.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\ControlContentPage\BaiVietGioiThieu.ascx.cs">
       <DependentUpon>BaiVietGioiThieu.ascx</DependentUpon>

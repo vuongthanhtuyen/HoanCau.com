@@ -203,9 +203,9 @@
 
                                     </div>
                                     <div class="form-group" id="txtInfo" runat="server" visible="false">
-                                        <label>Người tạo: <%= _CreateBy %></label>
-                                        <label>Ngày tạo: <%= _CreateDate %></label>
-                                        <label>Người cập nhật: <%= _UpdateBy %></label>
+                                        <label>Người tạo: <%= _CreateBy %></label> <br />
+                                        <label>Ngày tạo: <%= _CreateDate %></label><br />
+                                        <label>Người cập nhật: <%= _UpdateBy %></label><br />
                                         <label>Ngày cập nhật: <%= _UpdateDate %></label>
 
                                     </div>

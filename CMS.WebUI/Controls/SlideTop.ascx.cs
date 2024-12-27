@@ -25,7 +25,7 @@ namespace CMS.WebUI.Controls
         {
             if (urlImage == null)
             {
-                urlImage = "Administration/UploadImage/4f999d87-1362-46ad-953b-f8910e8bdf0bnha-trang.jpg";
+                urlImage = "/uploads/Article/TBD/ve-tbd-3-scaled.jpg";
             }
             string item = "";
             if(breadcrumbs !=null && breadcrumbs.Count > 0)
@@ -42,7 +42,7 @@ namespace CMS.WebUI.Controls
             }
             string showView = string.Format($@"<div class=""wrapImgItem"">
                 <div class=""wrapImgResize"">
-                    <img src=""{ImageThumbnail}"" alt=""{title}"" /></div>
+                    <img src=""{ImageThumbnail ?? urlImage}"" alt=""{title}"" /></div>
                 </div>
                 <div class=""contentText"">
                     <div class=""container-xl"">
