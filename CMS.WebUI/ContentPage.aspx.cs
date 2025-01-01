@@ -1,5 +1,6 @@
 ﻿using CMS.Core.Manager;
 using CMS.WebUI.Controls;
+using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace CMS.WebUI
                             ctrlBaiVietPublish.Binding(SlugUrl);
                             ctrlCategory.Visible = false;
                             ctrlBaiVietGioiThieu.Visible = false;
-                            ctrlDuAnTieuBieu.Visible = false;
+                            ctrlSuKienControl.Visible = false;
                             ctrlDanhSachThanhVien.Visible = false;
                             ctrlBaiVietPublish.Visible = true;
 
@@ -45,7 +46,7 @@ namespace CMS.WebUI
                             ctrlBaiVietGioiThieu.Visible = false;
                             ctrlBaiVietPublish.Visible = false;
                             ctrlDanhSachThanhVien.Visible = false;
-                            ctrlDuAnTieuBieu.Visible = false;
+                            ctrlSuKienControl.Visible = false;
                         }
                         else if (objFriendlyURL.PostType == FriendlyURLTypeHelper.Info)
                         {
@@ -56,17 +57,18 @@ namespace CMS.WebUI
                             ctrlCategory.Visible = false;
                             ctrlBaiVietPublish.Visible = false;
                             ctrlDanhSachThanhVien.Visible = false;
-                            ctrlDuAnTieuBieu.Visible = false;
+                            ctrlSuKienControl.Visible = false;
                         }
-                        else if (objFriendlyURL.PostType == FriendlyURLTypeHelper.Project)
+                        else if (objFriendlyURL.PostType == FriendlyURLTypeHelper.SuKien)
                         {
                             ltrHead.Text = string.Format(@"<link rel=""stylesheet"" type=""text/css"" href=""/Assets/css/project-detail.css?v=f81a959662efae2fc3cc158351e6d90c"" />");
                             ltrBelow.Text = string.Format(@"<script src=""/Assets/js/project-detail.js?v=f81a959662efae2fc3cc158351e6d90c""></script>");
-                            ctrlDuAnTieuBieu.Binding(SlugUrl);
+                            ctrlSuKienControl.slugUrl= SlugUrl;
                             ctrlCategory.Visible = false;
                             ctrlBaiVietPublish.Visible = false;
                             ctrlDanhSachThanhVien.Visible = false;
                             ctrlBaiVietGioiThieu.Visible = false;
+                            ctrlSuKienControl.Visible = true;
 
                         }
                         else if (objFriendlyURL.PostType == FriendlyURLTypeHelper.FileAttactment)
@@ -92,7 +94,7 @@ namespace CMS.WebUI
                             <script src=""/Administration/Assets/adminTemplate/plugins/sweetalert2/sweetalert2.min.js""></script>
                             <script src=""/Administration/Assets/adminTemplate/plugins/toastr/toastr.min.js""></script>
                             ");
-                            ctrlDuAnTieuBieu.Visible = false;
+                            ctrlSuKienControl.Visible = false;
                             ctrlCategory.Visible = false;
                             ctrlBaiVietPublish.Visible = false;
                             ctrlBaiVietGioiThieu.Visible = false;
@@ -115,7 +117,7 @@ namespace CMS.WebUI
                             <script src=""/Administration/Assets/adminTemplate/dist/js/adminlte.js?v=3.2.0""></script>
                             ");
                             ctrlDanhSachThanhVien.IdDanhMuc = objThanhVien.Id;
-                            ctrlDuAnTieuBieu.Visible = false;
+                            ctrlSuKienControl.Visible = false;
                             ctrlCategory.Visible = false;
                             ctrlBaiVietPublish.Visible = false;
                             ctrlBaiVietGioiThieu.Visible = false;
@@ -135,14 +137,14 @@ namespace CMS.WebUI
                             {
                                 ltrHead.Text = string.Format(@"<link rel=""stylesheet"" type=""text/css"" href=""/Assets/css/news-list.css?v=f81a959662efae2fc3cc158351e6d90c"" />");
                                 ltrBelow.Text = string.Format(@"<script src=""/Assets/js/news-list.js?v=f81a959662efae2fc3cc158351e6d90c""></script>");
-                                ctrlDuAnTieuBieu.Visible = false;
+                                ctrlSuKienControl.Visible = false;
                                 ctrlCategory.Visible = false;
                                 ctrlBaiVietPublish.Visible = false;
                                 ctrlBaiVietGioiThieu.Visible = false;
                                 ctrlFileDinhKemControl.Visible = false;
                                 ctrlFileDinhKemControl.IdDanhMuc = objFriendlyURL.PostId;
                                 ctrlDanhSachThanhVien.Visible = false;
-                                ctrlSlideTop.Visible =true;
+                                ctrlSlideTop.Visible = true;
                                 ctrlSlideTop.ShowBreadcrumb(objThanhVien.TieuDe);
                                 ctrlChiTietThanhVien.ThanhVien = objThanhVien;
                                 ctrlChiTietThanhVien.Visible = true;
@@ -163,7 +165,7 @@ namespace CMS.WebUI
                             <script src=""/Administration/Assets/adminTemplate/dist/js/adminlte.js?v=3.2.0""></script>
                             ");
                             ctrlDanhSachThanhVien.IdDanhMuc = objChuongTrinhDaoTao.Id;
-                            ctrlDuAnTieuBieu.Visible = false;
+                            ctrlSuKienControl.Visible = false;
                             ctrlCategory.Visible = false;
                             ctrlBaiVietPublish.Visible = false;
                             ctrlBaiVietGioiThieu.Visible = false;
@@ -176,6 +178,35 @@ namespace CMS.WebUI
                             ctrlSlideTop.ImageThumbnail = objChuongTrinhDaoTao.ThumbnailUrl;
                             ctrlSlideTop.ShowBreadcrumb(objChuongTrinhDaoTao.Ten);
 
+                        }
+                        else if (objFriendlyURL.PostType == FriendlyURLTypeHelper.NganhDaoTao)
+                        {
+                            var objChuongTrinhDaoTao = NganhDaoTaoBLL.GetById(objFriendlyURL.PostId);
+                            if (objChuongTrinhDaoTao != null)
+                            {
+                                DanhMuc objDanhmuc = DanhMucBaiVietBLL.GetById(objChuongTrinhDaoTao.NhomNganh);
+                                if (objDanhmuc != null)
+                                {
+                                    ltrHead.Text = string.Format(@"<link rel=""stylesheet"" type=""text/css"" href=""/Assets/css/NganhDaoTao.css?v=001&amp;cdv=1080137918"" /> 
+                                                            <link href=""/Assets/lib/NganhDaoTao/bootstrap.min.css"" rel=""stylesheet"" />
+                                                            <link href=""/Assets/lib/NganhDaoTao/globals.css"" rel=""stylesheet"" />");
+                                    ltrBelow.Text = string.Format(@"<script src=""/Assets/js/NganhDaoTao.js?v=001&amp;cdv=1080137918""></script>");
+                                    ctrlSuKienControl.Visible = false;
+                                    ctrlCategory.Visible = false;
+                                    ctrlBaiVietPublish.Visible = false;
+                                    ctrlBaiVietGioiThieu.Visible = false;
+                                    ctrlFileDinhKemControl.Visible = false;
+                                    ctrlDanhSachThanhVien.Visible = false;
+                                    ctrlChuongTrinhDaoTao.Visible = false;
+                                    ctrlSlideTop.Visible = true;
+                                    ctrlChiTietNganhDaoTao.Visible = true;
+                                    ctrlChiTietNganhDaoTao.TenChuongTrinh = objDanhmuc.Ten;
+                                    ctrlChiTietNganhDaoTao.ObjNganhDaoTao = objChuongTrinhDaoTao;
+
+                                    ctrlSlideTop.ImageThumbnail = objDanhmuc.ThumbnailUrl;
+                                    ctrlSlideTop.ShowBreadcrumb(null);
+                                }
+                            }
                         }
 
                     }

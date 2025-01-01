@@ -3,12 +3,15 @@
 <%@ Register Src="~/Controls/ControlContentPage/BaiVietPublish.ascx" TagPrefix="uc1" TagName="BaiVietPublishControl" %>
 <%@ Register Src="~/Controls/ControlContentPage/Category.ascx" TagPrefix="uc1" TagName="CategoryControl" %>
 <%@ Register Src="~/Controls/ControlContentPage/BaiVietGioiThieu.ascx" TagPrefix="uc1" TagName="BaiVietGioiThieu" %>
-<%@ Register Src="~/Controls/ControlContentPage/DuAnTieuBieu.ascx" TagPrefix="uc1" TagName="DuAnTieuBieuControl" %>
 <%@ Register Src="~/Controls/ControlContentPage/FileDinhKemControl.ascx" TagPrefix="uc1" TagName="FileDinhKemControl" %>
 <%@ Register Src="~/Controls/DanhSachThanhVien.ascx" TagPrefix="uc1" TagName="DanhSachThanhVien" %>
 <%@ Register Src="~/Controls/SlideTop.ascx" TagPrefix="uc1" TagName="SlideTop" %>
 <%@ Register Src="~/Controls/ChiTietThanhVien.ascx" TagPrefix="uc1" TagName="ChiTietThanhVien"  %>
 <%@ Register Src="~/Controls/ChuongTrinhDaoTao.ascx" TagPrefix="uc1" TagName="ChuongTrinhDaoTao" %>
+<%@ Register Src="~/Controls/ChiTietNganhDaoTao.ascx" TagPrefix="uc1" TagName="ChiTietNganhDaoTao" %>
+<%@ Register Src="~/Controls/SuKienControl.ascx" TagPrefix="uc1" TagName="SuKienControl" %>
+
+
 
 
 
@@ -25,11 +28,13 @@
     <uc1:BaiVietPublishControl runat="server" id="ctrlBaiVietPublish" Visible ="false" />
     <uc1:CategoryControl runat="server" id="ctrlCategory" Visible ="false"/>
     <uc1:BaiVietGioiThieu runat="server" ID="ctrlBaiVietGioiThieu" Visible ="false" />
-    <uc1:DuAnTieuBieuControl runat="server" id="ctrlDuAnTieuBieu" Visible ="false"/>
     <uc1:FileDinhKemControl runat="server" id="ctrlFileDinhKemControl" Visible ="false" />
     <uc1:DanhSachThanhVien runat="server" id="ctrlDanhSachThanhVien" Visible ="false"/>
     <uc1:ChiTietThanhVien runat="server" ID="ctrlChiTietThanhVien"  Visible="false" />
     <uc1:ChuongTrinhDaoTao runat="server" id="ctrlChuongTrinhDaoTao" Visible="false" />
+    <uc1:ChiTietNganhDaoTao runat="server" ID="ctrlChiTietNganhDaoTao" Visible="false"/>
+    <uc1:SuKienControl runat="server" id="ctrlSuKienControl" visible="false"/>
+
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="contentEnd" runat="server">
 

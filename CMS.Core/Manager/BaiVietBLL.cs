@@ -14,7 +14,7 @@ namespace CMS.Core.Manager
     public class TypeBaiViet
     {
         public const int BaiViet = 1;
-        public const int DuAnTieuBieu = 2;
+        public const int SuKien = 33;
         public const int ThanhVien = 3;
 
     }
@@ -40,6 +40,7 @@ namespace CMS.Core.Manager
             new Delete().From(NhomHinhAnh.Schema)
                 .Where(NhomHinhAnh.BaiVietIdColumn).IsEqualTo(baiVietId).Execute();
             FriendlyUrlBLL.DeleteByPostId(baiVietId, FriendlyURLTypeHelper.Article);
+            FriendlyUrlBLL.DeleteByPostId(baiVietId, FriendlyURLTypeHelper.SuKien);
             return new Update(BaiViet.Schema)
                 .Set(BaiViet.StatusColumn).EqualTo(BasicStatusHelper.Deleted)
                 .Where(BaiViet.IdColumn).IsEqualTo(baiVietId).Execute() > 0;
@@ -68,7 +69,6 @@ namespace CMS.Core.Manager
             if (friendUrl.SlugUrl != baiViet.Slug)
             {
                 friendUrl.SlugUrl = baiViet.Slug;
-                //friendUrl.GetDBType
                 FriendlyUrlBLL.Update(friendUrl);
             }
             return new BaiVietController().Update(baiViet);
@@ -140,12 +140,10 @@ namespace CMS.Core.Manager
         public static BaiViet InsertDuAnTieuBieu(BaiViet baiViet)
         {
             baiViet = new BaiVietController().Insert(baiViet);
-
-            new NhomBaiVietController().Insert(4, baiViet.Id);
             FriendlyUrlBLL.Insert(new FriendlyUrl()
             {
                 PostId = baiViet.Id,
-                PostType = FriendlyUrlBLL.FriendlyURLTypeHelper.Project,
+                PostType = FriendlyUrlBLL.FriendlyURLTypeHelper.SuKien,
                 SlugUrl = baiViet.Slug,
                 Status = BasicStatusHelper.Active
             });
@@ -160,18 +158,25 @@ namespace CMS.Core.Manager
         public static NhomHinhAnh InsertHinhAnhDuAnTieuBieu(string stringUrl, int baiVietId)
         {
 
-
-
-
             return new NhomHinhAnhController().Insert(stringUrl, baiVietId);
         }
         public static bool DeleteHinhAnhDuAnTieuBieu(int nhomBaiVietId)
         {
             return new NhomHinhAnhController().Delete(nhomBaiVietId);
         }
+        public static BaiViet UpdateSuKien(BaiViet baiViet)
+        {
+            var friendUrl = FriendlyUrlBLL.GetByPostIdAndTypeId(baiViet.Id, FriendlyUrlBLL.FriendlyURLTypeHelper.SuKien);
+            if (friendUrl != null && friendUrl.SlugUrl != baiViet.Slug)
+            {
+                friendUrl.SlugUrl = baiViet.Slug;
+                FriendlyUrlBLL.Update(friendUrl);
+            }
+            return new BaiVietController().Update(baiViet);
+        }
 
         #endregion
 
-        
+
     }
 }

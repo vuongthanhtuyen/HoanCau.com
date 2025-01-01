@@ -31,6 +31,7 @@ namespace CMS.Core.Manager
         public const string QuanlyNguoiDung = "Quản lý người dùng";
         public const string CompanyManagement = "Quản lý công ty";
         public const string QuanLyBaiViet = "Quản lý bài viết";
+        public const string QuanLyDuAnTieuBieu = "Quản lý dự án tiêu biể";
         public const string QuanLyFileDinhKem = "Quản lý File đính kèm";
         public const string ImageManagement = "Quản lý thư viện hình ảnh";
         public const string VideoManagement = "Quản lý thư viện video";

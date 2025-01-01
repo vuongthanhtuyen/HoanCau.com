@@ -3,84 +3,20 @@
   "WorkspaceRootPath": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.webui\\controls\\chuongtrinhdaotao.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\controls\\chuongtrinhdaotao.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
+      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|d:\\sweetsoft\\exsercise\\cms_hoancau\\cms.webui\\controls\\sukiencontrol.ascx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\controls\\sukiencontrol.ascx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B2F095AD-4A60-4F80-9562-7608D66B3EBA}|CMS.Core\\CMS.Core.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.core\\manager\\danhmucbaivietbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2F095AD-4A60-4F80-9562-7608D66B3EBA}|CMS.Core\\CMS.Core.csproj|solutionrelative:cms.core\\manager\\danhmucbaivietbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|d:\\sweetsoft\\exsercise\\cms_hoancau\\cms.webui\\controls\\sukiencontrol.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
+      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\controls\\sukiencontrol.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.webui\\controls\\chuongtrinhdaotao.ascx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\controls\\chuongtrinhdaotao.ascx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|d:\\sweetsoft\\exsercise\\cms_hoancau\\cms.webui\\html\\du-an.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\html\\du-an.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B2F095AD-4A60-4F80-9562-7608D66B3EBA}|CMS.Core\\CMS.Core.csproj|d:\\sweetsoft\\exsercise\\cms_hoancau\\cms.core\\manager\\nganhdaotaobll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2F095AD-4A60-4F80-9562-7608D66B3EBA}|CMS.Core\\CMS.Core.csproj|solutionrelative:cms.core\\manager\\nganhdaotaobll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|d:\\sweetsoft\\exsercise\\cms_hoancau\\cms.webui\\contentpage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\contentpage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.webui\\contentpage.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\contentpage.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.webui\\controls\\danhsachthanhvien.ascx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\controls\\danhsachthanhvien.ascx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.webui\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.webui\\controls\\chitietthanhvien.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\controls\\chitietthanhvien.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.webui\\controls\\chuongtrinhdaotao.ascx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\controls\\chuongtrinhdaotao.ascx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.webui\\controls\\controlcontentpage\\filedinhkemcontrol.ascx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\controls\\controlcontentpage\\filedinhkemcontrol.ascx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.webui\\controls\\danhsachbaiviet.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\controls\\danhsachbaiviet.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.webui\\doitacpublish.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\doitacpublish.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.webui\\controls\\chitietthanhvien.ascx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\controls\\chitietthanhvien.ascx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.webui\\contentpage.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\contentpage.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.webui\\controls\\controlcontentpage\\baivietpublish.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\controls\\controlcontentpage\\baivietpublish.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Html\\cong-ty-thanh-vien.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CMS.WebUI\\Html\\cong-ty-thanh-vien.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.webui\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\cms.webui\\bundle.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{9AF57A68-BC1E-4989-B93E-F9DEE7A098AE}|CMS.WebUI\\CMS.WebUI.csproj|solutionrelative:cms.webui\\bundle.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Html\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CMS.WebUI\\Html\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B2F095AD-4A60-4F80-9562-7608D66B3EBA}|CMS.Core\\CMS.Core.csproj|d:\\sweetsoft\\exsercise\\cms_hoancau\\cms.core\\manager\\videobll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2F095AD-4A60-4F80-9562-7608D66B3EBA}|CMS.Core\\CMS.Core.csproj|solutionrelative:cms.core\\manager\\videobll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -90,32 +26,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 441,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ContentPage.aspx",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\ContentPage.aspx",
-              "RelativeDocumentMoniker": "CMS.WebUI\\ContentPage.aspx",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\ContentPage.aspx",
-              "RelativeToolTip": "CMS.WebUI\\ContentPage.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-12-25T11:25:14.313Z",
-              "IsPinned": true
+              "DocumentIndex": 3,
+              "Title": "VideoBLL.cs",
+              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.Core\\Manager\\VideoBLL.cs",
+              "RelativeDocumentMoniker": "CMS.Core\\Manager\\VideoBLL.cs",
+              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.Core\\Manager\\VideoBLL.cs",
+              "RelativeToolTip": "CMS.Core\\Manager\\VideoBLL.cs",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAQwH8AAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-31T14:18:47.023Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "NganhDaoTaoBLL.cs",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.Core\\Manager\\NganhDaoTaoBLL.cs",
-              "RelativeDocumentMoniker": "CMS.Core\\Manager\\NganhDaoTaoBLL.cs",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.Core\\Manager\\NganhDaoTaoBLL.cs",
-              "RelativeToolTip": "CMS.Core\\Manager\\NganhDaoTaoBLL.cs",
-              "ViewState": "AgIAALsAAAAAAAAAAAAuwMgAAABCAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "SuKienControl.ascx",
+              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\SuKienControl.ascx",
+              "RelativeDocumentMoniker": "CMS.WebUI\\Controls\\SuKienControl.ascx",
+              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\SuKienControl.ascx",
+              "RelativeToolTip": "CMS.WebUI\\Controls\\SuKienControl.ascx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
+              "WhenOpened": "2024-12-31T14:14:02.952Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SuKienControl.ascx.cs",
+              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\SuKienControl.ascx.cs",
+              "RelativeDocumentMoniker": "CMS.WebUI\\Controls\\SuKienControl.ascx.cs",
+              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\SuKienControl.ascx.cs",
+              "RelativeToolTip": "CMS.WebUI\\Controls\\SuKienControl.ascx.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAqwEkAAABrAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-27T13:05:05.628Z",
+              "WhenOpened": "2024-12-31T14:14:01.412Z",
               "EditorCaption": ""
             },
             {
@@ -124,225 +73,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ChuongTrinhDaoTao.ascx",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\ChuongTrinhDaoTao.ascx",
-              "RelativeDocumentMoniker": "CMS.WebUI\\Controls\\ChuongTrinhDaoTao.ascx",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\ChuongTrinhDaoTao.ascx",
-              "RelativeToolTip": "CMS.WebUI\\Controls\\ChuongTrinhDaoTao.ascx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
-              "WhenOpened": "2024-12-26T14:05:08.036Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ChuongTrinhDaoTao.ascx.cs",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\ChuongTrinhDaoTao.ascx.cs",
-              "RelativeDocumentMoniker": "CMS.WebUI\\Controls\\ChuongTrinhDaoTao.ascx.cs",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\ChuongTrinhDaoTao.ascx.cs",
-              "RelativeToolTip": "CMS.WebUI\\Controls\\ChuongTrinhDaoTao.ascx.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAcwD8AAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-26T14:19:45.539Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DanhMucBaiVietBLL.cs",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.Core\\Manager\\DanhMucBaiVietBLL.cs",
-              "RelativeDocumentMoniker": "CMS.Core\\Manager\\DanhMucBaiVietBLL.cs",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.Core\\Manager\\DanhMucBaiVietBLL.cs",
-              "RelativeToolTip": "CMS.Core\\Manager\\DanhMucBaiVietBLL.cs",
-              "ViewState": "AgIAAGsAAAAAAAAAAAAUwHoAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-26T12:25:49.933Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ContentPage.aspx.cs",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\ContentPage.aspx.cs",
-              "RelativeDocumentMoniker": "CMS.WebUI\\ContentPage.aspx.cs",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\ContentPage.aspx.cs",
-              "RelativeToolTip": "CMS.WebUI\\ContentPage.aspx.cs",
-              "ViewState": "AgIAAKIAAAAAAAAAAAAuwKwAAABWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-26T12:50:46.723Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Site.Master",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Site.Master",
-              "RelativeDocumentMoniker": "CMS.WebUI\\Site.Master",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Site.Master",
-              "RelativeToolTip": "CMS.WebUI\\Site.Master",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-12-26T14:41:11.577Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DanhSachThanhVien.ascx.cs",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\DanhSachThanhVien.ascx.cs",
-              "RelativeDocumentMoniker": "CMS.WebUI\\Controls\\DanhSachThanhVien.ascx.cs",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\DanhSachThanhVien.ascx.cs",
-              "RelativeToolTip": "CMS.WebUI\\Controls\\DanhSachThanhVien.ascx.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-26T14:50:15.435Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ChuongTrinhDaoTao.ascx.designer.cs",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\ChuongTrinhDaoTao.ascx.designer.cs",
-              "RelativeDocumentMoniker": "CMS.WebUI\\Controls\\ChuongTrinhDaoTao.ascx.designer.cs",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\ChuongTrinhDaoTao.ascx.designer.cs",
-              "RelativeToolTip": "CMS.WebUI\\Controls\\ChuongTrinhDaoTao.ascx.designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-26T14:31:58.631Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ChiTietThanhVien.ascx",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\ChiTietThanhVien.ascx",
-              "RelativeDocumentMoniker": "CMS.WebUI\\Controls\\ChiTietThanhVien.ascx",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\ChiTietThanhVien.ascx",
-              "RelativeToolTip": "CMS.WebUI\\Controls\\ChiTietThanhVien.ascx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
-              "WhenOpened": "2024-12-26T12:49:16.929Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "FileDinhKemControl.ascx.cs",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\ControlContentPage\\FileDinhKemControl.ascx.cs",
-              "RelativeDocumentMoniker": "CMS.WebUI\\Controls\\ControlContentPage\\FileDinhKemControl.ascx.cs",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\ControlContentPage\\FileDinhKemControl.ascx.cs",
-              "RelativeToolTip": "CMS.WebUI\\Controls\\ControlContentPage\\FileDinhKemControl.ascx.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T12:52:15.503Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "DanhSachBaiViet.ascx",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\DanhSachBaiViet.ascx",
-              "RelativeDocumentMoniker": "CMS.WebUI\\Controls\\DanhSachBaiViet.ascx",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\DanhSachBaiViet.ascx",
-              "RelativeToolTip": "CMS.WebUI\\Controls\\DanhSachBaiViet.ascx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
-              "WhenOpened": "2024-12-26T13:05:39.944Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "DoiTacPublish.aspx",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\DoiTacPublish.aspx",
-              "RelativeDocumentMoniker": "CMS.WebUI\\DoiTacPublish.aspx",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\DoiTacPublish.aspx",
-              "RelativeToolTip": "CMS.WebUI\\DoiTacPublish.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-12-26T14:06:34.088Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "ChiTietThanhVien.ascx.cs",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\ChiTietThanhVien.ascx.cs",
-              "RelativeDocumentMoniker": "CMS.WebUI\\Controls\\ChiTietThanhVien.ascx.cs",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\ChiTietThanhVien.ascx.cs",
-              "RelativeToolTip": "CMS.WebUI\\Controls\\ChiTietThanhVien.ascx.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-26T13:05:41.683Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "BaiVietPublish.ascx",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\ControlContentPage\\BaiVietPublish.ascx",
-              "RelativeDocumentMoniker": "CMS.WebUI\\Controls\\ControlContentPage\\BaiVietPublish.ascx",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Controls\\ControlContentPage\\BaiVietPublish.ascx",
-              "RelativeToolTip": "CMS.WebUI\\Controls\\ControlContentPage\\BaiVietPublish.ascx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
-              "WhenOpened": "2024-12-25T12:27:48.678Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ContentPage.aspx.designer.cs",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\ContentPage.aspx.designer.cs",
-              "RelativeDocumentMoniker": "CMS.WebUI\\ContentPage.aspx.designer.cs",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\ContentPage.aspx.designer.cs",
-              "RelativeToolTip": "CMS.WebUI\\ContentPage.aspx.designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T12:27:10.544Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "index.html",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Html\\index.html",
-              "RelativeDocumentMoniker": "CMS.WebUI\\Html\\index.html",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Html\\index.html",
-              "RelativeToolTip": "CMS.WebUI\\Html\\index.html",
-              "ViewState": "AgIAABkDAAAAAAAAAAAAAHgDAAAAAAAAAAAAAA==",
+              "Title": "du-an.html",
+              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Html\\du-an.html",
+              "RelativeDocumentMoniker": "CMS.WebUI\\Html\\du-an.html",
+              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Html\\du-an.html",
+              "RelativeToolTip": "CMS.WebUI\\Html\\du-an.html",
+              "ViewState": "AgIAAFEBAAAAAAAAAAAAAHEBAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-12-25T12:24:33.559Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Web.config",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Web.config",
-              "RelativeDocumentMoniker": "CMS.WebUI\\Web.config",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Web.config",
-              "RelativeToolTip": "CMS.WebUI\\Web.config",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAAAGQAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-12-25T12:07:23.769Z",
+              "WhenOpened": "2024-12-31T12:06:42.899Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "cong-ty-thanh-vien.html",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Html\\cong-ty-thanh-vien.html",
-              "RelativeDocumentMoniker": "CMS.WebUI\\Html\\cong-ty-thanh-vien.html",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Html\\cong-ty-thanh-vien.html",
-              "RelativeToolTip": "CMS.WebUI\\Html\\cong-ty-thanh-vien.html",
-              "ViewState": "AgIAADkAAAAAAAAAAAAAAJ8BAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-12-25T11:24:12.686Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Bundle.config",
-              "DocumentMoniker": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Bundle.config",
-              "RelativeDocumentMoniker": "CMS.WebUI\\Bundle.config",
-              "ToolTip": "D:\\SweetSoft\\Exsercise\\CMS_HoanCau\\CMS.WebUI\\Bundle.config",
-              "RelativeToolTip": "CMS.WebUI\\Bundle.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-12-25T11:51:35.854Z"
             }
           ]
         },

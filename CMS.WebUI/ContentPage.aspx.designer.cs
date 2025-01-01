@@ -60,15 +60,6 @@ namespace CMS.WebUI
         protected global::CMS.WebUI.Controls.ControlContentPage.BaiVietGioiThieu ctrlBaiVietGioiThieu;
 
         /// <summary>
-        /// ctrlDuAnTieuBieu control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::CMS.WebUI.Controls.ControlContentPage.DuAnTieuBieu ctrlDuAnTieuBieu;
-
-        /// <summary>
         /// ctrlFileDinhKemControl control.
         /// </summary>
         /// <remarks>
@@ -103,6 +94,24 @@ namespace CMS.WebUI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::CMS.WebUI.Controls.ChuongTrinhDaoTao ctrlChuongTrinhDaoTao;
+
+        /// <summary>
+        /// ctrlChiTietNganhDaoTao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CMS.WebUI.Controls.ChiTietNganhDaoTao ctrlChiTietNganhDaoTao;
+
+        /// <summary>
+        /// ctrlSuKienControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CMS.WebUI.Controls.SuKienControl ctrlSuKienControl;
 
         /// <summary>
         /// ltrBelow control.

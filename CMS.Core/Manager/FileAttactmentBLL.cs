@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Management;
 using static CMS.Core.Manager.FriendlyUrlBLL;
 
 namespace CMS.Core.Manager
@@ -170,7 +171,7 @@ namespace CMS.Core.Manager
                 PostType = FriendlyUrlBLL.FriendlyURLTypeHelper.FileAttactment,
                 SlugUrl = danhMuc.Slug,
                 Status = BasicStatusHelper.Active
-                
+
             });
             return danhMuc;
         }
@@ -211,7 +212,7 @@ namespace CMS.Core.Manager
             new Delete().From(NhomBaiViet.Schema)
                 .Where(NhomBaiViet.DanhmucIdColumn)
                 .IsEqualTo(id).Execute();
-            
+
             new Delete().From(FileAttactment.Schema)
                 .Where(FileAttactment.CategoryIdColumn)
                 .IsEqualTo(id).And(FileAttactment.TypeColumn).IsEqualTo(FileAttactmentType.FileDinhKem)
@@ -233,8 +234,8 @@ namespace CMS.Core.Manager
         #region Front end
         public static List<ItemDanhMucFileDinhKem> GetChildInByParentDanhMuc(object parentId)
         {
-            
-                string sql = string.Format(@" WITH DanhMucCon AS (
+
+            string sql = string.Format(@" WITH DanhMucCon AS (
                         SELECT Id, Ten, DanhMucChaId, DisplayOrder, Status
                         FROM DanhMuc
                         WHERE DanhMucChaId = {0} AND Status != '{1}'
@@ -246,10 +247,10 @@ namespace CMS.Core.Manager
                     )
                     SELECT Id, Ten, DanhMucChaId, DisplayOrder
                     FROM DanhMucCon
-                    ORDER BY DisplayOrder; ",parentId, BasicStatusHelper.Deleted);
+                    ORDER BY DisplayOrder; ", parentId, BasicStatusHelper.Deleted);
             return new InlineQuery().ExecuteTypedList<ItemDanhMucFileDinhKem>(sql);
-           
-           
+
+
         }
         public static List<ItemFileDto> GetAllFileDinhKemByListCate(int[] listIdOrg)
         {
@@ -262,6 +263,20 @@ namespace CMS.Core.Manager
                 where CategoryId in ({0})  and Type = {1}
                  ", listIdOrgString, FileAttactmentType.FileDinhKem);
                 return new InlineQuery().ExecuteTypedList<ItemFileDto>(sql);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public static List<FileAttactment> GetAllFileDinhKemByCatId(int idCat)
+        {
+            try
+            {
+                return new Select().From(FileAttactment.Schema).
+                    Where(FileAttactment.TypeColumn).IsEqualTo(FileAttactmentType.NganhDaoTao)
+                    .And(FileAttactment.CategoryIdColumn).IsEqualTo(idCat)
+                    .ExecuteTypedList<FileAttactment>();
             }
             catch
             {

@@ -1,0 +1,451 @@
+﻿.container-car-detail{max-width:1600px;margin:0 auto;margin-top:90px}.container-car-detail a{text-decoration:none}.container-white{width:100%;background-color:#fff}.container-black{width:100%;background-color:#101010}.container-car-detail .main-banner-black{width:100%;height:680px;position:relative}.container-car-detail .img-banner{width:100%;height:680px}.main-banner-mobile-black{display:none}.main-banner-mobile-light{display:none}.container-car-detail .main-banner-light{width:100%;height:680px;position:relative}.container-car-detail .banner-description{position:absolute;width:550px;height:308px;left:0;bottom:0;opacity:.8}.container-car-detail .banner-description.black-background{background:#F5F5F5}.container-car-detail .banner-description.light-background{background-color:#101010}.container-car-detail .banner-description-car-name{font-size:23px;line-height:120%;color:#FFF;margin:56px 48px 0 94px;height:34px;overflow:hidden}.container-car-detail .banner-description-slogan{margin:0;margin-left:90px;padding-top:0;text-transform:uppercase;font-weight:bold;font-size:44px;line-height:120%;color:#FFF}.container-car-detail .banner-description-car-name.text-black,.container-car-detail .banner-description-slogan.text-black{color:#020202}.container-car-detail .container-menu-detail{width:100%;background-color:#EEE}.container-car-detail .menu-detail{width:860px;max-width:100%;padding:52px 0;margin:0 auto;background:#EEE}.menu-item{color:var(--text-color);display:flex;align-items:center}.menu-item span{color:var(--text-color)}.menu-item>img{max-width:50px;margin-right:10px}.container-car-detail .product-detail{width:1142px;max-width:100%;margin:60px auto}.container-car-detail .product-detail-info{margin-top:40px;padding-left:32px}.container-car-detail .product-detail-img{width:100%;box-shadow:-15px 15px #EB0A1E;margin-top:40px}.container-car-detail .product-detail-img img{width:100%;height:465px;object-fit:cover;-o-object-fit:cover;object-position:center;-o-object-position:center}.container-car-detail .product-detail-text{font-size:15px;line-height:150%}.container-car-detail .product-detail-read-more{display:flex;align-items:center;font-size:14px;color:var(--primary-color);font-weight:600;line-height:115%}.container-car-detail .product-detail-read-more .icon-right{margin-left:7px}.container-car-detail .product-concept-car,.container-car-detail .product-concept-car-bellow{margin-top:38px;text-align:center;color:#000}.concept-car-info{position:relative}.concept-car-name{font-size:16px;line-height:115%;margin-bottom:26px;text-align:center}.concept-car-value{font-size:22px;line-height:115%;text-align:center;letter-spacing:1px;position:relative}.concept-car-value .concept-car-value-sub{position:absolute;top:-8px;font-size:14px}.concept-car-border-right::after{content:"";position:absolute;width:1px;top:10px;right:0;height:60px;background-color:#CCC}.gallery{color:#fff;width:100%;margin:0 auto;padding:80px 0}.gallery-title{width:1200px;max-width:100%;margin:0 auto}.gallery-menu{display:flex;width:1200px;overflow:scroll;-ms-overflow-style:none;scrollbar-width:none;max-width:100%;margin:0 auto;padding-top:42px;margin-bottom:60px}.gallery-menu::-webkit-scrollbar{display:none}.gallery-link{font-size:16px;line-height:120%;text-transform:uppercase;width:33.3333%;text-align:center;padding-bottom:9px;border-bottom:1px solid #FFF}.gallery-link.active,.gallery-link:hover{cursor:pointer;border-bottom:4px solid var(--primary-color);font-weight:600;transition:all .3s ease-in-out}.gallery-swipper-container{position:relative;width:1480px;padding:0 20px;height:560px;max-width:100%;margin:0 auto}.swiper-gallery{position:unset;width:1200px;max-width:100%;height:100%;margin:0 auto;overflow:hidden}.swiper-gallery .swiper-slide img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .4s ease-in-out}.swiper-gallery .swiper-slide img:hover{transform:scale(1.02);cursor:pointer}.gallery-list{width:1200px;max-width:100%;margin:0 auto;margin-top:8px}.swiper-gallery-list{width:100%;overflow:hidden}.swiper-gallery-list .swiper-slide{opacity:.6;cursor:pointer}.swiper-gallery-list .swiper-slide.swiper-slide-thumb-active{opacity:1}.swiper-gallery-list img{width:100%;max-height:49px}.gallery-swiper-prev::after,.gallery-swiper-next::after{content:""}.gallery-swiper-prev{left:50px;user-select:none}.gallery-swiper-next{right:50px;user-select:none}.gallery-swiper-pagination{color:#fff;font-size:18px;text-align:left;left:150px;width:auto}.gallery-zoom-image-btn{pointer-events:none;position:absolute;right:150px;z-index:10;bottom:24px;display:none}.download-catalogue-container{text-align:center}.download-catalogue{border:1px solid #fff;background-color:unset;color:#fff;display:inline-block;padding:10px 20px}.download-catalogue:hover{color:#fff}.color-picker,.container-tab-item,.container-exterior{width:1232px;max-width:100%;margin:0 auto;padding:20px 16px}.color-picker{padding-top:80px;padding-bottom:80px}.box-car-inline{display:flex;margin-bottom:8px}.box-car-inline>img{width:65%;object-fit:cover;height:352px}.box-car-inline-text{background-color:#F5F5F5;width:100%;padding:16px 30px;display:flex;flex-direction:column;justify-content:center}.box-car-percent-text>p:nth-child(2),.box-car-inline-text>p:nth-child(2){min-height:96px;position:relative;margin:0}.box-car-title{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-weight:bold;font-size:21px;line-height:120%;width:100%;height:54px;color:#1A1A1A;overflow:hidden;margin-bottom:0}.box-car-block{display:flex}.box-car-block>img{width:100%}.box-car-percent-text{background-color:#F5F5F5;width:100%;padding:16px 30px;height:calc(100% - 284px)}.read-more{text-align:center;margin:40px auto 140px;display:block}.read-more-btn{font-weight:600;font-size:12px;line-height:17px;color:#1A1A1A;padding:12px 20px;border:1px solid #535353;cursor:pointer;text-transform:uppercase}.container-accessories-slider{width:100%;position:relative;max-width:1440px;margin:0 auto}.accessories-slider-swiper{width:100%;max-width:1200px;margin:0 auto;height:100%;overflow:hidden}.container-accessories-slider .swiper-pagination-progressbar .swiper-pagination-progressbar-fill{background-color:var(--primary-color)}.container-accessories-slider .swiper-pagination-progressbar{background-color:#ccc}.container-accessories-slider .accessories-pagination{width:140px;height:5px;bottom:0;top:unset;left:50%;transform:translateX(-50%);margin:0 auto}.accessories-item:not(:last-child){margin-bottom:40px;cursor:pointer}.accessories-item{position:relative}.accessories-item-img{width:100%;height:260px;object-fit:cover}.accessories-item-body{padding:20px 0}.accessories-item-title{font-weight:700;font-size:18px}.accessories-item-description{font-size:15px}.accessories-slider-desktop{margin:0;margin-top:16px;margin-bottom:16px;font-size:14px;color:#EB0A1E}.accessories-menu{display:flex;margin:60px 0}.accessories-mobile{display:none}.accessories-slider-mobile{display:none}.accessories-menu-item{width:calc(100% / 5);font-size:17px;line-height:120%;text-align:center;padding-bottom:10px;border-bottom:1px solid #101010;text-transform:uppercase;cursor:pointer}.accessories-menu-item.active{border-bottom:4px solid var(--primary-color);font-weight:bold}.progress-bar{position:relative;width:140px;margin:0 auto;height:4px;background-color:#fff}.progess-bar-value{width:100%;height:2px;background-color:#ccc}.progess-bar-percent{position:absolute;top:0;left:0;height:4px;background-color:red}.btn-accessories-slider-prev{display:flex;justify-content:center;align-items:center;color:#1A1A1A;position:absolute;left:-60px;top:150px;width:40px;height:40px;border:1px solid rgba(26,26,26,0.5);cursor:pointer}.btn-accessories-slider-next{display:flex;justify-content:center;align-items:center;color:#1A1A1A;position:absolute;right:-60px;top:150px;width:40px;height:40px;border:1px solid rgba(26,26,26,0.5);cursor:pointer}.btn-accessories-slider-next::after,.btn-accessories-slider-prev::after{content:""}.btn-nav-slider-left:hover,.btn-nav-slider-right:hover{background-color:#000;color:#fff}.container-color-picker{background-color:rgba(245,245,245,0.5)}.color-picker-menu{padding-top:60px;display:flex}.color-picker-menu-item{width:50%;text-transform:uppercase;padding-bottom:10px;text-align:center;border-bottom:1px solid #101010;cursor:pointer;margin-bottom:0;transition:all ease-in-out .2s;font-size:18px;line-height:120%}.color-picker-menu-item.active{font-weight:700;border-bottom:4px solid var(--primary-color)}.color-picker-car img{width:100%;height:360px;object-fit:contain}.color-picker-car .box-image-color-picker{position:relative}.color-picker-car .box-image-color-picker .current-image{position:absolute;left:0;top:0}.list-color{display:flex;flex-wrap:wrap;align-items:center}.color-item{display:block;border:1px solid #ccc;border-radius:50%;border-width:25px;border-style:solid;height:0;width:0}.wrapper-color:not(.active){padding:6px 6px;margin:18px 7px;cursor:pointer}.wrapper-color.active{padding:5px 5px;margin:18px 7px;border-radius:50% 50%;border:1px solid #ccc}.car-color-text{text-align:center;padding-top:10px;margin-bottom:0}.color-picker-content{display:none}.color-picker-content.show{display:block}.color-picker-content-price{font-size:24px;font-weight:bold;color:#EB0A1E;position:relative;width:fit-content;margin:0;margin-top:16px}.color-picker-content-price span{font-size:16px;line-height:17px;color:#EB0A1E;position:absolute;right:-37px}.list-car-container{padding:80px 0;width:1200px;max-width:100%;margin:0 auto}.text-title-list-car{color:#1A1A1A;font-weight:bold;font-size:38px;line-height:120%;margin-bottom:50px}.list-car-item{margin-bottom:60px}.list-car-heading{display:flex;border-bottom:1px solid #101010;padding-bottom:16px;margin-bottom:36px;justify-content:space-between;align-items:flex-end}.list-car-heading .list-car-name{font-weight:700;font-size:22px;line-height:120%;margin-bottom:0}.list-car-heading .car-discount{font-weight:600;font-size:18px;line-height:120%;color:var(--primary-color)}.list-car-heading .car-price{margin:0;position:relative}.list-car-heading .car-price>span:nth-child(1){font-weight:600;font-size:16px;line-height:23px;color:#000;margin-right:24px}.list-car-heading .car-price>span:nth-child(2){font-size:12px;line-height:17px;color:#000;position:absolute;top:-6px;right:0}.list-car-item .list-car-body img{width:100%}.btn-sign-up-test-driver{font-size:12px;margin:0;padding:8px 12px;text-transform:uppercase;border:1px solid #101010;color:#000;background-color:#fff;font-weight:600}.btn-sign-up-test-driver:hover{color:#000}.see-specs{margin-top:18px;color:var(--primary-color);font-weight:600;font-size:14px;cursor:pointer;display:block}.see-specs:hover{color:var(--primary-color)}.see-specs>i{margin-left:6px}.container-car-discount{width:1232px;max-width:100%;margin:0 auto;padding:0 16px;padding-bottom:26px}.car-discount-item-img img{width:100%;height:230px;object-fit:cover;-o-object-fit:cover;object-position:center;-o-object-position:center}.car-discount-item-title{font-weight:bold;font-size:22px;line-height:150%;margin-top:24px;margin-bottom:18px;display:-webkit-box;-webkit-line-clamp:1;overflow:hidden;-webkit-box-orient:vertical}.car-discount-content{padding-top:10px}.car-discount-content p{display:-webkit-box;-webkit-line-clamp:3;overflow:hidden;-webkit-box-orient:vertical}.car-discount-view-detail{display:flex;align-items:center;justify-content:left}.car-discount-view-detail span{font-weight:600;font-size:14px;line-height:115%;color:var(--primary-color);margin-right:8px}.lg-backdrop{z-index:10000}.lg-outer{z-index:10000}.pop-up-full-screen{opacity:0;height:0;position:fixed;width:100vw;background-color:rgba(0,0,0,0.8);z-index:10001;top:0;bottom:0;left:0;right:0;display:flex;align-items:center;visibility:hidden}.pop-up-full-screen.active{opacity:1;height:100%;visibility:visible}.pop-up-full-screen .pop-up-screen-width{max-width:1200px;margin:0 auto;background:#FFF;width:100%;height:85vh;padding:60px 0;position:relative}.pop-up-screen-width .button-close-pop-up{width:32px;height:32px;display:flex;justify-content:center;align-items:center;position:absolute;top:16px;right:20px;border:1px solid #CCC;cursor:pointer;z-index:100000;background-color:#FFF}.pop-up-full-screen .pop-up-container{max-width:880px;margin:0 auto;height:100%;overflow:auto;padding-right:16px}.pop-up-container .swiper-popup-full-screen{position:unset}.pop-up-container .swiper-popup-full-screen .swiper-wrapper{}.pop-up-container .swiper-popup-full-screen .swiper-wrapper .swiper-slide{}.pop-up-container .swiper-popup-full-screen .swiper-wrapper .swiper-slide .swiper-slide-item{}.swiper-slide-item .slider-title{font-weight:bold;font-size:22px;line-height:150%;text-align:center;color:#000;margin-bottom:32px}.swiper-slide-item img{max-width:100%;height:auto;display:block;margin:0 auto}.swiper-slide-item .slider-content p{font-size:16px;line-height:150%;text-align:justify;color:#1A1A1A;margin-top:16px}#style-4::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);background-color:#F5F5F5}#style-4::-webkit-scrollbar{width:10px;background-color:#F5F5F5}#style-4::-webkit-scrollbar-thumb{background-color:#EB0A1E;border:2px solid #EB0A1E}.button-prev-discovery-vehicles::after{content:""}.button-prev-discovery-vehicles{background:rgba(255,255,255,0.5);border:1px solid #1A1A1A;box-sizing:border-box;transform:matrix(1,0,0,1,0,0);width:40px;height:40px;display:flex;justify-content:center;align-items:center;left:60px}.button-next-discovery-vehicles::after{content:""}.button-next-discovery-vehicles{background:rgba(255,255,255,0.5);border:1px solid #1A1A1A;box-sizing:border-box;transform:matrix(-1,0,0,1,0,0);width:40px;height:40px;display:flex;justify-content:center;align-items:center;right:60px}.slider-content{}.block-promotion{display:flex;flex-wrap:wrap;gap:56px}.block-promotion .promotion-item{max-width:360px}.block-promotion .promotion-item .promotion-item-image{height:220px;width:100%;object-fit:cover;object-position:center;display:block;margin-bottom:24px}.block-promotion .promotion-item .promotion-item-title{font-weight:bold;font-size:22px;line-height:150%;color:#1A1A1A;margin-bottom:24px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;min-height:64.8px}.block-promotion .promotion-item .promotion-item-link{display:flex;gap:32px;margin-bottom:24px}.block-promotion .promotion-item .promotion-item-link .link-custom{height:30px;border:1px solid #3A3A3A;border-radius:20px;display:flex;align-items:center;font-weight:600;font-size:12px;line-height:17px;color:#3A3A3A}.block-promotion .promotion-item .promotion-item-link .link-custom:nth-child(1){padding:0 42px}.block-promotion .promotion-item .promotion-item-link .link-custom:nth-child(2){padding:0 30px}.feature-item{display:flex;gap:8px;align-items:center}.feature-item:not(:first-child){margin-top:16px}.feature-item:last-child{margin-bottom:24px}.feature-item .feature-item-image{height:30px;width:30px;display:flex;align-items:center;justify-content:center}.feature-item .feature-item-image img{max-width:100%;height:auto;display:block;margin:0 auto}.feature-item .feature-item-title{font-weight:600;font-size:14px;line-height:115%;color:#000;margin:0}.promotion-item-description{font-size:16px;line-height:150%;color:#1A1A1A;margin-bottom:24px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;min-height:72px}.feature-item-see-more{font-weight:600;font-size:14px;line-height:115%;color:#EB0A1E;text-decoration:none}.feature-item-see-more:hover{color:#EB0A1E}.feature-item-see-more I{margin-left:4px}.best_Sale{position:absolute;top:8px;right:8px;z-index:1;background-color:#EB0A1E;padding:4px 8px;color:#fff;display:flex;align-items:center;justify-content:center;transform:skewX(-15deg);font-size:14px}.best_Sale-text{margin-left:4px}.box-tech-compare{display:flex;align-items:center}.box-tech-compare .divide-box-tech-compare{display:block;width:1px;height:22px;margin:0 16px;background-color:#CCC}@media(min-width:1080px) and (max-width:1280px){.container-car-detail .main-banner-black{height:auto}.container-car-detail .img-banner{height:auto}.container-car-detail .banner-description{width:calc(40%+32px);height:auto}.container-car-detail .banner-description-car-name{margin-top:36px;margin-left:48px}.container-car-detail .banner-description-slogan{margin-left:48px;margin-bottom:36px}}@media(min-width:1081px){.box-car-percent-pc{width:50%}.box-car-percent-pc img{width:100%;height:284px;object-fit:cover;display:block}}#furniture-item{margin-top:52px}@media(max-width:1400px){.color-picker,.container-tab-item,.container-exterior,.swiper-gallery,.gallery-menu,.gallery-title,.gallery-list,.list-car-container,.container-car-discount{width:1142px}}@media(max-width:1080px){.hide-border-right-on-mobile::after{content:none}.concept-car-border-right::after{right:-12px;top:2px;height:68px}.container-car-detail .product-detail{margin:0 auto;margin-bottom:89px}.container-car-detail .product-detail-img{box-shadow:-10px 10px #EB0A1E}.container-car-detail .product-detail-text{-webkit-line-clamp:6}.container-car-detail .product-detail-img img{height:auto}.text-title{text-align:left;font-size:32px}.text-title-library{text-align:center;margin-bottom:20px}.gallery{padding:40px 0}.gallery-menu{padding-top:0}.hide-on-mobile-tablet{display:none!important}.margin-0-on-mobile-tablet{margin-left:0;margin-right:0}.container-car-detail{margin-top:60px}.container-car-detail .product-detail-info{padding-left:0}.container-exterior{padding-top:8px}.box-car-inline-text{padding:10px 20px}.box-car-block{flex-wrap:wrap}.box-car-full-s{width:100%;flex-wrap:wrap;padding-top:24px;margin-bottom:20px}.box-car-full-s>img{width:100%;object-fit:cover;height:200px}.container-accessories-slider{display:none}.accessories-slider-desktop{display:none}.accessories-mobile{display:block;position:relative}.accessories-slider-mobile{display:block;margin-bottom:32px;font-size:14px;color:#EB0A1E}.accessories-item-img{}.accessories-menu-mobile{display:flex;padding-bottom:40px}#aceessories-slider-menu-mobile{width:98%;margin:10px auto;margin-bottom:40px;display:flex;justify-content:left;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}#aceessories-slider-menu-mobile::-webkit-scrollbar{display:none}.item-menu-accessories{position:relative;left:0;text-align:center;transition:.5s}.accessories-menu-item-mobile{text-align:center;font-size:14px;text-transform:uppercase;padding-bottom:5px;width:80%;margin:0 auto;cursor:pointer}.accessories-menu-item-mobile.active{font-weight:bold;border-bottom:4px solid var(--primary-color)}.btn-nav-menu-right{position:absolute;right:0;top:0;color:#000}.btn-nav-menu-left{position:absolute;left:0;top:0;color:#000}.text-title-list-car{font-size:32px;margin:0 16px 40px 16px}.list-car-item{margin-left:16px;margin-right:16px}.concept-car-info{margin-top:24px}.color-picker{padding-top:40px;padding-bottom:40px}.list-car-heading .car-discount{font-size:16px}.swiper-gallery{width:92%}.gallery-swiper-pagination{left:80px}.gallery-swiper-prev{left:12px}.gallery-swiper-next{right:12px}.gallery-zoom-image-btn{bottom:5px;right:80px}.read-more{margin-bottom:95px}.car-discount-item-img img{height:auto}.box-car-percent-text{background-color:#F5F5F5;width:100%;padding:16px 30px;height:calc(100% - 200px)}}@media(max-width:769px){.hide-on-mobile{display:none}.main-banner-mobile-light,.main-banner-mobile-black{display:block;width:100%;position:relative}.img-banner-mobile{width:100%}.container-car-detail .banner-description{width:274px;height:150px}.container-car-detail .banner-description-car-name{font-size:16px;margin:16px 16px 0 32px}.container-car-detail .banner-description-slogan{font-size:24px;margin-left:32px}.concept-car-name{font-size:14px}.concept-car-value{font-size:16px}.container-car-detail .menu-item{display:flex;flex-direction:column;text-align:center;align-items:center;justify-content:center}.container-car-detail a{font-size:12px}.container-car-detail .menu-item>img{max-width:48px;margin-right:0}.gallery-swipper-container{height:220px}.swiper-gallery{width:92%}.gallery-swiper-pagination{left:50px}.gallery-swiper-prev{left:0}.gallery-swiper-next{right:0}.gallery-zoom-image-btn{bottom:5px;right:50px}.container-car-detail .menu-item>span{margin-top:8px;height:40px}.container-btn-listcar{display:flex;justify-content:space-between;align-items:center}.see-specs{margin-top:0}.color-picker-car img{height:139px}.list-car-name{text-align:left}.accessories-menu-item-mobile{font-size:12px}.gallery-link{min-width:100%}.car-discount-item{margin-bottom:17px}.car-detail-pagination .pagination-item{width:auto;height:auto;color:#1a1a1a;border:0;background-color:unset}.car-detail-pagination .pagination-item.active{background-color:unset;font-weight:bold;color:#101010;border-bottom:2px solid var(--primary-color)}.slider-content{padding:0 16px}.pop-up-full-screen .pop-up-screen-width{padding-top:48px;padding-bottom:16px}.button-next-discovery-vehicles,.button-prev-discovery-vehicles{display:none}.block-promotion{gap:60px}.block-promotion .promotion-item{max-width:100%}.block-promotion .promotion-item .promotion-item-image{height:234px}.promotion-item-description{min-height:unset}.color-picker-content-price{font-size:20px}.color-picker-content-price span{font-size:14px;right:-32px}#furniture-item{margin-top:46px}.box-car-full-s>img{height:auto}.box-car-percent-text{height:auto}}@media(max-width:576px){.box-car-full-s>img{height:200px}.box-car-percent-text{height:calc(100% - 200px)}}@media(max-width:360px){.container-car-detail a{font-size:10px}}.subBanner__text{color:#EB0A1E;margin-bottom:16px}@media screen and (max-width :1080px){.subBanner__text{padding:0 16px}}@media screen and (min-width :768px) and (max-width :1080px){.main-banner-mobile-black{display:block;width:100%;position:relative;height:680px}.img-banner-mobile{width:100%}.container-car-detail .banner-description{width:380px;height:120px}.container-car-detail .banner-description-car-name{font-size:16px;margin:16px 16px 0 32px}.container-car-detail .banner-description-slogan{font-size:24px;margin-left:32px}.box-car-full-s>img{height:auto}.box-car-percent-text{height:auto}.accessories-item-img{height:auto}.modal-image-container{margin-bottom:20px}.modal-body{margin-top:16px;padding:0 16px 40px 16px}}
+:root {
+    --text-color: #1A1A1A;
+    --primary-color: #EB0A1E
+}
+
+.primary-color {
+    color: var(--primary-color) !important
+}
+
+.text-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 44px;
+    text-transform: uppercase
+}
+
+a.tool-item + a.tool-item {
+    margin: 0
+}
+
+input:focus {
+    outline: none
+}
+
+.text {
+    font-size: 15px;
+    color: var(--text-color)
+}
+
+body {
+    font-family: 'Toyota Type';
+    margin: 0
+}
+
+.mb-32 {
+    margin-bottom: 32px !important
+}
+
+.mt-32 {
+    margin-top: 32px !important
+}
+
+.mb-64 {
+    margin-bottom: 64px !important
+}
+
+#back-to-top {
+    width: 40px;
+    height: 40px;
+    background-color: #EB0A1E;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 80px;
+    right: 32px;
+    font-size: 16px;
+    line-height: 16px;
+    color: #FFF;
+    transition: background-color .3s,opacity .5s,visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+    text-decoration: none;
+    cursor: pointer
+}
+
+    #back-to-top.show {
+        opacity: 1;
+        visibility: visible
+    }
+
+.loading-icon {
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 1.5s linear infinite;
+    text-align: center
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+.tool-mobile {
+    display: none
+}
+
+.tool {
+    position: fixed;
+    z-index: 50;
+    right: 0;
+    top: 180px;
+    color: #1A1A1A;
+    width: 48px
+}
+
+    .tool .tool-item {
+        background-color: #fff;
+        width: 48px;
+        height: 48px;
+        border: 1px solid #ccc;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        transition: width .5s;
+        padding-left: 12px;
+        float: right;
+        overflow: hidden;
+        position: relative
+    }
+
+        .tool .tool-item img {
+            width: auto
+        }
+
+        .tool .tool-item:hover span {
+            left: 30px
+        }
+
+    .tool .tool-list {
+        background-color: #fff;
+        width: 48px;
+        height: 48px;
+        border: 1px solid #ccc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        float: right;
+        font-size: 20px;
+        color: #1a1a1a;
+        cursor: pointer
+    }
+
+.tool-item:hover {
+    width: 260px;
+    transition: width 1s
+}
+
+.tool .tool-item > span {
+    margin-left: 20px;
+    color: #1A1A1A;
+    position: absolute;
+    right: 100%;
+    width: max-content
+}
+
+.tool-list-contain {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s ease 0s
+}
+
+    .tool-list-contain.show {
+        height: auto;
+        opacity: 1;
+        visibility: visible
+    }
+
+    .tool-list-contain .tool-list-item {
+        min-width: 3rem;
+        display: table;
+        margin-right: auto;
+        cursor: pointer;
+        font-size: 1rem;
+        background-color: #fff;
+        padding-right: 16px;
+        box-shadow: inset 0 0 1px 1px rgb(192 192 192 / 30%);
+        transition: all .5s ease 0s
+    }
+
+        .tool-list-contain .tool-list-item:hover {
+            transform: translateX(calc(-100%+1.5rem+24px))
+        }
+
+        .tool-list-contain .tool-list-item .item-contain {
+            height: 48px;
+            display: flex;
+            align-items: center
+        }
+
+            .tool-list-contain .tool-list-item .item-contain .item-image {
+                width: 48px;
+                display: flex;
+                justify-content: center;
+                align-items: center
+            }
+
+                .tool-list-contain .tool-list-item .item-contain .item-image img {
+                    max-width: 100%;
+                    max-height: 100%;
+                    display: block;
+                    margin: 0 auto
+                }
+
+            .tool-list-contain .tool-list-item .item-contain .item-title {
+                font-size: 16px;
+                line-height: 23px;
+                color: #1A1A1A;
+                white-space: nowrap
+            }
+
+        .tool-list-contain .tool-list-item:hover .item-contain .item-title {
+            color: #EB0A1E
+        }
+
+        .tool-list-contain .tool-list-item a {
+            display: flex;
+            align-items: center
+        }
+
+@media(max-width: 1160px) {
+    .tool {
+        display: none
+    }
+
+    .tool-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap
+    }
+
+        .tool-mobile .tool-item {
+            width: 14.28%;
+            height: 40px;
+            border: 1px solid #ccc;
+            display: flex;
+            padding: 8px;
+            justify-content: center;
+            align-items: center
+        }
+
+        .tool-mobile .tool-description {
+            width: 100%;
+            height: 40px;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1A1A1A
+        }
+
+            .tool-mobile .tool-description span:not(span:nth-child(1)) {
+                display: none
+            }
+}
+
+@media(max-width: 1080px) {
+    #back-to-top {
+        bottom: 60px;
+        right: 4px;
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+        line-height: 12px;
+        align-items: center
+    }
+}
+
+@media(max-width: 768px) {
+    footer {
+        margin-bottom: 40px
+    }
+
+    .tool-mobile {
+        position: fixed;
+        bottom: 0;
+        background-color: #FFF;
+        width: 100%;
+        max-width: 100%;
+        z-index: 999
+    }
+}
+
+.bg-icon_global {
+    display: block;
+    margin-right: 4px;
+    width: 23px;
+    height: 23px;
+    background: url('../../Images/global-image/global-image.png') -54px -295px
+}
+
+.bg-icon_instagram {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url('../../Images/global-image/global-image.png') -144px -219px
+}
+
+.bg-icon_play_technology {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 93px;
+    height: 92px;
+    background: url('../../Images/global-image/global-image.png') -10px -107px
+}
+
+.bg-icon_play_technology_mobile {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 56px;
+    height: 56px;
+    background: url('../../Images/global-image/global-image.png') -123px -107px
+}
+
+.bg-icon_tiktok {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url('../../Images/global-image/global-image.png') -188px -219px
+}
+
+.bg-logo_toyota {
+    display: block;
+    width: 81px;
+    height: 65px;
+    background: url('../../Images/global-image/global-image.png') -312px -112px
+}
+
+.bg-logo_toyota_mobile {
+    display: block;
+    width: 70px;
+    height: 56px;
+    background: url('../../Images/global-image/global-image.png') -10px -219px
+}
+
+.bg-icon_prev_vehicle {
+    display: block;
+    width: 8px;
+    height: 14px;
+    background: url('../../Images/global-image/global-image.png') -123px -183px
+}
+
+.bg-icon_price {
+    display: block;
+    width: 18px;
+    height: 24px;
+    background: url('../../Images/global-image/global-image.png') -51px -339px
+}
+
+.bg-icon_service {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url('../../Images/global-image/global-image.png') -232px -219px
+}
+
+.bg-icon_youtube {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url('../../Images/global-image/global-image.png') -276px -219px
+}
+
+.bg-icon_zalo {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url('../../Images/global-image/global-image.png') -320px -219px
+}
+
+.bg-khuyen_mai_image {
+    display: block;
+    width: 82px;
+    height: 82px;
+    background: url('../../Images/global-image/global-image.png') -210px -10px
+}
+
+.bg-bang_gia_image {
+    display: block;
+    width: 82px;
+    height: 82px;
+    background: url('../../Images/global-image/global-image.png') -210px -112px
+}
+
+.bg-bo_cong_thuong {
+    display: block;
+    width: 180px;
+    height: 77px;
+    background: url('../../Images/global-image/global-image.png') -10px -10px
+}
+
+.bg-dang_ki_lai_thu_image {
+    display: block;
+    width: 82px;
+    height: 82px;
+    background: url('../../Images/global-image/global-image.png') -312px -10px
+}
+
+.bg-icon_calculate {
+    display: block;
+    width: 21px;
+    height: 24px;
+    background: url('../../Images/global-image/global-image.png') -10px -339px
+}
+
+.bg-icon_chat {
+    display: block;
+    width: 24px;
+    height: 25px;
+    background: url('../../Images/global-image/global-image.png') -100px -219px
+}
+
+.bg-icon_compare {
+    display: block;
+    width: 17px;
+    height: 24px;
+    background: url('../../Images/global-image/global-image.png') -89px -339px
+}
+
+.bg-icon_dowload {
+    display: block;
+    width: 17px;
+    height: 24px;
+    background: url('../../Images/global-image/global-image.png') -126px -339px
+}
+
+.bg-icon_drive {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url('../../Images/global-image/global-image.png') -364px -219px
+}
+
+.bg-icon_facebook {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url('../../Images/global-image/global-image.png') -10px -295px
+}
+
+.header-list-item.center-item {
+    display: flex !important;
+    align-items: center !important
+}

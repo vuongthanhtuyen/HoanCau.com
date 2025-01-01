@@ -2672,6 +2672,10 @@
     <Content Include="Administration\ThanhVien.aspx" />
     <Content Include="Administration\UploadImage\ion_Login.png" />
     <Content Include="AjaxHandler.aspx" />
+    <Content Include="Assets\css\NganhDaoTao.css" />
+    <Content Include="Assets\js\NganhDaoTao.js" />
+    <Content Include="Assets\lib\NganhDaoTao\bootstrap.min.css" />
+    <Content Include="Assets\lib\NganhDaoTao\globals.css" />
     <Content Include="Assets\validation-engine\css\screenshot.png" />
     <Content Include="Assets\validation-engine\css\style.css" />
     <Content Include="Assets\validation-engine\css\validationEngine.jquery.css" />
@@ -2723,13 +2727,13 @@
     <Content Include="Controls\ControlContentPage\BaiVietGioiThieu.ascx" />
     <Content Include="Controls\ControlContentPage\BaiVietPublish.ascx" />
     <Content Include="Controls\ControlContentPage\Category.ascx" />
-    <Content Include="Controls\ControlContentPage\DuAnTieuBieu.ascx" />
     <Content Include="Controls\ControlContentPage\FileDinhKemControl.ascx" />
     <Content Include="Controls\DanhSachBaiViet.ascx" />
     <Content Include="Controls\DanhSachDuAnTieuBieu.ascx" />
     <Content Include="Controls\DanhSachThanhVien.ascx" />
     <Content Include="Controls\PagePublish.ascx" />
     <Content Include="Controls\SlideTop.ascx" />
+    <Content Include="Controls\SuKienControl.ascx" />
     <Content Include="DanhSachDuAnTieuBieuPublish.aspx" />
     <Content Include="DoiTacPublish.aspx" />
     <Content Include="Administration\Login.aspx" />
@@ -4016,13 +4020,6 @@
     <Compile Include="Controls\ControlContentPage\Category.ascx.designer.cs">
       <DependentUpon>Category.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ControlContentPage\DuAnTieuBieu.ascx.cs">
-      <DependentUpon>DuAnTieuBieu.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\ControlContentPage\DuAnTieuBieu.ascx.designer.cs">
-      <DependentUpon>DuAnTieuBieu.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Controls\ControlContentPage\FileDinhKemControl.ascx.cs">
       <DependentUpon>FileDinhKemControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4064,6 +4061,13 @@
     </Compile>
     <Compile Include="Controls\SlideTop.ascx.designer.cs">
       <DependentUpon>SlideTop.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SuKienControl.ascx.cs">
+      <DependentUpon>SuKienControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\SuKienControl.ascx.designer.cs">
+      <DependentUpon>SuKienControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="DanhSachDuAnTieuBieuPublish.aspx.cs">
       <DependentUpon>DanhSachDuAnTieuBieuPublish.aspx</DependentUpon>

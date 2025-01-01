@@ -83,7 +83,9 @@
     <Compile Include="Manager\NhomCoCauBLL.cs" />
     <Compile Include="Manager\SettingManager.cs" />
     <Compile Include="Manager\SlideBLL.cs" />
+    <Compile Include="Manager\SuKienBLL.cs" />
     <Compile Include="Manager\VaiTroManagerBll.cs" />
+    <Compile Include="Manager\VideoBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publich\BaiVietPublishBLL.cs" />
     <Compile Include="Publich\DanhMucPublishBLL.cs" />

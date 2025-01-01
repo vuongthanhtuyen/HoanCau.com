@@ -60,6 +60,8 @@ namespace SweetCMS.DataAccess
         
 		public static readonly string VaiTroDanhMucLoaiQuyenChiTiet = @"VaiTro_DanhMuc_LoaiQuyen_ChiTiet";
         
+		public static readonly string Video = @"Video";
+        
 	}
 	#endregion
     #region Schemas
@@ -168,6 +170,11 @@ namespace SweetCMS.DataAccess
 		public static TableSchema.Table VaiTroDanhMucLoaiQuyenChiTiet
 		{
             get { return DataService.GetSchema("VaiTro_DanhMuc_LoaiQuyen_ChiTiet", "DataAcessProvider"); }
+		}
+        
+		public static TableSchema.Table Video
+		{
+            get { return DataService.GetSchema("Video", "DataAcessProvider"); }
 		}
         
 	

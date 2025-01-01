@@ -15,24 +15,6 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
     {
 
         /// <summary>
-        /// ScriptManger1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManger1;
-
-        /// <summary>
-        /// btnOpenModal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnOpenModal;
-
-        /// <summary>
         /// lblResult control.
         /// </summary>
         /// <remarks>
@@ -40,6 +22,15 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblResult;
+
+        /// <summary>
+        /// UpdatePanelMainTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanelMainTable;
 
         /// <summary>
         /// GridViewTable control.
@@ -60,13 +51,40 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
         protected global::CMS.WebUI.Administration.AdminUserControl.PagingAdmin PagingAdminWeb;
 
         /// <summary>
-        /// lblAddErrorMessage control.
+        /// UpdatePanelID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAddErrorMessage;
+        protected global::System.Web.UI.UpdatePanel UpdatePanelID;
+
+        /// <summary>
+        /// hdnRowId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnRowId;
+
+        /// <summary>
+        /// UpdatePanelModal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanelModal;
+
+        /// <summary>
+        /// lblModalTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblModalTitle;
 
         /// <summary>
         /// txtTieuDe control.
@@ -75,7 +93,7 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTieuDe;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTieuDe;
 
         /// <summary>
         /// txtSlug control.
@@ -84,25 +102,7 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSlug;
-
-        /// <summary>
-        /// SummernoteEditor control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::CMS.WebUI.Administration.AdminUserControl.SummernoteEditor SummernoteEditor;
-
-        /// <summary>
-        /// txtThumbnailUrl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::CMS.WebUI.Administration.AdminUserControl.ImportImage txtThumbnailUrl;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtSlug;
 
         /// <summary>
         /// txtMoTaNgan control.
@@ -111,115 +111,142 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CMS.WebUI.Administration.AdminUserControl.SummernoteEditor txtMoTaNgan;
+        protected global::CKEditor.NET.CKEditorControl txtMoTaNgan;
 
         /// <summary>
-        /// btnUserAdd control.
+        /// txtNoiDungChinh control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUserAdd;
+        protected global::CKEditor.NET.CKEditorControl txtNoiDungChinh;
 
         /// <summary>
-        /// btnCancel control.
+        /// imgThumb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancel;
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgThumb;
 
         /// <summary>
-        /// lblErrorEditMessage control.
+        /// txtImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblErrorEditMessage;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtImage;
 
         /// <summary>
-        /// txtEditTieuDe control.
+        /// divRemoveThumb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEditTieuDe;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRemoveThumb;
 
         /// <summary>
-        /// txtEditSlug control.
+        /// chkTrangThai control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEditSlug;
+        protected global::System.Web.UI.WebControls.CheckBox chkTrangThai;
 
         /// <summary>
-        /// txtEditNoiDungChinh control.
+        /// ddlStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CMS.WebUI.Administration.AdminUserControl.SummernoteEditor txtEditNoiDungChinh;
+        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
 
         /// <summary>
-        /// chkEditTrangThai control.
+        /// txtViewCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkEditTrangThai;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtViewCount;
 
         /// <summary>
-        /// txtEditNgayTao control.
+        /// txtDisplayOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEditNgayTao;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtDisplayOrder;
 
         /// <summary>
-        /// txtEditThumbnailUrl control.
+        /// txtNgayDangCongKhai control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CMS.WebUI.Administration.AdminUserControl.ImportImageEdit txtEditThumbnailUrl;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtNgayDangCongKhai;
 
         /// <summary>
-        /// txtEditMoTaNgan control.
+        /// txtInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CMS.WebUI.Administration.AdminUserControl.SummernoteEditor txtEditMoTaNgan;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtInfo;
 
         /// <summary>
-        /// Button1 control.
+        /// txtIdHidden control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtIdHidden;
 
         /// <summary>
-        /// Button2 control.
+        /// btnRefresh control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnRefresh;
+
+        /// <summary>
+        /// btnSendServer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSendServer;
+
+        /// <summary>
+        /// UpdatepanelEidtRole control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatepanelEidtRole;
+
+        /// <summary>
+        /// txtEditRoleIdUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEditRoleIdUser;
 
         /// <summary>
         /// GridViewDanhMuc control.
@@ -240,31 +267,31 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
         protected global::System.Web.UI.WebControls.Button btnEditDanhMuc;
 
         /// <summary>
-        /// btnCancelEditDanhMuc control.
+        /// Button3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelEditDanhMuc;
+        protected global::System.Web.UI.WebControls.Button Button3;
 
         /// <summary>
-        /// Label3 control.
+        /// titleAlbum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl titleAlbum;
 
         /// <summary>
-        /// UpdatePanel1 control.
+        /// updateAlbum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.UpdatePanel updateAlbum;
 
         /// <summary>
         /// rptAlbum control.
@@ -276,13 +303,31 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
         protected global::System.Web.UI.WebControls.Repeater rptAlbum;
 
         /// <summary>
-        /// DuAnTieuBieuUpLoad control.
+        /// img1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CMS.WebUI.Administration.AdminUserControl.DuAnTieuBieuUpLoad DuAnTieuBieuUpLoad;
+        protected global::System.Web.UI.HtmlControls.HtmlImage img1;
+
+        /// <summary>
+        /// txtAlbum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtAlbum;
+
+        /// <summary>
+        /// div1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div1;
 
         /// <summary>
         /// btnAddAlbum control.
@@ -294,57 +339,102 @@ namespace CMS.WebUI.Administration.QuanLyDuAnTieuBieu
         protected global::System.Web.UI.WebControls.Button btnAddAlbum;
 
         /// <summary>
-        /// Button6 control.
+        /// txtVideo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button6;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtVideo;
 
         /// <summary>
-        /// Label2 control.
+        /// UpdateVideo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.UpdatePanel UpdateVideo;
 
         /// <summary>
-        /// Button3 control.
+        /// RepeaterVideo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.Repeater RepeaterVideo;
 
         /// <summary>
-        /// Button4 control.
+        /// txtTitleVideo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button4;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTitleVideo;
 
         /// <summary>
-        /// AdminNotificationUserControl control.
+        /// txtServerLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CMS.WebUI.Administration.AdminUserControl.AdminNotification AdminNotificationUserControl;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtServerLink;
 
         /// <summary>
-        /// hdnRowId control.
+        /// btnUploadVideo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnRowId;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl btnUploadVideo;
+
+        /// <summary>
+        /// lblSmallText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblSmallText;
+
+        /// <summary>
+        /// img2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage img2;
+
+        /// <summary>
+        /// txtThumVideo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtThumVideo;
+
+        /// <summary>
+        /// txt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txt;
+
+        /// <summary>
+        /// btnAlbumVideoImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAlbumVideoImage;
     }
 }

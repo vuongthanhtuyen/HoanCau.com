@@ -18,7 +18,7 @@ namespace CMS.Core.Manager
     {
         public const byte None = 0;
         public const byte Article = 1;
-        public const byte KeyProject = 2;
+        
         public const byte Project = 10;
         public const byte Video = 11;
         public const byte FileAttactment = 12;
@@ -28,7 +28,8 @@ namespace CMS.Core.Manager
         //public const int Article = 1;
         //public const int Project = 2;
         //public const int Info = 3;
-
+        public const byte NhomSuKien = 32;
+        //public const byte NhomSuKien = 33;
 
     }
     public class DanhMucBaiVietBLL

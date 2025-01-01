@@ -471,6 +471,25 @@ namespace SweetCMS.DataAccess
 		        colNhomBaiVietRecords[e.NewIndex].DanhmucId = Id;
             }
 		}
+		private SweetCMS.DataAccess.VideoCollection colVideoRecords;
+		public SweetCMS.DataAccess.VideoCollection VideoRecords()
+		{
+			if(colVideoRecords == null)
+			{
+				colVideoRecords = new SweetCMS.DataAccess.VideoCollection().Where(Video.Columns.CategoryId, Id).Load();
+				colVideoRecords.ListChanged += new ListChangedEventHandler(colVideoRecords_ListChanged);
+			}
+			return colVideoRecords;
+		}
+				
+		void colVideoRecords_ListChanged(object sender, ListChangedEventArgs e)
+		{
+            if (e.ListChangedType == ListChangedType.ItemAdded)
+            {
+		        // Set foreign key value
+		        colVideoRecords[e.NewIndex].CategoryId = Id;
+            }
+		}
 		#endregion
 		
 			
@@ -708,6 +727,17 @@ namespace SweetCMS.DataAccess
                         }
                     }
                }
+		
+                if (colVideoRecords != null)
+                {
+                    foreach (SweetCMS.DataAccess.Video item in colVideoRecords)
+                    {
+                        if (item.CategoryId == null ||item.CategoryId != Id)
+                        {
+                            item.CategoryId = Id;
+                        }
+                    }
+               }
 		}
         #endregion
     
@@ -720,6 +750,11 @@ namespace SweetCMS.DataAccess
                 if (colNhomBaiVietRecords != null)
                 {
                     colNhomBaiVietRecords.SaveAll();
+               }
+		
+                if (colVideoRecords != null)
+                {
+                    colVideoRecords.SaveAll();
                }
 		}
         #endregion
