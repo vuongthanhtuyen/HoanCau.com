@@ -80,35 +80,30 @@ namespace SweetCMS.DataAccess
 	    /// Inserts a record, can be used with the Object Data Source
 	    /// </summary>
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
-	    public void Insert(string KeyString,string ValueX)
+	    public DefaultSetting Insert(DefaultSetting item)
 	    {
-		    DefaultSetting item = new DefaultSetting();
-		    
-            item.KeyString = KeyString;
-            
-            item.ValueX = ValueX;
-            
-	    
 		    item.Save(UserName);
+            return item;
 	    }
     	
 	    /// <summary>
 	    /// Updates a record, can be used with the Object Data Source
 	    /// </summary>
         [DataObjectMethod(DataObjectMethodType.Update, true)]
-	    public void Update(int Id,string KeyString,string ValueX)
-	    {
-		    DefaultSetting item = new DefaultSetting();
-	        item.MarkOld();
-	        item.IsLoaded = true;
-		    
-			item.Id = Id;
-				
-			item.KeyString = KeyString;
-				
-			item.ValueX = ValueX;
-				
-	        item.Save(UserName);
-	    }
+        public DefaultSetting Update(int Id, string KeyString, string ValueX)
+        {
+            DefaultSetting item = new DefaultSetting();
+            item.MarkOld();
+            item.IsLoaded = true;
+
+            item.Id = Id;
+
+            item.KeyString = KeyString;
+
+            item.Value = ValueX;
+
+            item.Save(UserName);
+            return item;
+        }
     }
 }

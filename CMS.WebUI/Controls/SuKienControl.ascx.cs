@@ -15,41 +15,42 @@ namespace CMS.WebUI.Controls
 {
     public partial class SuKienControl : System.Web.UI.UserControl
     {
-        public string slugUrl { get; set; }
+        public BaiViet ObjBaiViet { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) {
-                if (slugUrl != null) {
+                if (ObjBaiViet != null) {
+
                     Binding();
                 }
             }
         }
         private void Binding()
         {
-            var objSuKien = DuAnTieuBieuPublishBLL.GetByMa(slugUrl);
-            List<NhomHinhAnh> nhomHinhAnh = DuAnTieuBieuPublishBLL.GetNhomHinhAnh(objSuKien.Id);
+           
+            List<NhomHinhAnh> nhomHinhAnh = DuAnTieuBieuPublishBLL.GetNhomHinhAnh(ObjBaiViet.Id);
             StringBuilder sb1 = new StringBuilder();
             StringBuilder sb2 = new StringBuilder();
             StringBuilder sbMain = new StringBuilder();
 
             foreach (var hinhanh in nhomHinhAnh)
             {
-                sb1.AppendFormat(templateItemSlide.InnerHtml, objSuKien.TieuDe, hinhanh.HinhAnhUrl);
-                sb2.AppendFormat(templateItemSubSlide.InnerHtml, objSuKien.TieuDe, hinhanh.HinhAnhUrl);
+                sb1.AppendFormat(templateItemSlide.InnerHtml, ObjBaiViet.TieuDe, hinhanh.HinhAnhUrl);
+                sb2.AppendFormat(templateItemSubSlide.InnerHtml, ObjBaiViet.TieuDe, hinhanh.HinhAnhUrl);
             }
-            objSuKien.ViewCount += 1;
-            objSuKien = BaiVietPublishBLL.Update(objSuKien);
+            ObjBaiViet.ViewCount += 1;
+            ObjBaiViet = BaiVietPublishBLL.Update(ObjBaiViet);
 
 
             sbMain.AppendFormat(templateDanhMuc.InnerHtml,
-                objSuKien.TieuDe,
-                Server.HtmlDecode(objSuKien.MoTaNgan),
-                Server.HtmlDecode(objSuKien.NoiDungChinh),
+                ObjBaiViet.TieuDe,
+                Server.HtmlDecode(ObjBaiViet.MoTaNgan),
+                Server.HtmlDecode(ObjBaiViet.NoiDungChinh),
                 sb1,
                 sb2,
-                GetVideo(objSuKien.Id));
+                GetVideo(ObjBaiViet.Id));
             ltrMain.Text = sbMain.ToString();
-            //SlideTop.ShowBreadcrumb(objSuKien.TieuDe, "Administration/UploadImage/" + objSuKien.ThumbnailUrl,
+            //SlideTop.ShowBreadcrumb(ObjBaiViet.TieuDe, "Administration/UploadImage/" + ObjBaiViet.ThumbnailUrl,
             //    new List<Common.ExtendWeb.Breadcrumb>()
             //{
             //    new Common.ExtendWeb.Breadcrumb()
@@ -59,8 +60,8 @@ namespace CMS.WebUI.Controls
             //    }
             //});
             //ltlPostView.Text = duAnView;
-            GetCoTheBanSeThichDuAnTieuBieu(objSuKien.Id);
-            Page.Title = objSuKien.TieuDe;
+            GetCoTheBanSeThichDuAnTieuBieu(ObjBaiViet.Id);
+            Page.Title = ObjBaiViet.TieuDe;
             
         }
 

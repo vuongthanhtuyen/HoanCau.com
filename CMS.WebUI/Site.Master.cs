@@ -1,5 +1,6 @@
 ﻿using CMS.Core.Publich;
 using SweetCMS.Core.Helper;
+using SweetCMS.Core.Manager;
 using SweetCMS.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -14,25 +15,44 @@ namespace CMS.WebUI
 {
     public partial class SiteMaster : MasterPage
     {
+
+        protected static string _address = string.Empty;
+        protected static string _hotline = string.Empty;
+
+        protected static string _email = string.Empty;
+        protected static string _hotlineHelperStudent = string.Empty;
+        protected static string _facebookUrl = string.Empty;
+        protected static string _tikTokUrl = string.Empty;
+        protected static string _youtubeUrl = string.Empty;
+        protected static string _zaloUrl = string.Empty;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) { 
-                //if(ApplicationContext.Current.CurrentLanguageId == 1)
-                //{
-                //    logoLangId.Src = "/Assets/images/language/vi.jpg";
-                //    lblLienHeMaster.Text = "LIÊN HỆ";
-                //}
-                //else
-                //{
-                //    logoLangId.Src = "/Assets/images/language/en.jpg";
-                //    lblLienHeMaster.Text = "CONTACT";
-                //}
+            if (!IsPostBack) {
+                _address = DefaultSettingBLL.GetByValueString(KeyName.txtMenuDuoiDiaChiHome);
+                _hotline = DefaultSettingBLL.GetByValueString(KeyName.txtMenuDuoiSoDienThoaiHome);
+                _hotlineHelperStudent = DefaultSettingBLL.GetByValueString(KeyName.txtMenuDuoiSoDienThoaiHoTroHome);
+                _email = DefaultSettingBLL.GetByValueString(KeyName.txtMenuDuoiEmailHome);
+
+                _facebookUrl = !string.IsNullOrEmpty(DefaultSettingBLL.GetByValueString(KeyName.txtMenuDuoiLinkFacebookHome)) ? DefaultSettingBLL.GetByValueString(KeyName.txtMenuDuoiLinkFacebookHome) : "javascript:;";
+                _youtubeUrl = !string.IsNullOrEmpty(DefaultSettingBLL.GetByValueString(KeyName.txtMenuDuoiLinkYouTubeHome)) ? DefaultSettingBLL.GetByValueString(KeyName.txtMenuDuoiLinkYouTubeHome) : "javascript:;";
+                _tikTokUrl = !string.IsNullOrEmpty(DefaultSettingBLL.GetByValueString(KeyName.txtMenuDuoiLinkTikTokHome)) ? DefaultSettingBLL.GetByValueString(KeyName.txtMenuDuoiLinkTikTokHome) : "javascript:;";
+                _zaloUrl = !string.IsNullOrEmpty(DefaultSettingBLL.GetByValueString(KeyName.txtMenuDuoiLinkZaloHome)) ? DefaultSettingBLL.GetByValueString(KeyName.txtMenuDuoiLinkZaloHome) : "javascript:;";
             }
             MenuWebTren();
             MenuWebDuoi();
             ////ltrMenuWebTren.Text= "Nội dung vui vẻ :))";
 
         }
+
+        
+
+
+
+
+
+
+
 
         private void MenuWebTren()
         {

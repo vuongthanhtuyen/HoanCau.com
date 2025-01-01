@@ -47,6 +47,10 @@ namespace CMS.Core.Manager
             return new Select().From(DoiTac.Schema)
                 .Where(DoiTac.IdColumn).IsEqualTo(id).ExecuteSingle<DoiTac>();
         }
+        public static List<DoiTac> GetTopListDoiTac(string top)
+        {
+            return new Select().Top(top).From(DoiTac.Schema).ExecuteTypedList<DoiTac>();
+        }
 
     }
 }

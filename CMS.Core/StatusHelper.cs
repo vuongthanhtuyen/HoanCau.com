@@ -33,5 +33,11 @@ namespace CMS.Core
         public const string NotApproved = "NotApproved";
         public const string Deleted = "Deleted";
     }
+    public class StatusSetting
+    {
+        public const string ValueTrue = "True";
+        public const string ValueFalse = "False";
+        
+    }
    
 }

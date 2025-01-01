@@ -35,7 +35,7 @@ namespace CMS.Core.Manager
         public static NganhDaoTao Update(NganhDaoTao objNganhDaoTao)
         {
             var friendUrl = FriendlyUrlBLL.GetByPostIdAndTypeId(objNganhDaoTao.Id, FriendlyUrlBLL.FriendlyURLTypeHelper.NganhDaoTao);
-            if (friendUrl == null )
+            if (friendUrl == null)
             {
                 FriendlyUrlBLL.Insert(new FriendlyUrl()
                 {
@@ -45,9 +45,9 @@ namespace CMS.Core.Manager
                     SlugUrl = objNganhDaoTao.Slug
                 });
             }
-            else if(friendUrl.SlugUrl != objNganhDaoTao.Slug)
+            else if (friendUrl.SlugUrl != objNganhDaoTao.Slug)
             {
-                 friendUrl.SlugUrl = objNganhDaoTao.Slug;
+                friendUrl.SlugUrl = objNganhDaoTao.Slug;
                 //friendUrl.GetDBType
                 FriendlyUrlBLL.Update(friendUrl);
             }
@@ -203,6 +203,13 @@ namespace CMS.Core.Manager
             return new Select().From(NganhDaoTao.Schema).Where(NganhDaoTao.StatusColumn)
                 .IsNotEqualTo(BasicStatusHelper.Deleted).And(NganhDaoTao.NhomNganhColumn)
                 .IsEqualTo(danhMucId).ExecuteTypedList<NganhDaoTao>();
+        }
+        public static List<NganhDaoTao> GetTopListNganhByDanhMucId(object danhMucId, object top)
+        {
+            
+            string sql = string.Format(@"  select distinct top {0} * from  NganhDaoTao 
+                where NhomNganh in (select Id from DanhMuc where DanhMucChaId = {1} or Id = {1})", top, danhMucId);
+            return new InlineQuery().ExecuteTypedList<NganhDaoTao>(sql);
         }
 
     }

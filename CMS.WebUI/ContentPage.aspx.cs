@@ -1,4 +1,5 @@
 ﻿using CMS.Core.Manager;
+using CMS.Core.Publich;
 using CMS.WebUI.Controls;
 using SweetCMS.DataAccess;
 using System;
@@ -61,14 +62,18 @@ namespace CMS.WebUI
                         }
                         else if (objFriendlyURL.PostType == FriendlyURLTypeHelper.SuKien)
                         {
+                            var objSuKien = DuAnTieuBieuPublishBLL.GetByMa(SlugUrl);
                             ltrHead.Text = string.Format(@"<link rel=""stylesheet"" type=""text/css"" href=""/Assets/css/project-detail.css?v=f81a959662efae2fc3cc158351e6d90c"" />");
                             ltrBelow.Text = string.Format(@"<script src=""/Assets/js/project-detail.js?v=f81a959662efae2fc3cc158351e6d90c""></script>");
-                            ctrlSuKienControl.slugUrl= SlugUrl;
+                            ctrlSuKienControl.ObjBaiViet= objSuKien;
                             ctrlCategory.Visible = false;
                             ctrlBaiVietPublish.Visible = false;
                             ctrlDanhSachThanhVien.Visible = false;
                             ctrlBaiVietGioiThieu.Visible = false;
                             ctrlSuKienControl.Visible = true;
+                            ctrlSlideTop.Visible = true;
+                            ctrlSlideTop.ImageThumbnail = objSuKien.ThumbnailUrl;
+                            ctrlSlideTop.ShowBreadcrumb(objSuKien.TieuDe);
 
                         }
                         else if (objFriendlyURL.PostType == FriendlyURLTypeHelper.FileAttactment)

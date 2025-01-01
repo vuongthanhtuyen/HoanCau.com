@@ -65,7 +65,7 @@ namespace CMS.Core.Manager
                 .IsEqualTo(langId).ExecuteTypedList<DanhMuc>();
         }
 
-        public static DanhMuc GetById(int id)
+        public static DanhMuc GetById(object id)
         {
             return new DanhMucController().FetchByID(id).SingleOrDefault();
 
@@ -215,6 +215,20 @@ namespace CMS.Core.Manager
             Select select = new Select();
             select.From(DanhMuc.Schema).Where(DanhMuc.TypeColumn).IsEqualTo(type)
                 .And(DanhMuc.StatusColumn).IsNotEqualTo(BasicStatusHelper.Deleted);
+            return select.ExecuteTypedList<DanhMuc>();
+        }
+        public static List<DanhMuc> GetAllDanhMuc()
+        {
+            Select select = new Select();
+            select.From(DanhMuc.Schema).Where(DanhMuc.StatusColumn).IsEqualTo(BasicStatusHelper.Active);
+            return select.ExecuteTypedList<DanhMuc>();
+        }
+
+        public static List<DanhMuc> GetTopDanhMucByType(int type, string top)
+        {
+            Select select = new Select();
+            select.Top(top).From(DanhMuc.Schema).Where(DanhMuc.TypeColumn).IsEqualTo(type)
+                .And(DanhMuc.StatusColumn).IsEqualTo(BasicStatusHelper.Active);
             return select.ExecuteTypedList<DanhMuc>();
         }
 

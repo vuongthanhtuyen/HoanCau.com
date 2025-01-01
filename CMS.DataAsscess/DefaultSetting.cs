@@ -153,19 +153,19 @@ namespace SweetCMS.DataAccess
 				colvarKeyString.ForeignKeyTableName = "";
 				schema.Columns.Add(colvarKeyString);
 				
-				TableSchema.TableColumn colvarValueX = new TableSchema.TableColumn(schema);
-				colvarValueX.ColumnName = "Value";
-				colvarValueX.DataType = DbType.String;
-				colvarValueX.MaxLength = 500;
-				colvarValueX.AutoIncrement = false;
-				colvarValueX.IsNullable = false;
-				colvarValueX.IsPrimaryKey = false;
-				colvarValueX.IsForeignKey = false;
-				colvarValueX.IsReadOnly = false;
+				TableSchema.TableColumn colvarValue = new TableSchema.TableColumn(schema);
+				colvarValue.ColumnName = "Value";
+				colvarValue.DataType = DbType.String;
+				colvarValue.MaxLength = -1;
+				colvarValue.AutoIncrement = false;
+				colvarValue.IsNullable = false;
+				colvarValue.IsPrimaryKey = false;
+				colvarValue.IsForeignKey = false;
+				colvarValue.IsReadOnly = false;
 				
-						colvarValueX.DefaultSetting = @"('')";
-				colvarValueX.ForeignKeyTableName = "";
-				schema.Columns.Add(colvarValueX);
+						colvarValue.DefaultSetting = @"('')";
+				colvarValue.ForeignKeyTableName = "";
+				schema.Columns.Add(colvarValue);
 				
 				BaseSchema = schema;
 				//add this schema to the provider
@@ -193,12 +193,12 @@ namespace SweetCMS.DataAccess
 			set { SetColumnValue(Columns.KeyString, value); }
 		}
 		  
-		[XmlAttribute("ValueX")]
+		[XmlAttribute("Value")]
 		[Bindable(true)]
-		public string ValueX 
+		public string Value 
 		{
-			get { return GetColumnValue<string>(Columns.ValueX); }
-			set { SetColumnValue(Columns.ValueX, value); }
+			get { return GetColumnValue<string>(Columns.Value); }
+			set { SetColumnValue(Columns.Value, value); }
 		}
 		
 		#endregion
@@ -220,13 +220,13 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Inserts a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Insert(string varKeyString,string varValueX)
+		public static void Insert(string varKeyString,string varValue)
 		{
 			DefaultSetting item = new DefaultSetting();
 			
 			item.KeyString = varKeyString;
 			
-			item.ValueX = varValueX;
+			item.Value = varValue;
 			
 		
 			if (System.Web.HttpContext.Current != null)
@@ -238,7 +238,7 @@ namespace SweetCMS.DataAccess
 		/// <summary>
 		/// Updates a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Update(int varId,string varKeyString,string varValueX)
+		public static void Update(int varId,string varKeyString,string varValue)
 		{
 			DefaultSetting item = new DefaultSetting();
 			
@@ -246,7 +246,7 @@ namespace SweetCMS.DataAccess
 			
 				item.KeyString = varKeyString;
 			
-				item.ValueX = varValueX;
+				item.Value = varValue;
 			
 			item.IsNew = false;
 			if (System.Web.HttpContext.Current != null)
@@ -275,7 +275,7 @@ namespace SweetCMS.DataAccess
         
         
         
-        public static TableSchema.TableColumn ValueXColumn
+        public static TableSchema.TableColumn ValueColumn
         {
             get { return Schema.Columns[2]; }
         }
@@ -288,7 +288,7 @@ namespace SweetCMS.DataAccess
 		{
 			 public static string Id = @"Id";
 			 public static string KeyString = @"KeyString";
-			 public static string ValueX = @"Value";
+			 public static string Value = @"Value";
 						
 		}
 		#endregion

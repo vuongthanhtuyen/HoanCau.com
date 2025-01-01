@@ -12,25 +12,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-    <title>Trang Chủ | TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ</title>
+    <title>Trang Chủ | TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG</title>
 
     <meta property="og:image" content="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/demo-1/share.jpg" />
-    <meta property="og:title" content="Trang Chủ | TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" />
+    <meta property="og:title" content="Trang Chủ | TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG" />
     <meta property="og:url" content="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/index.html" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ, Trang Chủ" />
-    <meta property="og:image:alt" content="Trang Chủ | TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" />
+    <meta property="og:description" content="TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG, Trang Chủ" />
+    <meta property="og:image:alt" content="Trang Chủ | TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG" />
     <meta property="og:type" content="website" />
 
     <meta name="twitter:image" content="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/demo-1/share.jpg" />
-    <meta name="twitter:title" content="Trang Chủ | TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" />
+    <meta name="twitter:title" content="Trang Chủ | TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG" />
     <meta name="twitter:card" content="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/demo-1/share.jpg" />
-    <meta name="twitter:description" content="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ, Trang Chủ" />
+    <meta name="twitter:description" content="TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG, Trang Chủ" />
 
-    <meta name="dc.created" content="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" />
-    <meta name="dc.publisher" content="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" />
-    <meta name="dc.rights.copyright" content="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" />
-    <meta name="dc.creator.name" content="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" />
+    <meta name="dc.created" content="TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG" />
+    <meta name="dc.publisher" content="TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG" />
+    <meta name="dc.rights.copyright" content="TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG" />
+    <meta name="dc.creator.name" content="TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG" />
 
     <meta name="geo.position" />
     <meta name="geo.placename" />
@@ -42,8 +42,8 @@
     <meta name="rating" content="general" />
     <link rel="alternate" href="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/" hreflang="vi, en" />
     <link href="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/" rel="canonical" />
-    <meta name="copyright" content="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" />
-    <meta name="author" content="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" />
+    <meta name="copyright" content="TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG" />
+    <meta name="author" content="TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG" />
 
     <meta http-equiv="cache-control" content="no-cache" />
     <meta http-equiv="expires" content="0" />
@@ -53,9 +53,9 @@
     <link rel="icon" type="/Assets/image/ico" href="/Assets/images/brand/favicon.ico" />
 
     <link rel="/Assets/image_src" type="/Assets/image/jpg" href="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/demo-1/share.jpg" />
-    <meta name="title" content="Trang Chủ | TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ" />
-    <meta name="description" content="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ, Trang Chủ" />
-    <meta name="keywords" content="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ, trang chu" />
+    <meta name="title" content="Trang Chủ | TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG" />
+    <meta name="description" content="TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG, Trang Chủ" />
+    <meta name="keywords" content="TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG, trang chu" />
 
     <!-- CSS-->
     <link rel="stylesheet" type="text/css" href="/Assets/css/lib.css?v=f81a959662efae2fc3cc158351e6d90c" />
@@ -92,7 +92,7 @@
                         </h1>
                         <div class="headerTopLeft">
                             <ul class="clearfix listMenuHeaderTop">
-                                <li class="listItemHeaderTop"><a class="listLinkHeaderTop" target="_self" href="tel:0961273355" title="096 127 3355"><span class="titleItem">Hotline:</span><span class="textItem">096 127 3355</span></a></li>
+                                <li class="listItemHeaderTop"><a class="listLinkHeaderTop" target="_self" href="tel:0961273355" title="096 127 3355"><span class="titleItem">Hotline:</span><span class="textItem"><%= _hotline %></span></a></li>
                             </ul>
                         </div>
                         <div class="wrapCloseMenuHeaderMobile"></div>
@@ -143,7 +143,7 @@
                                 <div class="col-sm-2 colItem">
                                     <div class="contentCol">
                                         <div class="wrapLogo">
-                                            <img src="/Assets/images/brand/logo-hoan-cau.svg" alt="TẬP ĐOÀN HOÀN CẦU KHU VỰC KHÁNH HOÀ">
+                                            <img src="/Assets/images/brand/logo-hoan-cau.svg" alt="TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG">
                                         </div>
                                     </div>
                                 </div>
@@ -156,17 +156,22 @@
                                                 <svg fill='currentColor' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'>
                                                     <path d='M272 192C272 236.2 236.2 272 192 272C147.8 272 112 236.2 112 192C112 147.8 147.8 112 192 112C236.2 112 272 147.8 272 192zM192 160C174.3 160 160 174.3 160 192C160 209.7 174.3 224 192 224C209.7 224 224 209.7 224 192C224 174.3 209.7 160 192 160zM384 192C384 279.4 267 435 215.7 499.2C203.4 514.5 180.6 514.5 168.3 499.2C116.1 435 0 279.4 0 192C0 85.96 85.96 0 192 0C298 0 384 85.96 384 192H384zM192 48C112.5 48 48 112.5 48 192C48 204.4 52.49 223.6 63.3 249.2C73.78 274 88.66 301.4 105.8 329.1C134.2 375.3 167.2 419.1 192 451.7C216.8 419.1 249.8 375.3 278.2 329.1C295.3 301.4 310.2 274 320.7 249.2C331.5 223.6 336 204.4 336 192C336 112.5 271.5 48 192 48V48z' />
                                                 </svg>
-                                                Số 66 Thái Nguyên, Phường Phương Sài, Thành Phố Nha Trang, Tỉnh Khánh Hòa</a></li>
-                                            <li class="listItemHeaderTop"><a class="listLinkHeaderTop" target="_self" href="mailto:info@hoancaugroupkh.com" title="info@hoancaugroupkh.com">
+                                                <%=_address %></a></li>
+                                            <li class="listItemHeaderTop"><a class="listLinkHeaderTop" target="_self" href="mailto:<%=_email %>" title="<%=_email %>">
                                                 <svg fill='currentColor' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
                                                     <path d='M0 128C0 92.65 28.65 64 64 64H448C483.3 64 512 92.65 512 128V384C512 419.3 483.3 448 448 448H64C28.65 448 0 419.3 0 384V128zM48 128V150.1L220.5 291.7C241.1 308.7 270.9 308.7 291.5 291.7L464 150.1V127.1C464 119.2 456.8 111.1 448 111.1H64C55.16 111.1 48 119.2 48 127.1L48 128zM48 212.2V384C48 392.8 55.16 400 64 400H448C456.8 400 464 392.8 464 384V212.2L322 328.8C283.6 360.3 228.4 360.3 189.1 328.8L48 212.2z' />
                                                 </svg>
-                                                info@hoancaugroupkh.com</a></li>
+                                                <%=_email %></a></li>
                                             <li class="listItemHeaderTop"><a class="listLinkHeaderTop" target="_self" href="tel:0961273355" title="096 127 3355">
                                                 <svg fill='currentColor' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
                                                     <path d='M480.3 320.3L382.1 278.2c-21.41-9.281-46.64-3.109-61.2 14.95l-27.44 33.5c-44.78-25.75-82.29-63.25-108-107.1l33.55-27.48c17.91-14.62 24.09-39.7 15.02-61.05L191.7 31.53c-10.16-23.2-35.34-35.86-59.87-30.19l-91.25 21.06C16.7 27.86 0 48.83 0 73.39c0 241.9 196.7 438.6 438.6 438.6c24.56 0 45.53-16.69 50.1-40.53l21.06-91.34C516.4 355.5 503.6 330.3 480.3 320.3zM463.9 369.3l-21.09 91.41c-.4687 1.1-2.109 3.281-4.219 3.281c-215.4 0-390.6-175.2-390.6-390.6c0-2.094 1.297-3.734 3.344-4.203l91.34-21.08c.3125-.0781 .6406-.1094 .9531-.1094c1.734 0 3.359 1.047 4.047 2.609l42.14 98.33c.75 1.766 .25 3.828-1.25 5.062L139.8 193.1c-8.625 7.062-11.25 19.14-6.344 29.14c33.01 67.23 88.26 122.5 155.5 155.5c9.1 4.906 22.09 2.281 29.16-6.344l40.01-48.87c1.109-1.406 3.187-1.938 4.922-1.125l98.26 42.09C463.2 365.2 464.3 367.3 463.9 369.3z' />
                                                 </svg>
-                                                096 127 3355</a></li>
+                                                <%=_hotline %></a></li>
+                                            <li class="listItemHeaderTop"><a class="listLinkHeaderTop" target="_self" href="tel:0961273355" title="096 127 3355">
+                                                <svg fill='currentColor' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+                                                    <path d='M480.3 320.3L382.1 278.2c-21.41-9.281-46.64-3.109-61.2 14.95l-27.44 33.5c-44.78-25.75-82.29-63.25-108-107.1l33.55-27.48c17.91-14.62 24.09-39.7 15.02-61.05L191.7 31.53c-10.16-23.2-35.34-35.86-59.87-30.19l-91.25 21.06C16.7 27.86 0 48.83 0 73.39c0 241.9 196.7 438.6 438.6 438.6c24.56 0 45.53-16.69 50.1-40.53l21.06-91.34C516.4 355.5 503.6 330.3 480.3 320.3zM463.9 369.3l-21.09 91.41c-.4687 1.1-2.109 3.281-4.219 3.281c-215.4 0-390.6-175.2-390.6-390.6c0-2.094 1.297-3.734 3.344-4.203l91.34-21.08c.3125-.0781 .6406-.1094 .9531-.1094c1.734 0 3.359 1.047 4.047 2.609l42.14 98.33c.75 1.766 .25 3.828-1.25 5.062L139.8 193.1c-8.625 7.062-11.25 19.14-6.344 29.14c33.01 67.23 88.26 122.5 155.5 155.5c9.1 4.906 22.09 2.281 29.16-6.344l40.01-48.87c1.109-1.406 3.187-1.938 4.922-1.125l98.26 42.09C463.2 365.2 464.3 367.3 463.9 369.3z' />
+                                                </svg> 
+                                                <%=_hotlineHelperStudent %> (Điện thoại hỗ trợ sinh viên)</a></li>
                                         </div>
                                     </div>
                                 </div>
@@ -182,7 +187,7 @@
                 <div class="container-xxl containerItem">
                     <div class="contentItem">
                         <div class="copyright">
-                            <p>© 2023 Tập đoàn Hoàn Cầu - Khu vực Khánh Hòa</p>
+                            <p>© 2025 Trường Đại học Thái Bình Dương</p>
                         </div>
 
                         <div class="developer">

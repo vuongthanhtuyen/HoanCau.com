@@ -302,6 +302,7 @@
     <Content Include="Administration\NganhDaoTaoAdmin.aspx" />
     <Content Include="Administration\NhomCoCau.aspx" />
     <Content Include="Administration\NhomFileDinhKem.aspx" />
+    <Content Include="Administration\QuanLyCauHinh\CaiDatHienThi.aspx" />
     <Content Include="Administration\Style\dist\css\AdminLTE.css" />
     <Content Include="Administration\Style\dist\css\AdminLTE.min.css" />
     <Content Include="Administration\Style\dist\css\analytics.css" />
@@ -2766,8 +2767,6 @@
     <Content Include="Assets\fonts\lg.svg" />
     <Content Include="Assets\fonts\vjs.svg" />
     <Content Include="Assets\images\about\about-bg.png" />
-    <Content Include="Assets\images\about\boss.jpg" />
-    <Content Include="Assets\images\about\roadmap-hoan-cau-1.png" />
     <Content Include="Assets\images\about\share.jpg" />
     <Content Include="Assets\images\about\so-do-1.jpg" />
     <Content Include="Assets\images\about\so-do.jpg" />
@@ -2853,7 +2852,6 @@
     <Content Include="Assets\images\projects\8.jpg" />
     <Content Include="Assets\images\projects\9.jpg" />
     <Content Include="Assets\images\projects\bg-1.jpg" />
-    <Content Include="Assets\images\slide-main\1.jpg" />
     <Content Include="Assets\images\slide-main\2.jpg" />
     <Content Include="Assets\images\slide-main\3.jpg" />
     <Content Include="Assets\images\slide-main\4.jpg" />
@@ -3945,6 +3943,13 @@
     </Compile>
     <Compile Include="Administration\NhomFileDinhKem.aspx.designer.cs">
       <DependentUpon>NhomFileDinhKem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\QuanLyCauHinh\CaiDatHienThi.aspx.cs">
+      <DependentUpon>CaiDatHienThi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\QuanLyCauHinh\CaiDatHienThi.aspx.designer.cs">
+      <DependentUpon>CaiDatHienThi.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administration\ThanhVien.aspx.cs">
       <DependentUpon>ThanhVien.aspx</DependentUpon>

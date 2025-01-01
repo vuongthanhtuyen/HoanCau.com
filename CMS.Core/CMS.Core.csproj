@@ -81,7 +81,7 @@
     <Compile Include="Manager\NguoiDungManagerBLL.cs" />
     <Compile Include="Manager\DanhMucBaiVietBLL.cs" />
     <Compile Include="Manager\NhomCoCauBLL.cs" />
-    <Compile Include="Manager\SettingManager.cs" />
+    <Compile Include="Manager\DefaultSettingBLL.cs" />
     <Compile Include="Manager\SlideBLL.cs" />
     <Compile Include="Manager\SuKienBLL.cs" />
     <Compile Include="Manager\VaiTroManagerBll.cs" />

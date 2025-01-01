@@ -177,6 +177,14 @@ namespace CMS.Core.Manager
 
         #endregion
 
+        public static List<BaiViet> GetTopListBaiViet(object danhMucId, object top)
+        {
+            string sql = string.Format(@"    select distinct top({0})  * from  BaiViet as b
+              inner join NhomBaiViet as n on b.Id = n.BaiVietId
+              where n.DanhmucId  in  (select Id from DanhMuc where DanhMucChaId = {1} or Id = {1})", top, danhMucId);
+            return new InlineQuery().ExecuteTypedList<BaiViet>(sql);
+        }
+
 
     }
 }

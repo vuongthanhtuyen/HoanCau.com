@@ -24,67 +24,166 @@ namespace CMS.WebUI
         protected global::System.Web.UI.WebControls.Literal ltrShowSlide;
 
         /// <summary>
-        /// ltrAbout control.
+        /// ltrGioiThieu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrAbout;
+        protected global::System.Web.UI.WebControls.Literal ltrGioiThieu;
 
         /// <summary>
-        /// ltrVersionTamTim control.
+        /// templateAbout control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrVersionTamTim;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl templateAbout;
 
         /// <summary>
-        /// ltrLinhVucHoatDong control.
+        /// ltrKhamPha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrLinhVucHoatDong;
+        protected global::System.Web.UI.WebControls.Literal ltrKhamPha;
 
         /// <summary>
-        /// ltrVersionQuyMo control.
+        /// templateKhamPha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrVersionQuyMo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl templateKhamPha;
 
         /// <summary>
-        /// ltrDuAnTieuBieu control.
+        /// ltlrNganhDaoTao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrDuAnTieuBieu;
+        protected global::System.Web.UI.WebControls.Literal ltlrNganhDaoTao;
 
         /// <summary>
-        /// ltrCongTyThanhVien control.
+        /// templateNganhDaoTao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrCongTyThanhVien;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl templateNganhDaoTao;
 
         /// <summary>
-        /// DanhSachBaiViet control.
+        /// templateItemNganhDaoTao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CMS.WebUI.Controls.DanhSachBaiViet DanhSachBaiViet;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl templateItemNganhDaoTao;
+
+        /// <summary>
+        /// ltrQuyMo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrQuyMo;
+
+        /// <summary>
+        /// templateQuyMo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl templateQuyMo;
+
+        /// <summary>
+        /// ltrSuKien control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrSuKien;
+
+        /// <summary>
+        /// templateSuKien control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl templateSuKien;
+
+        /// <summary>
+        /// templateItemSuKien control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl templateItemSuKien;
+
+        /// <summary>
+        /// ltrThanhVien control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrThanhVien;
+
+        /// <summary>
+        /// templateThanhVien control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl templateThanhVien;
+
+        /// <summary>
+        /// templateItemThanhVien control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl templateItemThanhVien;
+
+        /// <summary>
+        /// ltrTinTuc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrTinTuc;
+
+        /// <summary>
+        /// templateTinTuc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl templateTinTuc;
+
+        /// <summary>
+        /// templateItemTinTuc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl templateItemTinTuc;
 
         /// <summary>
         /// ltrDoiTac control.
