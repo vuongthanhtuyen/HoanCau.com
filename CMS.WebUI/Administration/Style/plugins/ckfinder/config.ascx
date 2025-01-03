@@ -27,8 +27,8 @@
     {
         // Paste your license name and key here. If left blank, CKFinder will
         // be fully functional, in Demo Mode.
-        LicenseName = "SweetSoft";
-        LicenseKey = "FGVR7N6HKRFF1A17A3LU1N7FGGJ153VP";
+        LicenseName = "";
+        LicenseKey = "";
 
         // The base URL used to reach files in CKFinder through the browser.
         //BaseUrl = string.Format("/uploads/Content/{0}/", DateTime.Now.Month);

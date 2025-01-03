@@ -14,7 +14,7 @@ namespace CMS.WebUI
             
         public static void RegisterRoutes(RouteCollection routes)
         {
-            //List<SweetCMS.DataAccess.FriendlyUrl> friendlyUrls = FriendlyUrlBLL.GetAll();
+            //List<TBDCMS.DataAccess.FriendlyUrl> friendlyUrls = FriendlyUrlBLL.GetAll();
             
             var settings = new FriendlyUrlSettings();
             //settings.AutoRedirectMode = RedirectMode.Permanent;

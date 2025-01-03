@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SweetCMS.WebUI.RichFilemanager.imageeditor {
+namespace TBDCMS.WebUI.RichFilemanager.imageeditor {
     
     
     public partial class ImageEditor {

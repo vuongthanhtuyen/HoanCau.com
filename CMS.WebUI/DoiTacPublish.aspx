@@ -36,6 +36,4 @@
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="contentEnd" runat="server">
 
-    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js?v=f81a959662efae2fc3cc158351e6d90c#property=646b0f87d8c6d2001a06c301&product=inline-share-buttons&source=platform" async="async"></script>
-
 </asp:Content>

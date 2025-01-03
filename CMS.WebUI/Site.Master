@@ -14,17 +14,17 @@
 
     <title>Trang Chủ | TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG</title>
 
-    <meta property="og:image" content="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/demo-1/share.jpg" />
+    <meta property="og:image" content="#demo-1/share.jpg" />
     <meta property="og:title" content="Trang Chủ | TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG" />
-    <meta property="og:url" content="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/index.html" />
+    <meta property="og:url" content="#index.html" />
     <meta property="og:type" content="website" />
     <meta property="og:description" content="TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG, Trang Chủ" />
     <meta property="og:image:alt" content="Trang Chủ | TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG" />
     <meta property="og:type" content="website" />
 
-    <meta name="twitter:image" content="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/demo-1/share.jpg" />
+    <meta name="twitter:image" content="#demo-1/share.jpg" />
     <meta name="twitter:title" content="Trang Chủ | TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG" />
-    <meta name="twitter:card" content="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/demo-1/share.jpg" />
+    <meta name="twitter:card" content="#demo-1/share.jpg" />
     <meta name="twitter:description" content="TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG, Trang Chủ" />
 
     <meta name="dc.created" content="TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG" />
@@ -40,8 +40,8 @@
     <meta name="robots" content="noindex, follow" />
     <meta name="revisit-after" content="3 days" />
     <meta name="rating" content="general" />
-    <link rel="alternate" href="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/" hreflang="vi, en" />
-    <link href="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/" rel="canonical" />
+    <link rel="alternate" href="#" hreflang="vi, en" />
+    <link href="#" rel="canonical" />
     <meta name="copyright" content="TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG" />
     <meta name="author" content="TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG" />
 
@@ -52,7 +52,7 @@
     <link rel="shortcut icon" type="/Assets/image/ico" href="/Assets/images/brand/favicon.ico" />
     <link rel="icon" type="/Assets/image/ico" href="/Assets/images/brand/favicon.ico" />
 
-    <link rel="/Assets/image_src" type="/Assets/image/jpg" href="https://demo.sweetsoft.vn/hoan-cau-khanh-hoa/demo-1/share.jpg" />
+    <link rel="/Assets/image_src" type="/Assets/image/jpg" href="#demo-1/share.jpg" />
     <meta name="title" content="Trang Chủ | TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG" />
     <meta name="description" content="TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG, Trang Chủ" />
     <meta name="keywords" content="TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG, trang chu" />
@@ -135,7 +135,7 @@
         <!-- end partner-->
         <!-- footer-->
         <div class="footer">
-            <div class="bgItem" style="background-image: url(/Assets/images/banner/footer-hoan-cau.png)">
+            <div class="bgItem" style="/*background-image: url(/Assets/images/banner/footer-tbd.png)*/">
                 <div class="contentMain wrapContent2 bgColor4">
                     <div class="container-xxl containerItem">
                         <div class="contentItem">
@@ -143,7 +143,7 @@
                                 <div class="col-sm-2 colItem">
                                     <div class="contentCol">
                                         <div class="wrapLogo">
-                                            <img src="/Assets/images/brand/logo-hoan-cau.svg" alt="TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG">
+                                            <img src="/Assets/images/brand/logo-tbd.png" alt="TRƯỜNG ĐẠI HỌC THÁI BÌNH DƯƠNG">
                                         </div>
                                     </div>
                                 </div>
@@ -191,7 +191,7 @@
                         </div>
 
                         <div class="developer">
-                            <p>Thiết kế và phát triển bởi <a href="https://www.sweetsoft.vn/" title="thiết kế web Nha Trang,thiet ke web nha trang,thiết kế web Khánh Hòa,công ty,phần mềm,tin học">SweetSoft JSC</a></p>
+                            <p>Thiết kế và phát triển bởi <a href="https://vuongthanhtuyen.id.vn/" title="">Vương Tuyền</a></p>
                         </div>
                     </div>
                 </div>

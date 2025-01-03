@@ -6,13 +6,13 @@ using System.Collections.Specialized;
 using System.Text;
 using System.Web;
 using Newtonsoft.Json;
-using SweetCMS.Core.Helper;
+using TBDCMS.Core.Helper;
 using ImageResizer;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 
-namespace SweetCMS.WebUI.RichFilemanager.connectors
+namespace TBDCMS.WebUI.RichFilemanager.connectors
 {
 
     public partial class filemanager : System.Web.UI.Page

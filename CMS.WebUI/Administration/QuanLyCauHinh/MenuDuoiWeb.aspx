@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" ValidateRequest="false" AutoEventWireup="true" MasterPageFile="~/Administration/MasterPage/AdminPage.Master" CodeBehind="MenuDuoiWeb.aspx.cs" Inherits="CMS.WebUI.Administration.QuanLyCauHinh.MenuDuoiWeb" %>
-<%@ Import Namespace="SweetCMS.Core.Helper" %>
+<%@ Import Namespace="TBDCMS.Core.Helper" %>
 <asp:Content ID="test" ContentPlaceHolderID="head" runat="server">
     <link href="/Administration/Assets/plugins/style.min.css" rel="stylesheet" />
 </asp:Content>

@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Administration/MasterPage/AdminPage.Master" CodeBehind="NganhDaoTaoAdmin.aspx.cs" Inherits="CMS.WebUI.Administration.NganhDaoTaoAdmin" %>
 
 
-<%@ Import Namespace="SweetCMS.Core.Helper" %>
+<%@ Import Namespace="TBDCMS.Core.Helper" %>
 <%@ Register Src="~/Administration/AdminUserControl/PagingAdmin.ascx" TagPrefix="uc1" TagName="PagingAdmin" %>
 <%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 

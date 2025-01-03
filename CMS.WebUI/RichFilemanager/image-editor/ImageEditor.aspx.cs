@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using SweetCMS.Core.Helper;
+using TBDCMS.Core.Helper;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 
-namespace SweetCMS.WebUI.RichFilemanager.imageeditor
+namespace TBDCMS.WebUI.RichFilemanager.imageeditor
 {
     public partial class ImageEditor : Page
     {

@@ -1,14 +1,14 @@
 ﻿using CMS.Core.ApplicationCache;
 using SubSonic;
-using SweetCMS.Core.ApplicationCache;
-using SweetCMS.Core.Helper;
-using SweetCMS.DataAccess;
+using TBDCMS.Core.ApplicationCache;
+using TBDCMS.Core.Helper;
+using TBDCMS.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace SweetCMS.Core.Manager
+namespace TBDCMS.Core.Manager
 {
     public class KeyName
     {

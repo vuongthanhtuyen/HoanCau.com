@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BaiVietDuAnTieuBieu.aspx.cs" MasterPageFile="~/Administration/MasterPage/AdminPage.Master" Inherits="CMS.WebUI.Administration.QuanLyDuAnTieuBieu.BaiVietDuAnTieuBieu" %>
 
-<%@ Import Namespace="SweetCMS.Core.Helper" %>
+<%@ Import Namespace="TBDCMS.Core.Helper" %>
 <%@ Register Src="~/Administration/AdminUserControl/PagingAdmin.ascx" TagPrefix="uc1" TagName="PagingAdmin" %>
 <%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 

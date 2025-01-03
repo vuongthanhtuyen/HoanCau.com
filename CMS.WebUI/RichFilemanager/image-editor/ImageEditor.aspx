@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" EnableTheming="false" Theme=""
-    Inherits="SweetCMS.WebUI.RichFilemanager.imageeditor.ImageEditor" 
+    Inherits="TBDCMS.WebUI.RichFilemanager.imageeditor.ImageEditor" 
     Codebehind="ImageEditor.aspx.cs" %>
 
 <!DOCTYPE html>

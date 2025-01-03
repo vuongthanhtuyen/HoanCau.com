@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace SweetCMS.Core.Helper
+namespace TBDCMS.Core.Helper
 {
     public class MIMEAssistant
     {
@@ -243,25 +243,6 @@ namespace SweetCMS.Core.Helper
             return "application/octet-stream";
         }
 
-        public static string GetMimeType(byte[] file)
-        {
-            return GetMimeTypeWithByteArray(file, string.Empty);
-        }
-
-        public static string GetImageExtension(string type)
-        {
-            if (string.IsNullOrEmpty(type) == false)
-            {
-                var found = MIMETypesDictionary.Where(x => x.Value.ToLower() == type.ToLower());
-                if (found != null && found.Any())
-                {
-                    if (found.First().Value.ToLower().Contains("image/") == true)
-                        return "." + found.First().Key;
-                }
-            }
-            return string.Empty;
-        }
-
         public static bool IsImage(string fileName)
         {
             if (string.IsNullOrEmpty(fileName) == false)
@@ -274,63 +255,6 @@ namespace SweetCMS.Core.Helper
 
             return false;
         }
-
-        public static bool IsImage(byte[] fileBytes)
-        {
-            if (fileBytes != null && fileBytes.Length > 0)
-            {
-                string type = GetMimeTypeWithByteArray(fileBytes, string.Empty);
-
-                if (type.ToLower().IndexOf("image") == 0)
-                    return true;
-            }
-
-            return false;
-        }
-
-        //public static bool IsImage(Stream fileStream)
-        //{
-        //    if (fileStream != null)
-        //        return IsImage(ImageResizer.Util.StreamUtils.CopyToBytes(fileStream));
-        //    else
-        //        return false;
-        //}
-
-        public static bool IsWebpImage(string fileName)
-        {
-            if (string.IsNullOrEmpty(fileName) == false)
-            {
-                string type = GetMimeTypeWithByteArray(fileName);
-
-                if (type.ToLower().IndexOf("image") == 0
-                    && type.ToLower().Contains("webp") == true)
-                    return true;
-            }
-
-            return false;
-        }
-
-        public static bool IsWebpImage(byte[] fileBytes)
-        {
-            if (fileBytes != null && fileBytes.Length > 0)
-            {
-                string type = GetMimeTypeWithByteArray(fileBytes, string.Empty);
-
-                if (type.ToLower().IndexOf("image") == 0
-                    && type.ToLower().Contains("webp") == true)
-                    return true;
-            }
-
-            return false;
-        }
-
-        //public static bool IsWebpImage(Stream fileStream)
-        //{
-        //    if (fileStream != null)
-        //        return IsWebpImage(ImageResizer.Util.StreamUtils.CopyToBytes(fileStream));
-        //    else
-        //        return false;
-        //}
 
         public static string GetMimeTypeWithByteArray(byte[] fileBytes, string fileName)
         {
@@ -562,26 +486,6 @@ namespace SweetCMS.Core.Helper
             return mime;
         }
 
-        public static string GetExtensionWithByteArray(string filePath)
-        {
-            if (string.IsNullOrEmpty(filePath) == false)
-            {
-                if (File.Exists(filePath))
-                {
-                    byte[] buffer = new byte[256];
-                    using (FileStream fs = new FileStream(filePath, FileMode.Open))
-                    {
-                        if (fs.Length >= 256)
-                            fs.Read(buffer, 0, 256);
-                        else
-                            fs.Read(buffer, 0, (int)fs.Length);
-                    }
-
-                    return GetExtensionWithByteArray(buffer, Path.GetFileName(filePath));
-                }
-            }
-
-            return string.Empty;
-        }
+      
     }
 }

@@ -1,6 +1,6 @@
-﻿using SweetCMS.Core.Helper;
-using SweetCMS.Core.Manager;
-using SweetCMS.DataAccess;
+﻿using TBDCMS.Core.Helper;
+using TBDCMS.Core.Manager;
+using TBDCMS.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;

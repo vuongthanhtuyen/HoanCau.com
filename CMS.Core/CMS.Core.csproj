@@ -53,7 +53,6 @@
     <Compile Include="ApplicationCache\CacheEntry.cs" />
     <Compile Include="ApplicationCache\CacheLockbox.cs" />
     <Compile Include="ApplicationCache\TCache.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Helper\ApplicationContext.cs" />
     <Compile Include="Helper\CMSImageType.cs" />
     <Compile Include="Helper\CommonHelper.cs" />
@@ -64,7 +63,6 @@
     <Compile Include="Helper\PathValidation.cs" />
     <Compile Include="Helper\RenderAttribute.cs" />
     <Compile Include="Helper\SecurityHelper.cs" />
-    <Compile Include="Helper\VnUnicodeHelper.cs" />
     <Compile Include="Manager\BaiVietBLL.cs" />
     <Compile Include="Manager\ChuongTrinhDaoTaoBLL.cs" />
     <Compile Include="Manager\DoiTacBLL.cs" />

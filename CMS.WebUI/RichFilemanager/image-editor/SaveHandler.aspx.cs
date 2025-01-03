@@ -1,5 +1,5 @@
 ﻿using ImageResizer;
-using SweetCMS.Core.Helper;
+using TBDCMS.Core.Helper;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +10,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SweetCMS.WebUI.RichFilemanager.imageeditor
+namespace TBDCMS.WebUI.RichFilemanager.imageeditor
 {
     public partial class SaveHandler : System.Web.UI.Page
     {
@@ -32,7 +32,7 @@ namespace SweetCMS.WebUI.RichFilemanager.imageeditor
             return res;
         }
 
-        static string defaultPath = SweetCMS.WebUI.RichFilemanager.connectors.filemanager.defaultPath;
+        static string defaultPath = TBDCMS.WebUI.RichFilemanager.connectors.filemanager.defaultPath;
 
         static string CorrectPath(string path)
         {

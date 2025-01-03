@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
-namespace SweetCMS.Core
+namespace TBDCMS.Core
 {
     internal class CacheEntry
     {
@@ -21,13 +21,7 @@ namespace SweetCMS.Core
         {
         }
 
-        public TimeSpan Age
-        {
-            get
-            {
-                return (TimeSpan)(this._LastUse - this._LastUpdate);
-            }
-        }
+     
 
         public TCache.CacheLoaderDelegate CacheLoader
         {
@@ -41,13 +35,7 @@ namespace SweetCMS.Core
             }
         }
 
-        public DateTime CreateDateTime
-        {
-            get
-            {
-                return this._CreateDateTime;
-            }
-        }
+     
 
         public object InternalLocker
         {

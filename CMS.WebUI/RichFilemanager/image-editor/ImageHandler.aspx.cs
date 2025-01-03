@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 
-namespace SweetCMS.WebUI.RichFilemanager.imageeditor
+namespace TBDCMS.WebUI.RichFilemanager.imageeditor
 {
     public partial class ImageHandler : System.Web.UI.Page
     {
@@ -27,7 +27,7 @@ namespace SweetCMS.WebUI.RichFilemanager.imageeditor
             return res;
         }
 
-        static string defaultPath = SweetCMS.WebUI.RichFilemanager.connectors.filemanager.defaultPath;
+        static string defaultPath = TBDCMS.WebUI.RichFilemanager.connectors.filemanager.defaultPath;
         static string CorrectPath(string path)
         {
             if (string.IsNullOrEmpty(path))

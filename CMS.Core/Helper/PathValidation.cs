@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace SweetCMS.Core.Helper
+namespace TBDCMS.Core.Helper
 {
     public static class PathValidation
     {
@@ -18,15 +18,7 @@ namespace SweetCMS.Core.Helper
         private static string fileNameCleanerExpression = "[" + string.Join("", Array.ConvertAll(Path.GetInvalidFileNameChars(), x => Regex.Escape(x.ToString()))) + "]";
         private static Regex fileNameCleaner = new Regex(fileNameCleanerExpression, RegexOptions.Compiled);
 
-        public static bool ValidatePath(string path)
-        {
-            return pathValidator.IsMatch(path);
-        }
-
-        public static bool ValidateFileName(string fileName)
-        {
-            return fileNameValidator.IsMatch(fileName);
-        }
+    
 
         public static string CleanPath(string path)
         {

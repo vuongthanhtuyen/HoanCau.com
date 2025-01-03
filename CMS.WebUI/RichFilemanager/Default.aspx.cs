@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using SweetCMS.Core.Helper;
-using SweetCMS.Core.Manager;
+using TBDCMS.Core.Helper;
+using TBDCMS.Core.Manager;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,7 +11,7 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SweetCMS.WebUI.RichFilemanager
+namespace TBDCMS.WebUI.RichFilemanager
 {
     public partial class Default : System.Web.UI.Page
     {

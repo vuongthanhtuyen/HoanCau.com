@@ -2594,7 +2594,7 @@
                 onClose: function () {
                     var ifr = $.LightBoxObject.esqueleto.html.find('iframe');
                     if (ifr.length > 0) {
-                        var objSweet = ifr[0].contentWindow.SweetSoftScript.Editor;
+                        var objSweet = ifr[0].contentWindow.DhTBDScript.Editor;
                         if (typeof objSweet !== 'undefined' &&
                             typeof objSweet.Data.sessionFile !== 'undefined'
                             && objSweet.Data.sessionFile.length > 0) {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SweetCMS.Core
+namespace TBDCMS.Core
 {
     internal class CacheLockbox
     {
@@ -67,31 +67,7 @@ namespace SweetCMS.Core
             }
         }
 
-        public static object GetLock(string key, TimeSpan refreshInterval, TimeSpan slidingExpiration, TCache.CacheLoaderDelegate cacheLoader)
-        {
-            lock (_ReadLockbox)
-            {
-                CacheEntry entry;
-                if (ContainsCacheEntry(key))
-                {
-                    entry = Instance[key];
-                    entry.LastUse = DateTime.Now;
-                }
-                else
-                {
-                    lock (_WriteLockbox)
-                    {
-                        entry = new CacheEntry();
-                        entry.CacheLoader = cacheLoader;
-                        entry.RefreshInterval = refreshInterval;
-                        entry.SlidingExpiration = slidingExpiration;
-                        entry.LastUse = DateTime.Now;
-                        Instance.Add(key, entry);
-                    }
-                }
-                return entry.Locker;
-            }
-        }
+     
 
         public static void UpdateCacheEntry(string key, DateTime lastUpdate)
         {

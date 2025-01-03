@@ -6,18 +6,14 @@ using System.Security.Cryptography;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace SweetCMS.Core.Helper
+namespace TBDCMS.Core.Helper
 {
     public class SecurityHelper
     {
-        public const string APPLICATION_NAME = "SweetCMS.WebUI";
+        public const string APPLICATION_NAME = "TBDCMS.WebUI";
         public static string EncryptKey = "j+zqNUpaAm/Psqz0o77Gyg==";
 
-        /// <summary>
-        /// Decrypts text
-        /// </summary>
-        /// <param name="CipherText">Cipher text</param>
-        /// <returns>Decrypted string</returns>
+     
         public static string Decrypt(string cipherText)
         {
             return Decrypt(cipherText, EncryptKey);
@@ -37,11 +33,7 @@ namespace SweetCMS.Core.Helper
             return result;
         }
 
-        /// <summary>
-        /// Encrypts text
-        /// </summary>
-        /// <param name="PlainText">Plaint text</param>        
-        /// <returns>Encrypted string</returns>
+       
         public static string Encrypt(string plainText)
         {
             return Encrypt(plainText, EncryptKey);
@@ -60,8 +52,6 @@ namespace SweetCMS.Core.Helper
             string result = Convert.ToBase64String(encryptedBinary);
             return result;
         }
-
-
         private static byte[] EncryptTextToMemory(string Data, byte[] Key, byte[] IV)
         {
             MemoryStream mStream = new MemoryStream();
@@ -81,33 +71,6 @@ namespace SweetCMS.Core.Helper
             CryptoStream csDecrypt = new CryptoStream(msDecrypt, new TripleDESCryptoServiceProvider().CreateDecryptor(Key, IV), CryptoStreamMode.Read);
             StreamReader sReader = new StreamReader(csDecrypt, new UnicodeEncoding());
             return sReader.ReadLine();
-        }
-
-        public static string GetRandomPassword()
-        {
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            var stringChars = new char[8];
-            var random = new Random();
-            for (int i = 0; i < stringChars.Length; i++)
-            {
-                stringChars[i] = chars[random.Next(chars.Length)];
-            }
-            var finalString = new String(stringChars);
-            return finalString;
-        }
-
-        public static bool IsValidPasswordSpecialCharactor(string password)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(password))
-                    return false;
-                return Regex.IsMatch(password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$");
-            }
-            catch
-            {
-                return false;
-            }
         }
     }
 }

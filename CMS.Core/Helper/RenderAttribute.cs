@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-namespace SweetCMS.Core.Helper
+namespace TBDCMS.Core.Helper
 {
     [AttributeUsage(AttributeTargets.Field)]
     public class RenderAttribute : Attribute
@@ -14,20 +14,6 @@ namespace SweetCMS.Core.Helper
         private readonly string _Mode = "pad";
 
         CultureInfo currentLanguage = CultureInfo.GetCultureInfo("en-US");
-
-        public RenderAttribute(string renderAs)
-        {
-            this._renderAs = renderAs;
-            _Width = 0;
-            _Height = 0;
-        }
-
-        public RenderAttribute(string renderAs, int width, int height)
-        {
-            this._renderAs = renderAs;
-            _Width = width;
-            _Height = height;
-        }
 
         public RenderAttribute(string renderAs, int width, int height, string mode)
         {
@@ -41,11 +27,7 @@ namespace SweetCMS.Core.Helper
         {
             return _renderAs;
         }
-
-        /// <summary>
-        /// Dùng cho thư viện chỉnh sửa ảnh ImageResizer.dll
-        /// </summary>
-        /// <returns></returns>
+    
         public string ToImageResizeString()
         {
             string settings = string.Empty;
@@ -62,22 +44,6 @@ namespace SweetCMS.Core.Helper
             }
 
             return settings;
-        }
-
-        public string TypeKey
-        {
-            get
-            {
-                return _renderAs;
-            }
-        }
-
-        public string Mode
-        {
-            get
-            {
-                return _Mode;
-            }
         }
 
         public int Width

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SweetCMS.WebUI.RichFilemanager.connectors {
+namespace TBDCMS.WebUI.RichFilemanager.connectors {
     
     
     public partial class filemanager {

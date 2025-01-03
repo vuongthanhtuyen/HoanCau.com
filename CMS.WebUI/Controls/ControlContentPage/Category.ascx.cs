@@ -1,7 +1,7 @@
 ﻿using CMS.Core.Publich;
 using CMS.DataAsscess;
-using SweetCMS.Core.Helper;
-using SweetCMS.DataAccess;
+using TBDCMS.Core.Helper;
+using TBDCMS.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;

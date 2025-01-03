@@ -1,7 +1,7 @@
 ﻿using CMS.Core.Manager;
 using CMS.DataAsscess;
 using CMS.WebUI.Administration.Common;
-using SweetCMS.Core.Helper;
+using TBDCMS.Core.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;

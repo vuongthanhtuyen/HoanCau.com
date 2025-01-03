@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="True"
-    CodeBehind="Default.aspx.cs" Inherits="SweetCMS.WebUI.RichFilemanager.Default" %>
+    CodeBehind="Default.aspx.cs" Inherits="TBDCMS.WebUI.RichFilemanager.Default" %>
 
 <!DOCTYPE html>
 <html>
@@ -160,7 +160,7 @@
             <script type="text/javascript" src="scripts/filemanager.js?v=201710251418"></script>
             <script src="<%=ResolveClientUrl("~/Administration/Style/dist/js/clipboard.min.js?v=201706010424")%>"></script>
             <script>
-                const _hostPath = '<%= SweetCMS.Core.Helper.CommonHelper.GetHostPath().TrimEnd('/') %>';
+                const _hostPath = '<%= TBDCMS.Core.Helper.CommonHelper.GetHostPath().TrimEnd('/') %>';
                 function renderCopyRich() {
                     if ($('#copy-button').length > 0) {
                         var clipboard = new ClipboardJS('#copy-button');

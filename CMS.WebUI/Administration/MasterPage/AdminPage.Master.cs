@@ -1,8 +1,8 @@
 ﻿using CMS.Core.Manager;
 using CMS.DataAsscess;
 using SubSonic;
-using SweetCMS.Core.Helper;
-using SweetCMS.DataAccess;
+using TBDCMS.Core.Helper;
+using TBDCMS.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Data;

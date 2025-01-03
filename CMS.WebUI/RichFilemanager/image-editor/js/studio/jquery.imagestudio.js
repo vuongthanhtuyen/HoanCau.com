@@ -1238,13 +1238,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     if (data && data.length > 0) {
                         var arrMess = data.split('||');
 
-                        SweetSoftScript.Editor.Data.isSaveAs = false;
+                        DhTBDScript.Editor.Data.isSaveAs = false;
 
                         if (arrMess[0] === '1') {
                             alert('successful save!');
                             if (arrMess.length === 3) {
-                                if (typeof SweetSoftScript.Editor.Data !== 'undefined')
-                                    SweetSoftScript.Editor.Data.sessionFile = arrMess[2];
+                                if (typeof DhTBDScript.Editor.Data !== 'undefined')
+                                    DhTBDScript.Editor.Data.sessionFile = arrMess[2];
                             }
 
                             if (savepath.indexOf('newname') >= 0) {
@@ -1260,7 +1260,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                             alert(arrMess[1]);
 
                         if (typeof template !== 'undefined') {
-                            SweetSoftScript.Editor.Data.isSaveAs = true;
+                            DhTBDScript.Editor.Data.isSaveAs = true;
                             template.modal('hide');
                         }
                     }

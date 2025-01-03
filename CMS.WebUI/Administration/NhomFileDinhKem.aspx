@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" ValidateRequest="false" MasterPageFile="~/Administration/MasterPage/AdminPage.Master" AutoEventWireup="true" CodeBehind="NhomFileDinhKem.aspx.cs" Inherits="CMS.WebUI.Administration.NhomFileDinhKem" %>
 
-<%@ Import Namespace="SweetCMS.Core.Helper" %>
+<%@ Import Namespace="TBDCMS.Core.Helper" %>
 <%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">

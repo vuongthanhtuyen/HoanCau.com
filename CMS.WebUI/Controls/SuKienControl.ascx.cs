@@ -1,5 +1,5 @@
 ﻿using CMS.Core.Publich;
-using SweetCMS.DataAccess;
+using TBDCMS.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using SweetCMS.Core.Helper;
+using TBDCMS.Core.Helper;
 using CMS.Core.Manager;
 
 namespace CMS.WebUI.Controls

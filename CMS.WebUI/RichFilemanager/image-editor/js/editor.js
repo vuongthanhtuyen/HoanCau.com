@@ -4,10 +4,10 @@
 /// <reference path="jquery.easing.1.3.js" />
 /// <reference path="bootstrap.js" />
 /// <reference path="jquery.thumbGallery.js" />
-if (typeof SweetSoftScript === 'undefined')
-    SweetSoftScript = {};
+if (typeof DhTBDScript === 'undefined')
+    DhTBDScript = {};
 
-SweetSoftScript.Editor = {
+DhTBDScript.Editor = {
     Data: {
         sessionFile: '',
         ajRequest: undefined,
@@ -43,7 +43,7 @@ SweetSoftScript.Editor = {
         ajaxRequest: function (urlGet, dataValue, callback) {
             /// <summary>Get data from server by jQuery.</summary>
             if (!$('form').hasClass('progressClass')) {
-                SweetSoftScript.Editor.Data.ajRequest = $.ajax({
+                DhTBDScript.Editor.Data.ajRequest = $.ajax({
                     type: "post",
                     async: true,
                     url: urlGet,
@@ -125,7 +125,7 @@ SweetSoftScript.Editor = {
             });
         },
         processAddItem: function (url) {
-            var title = SweetSoftScript.Editor.commonFunction.getDataQuery('f', url);
+            var title = DhTBDScript.Editor.commonFunction.getDataQuery('f', url);
             /*just get filename
             if (title != null && title.length > 0)
             {
@@ -137,12 +137,12 @@ SweetSoftScript.Editor = {
                 title = customTitle;
 
             var div = $('<div class="thumbHolder">'
-                    + '<a class="pp_content" data-img="' + url.replace(SweetSoftScript.Editor.Data.thumbsetting, '')
+                    + '<a class="pp_content" data-img="' + url.replace(DhTBDScript.Editor.Data.thumbsetting, '')
                     + '" href="javascript:void(0);" title="' + title + '">'
                     + '<span class="helper"></span><img class="thumb_hidden" src="img/picture.png" alt="' + title + '"></a>'
                     + '</div>');
 
-            SweetSoftScript.Editor.mainFunction.initElement(div.find('a.pp_content'));
+            DhTBDScript.Editor.mainFunction.initElement(div.find('a.pp_content'));
             var api = $('#componentWrapper').data('thumbGallery');
             if (typeof api !== 'undefined') {
                 //var num = Math.floor(Math.random() * 12) + 1;                
@@ -150,14 +150,14 @@ SweetSoftScript.Editor = {
             }
             else {
                 $('#componentWrapper .thumbInnerContainer').append(div);
-                SweetSoftScript.Editor.mainFunction.callSlider();
+                DhTBDScript.Editor.mainFunction.callSlider();
             }
         },
         viewImage: function (elem) {
-            SweetSoftScript.Editor.Data.thumbElement = elem;
+            DhTBDScript.Editor.Data.thumbElement = elem;
             var src = elem.attr('data-img') + '&numrandom=' + (Math.floor(Math.random() * 40 + 1))
-            SweetSoftScript.Editor.Data.mainDiv.ImageStudio({
-                url: src.replace(SweetSoftScript.Editor.Data.thumbsetting, '')
+            DhTBDScript.Editor.Data.mainDiv.ImageStudio({
+                url: src.replace(DhTBDScript.Editor.Data.thumbsetting, '')
             });
         },
         initElement: function (elem) {
@@ -165,7 +165,7 @@ SweetSoftScript.Editor = {
                 .attr('data-original-title', $(elem).attr('title'))
                 .removeAttr('title')
                 .mouseenter(function () {
-                    SweetSoftScript.Editor.Data.tip
+                    DhTBDScript.Editor.Data.tip
                         .qtip('option', 'position.target', this)
                         .qtip('option', 'position.my', 'bottom center')
                         .qtip('option', 'position.at', 'top center')
@@ -175,7 +175,7 @@ SweetSoftScript.Editor = {
                 })
                 .click(function () {
                     $('#fileupload').parent().slideUp();
-                    if (SweetSoftScript.Editor.Data.isPreload === false) {
+                    if (DhTBDScript.Editor.Data.isPreload === false) {
                         if ($(this).hasClass('active'))
                             return false;
 
@@ -183,22 +183,22 @@ SweetSoftScript.Editor = {
                             var act = $('#componentWrapper .thumbInnerContainer .pp_content.active');
                             if (act.length > 0) {
                                 act.removeClass('active');
-                                act.find('img').attr('src', act.attr('data-img') + SweetSoftScript.Editor.Data.thumbsetting);
+                                act.find('img').attr('src', act.attr('data-img') + DhTBDScript.Editor.Data.thumbsetting);
                             }
                             $(this).addClass('active');
 
-                            SweetSoftScript.Editor.mainFunction.viewImage($(this));
+                            DhTBDScript.Editor.mainFunction.viewImage($(this));
                         }
                     }
                     return false;
                 });
         },
         queueLoad: function (indx) {
-            if (typeof indx === 'number' && indx < SweetSoftScript.Editor.Data.arrImage.length) {
-                var src = 'ImageHandler.aspx?f=' + SweetSoftScript.Editor.Data.arrImage[indx] + SweetSoftScript.Editor.Data.thumbsetting;
-                SweetSoftScript.Editor.mainFunction.processAddItem(src);
+            if (typeof indx === 'number' && indx < DhTBDScript.Editor.Data.arrImage.length) {
+                var src = 'ImageHandler.aspx?f=' + DhTBDScript.Editor.Data.arrImage[indx] + DhTBDScript.Editor.Data.thumbsetting;
+                DhTBDScript.Editor.mainFunction.processAddItem(src);
 
-                SweetSoftScript.Editor.commonFunction.preloadLoadImage(src,
+                DhTBDScript.Editor.commonFunction.preloadLoadImage(src,
                     function (img) {
                         if (typeof img !== 'undefined' && img !== null) {
                             var cur = $('#componentWrapper .thumbInnerContainer .pp_content img:last');
@@ -206,19 +206,19 @@ SweetSoftScript.Editor = {
                                 cur.attr('src', src);
 
                             setTimeout(function () {
-                                SweetSoftScript.Editor.mainFunction.queueLoad(++indx);
-                            }, indx == SweetSoftScript.Editor.Data.arrImage.length - 2 ? 800 : 10);
+                                DhTBDScript.Editor.mainFunction.queueLoad(++indx);
+                            }, indx == DhTBDScript.Editor.Data.arrImage.length - 2 ? 800 : 10);
                         }
                         else {
                             setTimeout(function () {
-                                SweetSoftScript.Editor.mainFunction.queueLoad(++indx);
-                            }, indx == SweetSoftScript.Editor.Data.arrImage.length - 2 ? 800 : 10);
+                                DhTBDScript.Editor.mainFunction.queueLoad(++indx);
+                            }, indx == DhTBDScript.Editor.Data.arrImage.length - 2 ? 800 : 10);
                         }
                     });
             }
             else {
-                SweetSoftScript.Editor.Data.isPreload = false;
-                if (SweetSoftScript.Editor.Data.arrImage.length === 1) {
+                DhTBDScript.Editor.Data.isPreload = false;
+                if (DhTBDScript.Editor.Data.arrImage.length === 1) {
                     $('#componentWrapper .thumbInnerContainer .pp_content:eq(0)').click();
 
                     /*good
@@ -232,7 +232,7 @@ SweetSoftScript.Editor = {
 
 
                     setTimeout(function () {
-                        if (typeof nofile === 'undefined' || SweetSoftScript.Editor.Data.arrImage[0] !== 'session') {
+                        if (typeof nofile === 'undefined' || DhTBDScript.Editor.Data.arrImage[0] !== 'session') {
                             if (typeof ISDataCrop !== 'undefined' && ISDataCrop.length === 1) {
                                 $('#CropPane select')[0].selectedIndex = 0;
                                 $('#CropPane .button_crop_crop').click();
@@ -246,7 +246,7 @@ SweetSoftScript.Editor = {
             }
         },
         initToolbar: function () {
-            SweetSoftScript.Editor.Data.tip = $("#qtip").qtip({
+            DhTBDScript.Editor.Data.tip = $("#qtip").qtip({
                 position: {
                     target: [0, 0],
                     my: 'right center',
@@ -266,7 +266,7 @@ SweetSoftScript.Editor = {
             /*
             $('#sidebar > li').each(function () {
                 $(this).mouseenter(function () {
-                    SweetSoftScript.Editor.Data.tip
+                    DhTBDScript.Editor.Data.tip
                         .qtip('option', 'position.target', this)
                         .qtip('option', 'position.my', 'right center')
                         .qtip('option', 'position.at', 'left center')
@@ -279,20 +279,20 @@ SweetSoftScript.Editor = {
         },
         init: function () {
 
-            SweetSoftScript.Editor.mainFunction.initToolbar();
-            SweetSoftScript.Editor.Data.mainDiv = $('#main');
+            DhTBDScript.Editor.mainFunction.initToolbar();
+            DhTBDScript.Editor.Data.mainDiv = $('#main');
 
-            var data = SweetSoftScript.Editor.commonFunction.getDataQuery('d');
+            var data = DhTBDScript.Editor.commonFunction.getDataQuery('d');
             if (data.length > 0) {
                 try {
-                    SweetSoftScript.Editor.Data.arrImage = data.split(joinKey);
+                    DhTBDScript.Editor.Data.arrImage = data.split(joinKey);
                 }
                 catch (ex) {
-                    SweetSoftScript.Editor.Data.arrImage = undefined;
+                    DhTBDScript.Editor.Data.arrImage = undefined;
                 }
 
-                if (typeof SweetSoftScript.Editor.Data.arrImage !== 'undefined'
-                    && SweetSoftScript.Editor.Data.arrImage.length > 0) {
+                if (typeof DhTBDScript.Editor.Data.arrImage !== 'undefined'
+                    && DhTBDScript.Editor.Data.arrImage.length > 0) {
 
                     var defcropratios = [[0, "Custom"], ["current", "Current"], [4 / 3, "4:3"], [16 / 9, "16:9 (Widescreen)"], [3 / 2, "3:2"]];
                     if (typeof ISDataCrop !== 'undefined' && ISDataCrop.length > 0) {
@@ -305,7 +305,7 @@ SweetSoftScript.Editor = {
                     }
 
                     var panesCustom = ['crop', 'resize', 'effects', 'rotateflip', 'adjust', 'trimwhitespace'];
-                    var key = SweetSoftScript.Editor.commonFunction.getDataQuery('editorKey');
+                    var key = DhTBDScript.Editor.commonFunction.getDataQuery('editorKey');
                     if (key.length > 0)
                         panesCustom.splice(1);
 
@@ -321,14 +321,14 @@ SweetSoftScript.Editor = {
                         onchange: function (api) {
                             var url = api.getStatus().url;
                             //var obj = ir.Utils.parseQuery($('<span></span>').html(url).text());
-                            if (typeof SweetSoftScript.Editor.Data.thumbElement !== 'undefined')
-                                SweetSoftScript.Editor.Data.thumbElement.find('img').attr('src', url + SweetSoftScript.Editor.Data.thumbsetting);
+                            if (typeof DhTBDScript.Editor.Data.thumbElement !== 'undefined')
+                                DhTBDScript.Editor.Data.thumbElement.find('img').attr('src', url + DhTBDScript.Editor.Data.thumbsetting);
                         },
                         onsave: function () {
-                            if (typeof parent.SweetSoftScript !== 'undefined'
-                                && typeof parent.SweetSoftScript.Editor !== 'undefined'
-                                && typeof parent.SweetSoftScript.Editor.Data.needRefresh !== 'undefined')
-                                parent.SweetSoftScript.Editor.Data.needRefresh = true;
+                            if (typeof parent.DhTBDScript !== 'undefined'
+                                && typeof parent.DhTBDScript.Editor !== 'undefined'
+                                && typeof parent.DhTBDScript.Editor.Data.needRefresh !== 'undefined')
+                                parent.DhTBDScript.Editor.Data.needRefresh = true;
                             else
                                 parent.needRefresh = true;
                         }
@@ -348,11 +348,11 @@ SweetSoftScript.Editor = {
                     if (typeof custompanes !== 'undefined')
                         mergeOpt.panes = custompanes;
 
-                    SweetSoftScript.Editor.Data.mainDiv.ImageStudio(mergeOpt);
+                    DhTBDScript.Editor.Data.mainDiv.ImageStudio(mergeOpt);
 
 
-                    SweetSoftScript.Editor.Data.isPreload = true;
-                    SweetSoftScript.Editor.mainFunction.queueLoad(0);
+                    DhTBDScript.Editor.Data.isPreload = true;
+                    DhTBDScript.Editor.mainFunction.queueLoad(0);
                 }
             }
         }
@@ -360,5 +360,5 @@ SweetSoftScript.Editor = {
 }
 
 jQuery(function ($) {
-    SweetSoftScript.Editor.mainFunction.init();
+    DhTBDScript.Editor.mainFunction.init();
 });
